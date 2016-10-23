@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <FileName>D:\Work\SpaceExplorers\bin\Data\main.objs</FileName>
+  <Things>
+    <Thing>
+      <TypeName>Floor</TypeName>
+      <TextureFilePath>Floor_64_64_1.png</TextureFilePath>
+      <IsPassable>true</IsPassable>
+      <IsVentilated>true</IsVentilated>
+    </Thing>
+    <Thing>
+      <TypeName>Wall</TypeName>
+      <TextureFilePath>Wall_64_64_1.png</TextureFilePath>
+      <IsPassable>false</IsPassable>
+      <IsVentilated>false</IsVentilated>
+    </Thing>
+    <Thing>
+      <TypeName>Table</TypeName>
+      <TextureFilePath>Table_64_64_1.png</TextureFilePath>
+      <IsPassable>false</IsPassable>
+      <IsVentilated>true</IsVentilated>
+    </Thing>
+    <Thing>
+      <TypeName>Door</TypeName>
+      <TextureFilePath>Door_64_64_1.png</TextureFilePath>
+      <IsPassable>false</IsPassable>
+      <IsVentilated>false</IsVentilated>
+    </Thing>
+  </Things>
+</Document>
