@@ -16,6 +16,9 @@ public:
 	virtual bool IsPassable() const;
 	virtual bool IsVentilated() const;
 
+
+	Thing* FindChild(const std::string& pChildName) const;
+
 };
 
 

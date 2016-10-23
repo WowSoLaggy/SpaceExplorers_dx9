@@ -11,14 +11,26 @@
 #include "Prototype.h"
 
 
+enum class GameMode
+{
+	MainMenu,
+	InGame,
+	EscapeMenu,
+};
+
+
 class Game
 {
 public:
+
+	ErrCode Init();
+	ErrCode Dispose();
 
 	ErrCode Start(Scene& pScene);
 	ErrCode End();
 
 	bool IsRun() { return m_isRun; }
+	GameMode Mode() { return m_mode; }
 
 	bool HasMap() const { return m_map.get() != nullptr; }
 	std::shared_ptr<Map> GetMap() const { return m_map; }
@@ -26,6 +38,11 @@ public:
 
 
 	ErrCode OnRenderDeviceReset();
+
+	ErrCode ShowMainMenu();
+	ErrCode ReturnToMainMenu();
+	ErrCode StartNewMap();
+	ErrCode LoadMap();
 
 
 	// Input handlers
@@ -39,6 +56,7 @@ public:
 
 	// Actions
 
+	ErrCode EscapeHit();
 	ErrCode InfoUnderCursor();
 
 	ErrCode MoveCameraLeft();
@@ -51,6 +69,7 @@ public:
 private:
 
 	volatile bool m_isRun;
+	GameMode m_mode;
 
 	Scene* m_scene;
 	std::shared_ptr<Map> m_map;

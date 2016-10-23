@@ -1,24 +1,32 @@
 #include "stdafx.h"
 #include "Gui.h"
 
-
+#include "Game.h"
 #include "Prototype.h"
 
 
-ErrCode Gui::Init()
+ErrCode Gui::Init(Game* pGame)
 {
 	m_isLoaded = false;
 	m_whatToBuild = nullptr;
+	m_game = pGame;
 
 	return err_noErr;
 }
 
 ErrCode Gui::Dispose()
 {
+	LOG("Gui::Dispose()");
+	ErrCode err;
+
 	m_isLoaded = false;
 
-	for (auto& gui : m_guis)
-		delete gui;
+	err = DeleteGuis();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't delete Guis.");
+		return err;
+	}
 	
 	return err_noErr;
 }
@@ -28,6 +36,10 @@ ErrCode Gui::Load()
 {
 	LOG("Gui::Load()");
 	ErrCode3d err3d;
+
+	// Update Gui
+
+	CreateOrUpdateGui(m_mode);
 
 	// Load Guis
 
@@ -47,21 +59,6 @@ ErrCode Gui::Load()
 	D3DXVECTOR2 scale = D3DXVECTOR2(1, 1);
 	D3DXMatrixTransformation2D(&m_transformMatrix, &scaleCenter, 0, &scale, 0, 0, 0);
 
-
-	// Rescale Gui
-
-	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
-	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
-
-	int gridSizeX = 735;
-	int gridSizeY = 96;
-	InventoryGrid->Position().x = (float)((screenWidth - gridSizeX) / 2);
-	InventoryGrid->Position().y = (float)((screenHeight - gridSizeY));
-	InventoryGrid->SetFrameOffset(D3DXVECTOR3(14, 14, 0));
-	InventoryGrid->SetGridOffset(D3DXVECTOR3(16, 16, 0));
-	InventoryGrid->SetGridShift(D3DXVECTOR3(71, 0, 0));
-
-
 	m_isLoaded = true;
 
 	return err_noErr;
@@ -78,6 +75,28 @@ ErrCode Gui::Draw(Doh3d::Sprite& pSprite)
 	LOG("Gui::Draw()");
 	ErrCode3d err3d;
 	HRESULT hRes;
+	
+	if (m_game->Mode() == GameMode::InGame)
+	{
+	// Draw building mode blueprint
+
+		if (m_whatToBuild != nullptr)
+		{
+			D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
+
+			Tile* tile = m_scene->HitTest(position2);
+			auto color = m_whatToBuild->CheckPrerequisites(tile) ? D3DCOLOR_ARGB(255, 155, 255, 155) : D3DCOLOR_ARGB(255, 255, 155, 155);
+
+			position2 = m_scene->GetScreenCoords(m_scene->GetTileCoords(position2));
+			D3DXVECTOR3 position3(position2.x, position2.y, 0);
+			hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_whatToBuild->Ti()).Get(), 0, 0, &position3, color);
+			if (hRes != S_OK)
+			{
+				echo("ERROR: Can't draw thing (type name: \"", m_whatToBuild->TypeName(), "\").");
+				return err_cantDrawThing;
+			}
+		}
+	}
 
 	// Draw Gui
 
@@ -91,48 +110,6 @@ ErrCode Gui::Draw(Doh3d::Sprite& pSprite)
 			return err_cantDrawGui;
 		}
 	}
-	
-	// Draw building mode blueprint
-
-	if (m_whatToBuild != nullptr)
-	{
-		D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
-
-		Tile* tile = m_scene->HitTest(position2);
-		auto color = m_whatToBuild->CheckPrerequisites(tile) ? D3DCOLOR_ARGB(255, 155, 255, 155) : D3DCOLOR_ARGB(255, 255, 155, 155);
-		
-		D3DXVECTOR3 position3(position2.x, position2.y, 0);
-		hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_whatToBuild->Ti()).Get(), 0, 0, &position3, color);
-		if (hRes != S_OK)
-		{
-			echo("ERROR: Can't draw thing (type name: \"", m_whatToBuild->TypeName(), "\").");
-			return err_cantDrawThing;
-		}
-	}
-
-	return err_noErr;
-}
-
-
-ErrCode Gui::CreateGameGui()
-{
-	// TODO: Why InfoText is misplaced?
-
-	CreatePanel(InfoPanel, 20, 20, 256, 96, "Panel_256_96_1.png");
-	CreateText(InfoText, 37, 33, "");
-
-
-	int gridSizeX = 735;
-	int gridSizeY = 96;
-	CreateGGrid(InventoryGrid,
-						 (float)(Doh3d::RenderMan::GetRenderPars().ResolutionWidth / 2),
-						 (float)(Doh3d::RenderMan::GetRenderPars().ResolutionHeight / 2),
-						 (float)gridSizeX, (float)gridSizeY, 10, "Inventory_735_96_1.png", "Frame_68_68_1.png");
-	
-	InventoryGrid->Items()[0] = &Prototype::Find("Floor");
-	InventoryGrid->Items()[1] = &Prototype::Find("Wall");
-	InventoryGrid->Items()[2] = &Prototype::Find("Table");
-	InventoryGrid->Items()[3] = &Prototype::Find("Door");
 
 	return err_noErr;
 }
@@ -141,5 +118,135 @@ ErrCode Gui::CreateGameGui()
 ErrCode Gui::SwitchBuildMode(const Prototype* pWhatToBuild)
 {
 	m_whatToBuild = pWhatToBuild;
+	return err_noErr;
+}
+
+
+ErrCode Gui::DeleteGuis()
+{
+	for (auto& gui : m_guis)
+		delete gui;
+
+	m_guis.clear();
+
+	return err_noErr;
+}
+
+ErrCode Gui::CreateOrUpdateGui(GuiMode pGuiMode)
+{
+	LOG("Gui::CreateOrUpdateGui()");
+	ErrCode err;
+
+	err = DeleteGuis();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't delete Guis.");
+		return err;
+	}
+
+	switch (pGuiMode)
+	{
+	case GuiMode::MainMenu:
+		err = CreateMainMenu();
+		break;
+
+	case GuiMode::InGame:
+		err = CreateGameGui();
+		break;
+
+	case GuiMode::EscapeMenu:
+		err = CreateEscapeMenu();
+		break;
+
+	default:
+		err = err_unknownGuiMode;
+		break;
+	}
+
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't create GUI for mode: (", (int)pGuiMode, ").");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+
+ErrCode Gui::CreateMainMenu()
+{
+	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
+	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
+
+	CreatePanel(MainMenu_Background, 0, 0,
+				(float)(screenWidth), (float)(screenHeight),
+				"MainMenu_1920_1080_1.png");
+
+	CreateButton(MainMenu_CreateNewMapBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 224), 256, 32,
+				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
+				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
+	MainMenu_CreateNewMapBtn->SetFont("Gadugi");
+	MainMenu_CreateNewMapBtn->SetText("Create new map");
+	MainMenu_CreateNewMapBtn->SetOnClickEvent(std::bind(&Game::StartNewMap, m_game));
+
+	CreateButton(MainMenu_LoadMapBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 176), 256, 32,
+				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
+				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
+	MainMenu_LoadMapBtn->SetFont("Gadugi");
+	MainMenu_LoadMapBtn->SetText("Load map");
+	MainMenu_LoadMapBtn->SetOnClickEvent(std::bind(&Game::LoadMap, m_game));
+
+	CreateButton(MainMenu_ExitBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 96), 256, 32,
+				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
+				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
+	MainMenu_ExitBtn->SetFont("Gadugi");
+	MainMenu_ExitBtn->SetText("Exit");
+	MainMenu_ExitBtn->SetOnClickEvent(std::bind(&Game::End, m_game));
+
+	return err_noErr;
+}
+
+ErrCode Gui::CreateGameGui()
+{
+	CreatePanel(InfoPanel, 20, 20, 256, 96, "Panel_256_96_1.png");
+
+	CreateText(InfoText, 37, 33, "");
+
+	int gridSizeX = 735;
+	int gridSizeY = 96;
+	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
+	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
+
+	CreateGGrid(InventoryGrid,
+				(float)((screenWidth - gridSizeX) / 2), (float)((screenHeight - gridSizeY)),
+				(float)gridSizeX, (float)gridSizeY, 10, "Inventory_735_96_1.png", "Frame_68_68_1.png");
+
+	InventoryGrid->SetFrameOffset(D3DXVECTOR3(14, 14, 0));
+	InventoryGrid->SetGridOffset(D3DXVECTOR3(16, 16, 0));
+	InventoryGrid->SetGridShift(D3DXVECTOR3(71, 0, 0));
+
+	InventoryGrid->Items()[0] = &Prototype::Find("Lattice");
+	InventoryGrid->Items()[1] = &Prototype::Find("Floor");
+	InventoryGrid->Items()[2] = &Prototype::Find("Wall");
+	InventoryGrid->Items()[3] = &Prototype::Find("Table");
+	InventoryGrid->Items()[4] = &Prototype::Find("Door");
+
+	return err_noErr;
+}
+
+ErrCode Gui::CreateEscapeMenu()
+{
+	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
+	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
+
+	CreatePanel(EscapeMenu_Fade, 0, 0, (FLOAT)screenWidth, (FLOAT)screenHeight, "MenuFade_32_32_1.png");
+
+	CreateButton(EscapeMenu_ExitToMain, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 96), 256, 32,
+				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
+				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
+	EscapeMenu_ExitToMain->SetFont("Gadugi");
+	EscapeMenu_ExitToMain->SetText("Exit to Main Menu");
+	EscapeMenu_ExitToMain->SetOnClickEvent(std::bind(&Game::ReturnToMainMenu, m_game));
+
 	return err_noErr;
 }

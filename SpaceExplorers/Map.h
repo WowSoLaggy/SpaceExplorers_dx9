@@ -32,10 +32,6 @@ private:
 
 	std::vector<Tile> m_tiles;
 
-public:
-
-	static const int c_tileSize;
-	
 };
 
 

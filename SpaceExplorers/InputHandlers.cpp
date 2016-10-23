@@ -10,15 +10,12 @@ void Engine::OnMouseMove()
 	// Handle by GUI
 
 	bool handled = false;
-	/*if ((m_sceneController.IsSceneReady()) && (m_sceneController.GetCurrentScene()->GetCursor().IsVisible()))
+	err = m_game.GetGui().OnMouseMove(handled);
+	if (err != err_noErr)
 	{
-		err = m_sceneController.GetCurrentScene()->OnMouseMove(handledByGui);
-		if (err != err_noErr)
-		{
-			echo("ERROR: Error occurred while checking Scene OnMouseMove.");
-			return;
-		}
-	}*/
+		echo("ERROR: Error occurred while checking Scene OnMouseMove.");
+		return;
+	}
 	if (handled)
 		return;
 
@@ -40,15 +37,12 @@ void Engine::OnMouseDown(int pButton)
 	// Handle by GUI
 
 	bool handled = false;
-	/*if ((m_sceneController.IsSceneReady()) && (m_sceneController.GetCurrentScene()->GetCursor().IsVisible()))
-	{
-	err = m_sceneController.GetCurrentScene()->OnMouseDown(handledByGui);
+	err = m_game.GetGui().OnMouseDown(handled, pButton);
 	if (err != err_noErr)
 	{
-	echo("ERROR: Error occurred while checking Scene OnMouseDown.");
-	return;
+		echo("ERROR: Error occurred while checking Scene OnMouseDown.");
+		return;
 	}
-	}*/
 	if (handled)
 		return;
 
@@ -70,15 +64,12 @@ void Engine::OnMouseUp(int pButton)
 	// Handle by GUI
 
 	bool handled = false;
-	/*if ((m_sceneController.IsSceneReady()) && (m_sceneController.GetCurrentScene()->GetCursor().IsVisible()))
-	{
-	err = m_sceneController.GetCurrentScene()->OnMouseUp(handledByGui);
+	err = m_game.GetGui().OnMouseUp(handled, pButton);
 	if (err != err_noErr)
 	{
-	echo("ERROR: Error occurred while checking Scene OnMouseUp.");
-	return;
+		echo("ERROR: Error occurred while checking Scene OnMouseUp.");
+		return;
 	}
-	}*/
 	if (handled)
 		return;
 
@@ -101,15 +92,12 @@ void Engine::OnKeyPressed(int pKey)
 	// Handle by GUI
 
 	bool handled = false;
-	/*if (m_sceneController.IsSceneReady())
+	err = m_game.GetGui().OnKeyPressed(handled, pKey);
+	if (err != err_noErr)
 	{
-		err = m_sceneController.GetCurrentScene()->OnKeyPressed(pKey, handledByGui);
-		if (err != err_noErr)
-		{
-			echo("ERROR: Error occurred while checking Scene OnKeyPressed.");
-			return err;
-		}
-	}*/
+		echo("ERROR: Error occurred while checking Scene OnKeyPressed.");
+		return;
+	}
 	if (handled)
 		return;
 
@@ -131,15 +119,12 @@ void Engine::OnKeyDown(int pKey)
 	// Handle by GUI
 
 	bool handled = false;
-	/*if (m_sceneController.IsSceneReady())
-	{
-	err = m_sceneController.GetCurrentScene()->OnKeyDown(pKey, handledByGui);
+	err = m_game.GetGui().OnKeyDown(handled, pKey);
 	if (err != err_noErr)
 	{
-	echo("ERROR: Error occurred while checking Scene OnKeyDown.");
-	return err;
+		echo("ERROR: Error occurred while checking Scene OnKeyDown.");
+		return;
 	}
-	}*/
 	if (handled)
 		return;
 
@@ -161,15 +146,12 @@ void Engine::OnKeyUp(int pKey)
 	// Handle by GUI
 
 	bool handled = false;
-	/*if (m_sceneController.IsSceneReady())
-	{
-	err = m_sceneController.GetCurrentScene()->OnKeyUp(pKey, handledByGui);
-	if (err != err_noErr)
-	{
-	echo("ERROR: Error occurred while checking Scene OnKeyUp.");
-	return err;
-	}
-	}*/
+		err = m_game.GetGui().OnKeyUp(handled, pKey);
+		if (err != err_noErr)
+		{
+			echo("ERROR: Error occurred while checking Scene OnKeyUp.");
+			return;
+		}
 	if (handled)
 		return;
 

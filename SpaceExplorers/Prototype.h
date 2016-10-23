@@ -39,6 +39,16 @@ public:
 	const bool& IsVentilated() const { return m_isVentilated; }
 
 
+	bool& NeedsLattice() { return m_needsLattice; }
+	const bool& NeedsLattice() const { return m_needsLattice; }
+
+	bool& NeedsFloor() { return m_needsFloor; }
+	const bool& NeedsFloor() const { return m_needsFloor; }
+
+	bool& NeedsSpace() { return m_needsSpace; }
+	const bool& NeedsSpace() const { return m_needsSpace; }
+
+
 	bool CheckPrerequisites(Tile* pTile) const;
 
 
@@ -57,6 +67,10 @@ private:
 
 	bool m_isPassable;
 	bool m_isVentilated;
+
+	bool m_needsLattice;
+	bool m_needsFloor;
+	bool m_needsSpace;
 
 
 	static std::vector<Prototype> s_prototypes;

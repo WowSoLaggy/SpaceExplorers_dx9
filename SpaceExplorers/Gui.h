@@ -9,11 +9,24 @@
 #include "Prototype.h"
 
 
+class Game;
+
+
+enum class GuiMode
+{
+	MainMenu,
+	InGame,
+	EscapeMenu,
+
+	End
+};
+
+
 class Gui
 {
 public:
 
-	ErrCode Init();
+	ErrCode Init(Game* pGame);
 	ErrCode Dispose();
 
 	ErrCode Load();
@@ -21,17 +34,39 @@ public:
 
 	ErrCode Draw(Doh3d::Sprite& pSprite);
 
+	GuiMode Mode() const { return m_mode; }
+
 	void SetScene(Scene& pScene) { m_scene = &pScene; }
+
+
+	Doh3d::GPanel* MainMenu_Background;
+	Doh3d::GButton* MainMenu_CreateNewMapBtn;
+	Doh3d::GButton* MainMenu_LoadMapBtn;
+	Doh3d::GButton* MainMenu_ExitBtn;
 
 	Doh3d::GPanel* InfoPanel;
 	Doh3d::GText* InfoText;
 	Doh3d::GGrid* InventoryGrid;
 
-	ErrCode CreateGameGui();
+	Doh3d::GPanel* EscapeMenu_Fade;
+	Doh3d::GButton* EscapeMenu_ExitToMain;
+
+
+	ErrCode DeleteGuis();
+	ErrCode CreateOrUpdateGui(GuiMode pGuiMode);
+
 
 	/// nullptr to cancel buiding mode
 	ErrCode SwitchBuildMode(const Prototype* pWhatToBuild);
 
+	// Input handlers
+
+	ErrCode OnMouseMove(bool& pHandled);
+	ErrCode OnMouseDown(bool& pHandled, int pButton);
+	ErrCode OnMouseUp(bool& pHandled, int pButton);
+	ErrCode OnKeyPressed(bool& pHandled, int pKey);
+	ErrCode OnKeyDown(bool& pHandled, int pKey);
+	ErrCode OnKeyUp(bool& pHandled, int pKey);
 
 	// Gui creation
 
@@ -45,12 +80,20 @@ public:
 private:
 
 	bool m_isLoaded;
+	GuiMode m_mode;
 
 	Scene* m_scene;
+	Game* m_game;
+
 	std::vector<Doh3d::GBase*> m_guis;
 	D3DXMATRIX m_transformMatrix;
 
 	const Prototype* m_whatToBuild;
+
+
+	ErrCode CreateMainMenu();
+	ErrCode CreateGameGui();
+	ErrCode CreateEscapeMenu();
 
 };
 

@@ -169,6 +169,7 @@
     <ClCompile Include="GameInput.cpp" />
     <ClCompile Include="Gui.cpp" />
     <ClCompile Include="GuiCreation.cpp" />
+    <ClCompile Include="GuiInput.cpp" />
     <ClCompile Include="InputHandlers.cpp" />
     <ClCompile Include="Mainloop.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="MapGenerator.h" />
     <ClInclude Include="Prototype.h" />
     <ClInclude Include="RealThing.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Thing.h" />
@@ -208,6 +210,9 @@
     <ProjectReference Include="..\..\Doh3d\Doh3d\Doh3d.vcxproj">
       <Project>{46e08ea9-4871-43a1-804c-c14c7a119539}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpaceExplorers.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

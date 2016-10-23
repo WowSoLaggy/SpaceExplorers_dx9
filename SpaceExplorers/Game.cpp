@@ -8,6 +8,39 @@
 const std::string Game::c_pathToObjectsFile = "Data\\main.objs";
 
 
+ErrCode Game::Init()
+{
+	LOG("Game::Init()");
+	ErrCode err;
+
+	m_mode = GameMode::MainMenu;
+
+	err = m_gui.Init(this);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't init Gui.");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+ErrCode Game::Dispose()
+{
+	LOG("Game::Dispose()");
+	ErrCode err;
+
+	err = m_gui.Dispose();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't dispose Gui.");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+
 ErrCode Game::Start(Scene& pScene)
 {
 	LOG("Game::Start()");
@@ -24,12 +57,10 @@ ErrCode Game::Start(Scene& pScene)
 		return err;
 	}
 
-	m_map.reset(MapGenerator::CreateStartLocation());
-
-	err = m_gui.CreateGameGui();
+	err = ShowMainMenu();
 	if (err != err_noErr)
 	{
-		echo("ERROR: Can't create game gui.");
+		echo("ERROR: Can't show main menu.");
 		return err;
 	}
 
@@ -78,5 +109,67 @@ ErrCode Game::OnRenderDeviceReset()
 		return err;
 	}
 
+	return err_noErr;
+}
+
+
+ErrCode Game::ShowMainMenu()
+{
+	LOG("Game::ShowMainMenu()");
+	ErrCode err;
+
+	m_mode = GameMode::MainMenu;
+
+	err = m_gui.CreateOrUpdateGui(GuiMode::MainMenu);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't create main menu.");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+ErrCode Game::ReturnToMainMenu()
+{
+	LOG("Game::ReturnToMainMenu()");
+	ErrCode err;
+
+	err = ShowMainMenu();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't create main menu.");
+		return err;
+	}
+
+	m_scene->SetBackground("");
+	m_map.reset();
+
+	return err_noErr;
+}
+
+ErrCode Game::StartNewMap()
+{
+	LOG("Game::StartNewMap()");
+	ErrCode err;
+
+	m_mode = GameMode::InGame;
+
+	m_scene->SetBackground("Space_1920_1024_1.png");
+
+	m_map.reset(MapGenerator::CreateStartLocation());
+
+	err = m_gui.CreateOrUpdateGui(GuiMode::InGame);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't create game gui.");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+ErrCode Game::LoadMap()
+{
 	return err_noErr;
 }

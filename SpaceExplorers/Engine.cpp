@@ -71,6 +71,20 @@ ErrCode Engine::Init(const Doh3d::StartupPars& pStartupPars)
 		return err_cantInitResources;
 	}
 
+	err = m_scene.Init();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't init scene.");
+		return err;
+	}
+
+	err = m_game.Init();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't init game.");
+		return err;
+	}
+
 	err = Cursor::SetNormal();
 	if (err != err_noErr)
 	{
@@ -84,7 +98,22 @@ ErrCode Engine::Init(const Doh3d::StartupPars& pStartupPars)
 ErrCode Engine::Dispose()
 {
 	LOG("Engine::Dispose()");
+	ErrCode err;
 	ErrCode3d err3d;
+
+	err = m_game.Dispose();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't dispose game.");
+		return err;
+	}
+
+	err = m_scene.Dispose();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't dispose scene.");
+		return err;
+	}
 
 	err3d = Doh3d::ResourceMan::Dispose();
 	if (err3d != err3d_noErr)

@@ -10,9 +10,10 @@ namespace ObjectEditor.src.Model
     public class RealThing
     {
 
-        const string c_generalCategory = "General";
-        const string c_textureCategory = "Texture";
-        const string c_physicsProperties = "Physical properties";
+        const string c_generalCat = "General";
+        const string c_textureCat = "Texture";
+        const string c_physicsCat = "Physical properties";
+        const string c_constructionCat = "Construction";
 
 
         public RealThing()
@@ -30,7 +31,7 @@ namespace ObjectEditor.src.Model
 
         [ReadOnly(true)]
         [Description("Name of the thing type (eg. \"Table\" or \"Door\"). Can be chaged via the tree view on the left.")]
-        [Category(c_generalCategory)]
+        [Category(c_generalCat)]
         public string TypeName { get; set; }
 
 
@@ -40,7 +41,7 @@ namespace ObjectEditor.src.Model
         public TextureContainer Texture { get; set; } = new TextureContainer();
 
         [Description("Path to the texture.")]
-        [Category(c_textureCategory)]
+        [Category(c_textureCat)]
         [Editor(typeof(System.Windows.Forms.Design.FileNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string TextureFilePath
         {
@@ -50,7 +51,7 @@ namespace ObjectEditor.src.Model
 
         [ReadOnly(true)]
         [Description("Width of the texture.")]
-        [Category(c_textureCategory)]
+        [Category(c_textureCat)]
         [XmlIgnore]
         public int TextureWidth
         {
@@ -60,7 +61,7 @@ namespace ObjectEditor.src.Model
 
         [ReadOnly(true)]
         [Description("Height of the texture.")]
-        [Category(c_textureCategory)]
+        [Category(c_textureCat)]
         [XmlIgnore]
         public int TextureHeight
         {
@@ -70,7 +71,7 @@ namespace ObjectEditor.src.Model
 
         [ReadOnly(true)]
         [Description("Number of frames in the texture.")]
-        [Category(c_textureCategory)]
+        [Category(c_textureCat)]
         [XmlIgnore]
         public int TextureFramesCount
         {
@@ -81,11 +82,24 @@ namespace ObjectEditor.src.Model
 
 
         [Description("Indicates whether the large creature (like human) can pass through this thing.")]
-        [Category(c_physicsProperties)]
+        [Category(c_physicsCat)]
         public bool IsPassable { get; set; } = true;
 
         [Description("Indicates whether the gas can pass through this thing.")]
-        [Category(c_physicsProperties)]
+        [Category(c_physicsCat)]
         public bool IsVentilated { get; set; } = true;
+
+
+        [Description("Does this thing requires lattice as a basement")]
+        [Category(c_constructionCat)]
+        public bool NeedsLattice { get; set; } = true;
+
+        [Description("Does this thing requires floor as a basement")]
+        [Category(c_constructionCat)]
+        public bool NeedsFloor { get; set; } = true;
+
+        [Description("Does this thing can be built only in the open space")]
+        [Category(c_constructionCat)]
+        public bool NeedsSpace { get; set; } = true;
     }
 }

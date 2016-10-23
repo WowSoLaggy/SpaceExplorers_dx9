@@ -4,9 +4,26 @@
 #include "Engine.h"
 
 
+ErrCode Game::EscapeHit()
+{
+	if (m_mode == GameMode::InGame)
+	{
+		m_mode = GameMode::EscapeMenu;
+		m_gui.CreateOrUpdateGui(GuiMode::EscapeMenu);
+	}
+	else if (m_mode == GameMode::EscapeMenu)
+	{
+		m_mode = GameMode::InGame;
+		m_gui.CreateOrUpdateGui(GuiMode::InGame);
+	}
+
+	return err_noErr;
+}
+
+
 ErrCode Game::InfoUnderCursor()
 {
-	Vector2 coords = m_scene->GetCoords(Doh3d::InputMan::GetCursorPosition());
+	Vector2 coords = m_scene->GetTileCoords(Doh3d::InputMan::GetCursorPosition());
 	Tile* tile = m_scene->HitTest(Doh3d::InputMan::GetCursorPosition());
 
 	std::string text = "(" + std::to_string(coords.x) + ", " + std::to_string(coords.y) + "): ";

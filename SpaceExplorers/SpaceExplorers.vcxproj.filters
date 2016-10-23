@@ -13,9 +13,6 @@
     <Filter Include="src\Cursor">
       <UniqueIdentifier>{bb603243-92d9-45ff-9dc2-3f6f891cc443}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\SceneDrawer">
-      <UniqueIdentifier>{2218adca-3c23-4b75-9543-fb1c9ac85ac8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Game">
       <UniqueIdentifier>{3e8e6742-c0d4-4ba9-be13-16dec1eb1b18}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,12 @@
     </Filter>
     <Filter Include="src\Game\Map\Things">
       <UniqueIdentifier>{820b4b56-7faf-49b8-8655-f0b412d65f6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{2218adca-3c23-4b75-9543-fb1c9ac85ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rsrc">
+      <UniqueIdentifier>{ec08a597-291c-411f-b9a0-c9223c5b6705}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -61,7 +64,7 @@
       <Filter>src\Game\Map</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>src\SceneDrawer</Filter>
+      <Filter>src\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>src\Game\Map\Things</Filter>
@@ -93,6 +96,9 @@
     <ClCompile Include="GuiCreation.cpp">
       <Filter>src\Game\Gui</Filter>
     </ClCompile>
+    <ClCompile Include="GuiInput.cpp">
+      <Filter>src\Game\Gui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -114,7 +120,7 @@
       <Filter>src\Game\Map</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>src\SceneDrawer</Filter>
+      <Filter>src\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>src\Game\Map\Things</Filter>
@@ -143,5 +149,13 @@
     <ClInclude Include="Vector2.h">
       <Filter>src\Common</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>rsrc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SpaceExplorers.rc">
+      <Filter>rsrc</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include "MapGenerator.h"
 
 #include "RealThing.h"
+#include "Scene.h"
 
 
 Map* MapGenerator::CreateEmpty()
@@ -11,7 +12,7 @@ Map* MapGenerator::CreateEmpty()
 
 Map* MapGenerator::CreateStartLocation()
 {
-	Map* map = new Map(15, 15);
+	Map* map = new Map(50, 50);
 
 	const std::string WALL = "Wall";
 	const std::string FLOOR = "Floor";
@@ -19,28 +20,28 @@ Map* MapGenerator::CreateStartLocation()
 	const std::string DOOR = "Door";
 
 
-	for (int y = 0; y < 10; ++y)
+	for (int y = 20; y < 30; ++y)
 	{
-		for (int x = 0; x < 10; ++x)
-			map->GetTile(x, y).AddChild(new RealThing(FLOOR, x * Map::c_tileSize, y * Map::c_tileSize));
+		for (int x = 20; x < 30; ++x)
+			map->GetTile(x, y).AddChild(new RealThing(FLOOR, x * Scene::TILESIZE, y * Scene::TILESIZE));
 	}
 
-	for (int x = 0; x < 10; ++x)
+	for (int x = 20; x < 30; ++x)
 	{
-		map->GetTile(x, 0).GetChilds()[0]->AddChild(new RealThing(WALL, x * Map::c_tileSize, 0 * Map::c_tileSize));
-		map->GetTile(x, 9).GetChilds()[0]->AddChild(new RealThing(WALL, x * Map::c_tileSize, 9 * Map::c_tileSize));
+		map->GetTile(x, 20).GetChilds()[0]->AddChild(new RealThing(WALL, x * Scene::TILESIZE, 20 * Scene::TILESIZE));
+		map->GetTile(x, 29).GetChilds()[0]->AddChild(new RealThing(WALL, x * Scene::TILESIZE, 29 * Scene::TILESIZE));
 	}
 
-	for (int y = 1; y < 9; ++y)
+	for (int y = 21; y < 29; ++y)
 	{
-		map->GetTile(0, y).GetChilds()[0]->AddChild(new RealThing(WALL, 0 * Map::c_tileSize, y * Map::c_tileSize));
+		map->GetTile(20, y).GetChilds()[0]->AddChild(new RealThing(WALL, 20 * Scene::TILESIZE, y * Scene::TILESIZE));
 
-		if (y != 7)
-			map->GetTile(9, y).GetChilds()[0]->AddChild(new RealThing(WALL, 9 * Map::c_tileSize, y * Map::c_tileSize));
+		if (y != 27)
+			map->GetTile(29, y).GetChilds()[0]->AddChild(new RealThing(WALL, 29 * Scene::TILESIZE, y * Scene::TILESIZE));
 	}
 
-	map->GetTile(3, 3).GetChilds()[0]->AddChild(new RealThing(TABLE, 3 * Map::c_tileSize, 3 * Map::c_tileSize));
-	map->GetTile(9, 7).GetChilds()[0]->AddChild(new RealThing(DOOR, 9 * Map::c_tileSize, 7 * Map::c_tileSize));
+	map->GetTile(23, 23).GetChilds()[0]->AddChild(new RealThing(TABLE, 23 * Scene::TILESIZE, 23 * Scene::TILESIZE));
+	map->GetTile(29, 27).GetChilds()[0]->AddChild(new RealThing(DOOR, 29 * Scene::TILESIZE, 27 * Scene::TILESIZE));
 
 	return map;
 }

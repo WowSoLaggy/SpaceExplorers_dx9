@@ -7,24 +7,45 @@
       <TextureFilePath>Floor_64_64_1.png</TextureFilePath>
       <IsPassable>true</IsPassable>
       <IsVentilated>true</IsVentilated>
+      <NeedsLattice>true</NeedsLattice>
+      <NeedsFloor>false</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
     </Thing>
     <Thing>
       <TypeName>Wall</TypeName>
       <TextureFilePath>Wall_64_64_1.png</TextureFilePath>
       <IsPassable>false</IsPassable>
       <IsVentilated>false</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>true</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
     </Thing>
     <Thing>
       <TypeName>Table</TypeName>
       <TextureFilePath>Table_64_64_1.png</TextureFilePath>
       <IsPassable>false</IsPassable>
       <IsVentilated>true</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>true</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
     </Thing>
     <Thing>
       <TypeName>Door</TypeName>
       <TextureFilePath>Door_64_64_1.png</TextureFilePath>
       <IsPassable>false</IsPassable>
       <IsVentilated>false</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>true</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
+    </Thing>
+    <Thing>
+      <TypeName>Lattice</TypeName>
+      <TextureFilePath>Lattice_64_64_1.png</TextureFilePath>
+      <IsPassable>true</IsPassable>
+      <IsVentilated>true</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>false</NeedsFloor>
+      <NeedsSpace>true</NeedsSpace>
     </Thing>
   </Things>
 </Document>

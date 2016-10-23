@@ -4,40 +4,50 @@
 #include "Engine.h"
 
 
+const int Scene::TILESIZE = 64;
+
+
+ErrCode Scene::Init()
+{
+	m_backgroundTextureName = "";
+	m_isLoaded = false;
+	return err_noErr;
+}
+
+ErrCode Scene::Dispose()
+{
+	m_backgroundTextureName = "";
+	m_isLoaded = false;
+	return err_noErr;
+}
+
+
 ErrCode Scene::Load()
 {
 	LOG("Scene::Load()");
-	ErrCode3d err;
+	ErrCode err;
 
-	// Background
-
-	err = Doh3d::ResourceMan::GetTi(c_backgroundTextureName, m_backgroundTi);
-	if (err != err3d_noErr)
+	err = LoadBackground();
+	if (err != err_noErr)
 	{
-		echo("ERROR: Can't get TI for scene background: \"", c_backgroundTextureName, "\".");
-		return err_cantLoadBackground;
+		echo("ERROR: Can't load scene background.");
+		return err;
 	}
 
-	// Get background scale
+	// Set viewport
 
-	D3DXVECTOR2 sizeOrig = D3DXVECTOR2((FLOAT)Doh3d::RenderMan::GetRenderPars().ResolutionWidth, (FLOAT)Doh3d::RenderMan::GetRenderPars().ResolutionHeight);
-	D3DXVECTOR2 scaleCenter(0, 0);
-	D3DXVECTOR2 scale = D3DXVECTOR2(sizeOrig.x / 1920, sizeOrig.y / 1024);
-	if (scale.x > scale.y)
-		scale.y = scale.x;
-	else
-		scale.x = scale.y;
-
-	D3DXMatrixTransformation2D(&m_backgroundTransformMatrix, &scaleCenter, 0, &scale, 0, 0, 0);
-
-	// Get required zoom for all tiles
-
-	m_viewport.PositionX = 5;
-	m_viewport.PositionY = 4;
+	m_viewport.PositionX = 25;
+	m_viewport.PositionY = 25;
 	m_viewport.Width2 = 10;
 	m_viewport.Height2 = 8;
-	scale.x = scale.y = 1;
+	
+	// Get required zoom for all tiles
+
+	D3DXVECTOR2 scaleCenter(0, 0);
+	D3DXVECTOR2 scale(1, 1);
 	D3DXMatrixTransformation2D(&m_transformMatrix, &scaleCenter, 0, &scale, 0, 0, 0);
+
+	m_isLoaded = true;
 
 	return err_noErr;
 }
@@ -156,14 +166,67 @@ ErrCode Scene::DrawMap(Doh3d::Sprite& pSprite, const std::shared_ptr<Map>& pMap)
 		for (int x = left; x < right; ++x)
 		{
 			err = pMap->GetTile(x, y).Draw(pSprite, D3DXVECTOR3(
-				(m_viewport.PositionX - m_viewport.Width2) * Map::c_tileSize,
-				(m_viewport.PositionY - m_viewport.Height2) * Map::c_tileSize, 0));
+				(m_viewport.PositionX - m_viewport.Width2) * TILESIZE,
+				(m_viewport.PositionY - m_viewport.Height2) * TILESIZE, 0));
 			if (err != err_noErr)
 			{
 				echo("ERROR: Can't draw map tile (x: ", x, ", y: ", y, ").");
 				return err;
 			}
 		}
+	}
+
+	return err_noErr;
+}
+
+
+ErrCode Scene::SetBackground(const std::string& pTextureName)
+{
+	LOG("Scene::SetBackground()");
+	ErrCode err;
+	
+	m_backgroundTextureName = pTextureName;
+	
+	if (m_isLoaded)
+	{
+		err = LoadBackground();
+		if (err != err_noErr)
+		{
+			echo("ERROR: Can't load scene background.");
+			return err;
+		}
+	}
+
+	return err_noErr;
+}
+
+ErrCode Scene::LoadBackground()
+{
+	LOG("Scene::LoadBackground()");
+	ErrCode3d err3d;
+
+	if (m_backgroundTextureName.size() != 0)
+	{
+		// Background
+
+		err3d = Doh3d::ResourceMan::GetTi(m_backgroundTextureName, m_backgroundTi);
+		if (err3d != err3d_noErr)
+		{
+			echo("ERROR: Can't get TI for scene background: \"", m_backgroundTextureName, "\".");
+			return err_cantLoadBackground;
+		}
+
+		// Get background scale
+
+		D3DXVECTOR2 scaleCenter(0, 0);
+		D3DXVECTOR2 sizeOrig = D3DXVECTOR2((FLOAT)Doh3d::RenderMan::GetRenderPars().ResolutionWidth, (FLOAT)Doh3d::RenderMan::GetRenderPars().ResolutionHeight);
+		auto backgroundSize = Doh3d::ResourceMan::GetTexture(m_backgroundTi).GetSize();
+		D3DXVECTOR2 scale = D3DXVECTOR2(sizeOrig.x / backgroundSize.x, sizeOrig.y / backgroundSize.y);
+		if (scale.x > scale.y)
+			scale.y = scale.x;
+		else
+			scale.x = scale.y;
+		D3DXMatrixTransformation2D(&m_backgroundTransformMatrix, &scaleCenter, 0, &scale, 0, 0, 0);
 	}
 
 	return err_noErr;
@@ -183,7 +246,7 @@ Tile* Scene::HitTest(const D3DXVECTOR2& pScreenPosition)
 	return Engine::GetInstance()->GetGame().GetMap()->HitTest(position);
 }
 
-Vector2 Scene::GetCoords(const D3DXVECTOR2& pScreenPosition)
+Vector2 Scene::GetTileCoords(const D3DXVECTOR2& pScreenPosition)
 {
 	if (!Engine::GetInstance()->GetGame().HasMap())
 		return Vector2::Empty();
@@ -194,4 +257,20 @@ Vector2 Scene::GetCoords(const D3DXVECTOR2& pScreenPosition)
 	position += D3DXVECTOR2(m_viewport.PositionX - m_viewport.Width2, m_viewport.PositionY - m_viewport.Height2);
 
 	return Vector2(std::floor(position.x), std::floor(position.y));
+}
+
+D3DXVECTOR2 Scene::GetScreenCoords(const Vector2& pTilePosition)
+{
+	return GetScreenCoords(D3DXVECTOR2((FLOAT)pTilePosition.x, (FLOAT)pTilePosition.y));
+}
+
+D3DXVECTOR2 Scene::GetScreenCoords(const D3DXVECTOR2& pTilePosition)
+{
+	if (!Engine::GetInstance()->GetGame().HasMap())
+		return D3DXVECTOR2(0, 0);
+
+	FLOAT x = (pTilePosition.x - m_viewport.PositionX + m_viewport.Width2) * TILESIZE;
+	FLOAT y = (pTilePosition.y - m_viewport.PositionY + m_viewport.Height2) * TILESIZE;
+
+	return D3DXVECTOR2(x, y);
 }

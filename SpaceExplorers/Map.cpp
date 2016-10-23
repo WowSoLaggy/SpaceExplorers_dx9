@@ -2,9 +2,6 @@
 #include "Map.h"
 
 
-const int Map::c_tileSize = 64;
-
-
 Map::Map(int pWidth, int pHeight)
 	: m_width(pWidth)
 	, m_height(pHeight)

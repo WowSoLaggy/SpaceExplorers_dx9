@@ -83,6 +83,12 @@ ErrCode Prototype::Init(const std::string& pPathToObjsFile)
 				prototype.IsPassable() = param.text().as_bool();
 			else if (std::string("IsVentilated").compare(param.name()) == 0)
 				prototype.IsVentilated() = param.text().as_bool();
+			else if (std::string("NeedsLattice").compare(param.name()) == 0)
+				prototype.NeedsLattice() = param.text().as_bool();
+			else if (std::string("NeedsFloor").compare(param.name()) == 0)
+				prototype.NeedsFloor() = param.text().as_bool();
+			else if (std::string("NeedsSpace").compare(param.name()) == 0)
+				prototype.NeedsSpace() = param.text().as_bool();
 			else
 			{
 				echo("ERROR: Invalid parameter in the objs file: \"", param.name(), "\".");
@@ -104,8 +110,29 @@ bool Prototype::CheckPrerequisites(Tile* pTile) const
 	if (pTile == nullptr)
 		return false;
 
-	if (pTile->GetChilds().size() == 0)
-		return false;
+	if (NeedsSpace())
+	{
+		if (pTile->GetChilds().size() != 0)
+			return false;
+	}
+
+	if (NeedsLattice())
+	{
+		auto* pLattice = pTile->FindChild("Lattice");
+		if (pLattice == nullptr)
+			return false;
+		else if (pLattice->GetChilds().size() != 0)
+			return false;
+	}
+
+	if (NeedsFloor())
+	{
+		auto* pFloor = pTile->FindChild("Floor");
+		if (pFloor == nullptr)
+			return false;
+		else if (pFloor->GetChilds().size() != 0)
+			return false;
+	}
 
 	return true;
 }

@@ -34,6 +34,8 @@ enum ErrCode
 	err_cantGetTi,
 	err_cantInitResources,
 	err_cantDisposeResources,
+	err_guiInputError,
+	err_unknownGuiMode,
 
 	err_end
 };
