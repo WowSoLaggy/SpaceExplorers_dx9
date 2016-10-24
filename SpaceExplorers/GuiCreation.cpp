@@ -19,7 +19,7 @@ ErrCode Gui::CreatePanel(Doh3d::GPanel*& pPanel, float pPosX, float pPosY, float
 		}
 	}
 
-	m_guis.push_back(panel);
+	m_newGuis.push_back(panel);
 	pPanel = panel;
 	return err_noErr;
 }
@@ -43,7 +43,7 @@ ErrCode Gui::CreateButton(Doh3d::GButton*& pButton, float pPosX, float pPosY, fl
 		}
 	}
 
-	m_guis.push_back(button);
+	m_newGuis.push_back(button);
 	pButton = button;
 	return err_noErr;
 }
@@ -65,7 +65,7 @@ ErrCode Gui::CreateText(Doh3d::GText*& pGText, float pPosX, float pPosY, const s
 		}
 	}
 	
-	m_guis.push_back(text);
+	m_newGuis.push_back(text);
 	pGText = text;
 	return err_noErr;
 }
@@ -88,7 +88,7 @@ ErrCode Gui::CreateGGrid(Doh3d::GGrid*& pGGrid, float pPosX, float pPosY, float 
 		}
 	}
 
-	m_guis.push_back(grid);
+	m_newGuis.push_back(grid);
 	pGGrid = grid;
 	return err_noErr;
 }

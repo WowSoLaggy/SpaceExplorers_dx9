@@ -64,6 +64,13 @@ ErrCode Game::Start(Scene& pScene)
 		return err;
 	}
 
+	err = m_gui.SetNewGuiIfNeeded();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't set new Guis.");
+		return err;
+	}
+
 	return err_noErr;
 }
 
@@ -100,12 +107,19 @@ ErrCode Game::OnRenderDeviceReset()
 		}
 	}
 
-	// Rescale Gui
+	// Reload Gui
 
 	err = m_gui.Load();
 	if (err != err_noErr)
 	{
-		echo("ERROR: Can't rescale Gui.");
+		echo("ERROR: Can't reload Gui.");
+		return err;
+	}
+
+	err = m_gui.SetNewGuiIfNeeded();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't set new Guis.");
 		return err;
 	}
 
@@ -171,5 +185,37 @@ ErrCode Game::StartNewMap()
 
 ErrCode Game::LoadMap()
 {
+	return err_noErr;
+}
+
+ErrCode Game::ReturnToGame()
+{
+	LOG("Game::ReturnToGame()");
+	ErrCode err;
+
+	m_mode = GameMode::InGame;
+	err = m_gui.CreateOrUpdateGui(GuiMode::InGame);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't update Gui for mode: \"InGame\".");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+ErrCode Game::CallEscapeMenu()
+{
+	LOG("Game::CallEscapeMenu()");
+	ErrCode err;
+
+	m_mode = GameMode::EscapeMenu;
+	err = m_gui.CreateOrUpdateGui(GuiMode::EscapeMenu);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't update Gui for mode: \"EscapeMenu\".");
+		return err;
+	}
+
 	return err_noErr;
 }

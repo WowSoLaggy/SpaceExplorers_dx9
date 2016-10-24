@@ -35,6 +35,7 @@ public:
 	ErrCode Draw(Doh3d::Sprite& pSprite);
 
 	GuiMode Mode() const { return m_mode; }
+	ErrCode SetNewGuiIfNeeded();
 
 	void SetScene(Scene& pScene) { m_scene = &pScene; }
 
@@ -49,6 +50,7 @@ public:
 	Doh3d::GGrid* InventoryGrid;
 
 	Doh3d::GPanel* EscapeMenu_Fade;
+	Doh3d::GButton* EscapeMenu_ReturnToGame;
 	Doh3d::GButton* EscapeMenu_ExitToMain;
 
 
@@ -82,10 +84,13 @@ private:
 	bool m_isLoaded;
 	GuiMode m_mode;
 
+	bool m_newGuiReady;
+
 	Scene* m_scene;
 	Game* m_game;
 
 	std::vector<Doh3d::GBase*> m_guis;
+	std::vector<Doh3d::GBase*> m_newGuis;
 	D3DXMATRIX m_transformMatrix;
 
 	const Prototype* m_whatToBuild;

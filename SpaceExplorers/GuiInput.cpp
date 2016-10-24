@@ -5,6 +5,7 @@
 ErrCode Gui::OnMouseMove(bool& pHandled)
 {
 	LOG("Gui::OnMouseMove()");
+	ErrCode err;
 	ErrCode3d err3d;
 	pHandled = false;
 
@@ -18,12 +19,20 @@ ErrCode Gui::OnMouseMove(bool& pHandled)
 		}
 	}
 
+	err = SetNewGuiIfNeeded();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't set new Guis.");
+		return err;
+	}
+
 	return err_noErr;
 }
 
 ErrCode Gui::OnMouseDown(bool& pHandled, int pButton)
 {
 	LOG("Gui::OnMouseDown()");
+	ErrCode err;
 	ErrCode3d err3d;
 	pHandled = false;
 
@@ -37,12 +46,20 @@ ErrCode Gui::OnMouseDown(bool& pHandled, int pButton)
 		}
 	}
 
+	err = SetNewGuiIfNeeded();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't set new Guis.");
+		return err;
+	}
+
 	return err_noErr;
 }
 
 ErrCode Gui::OnMouseUp(bool& pHandled, int pButton)
 {
 	LOG("Gui::OnMouseUp()");
+	ErrCode err;
 	ErrCode3d err3d;
 	pHandled = false;
 
@@ -54,6 +71,13 @@ ErrCode Gui::OnMouseUp(bool& pHandled, int pButton)
 			echo("ERROR: Error while OnMouseUp.");
 			return err_guiInputError;
 		}
+	}
+
+	err = SetNewGuiIfNeeded();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't set new Guis.");
+		return err;
 	}
 
 	return err_noErr;

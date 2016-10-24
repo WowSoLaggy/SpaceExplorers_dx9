@@ -34,7 +34,7 @@ public:
 
 	bool HasMap() const { return m_map.get() != nullptr; }
 	std::shared_ptr<Map> GetMap() const { return m_map; }
-	Gui GetGui() { return m_gui; }
+	Gui& GetGui() { return m_gui; }
 
 
 	ErrCode OnRenderDeviceReset();
@@ -43,6 +43,8 @@ public:
 	ErrCode ReturnToMainMenu();
 	ErrCode StartNewMap();
 	ErrCode LoadMap();
+	ErrCode ReturnToGame();
+	ErrCode CallEscapeMenu();
 
 
 	// Input handlers

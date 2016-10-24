@@ -10,6 +10,7 @@ ErrCode Gui::Init(Game* pGame)
 	m_isLoaded = false;
 	m_whatToBuild = nullptr;
 	m_game = pGame;
+	m_newGuiReady = false;
 
 	return err_noErr;
 }
@@ -43,7 +44,7 @@ ErrCode Gui::Load()
 
 	// Load Guis
 
-	for (auto& gui : m_guis)
+	for (auto& gui : m_newGuis)
 	{
 		err3d = gui->Load();
 		if (err3d != err3d_noErr)
@@ -137,13 +138,6 @@ ErrCode Gui::CreateOrUpdateGui(GuiMode pGuiMode)
 	LOG("Gui::CreateOrUpdateGui()");
 	ErrCode err;
 
-	err = DeleteGuis();
-	if (err != err_noErr)
-	{
-		echo("ERROR: Can't delete Guis.");
-		return err;
-	}
-
 	switch (pGuiMode)
 	{
 	case GuiMode::MainMenu:
@@ -162,6 +156,8 @@ ErrCode Gui::CreateOrUpdateGui(GuiMode pGuiMode)
 		err = err_unknownGuiMode;
 		break;
 	}
+
+	m_newGuiReady = true;
 
 	if (err != err_noErr)
 	{
@@ -241,12 +237,45 @@ ErrCode Gui::CreateEscapeMenu()
 
 	CreatePanel(EscapeMenu_Fade, 0, 0, (FLOAT)screenWidth, (FLOAT)screenHeight, "MenuFade_32_32_1.png");
 
-	CreateButton(EscapeMenu_ExitToMain, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 96), 256, 32,
+	CreateButton(EscapeMenu_ReturnToGame, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 - 24), 256, 32,
+				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
+				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
+	EscapeMenu_ReturnToGame->SetFont("Gadugi");
+	EscapeMenu_ReturnToGame->SetText("Return to Game");
+	EscapeMenu_ReturnToGame->SetOnClickEvent(std::bind(&Game::ReturnToGame, m_game));
+
+	CreateButton(EscapeMenu_ExitToMain, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 + 24), 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	EscapeMenu_ExitToMain->SetFont("Gadugi");
 	EscapeMenu_ExitToMain->SetText("Exit to Main Menu");
 	EscapeMenu_ExitToMain->SetOnClickEvent(std::bind(&Game::ReturnToMainMenu, m_game));
 
+	return err_noErr;
+}
+
+ErrCode Gui::SetNewGuiIfNeeded()
+{
+	LOG("Gui::SetNewGuiIfNeeded()");
+	ErrCode err;
+
+	if (!m_newGuiReady)
+		return err_noErr;
+
+	err = DeleteGuis();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't delete Guis.");
+		return err;
+	}
+
+	if (m_newGuis.size() != 0)
+	{
+		m_guis.resize(m_newGuis.size());
+		std::copy(m_newGuis.begin(), m_newGuis.end(), m_guis.begin());
+		m_newGuis.clear();
+	}
+
+	m_newGuiReady = false;
 	return err_noErr;
 }

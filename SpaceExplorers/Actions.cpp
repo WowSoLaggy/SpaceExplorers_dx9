@@ -6,15 +6,33 @@
 
 ErrCode Game::EscapeHit()
 {
+	LOG("Game::EscapeHit()");
+	ErrCode err;
+
 	if (m_mode == GameMode::InGame)
 	{
-		m_mode = GameMode::EscapeMenu;
-		m_gui.CreateOrUpdateGui(GuiMode::EscapeMenu);
+		err = CallEscapeMenu();
+		if (err != err_noErr)
+		{
+			echo("ERROR: Can't call escape menu.");
+			return err;
+		}
 	}
 	else if (m_mode == GameMode::EscapeMenu)
 	{
-		m_mode = GameMode::InGame;
-		m_gui.CreateOrUpdateGui(GuiMode::InGame);
+		err = ReturnToGame();
+		if (err != err_noErr)
+		{
+			echo("ERROR: Can't return to game.");
+			return err;
+		}
+	}
+
+	err = m_gui.SetNewGuiIfNeeded();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't set new Guis.");
+		return err;
 	}
 
 	return err_noErr;
