@@ -171,6 +171,8 @@ ErrCode Gui::CreateOrUpdateGui(GuiMode pGuiMode)
 
 ErrCode Gui::CreateMainMenu()
 {
+	LOG("Gui::CreateMainMenu()");
+	
 	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
 	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
 
@@ -199,6 +201,15 @@ ErrCode Gui::CreateMainMenu()
 	MainMenu_ExitBtn->SetText("Exit");
 	MainMenu_ExitBtn->SetOnClickEvent(std::bind(&Game::End, m_game));
 
+	CreateText(MainMenu_VersionText, 130.f, (FLOAT)(screenHeight - 20), "");
+	std::string version;
+	if (!Log::GetProductVersion("SpaceExplorers.exe", version))
+	{
+		echo("ERROR: Can't get file version.");
+		return err_cantGetFileVersion;
+	}
+	MainMenu_VersionText->SetText("Space Explorers v." + version);
+
 	return err_noErr;
 }
 
@@ -206,7 +217,7 @@ ErrCode Gui::CreateGameGui()
 {
 	CreatePanel(InfoPanel, 20, 20, 256, 96, "Panel_256_96_1.png");
 
-	CreateText(InfoText, 37, 33, "");
+	CreateText(InfoText, 97, 47, "");
 
 	int gridSizeX = 735;
 	int gridSizeY = 96;

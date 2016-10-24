@@ -22,6 +22,10 @@ public:
 	RealThing(const std::string& pPrototypeName, int pPosX, int pPosY)
 		: RealThing(pPrototypeName, D3DXVECTOR3((FLOAT)pPosX, (FLOAT)pPosY, 0)) { }
 
+	RealThing(const std::string& pPrototypeName, const D3DXVECTOR2& pPosition)
+		: m_prototype(Prototype::Find(pPrototypeName))
+		, m_position(pPosition.x, pPosition.y, 0) { }
+
 	RealThing(const std::string& pPrototypeName, const D3DXVECTOR3& pPosition)
 		: m_prototype(Prototype::Find(pPrototypeName))
 		, m_position(pPosition) { }

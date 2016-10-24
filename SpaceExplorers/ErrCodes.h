@@ -36,6 +36,10 @@ enum ErrCode
 	err_cantDisposeResources,
 	err_guiInputError,
 	err_unknownGuiMode,
+	err_cantParseGridItemToPrototype,
+	err_cantFindRequiredBasement,
+	err_unknownRequirements,
+	err_cantGetFileVersion,
 
 	err_end
 };

@@ -68,6 +68,8 @@ public:
 
 	ErrCode SelectBeltItem(int pItemIndex);
 
+	ErrCode TryBuild();
+
 private:
 
 	volatile bool m_isRun;

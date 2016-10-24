@@ -246,6 +246,11 @@ Tile* Scene::HitTest(const D3DXVECTOR2& pScreenPosition)
 	return Engine::GetInstance()->GetGame().GetMap()->HitTest(position);
 }
 
+Vector2 Scene::GetTileCoords()
+{
+	return GetTileCoords(Doh3d::InputMan::GetCursorPosition());
+}
+
 Vector2 Scene::GetTileCoords(const D3DXVECTOR2& pScreenPosition)
 {
 	if (!Engine::GetInstance()->GetGame().HasMap())
@@ -273,4 +278,13 @@ D3DXVECTOR2 Scene::GetScreenCoords(const D3DXVECTOR2& pTilePosition)
 	FLOAT y = (pTilePosition.y - m_viewport.PositionY + m_viewport.Height2) * TILESIZE;
 
 	return D3DXVECTOR2(x, y);
+}
+
+D3DXVECTOR2 Scene::GetAbsoluteCoords()
+{
+	if (!Engine::GetInstance()->GetGame().HasMap())
+		return D3DXVECTOR2(0, 0);
+
+	auto tileCoords = GetTileCoords();
+	return D3DXVECTOR2((FLOAT)(tileCoords.x * TILESIZE), (FLOAT)(tileCoords.y * TILESIZE));
 }

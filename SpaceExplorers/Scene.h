@@ -35,8 +35,10 @@ public:
 
 	Tile* HitTest(const D3DXVECTOR2& pScreenPosition);
 	Vector2 GetTileCoords(const D3DXVECTOR2& pScreenPosition);		//< Screen -> tile
+	Vector2 GetTileCoords();										//< Screen -> tile
 	D3DXVECTOR2 GetScreenCoords(const Vector2& pTilePosition);		//< Tile -> screen
 	D3DXVECTOR2 GetScreenCoords(const D3DXVECTOR2& pTilePosition);	//< Tile -> screen
+	D3DXVECTOR2 GetAbsoluteCoords();
 
 private:
 

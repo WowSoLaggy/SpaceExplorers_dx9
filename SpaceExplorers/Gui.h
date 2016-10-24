@@ -44,6 +44,7 @@ public:
 	Doh3d::GButton* MainMenu_CreateNewMapBtn;
 	Doh3d::GButton* MainMenu_LoadMapBtn;
 	Doh3d::GButton* MainMenu_ExitBtn;
+	Doh3d::GText* MainMenu_VersionText;
 
 	Doh3d::GPanel* InfoPanel;
 	Doh3d::GText* InfoText;
@@ -60,6 +61,7 @@ public:
 
 	/// nullptr to cancel buiding mode
 	ErrCode SwitchBuildMode(const Prototype* pWhatToBuild);
+	bool IsBuildMode() const { return m_whatToBuild != nullptr; }
 
 	// Input handlers
 

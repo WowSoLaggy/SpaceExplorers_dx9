@@ -127,7 +127,7 @@ bool Prototype::CheckPrerequisites(Tile* pTile) const
 
 	if (NeedsFloor())
 	{
-		auto* pFloor = pTile->FindChild("Floor");
+		auto* pFloor = pTile->FindChild("Floor", -1);
 		if (pFloor == nullptr)
 			return false;
 		else if (pFloor->GetChilds().size() != 0)

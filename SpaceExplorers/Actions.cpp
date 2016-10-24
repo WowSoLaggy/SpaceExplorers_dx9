@@ -2,6 +2,7 @@
 #include "Game.h"
 
 #include "Engine.h"
+#include "RealThing.h"
 
 
 ErrCode Game::EscapeHit()
@@ -11,11 +12,23 @@ ErrCode Game::EscapeHit()
 
 	if (m_mode == GameMode::InGame)
 	{
-		err = CallEscapeMenu();
-		if (err != err_noErr)
+		if (m_gui.IsBuildMode())
 		{
-			echo("ERROR: Can't call escape menu.");
-			return err;
+			err = SelectBeltItem(-1);
+			if (err != err_noErr)
+			{
+				echo("ERROR: Can't select -1 belt item.");
+				return err;
+			}
+		}
+		else
+		{
+			err = CallEscapeMenu();
+			if (err != err_noErr)
+			{
+				echo("ERROR: Can't call escape menu.");
+				return err;
+			}
 		}
 	}
 	else if (m_mode == GameMode::EscapeMenu)
@@ -116,6 +129,62 @@ ErrCode Game::SelectBeltItem(int pItemIndex)
 	{
 		echo("ERROR: Can't switch to build mode.");
 		return err;
+	}
+
+	return err_noErr;
+}
+
+
+ErrCode Game::TryBuild()
+{
+	LOG("Game::TryBuild()");
+
+	D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
+
+	if (!m_gui.InventoryGrid->GetSelectedItem())
+		return err_noErr;
+
+	auto* pPrototype = dynamic_cast<Prototype*>(m_gui.InventoryGrid->GetSelectedItem());
+	if (!pPrototype)
+	{
+		echo("ERROR: Can't parse GridItem to Prototype.");
+		return err_cantParseGridItemToPrototype;
+	}
+
+	Tile* tile = m_scene->HitTest(position2);
+	if (!tile || !pPrototype->CheckPrerequisites(tile))
+		return err_noErr;
+
+	if (pPrototype->NeedsSpace())
+	{
+		tile->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoords()));
+	}
+	else if (pPrototype->NeedsLattice())
+	{
+		auto* pBasement = tile->FindChild("Lattice");
+		if (!pBasement)
+		{
+			echo("ERROR: Can't find lattice, though it was checked.");
+			return err_cantFindRequiredBasement;
+		}
+
+		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoords()));
+	}
+	else if (pPrototype->NeedsFloor())
+	{
+		auto* pBasement = tile->FindChild("Floor");
+		if (!pBasement)
+		{
+			echo("ERROR: Can't find lattice, though it was checked.");
+			return err_cantFindRequiredBasement;
+		}
+
+		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoords()));
+	}
+	else
+	{
+		echo("ERROR: Unknown requirements for the building: \"", pPrototype->TypeName(), "\".");
+		return err_unknownRequirements;
 	}
 
 	return err_noErr;

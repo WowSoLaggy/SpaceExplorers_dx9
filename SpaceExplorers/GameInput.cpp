@@ -22,6 +22,34 @@ ErrCode Game::OnMouseMove(bool& pHandled)
 
 ErrCode Game::OnMouseDown(bool& pHandled, int pButton)
 {
+	LOG("Game::OnMouseDown()");
+	ErrCode err;
+
+	if (pButton == MBUTTON_LEFT)
+	{
+		if (m_gui.IsBuildMode())
+		{
+			err = TryBuild();
+			if (err != err_noErr)
+			{
+				echo("ERROR: Error while Build().");
+				return err;
+			}
+		}
+	}
+	else if (pButton == MBUTTON_RIGHT)
+	{
+		if (m_gui.IsBuildMode())
+		{
+			err = SelectBeltItem(-1);
+			if (err != err_noErr)
+			{
+				echo("ERROR: Can't select -1 belt item.");
+				return err;
+			}
+		}
+	}
+
 	return err_noErr;
 }
 

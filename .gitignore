@@ -303,3 +303,4 @@ $RECYCLE.BIN/
 bin/Data/*.*
 !bin/Data/main.objs
 bin/Data/ObjectEditor.exe
+bin/Data/ObjectEditor.exe
