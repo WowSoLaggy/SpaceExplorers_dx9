@@ -119,11 +119,17 @@ ErrCode Game::MoveCameraDown()
 
 ErrCode Game::SelectBeltItem(int pItemIndex)
 {
-	LOG("Game::SelectBeltItem()");
+	m_gui.InventoryGrid->SelectCell(pItemIndex);
+	return err_noErr;
+}
+
+ErrCode Game::OnBeltItemChanged()
+{
+	LOG("Game::OnBeltItemChanged()");
 	ErrCode err;
 
-	Prototype* pPrototype = dynamic_cast<Prototype*>(m_gui.InventoryGrid->SelectCell(pItemIndex));
-	
+	Prototype* pPrototype = dynamic_cast<Prototype*>(m_gui.InventoryGrid->GetSelectedItem());
+
 	err = m_gui.SwitchBuildMode(pPrototype);
 	if (err != err_noErr)
 	{

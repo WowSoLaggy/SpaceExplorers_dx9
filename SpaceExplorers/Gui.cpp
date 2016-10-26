@@ -231,6 +231,9 @@ ErrCode Gui::CreateGameGui()
 	InventoryGrid->SetFrameOffset(D3DXVECTOR3(14, 14, 0));
 	InventoryGrid->SetGridOffset(D3DXVECTOR3(16, 16, 0));
 	InventoryGrid->SetGridShift(D3DXVECTOR3(71, 0, 0));
+	InventoryGrid->SetItemSize(D3DXVECTOR3(64, 64, 0));
+
+	InventoryGrid->OnSelectedItemChanged = std::bind(&Game::OnBeltItemChanged, m_game);
 
 	InventoryGrid->Items()[0] = &Prototype::Find("Lattice");
 	InventoryGrid->Items()[1] = &Prototype::Find("Floor");

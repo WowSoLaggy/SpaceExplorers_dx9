@@ -66,6 +66,7 @@ public:
 	ErrCode MoveCameraDown();
 
 	ErrCode SelectBeltItem(int pItemIndex);
+	ErrCode OnBeltItemChanged();
 
 	ErrCode TryBuild();
 
