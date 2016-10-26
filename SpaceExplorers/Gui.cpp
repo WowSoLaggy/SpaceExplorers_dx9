@@ -248,12 +248,19 @@ ErrCode Gui::CreateEscapeMenu()
 
 	CreatePanel(EscapeMenu_Fade, 0, 0, (FLOAT)screenWidth, (FLOAT)screenHeight, "MenuFade_32_32_1.png");
 
-	CreateButton(EscapeMenu_ReturnToGame, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 - 24), 256, 32,
+	CreateButton(EscapeMenu_ReturnToGame, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 - 88), 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	EscapeMenu_ReturnToGame->SetFont("Gadugi");
 	EscapeMenu_ReturnToGame->SetText("Return to Game");
 	EscapeMenu_ReturnToGame->SetOnClickEvent(std::bind(&Game::ReturnToGame, m_game));
+
+	CreateButton(EscapeMenu_SaveMap, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 - 40), 256, 32,
+				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
+				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
+	EscapeMenu_SaveMap->SetFont("Gadugi");
+	EscapeMenu_SaveMap->SetText("Save Map");
+	EscapeMenu_SaveMap->SetOnClickEvent(std::bind(&Game::SaveMap, m_game));
 
 	CreateButton(EscapeMenu_ExitToMain, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 + 24), 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",

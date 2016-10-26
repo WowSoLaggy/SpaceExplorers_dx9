@@ -189,3 +189,22 @@ ErrCode Game::TryBuild()
 
 	return err_noErr;
 }
+
+
+ErrCode Game::SaveMap()
+{
+	LOG("Game::SaveMap()");
+	ErrCode err;
+
+	if (!m_map)
+		return err_noErr;
+
+	err = Map::SaveToFile(*m_map, "main.map");
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't save map.");
+		return err;
+	}
+
+	return err_noErr;
+}

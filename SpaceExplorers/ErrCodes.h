@@ -40,6 +40,8 @@ enum ErrCode
 	err_cantFindRequiredBasement,
 	err_unknownRequirements,
 	err_cantGetFileVersion,
+	err_cantSaveMapToFile,
+	err_cantLoadMapFromFile,
 
 	err_end
 };

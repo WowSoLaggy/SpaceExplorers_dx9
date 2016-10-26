@@ -167,16 +167,12 @@ ErrCode Game::StartNewMap()
 	LOG("Game::StartNewMap()");
 	ErrCode err;
 
-	m_mode = GameMode::InGame;
-
-	m_scene->SetBackground("Space_1920_1024_1.png");
-
 	m_map.reset(MapGenerator::CreateStartLocation());
 
-	err = m_gui.CreateOrUpdateGui(GuiMode::InGame);
+	err = OnNewGame();
 	if (err != err_noErr)
 	{
-		echo("ERROR: Can't create game gui.");
+		echo("ERROR: Error while OnNewGame() call.");
 		return err;
 	}
 
@@ -185,6 +181,61 @@ ErrCode Game::StartNewMap()
 
 ErrCode Game::LoadMap()
 {
+	LOG("Game::LoadMap()");
+	ErrCode err;
+
+	Map* pMap = nullptr;
+	err = Map::LoadFromFile(pMap, "main.map");
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't load map \"main.map\".");
+		return err;
+	}
+	if (!pMap)
+	{
+		echo("ERROR: LoadMapFromFile() returned nullptr.");
+		return err_cantLoadMapFromFile;
+	}
+
+	m_map.reset(pMap);
+
+	err = OnNewGame();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Error while OnNewGame() call.");
+		return err;
+	}
+
+	return err_noErr;
+}
+
+ErrCode Game::OnNewGame()
+{
+	LOG("Game::OnNewGame()");
+	ErrCode err;
+
+	m_mode = GameMode::InGame;
+	m_scene->SetBackground("Space_1920_1024_1.png");
+	err = m_gui.CreateOrUpdateGui(GuiMode::InGame);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't create game gui.");
+		return err;
+	}
+
+	if (!m_scene)
+	{
+		echo("ERROR: No scene to load.");
+		return err_cantLoadScene;
+	}
+
+	err = m_scene->Load();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't load scene.");
+		return err;
+	}
+
 	return err_noErr;
 }
 

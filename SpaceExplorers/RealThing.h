@@ -31,7 +31,7 @@ public:
 		, m_position(pPosition) { }
 
 
-	const Prototype& GetPrototype() { return m_prototype; }
+	const Prototype& GetPrototype() const { return m_prototype; }
 
 	D3DXVECTOR3& Position() { return m_position; }
 	const D3DXVECTOR3& Position() const { return m_position; }

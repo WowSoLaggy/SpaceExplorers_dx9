@@ -53,6 +53,7 @@ public:
 	Doh3d::GPanel* EscapeMenu_Fade;
 	Doh3d::GButton* EscapeMenu_ReturnToGame;
 	Doh3d::GButton* EscapeMenu_ExitToMain;
+	Doh3d::GButton* EscapeMenu_SaveMap;
 
 
 	ErrCode DeleteGuis();

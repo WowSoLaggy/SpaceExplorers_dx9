@@ -25,6 +25,12 @@ public:
 
 	Tile* HitTest(const D3DXVECTOR2& pAbsolutePosition);
 
+public:
+
+	static const std::string c_mapFolder;
+	static ErrCode SaveToFile(const Map& pMap, const std::string& pFileName);
+	static ErrCode LoadFromFile(Map*& pMap, const std::string& pFileName);
+
 private:
 
 	int m_width;

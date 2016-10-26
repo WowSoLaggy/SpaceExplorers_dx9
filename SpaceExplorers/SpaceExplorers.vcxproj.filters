@@ -99,6 +99,9 @@
     <ClCompile Include="GuiInput.cpp">
       <Filter>src\Game\Gui</Filter>
     </ClCompile>
+    <ClCompile Include="MapSaveLoad.cpp">
+      <Filter>src\Game\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

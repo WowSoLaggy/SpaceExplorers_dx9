@@ -42,7 +42,6 @@ public:
 	ErrCode ShowMainMenu();
 	ErrCode ReturnToMainMenu();
 	ErrCode StartNewMap();
-	ErrCode LoadMap();
 	ErrCode ReturnToGame();
 	ErrCode CallEscapeMenu();
 
@@ -70,6 +69,9 @@ public:
 
 	ErrCode TryBuild();
 
+	ErrCode SaveMap();
+	ErrCode LoadMap();
+
 private:
 
 	volatile bool m_isRun;
@@ -80,6 +82,8 @@ private:
 	Gui m_gui;
 
 	static const std::string c_pathToObjectsFile;
+
+	ErrCode OnNewGame();
 
 };
 
