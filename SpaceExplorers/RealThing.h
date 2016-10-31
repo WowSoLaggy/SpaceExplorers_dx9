@@ -39,6 +39,8 @@ public:
 	virtual bool IsPassable() const override;
 	virtual bool IsVentilated() const override;
 
+	virtual Thing* HitTest() override;
+
 
 	virtual ErrCode Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) const override;
 	virtual ErrCode Load() override;

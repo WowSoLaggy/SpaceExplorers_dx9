@@ -23,7 +23,7 @@ public:
 	ErrCode Load();
 	ErrCode Unload();
 
-	Tile* HitTest(const D3DXVECTOR2& pAbsolutePosition);
+	Tile* HitTestTile(const D3DXVECTOR2& pAbsolutePosition);
 
 public:
 

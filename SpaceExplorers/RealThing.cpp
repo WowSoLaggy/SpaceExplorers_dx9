@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "RealThing.h"
 
+#include "Engine.h"
+
 
 ErrCode RealThing::Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) const
 {
@@ -57,4 +59,15 @@ bool RealThing::IsVentilated() const
 	}
 
 	return true;
+}
+
+
+Thing* RealThing::HitTest()
+{
+	Thing* pThing = Thing::HitTest();
+	if (pThing != nullptr)
+		return pThing;
+
+	auto point = Engine::GetInstance()->GetScene().GetCursorAbsoluteCoords() - D3DXVECTOR2(m_position.x, m_position.y);
+	return Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).HitTest(point) ? this : nullptr;
 }

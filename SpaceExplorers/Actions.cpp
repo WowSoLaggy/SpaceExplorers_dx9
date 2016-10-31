@@ -55,12 +55,15 @@ ErrCode Game::EscapeHit()
 ErrCode Game::InfoUnderCursor()
 {
 	Vector2 coords = m_scene->GetTileCoords(Doh3d::InputMan::GetCursorPosition());
-	Tile* tile = m_scene->HitTest(Doh3d::InputMan::GetCursorPosition());
+	auto* pTile = m_scene->HitTest();
+	auto* pThing = m_scene->HitTest();
 
 	std::string text = "(" + std::to_string(coords.x) + ", " + std::to_string(coords.y) + "): ";
 
-	if (!tile || tile->IsPassable()) text.append("P");
-	if (!tile || tile->IsVentilated()) text.append("V");
+	if (pThing != nullptr) text.append(pThing->GetPrototype().TypeName());
+	if (!pTile || pTile->IsPassable()) text.append(" P");
+	if (!pTile || pTile->IsVentilated()) text.append(" V");
+	
 
 	m_gui.InfoText->SetText(text);
 
@@ -145,8 +148,6 @@ ErrCode Game::TryBuild()
 {
 	LOG("Game::TryBuild()");
 
-	D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
-
 	if (!m_gui.InventoryGrid->GetSelectedItem())
 		return err_noErr;
 
@@ -157,13 +158,13 @@ ErrCode Game::TryBuild()
 		return err_cantParseGridItemToPrototype;
 	}
 
-	Tile* tile = m_scene->HitTest(position2);
+	Tile* tile = m_scene->HitTestTile();
 	if (!tile || !pPrototype->CheckPrerequisites(tile))
 		return err_noErr;
 
 	if (pPrototype->NeedsSpace())
 	{
-		tile->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoords()));
+		tile->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft()));
 	}
 	else if (pPrototype->NeedsLattice())
 	{
@@ -174,7 +175,7 @@ ErrCode Game::TryBuild()
 			return err_cantFindRequiredBasement;
 		}
 
-		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoords()));
+		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft()));
 	}
 	else if (pPrototype->NeedsFloor())
 	{
@@ -185,7 +186,7 @@ ErrCode Game::TryBuild()
 			return err_cantFindRequiredBasement;
 		}
 
-		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoords()));
+		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft()));
 	}
 	else
 	{

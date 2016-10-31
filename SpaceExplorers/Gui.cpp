@@ -28,7 +28,7 @@ ErrCode Gui::Dispose()
 		echo("ERROR: Can't delete Guis.");
 		return err;
 	}
-	
+
 	return err_noErr;
 }
 
@@ -76,16 +76,16 @@ ErrCode Gui::Draw(Doh3d::Sprite& pSprite)
 	LOG("Gui::Draw()");
 	ErrCode3d err3d;
 	HRESULT hRes;
-	
+
 	if (m_game->Mode() == GameMode::InGame)
 	{
-	// Draw building mode blueprint
+		// Draw building mode blueprint
 
 		if (m_whatToBuild != nullptr)
 		{
 			D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
 
-			Tile* tile = m_scene->HitTest(position2);
+			Tile* tile = m_scene->HitTestTile();
 			auto color = m_whatToBuild->CheckPrerequisites(tile) ? D3DCOLOR_ARGB(255, 155, 255, 155) : D3DCOLOR_ARGB(255, 255, 155, 155);
 
 			position2 = m_scene->GetScreenCoords(m_scene->GetTileCoords(position2));
@@ -172,12 +172,12 @@ ErrCode Gui::CreateOrUpdateGui(GuiMode pGuiMode)
 ErrCode Gui::CreateMainMenu()
 {
 	LOG("Gui::CreateMainMenu()");
-	
+
 	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
 	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
 
 	CreatePanel(MainMenu_Background, 0, 0,
-				(float)(screenWidth), (float)(screenHeight),
+		(float)(screenWidth), (float)(screenHeight),
 				"MainMenu_1920_1080_1.png");
 
 	CreateButton(MainMenu_CreateNewMapBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 224), 256, 32,
@@ -225,7 +225,7 @@ ErrCode Gui::CreateGameGui()
 	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
 
 	CreateGGrid(InventoryGrid,
-				(float)((screenWidth - gridSizeX) / 2), (float)((screenHeight - gridSizeY)),
+		(float)((screenWidth - gridSizeX) / 2), (float)((screenHeight - gridSizeY)),
 				(float)gridSizeX, (float)gridSizeY, 10, "Inventory_735_96_1.png", "Frame_68_68_1.png");
 
 	InventoryGrid->SetFrameOffset(D3DXVECTOR3(14, 14, 0));

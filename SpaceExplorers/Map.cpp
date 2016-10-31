@@ -46,7 +46,7 @@ ErrCode Map::Unload()
 	return err_noErr;
 }
 
-Tile* Map::HitTest(const D3DXVECTOR2& pAbsolutePosition)
+Tile* Map::HitTestTile(const D3DXVECTOR2& pAbsolutePosition)
 {
 	int ceilX = (int)std::floor(pAbsolutePosition.x);
 	int ceilY = (int)std::floor(pAbsolutePosition.y);

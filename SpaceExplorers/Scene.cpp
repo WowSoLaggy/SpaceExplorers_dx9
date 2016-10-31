@@ -233,18 +233,29 @@ ErrCode Scene::LoadBackground()
 }
 
 
-Tile* Scene::HitTest(const D3DXVECTOR2& pScreenPosition)
+Tile* Scene::HitTestTile()
 {
 	if (!Engine::GetInstance()->GetGame().HasMap())
 		return nullptr;
 
+	auto screenPosition = Doh3d::InputMan::GetCursorPosition();
+
 	D3DXVECTOR2 position(
-		pScreenPosition.x / Doh3d::RenderMan::GetRenderPars().ResolutionWidth * (m_viewport.Width2 * 2),
-		pScreenPosition.y / Doh3d::RenderMan::GetRenderPars().ResolutionHeight * (m_viewport.Height2 * 2));
+		screenPosition.x / Doh3d::RenderMan::GetRenderPars().ResolutionWidth * (m_viewport.Width2 * 2),
+		screenPosition.y / Doh3d::RenderMan::GetRenderPars().ResolutionHeight * (m_viewport.Height2 * 2));
 	position += D3DXVECTOR2(m_viewport.PositionX - m_viewport.Width2, m_viewport.PositionY - m_viewport.Height2);
 
-	return Engine::GetInstance()->GetGame().GetMap()->HitTest(position);
+	return Engine::GetInstance()->GetGame().GetMap()->HitTestTile(position);
 }
+
+RealThing* Scene::HitTest()
+{
+	if (auto* pTile = HitTestTile())
+		return dynamic_cast<RealThing*>(pTile->HitTest());
+
+	return nullptr;
+}
+
 
 Vector2 Scene::GetTileCoords()
 {
@@ -280,11 +291,16 @@ D3DXVECTOR2 Scene::GetScreenCoords(const D3DXVECTOR2& pTilePosition)
 	return D3DXVECTOR2(x, y);
 }
 
-D3DXVECTOR2 Scene::GetAbsoluteCoords()
+D3DXVECTOR2 Scene::GetAbsoluteCoordsTileTopLeft()
 {
 	if (!Engine::GetInstance()->GetGame().HasMap())
 		return D3DXVECTOR2(0, 0);
 
 	auto tileCoords = GetTileCoords();
 	return D3DXVECTOR2((FLOAT)(tileCoords.x * TILESIZE), (FLOAT)(tileCoords.y * TILESIZE));
+}
+
+D3DXVECTOR2 Scene::GetCursorAbsoluteCoords()
+{
+	return Doh3d::InputMan::GetCursorPosition() + D3DXVECTOR2(m_viewport.Left() * TILESIZE, m_viewport.Top() * TILESIZE);
 }

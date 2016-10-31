@@ -20,6 +20,8 @@ public:
 	// pDepth == -1 for infinite depth, pDepth == 1 for childs only, not childs of childs
 	Thing* FindChild(const std::string& pChildName, int pDepth = 1) const;
 
+	virtual Thing* HitTest();
+
 };
 
 

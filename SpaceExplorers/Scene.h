@@ -7,6 +7,7 @@
 #include "ErrCodes.h"
 #include "Map.h"
 #include "Vector2.h"
+#include "RealThing.h"
 
 
 class Scene
@@ -33,12 +34,14 @@ public:
 
 	ErrCode SetBackground(const std::string& pTextureName);
 
-	Tile* HitTest(const D3DXVECTOR2& pScreenPosition);
+	Tile* HitTestTile();
+	RealThing* HitTest();
 	Vector2 GetTileCoords(const D3DXVECTOR2& pScreenPosition);		//< Screen -> tile
 	Vector2 GetTileCoords();										//< Screen -> tile
 	D3DXVECTOR2 GetScreenCoords(const Vector2& pTilePosition);		//< Tile -> screen
 	D3DXVECTOR2 GetScreenCoords(const D3DXVECTOR2& pTilePosition);	//< Tile -> screen
-	D3DXVECTOR2 GetAbsoluteCoords();
+	D3DXVECTOR2 GetAbsoluteCoordsTileTopLeft();
+	D3DXVECTOR2 GetCursorAbsoluteCoords();
 
 private:
 

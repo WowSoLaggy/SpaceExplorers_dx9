@@ -36,8 +36,7 @@ Thing* Thing::FindChild(const std::string& pChildName, int pDepth) const
 
 	for (auto& child : m_childs)
 	{
-		RealThing* pRealThing = dynamic_cast<RealThing*>(child);
-		if (pRealThing)
+		if (RealThing* pRealThing = dynamic_cast<RealThing*>(child))
 		{
 			if (pRealThing->GetPrototype().TypeName().compare(pChildName) == 0)
 				return pRealThing;
@@ -45,6 +44,22 @@ Thing* Thing::FindChild(const std::string& pChildName, int pDepth) const
 			auto* pGrandChild = pRealThing->FindChild(pChildName);
 			if (pGrandChild != nullptr)
 				return pGrandChild;
+		}
+	}
+
+	return nullptr;
+}
+
+
+Thing* Thing::HitTest()
+{
+	for (auto& child : m_childs)
+	{
+		if (RealThing* pRealThing = dynamic_cast<RealThing*>(child))
+		{
+			Thing* pThing = pRealThing->HitTest();
+			if (pThing != nullptr)
+				return pThing;
 		}
 	}
 
