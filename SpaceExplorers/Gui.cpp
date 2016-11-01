@@ -201,7 +201,7 @@ ErrCode Gui::CreateMainMenu()
 	MainMenu_ExitBtn->SetText("Exit");
 	MainMenu_ExitBtn->SetOnClickEvent(std::bind(&Game::End, m_game));
 
-	CreateText(MainMenu_VersionText, 130.f, (FLOAT)(screenHeight - 20), "");
+	CreateText(MainMenu_VersionText, 12, (FLOAT)(screenHeight - 30), "");
 	std::string version;
 	if (!Log::GetProductVersion("SpaceExplorers.exe", version))
 	{
@@ -217,7 +217,7 @@ ErrCode Gui::CreateGameGui()
 {
 	CreatePanel(InfoPanel, 20, 20, 256, 96, "Panel_256_96_1.png");
 
-	CreateText(InfoText, 97, 47, "");
+	CreateText(InfoText, 38, 34, "");
 
 	int gridSizeX = 735;
 	int gridSizeY = 96;
