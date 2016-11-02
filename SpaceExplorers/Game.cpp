@@ -157,6 +157,17 @@ ErrCode Game::ReturnToMainMenu()
 	}
 
 	m_scene->SetBackground("");
+
+	if (!!m_map)
+	{
+		err = m_map->Unload();
+		if (err != err_noErr)
+		{
+			echo("ERROR: Can't unload map.");
+			return err;
+		}
+	}
+
 	m_map.reset();
 
 	return err_noErr;
@@ -233,6 +244,13 @@ ErrCode Game::OnNewGame()
 	if (err != err_noErr)
 	{
 		echo("ERROR: Can't load scene.");
+		return err;
+	}
+
+	err = m_map->Load();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't load map.");
 		return err;
 	}
 

@@ -21,6 +21,15 @@ ErrCode Game::EscapeHit()
 				return err;
 			}
 		}
+		else if (m_gui.IsRemovalMode())
+		{
+			err = m_gui.SwitchRemovalMode(false);
+			if (err != err_noErr)
+			{
+				echo("ERROR: Can't turn the removal mode off.");
+				return err;
+			}
+		}
 		else
 		{
 			err = CallEscapeMenu();
@@ -147,6 +156,7 @@ ErrCode Game::OnBeltItemChanged()
 ErrCode Game::TryBuild()
 {
 	LOG("Game::TryBuild()");
+	ErrCode err;
 
 	if (!m_gui.InventoryGrid->GetSelectedItem())
 		return err_noErr;
@@ -162,9 +172,12 @@ ErrCode Game::TryBuild()
 	if (!tile || !pPrototype->CheckPrerequisites(tile))
 		return err_noErr;
 
+	RealThing* newThing = nullptr;
+
 	if (pPrototype->NeedsSpace())
 	{
-		tile->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft()));
+		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		tile->AddChild(newThing);
 	}
 	else if (pPrototype->NeedsLattice())
 	{
@@ -175,7 +188,8 @@ ErrCode Game::TryBuild()
 			return err_cantFindRequiredBasement;
 		}
 
-		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft()));
+		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		pBasement->AddChild(newThing);
 	}
 	else if (pPrototype->NeedsFloor())
 	{
@@ -186,12 +200,23 @@ ErrCode Game::TryBuild()
 			return err_cantFindRequiredBasement;
 		}
 
-		pBasement->AddChild(new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft()));
+		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		pBasement->AddChild(newThing);
 	}
 	else
 	{
 		echo("ERROR: Unknown requirements for the building: \"", pPrototype->TypeName(), "\".");
 		return err_unknownRequirements;
+	}
+
+	if (newThing != nullptr)
+	{
+		err = newThing->Load();
+		if (err != err_noErr)
+		{
+			echo("ERROR: Can't load the built thing.");
+			return err_cantLoadThing;
+		}
 	}
 
 	return err_noErr;
@@ -212,6 +237,48 @@ ErrCode Game::SaveMap()
 		echo("ERROR: Can't save map.");
 		return err;
 	}
+
+	return err_noErr;
+}
+
+
+ErrCode Game::BeginRemoveMode()
+{
+	m_gui.SwitchRemovalMode(true);
+	return err_noErr;
+}
+
+ErrCode Game::EndRemoveMode()
+{
+	m_gui.SwitchRemovalMode(false);
+	return err_noErr;
+}
+
+ErrCode Game::TryRemove()
+{
+	LOG("Game::TryRemove()");
+	ErrCode err;
+
+	RealThing* thingToRemove = m_scene->HitTest();
+	if (!thingToRemove || !thingToRemove->GetChilds().empty())
+		return err_noErr;
+
+	if (!thingToRemove->Parent())
+	{
+		// RealThing must have a parent (at least Tile)
+		return err_realThingHasNoParent;
+	}
+
+	thingToRemove->Parent()->RemoveChild(thingToRemove);
+	
+	err = thingToRemove->Unload();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't unload the removed thing.");
+		return err_cantUnloadThing;
+	}
+
+	delete thingToRemove;
 
 	return err_noErr;
 }

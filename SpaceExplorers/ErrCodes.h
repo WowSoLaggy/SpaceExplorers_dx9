@@ -42,6 +42,9 @@ enum ErrCode
 	err_cantGetFileVersion,
 	err_cantSaveMapToFile,
 	err_cantLoadMapFromFile,
+	err_realThingHasNoParent,
+	err_cantLoadThing,
+	err_cantUnloadThing,
 
 	err_end
 };

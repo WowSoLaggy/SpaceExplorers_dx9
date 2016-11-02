@@ -11,6 +11,9 @@ ErrCode Gui::OnMouseMove(bool& pHandled)
 
 	for (auto& gui : m_guis)
 	{
+		if (!gui->IsVisible())
+			continue;
+
 		err3d = gui->OnMouseMove(pHandled);
 		if (err3d != err3d_noErr)
 		{
@@ -26,6 +29,20 @@ ErrCode Gui::OnMouseMove(bool& pHandled)
 		return err;
 	}
 
+	// Update highlighted object if the removal mode is on
+	if (m_isRemovalMode)
+	{
+		if (m_thingToRemove != nullptr)
+			m_thingToRemove->ResetDrawColor();
+		if (m_thingToRemove = m_scene->HitTest())
+		{
+			if (m_thingToRemove->GetChilds().empty())
+				m_thingToRemove->DrawColor() = D3DCOLOR_ARGB(255, 155, 255, 155);
+			else
+				m_thingToRemove->DrawColor() = D3DCOLOR_ARGB(255, 255, 155, 155);
+		}
+	}
+
 	return err_noErr;
 }
 
@@ -38,6 +55,9 @@ ErrCode Gui::OnMouseDown(bool& pHandled, int pButton)
 
 	for (auto& gui : m_guis)
 	{
+		if (!gui->IsVisible())
+			continue;
+
 		err3d = gui->OnMouseDown(pHandled, pButton);
 		if (err3d != err3d_noErr)
 		{
@@ -65,6 +85,9 @@ ErrCode Gui::OnMouseUp(bool& pHandled, int pButton)
 
 	for (auto& gui : m_guis)
 	{
+		if (!gui->IsVisible())
+			continue;
+
 		err3d = gui->OnMouseUp(pHandled, pButton);
 		if (err3d != err3d_noErr)
 		{

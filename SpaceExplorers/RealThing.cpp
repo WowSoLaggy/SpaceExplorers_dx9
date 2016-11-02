@@ -9,7 +9,7 @@ ErrCode RealThing::Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) cons
 	LOG("RealThing::Draw()");
 	HRESULT hRes;
 
-	hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).Get(), 0, 0, &(m_position - pOffset), D3DCOLOR_ARGB(255, 255, 255, 255));
+	hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).Get(), 0, 0, &(m_position - pOffset), m_drawColor);
 	if (hRes != S_OK)
 	{
 		echo("ERROR: Can't draw thing (type name: \"", m_prototype.TypeName(), "\").");
@@ -21,6 +21,7 @@ ErrCode RealThing::Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) cons
 
 ErrCode RealThing::Load()
 {
+	ResetDrawColor();
 	return Doh3d::ITreeThing<ErrCode>::Load();
 }
 

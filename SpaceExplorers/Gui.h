@@ -49,6 +49,7 @@ public:
 	Doh3d::GPanel* InfoPanel;
 	Doh3d::GText* InfoText;
 	Doh3d::GGrid* InventoryGrid;
+	Doh3d::GPanel* RemovalPanel;
 
 	Doh3d::GPanel* EscapeMenu_Fade;
 	Doh3d::GButton* EscapeMenu_ReturnToGame;
@@ -64,6 +65,9 @@ public:
 	ErrCode SwitchBuildMode(const Prototype* pWhatToBuild);
 	bool IsBuildMode() const { return m_whatToBuild != nullptr; }
 
+	bool IsRemovalMode() const { return m_isRemovalMode; }
+	ErrCode SwitchRemovalMode(bool pOn);
+
 	// Input handlers
 
 	ErrCode OnMouseMove(bool& pHandled);
@@ -75,11 +79,11 @@ public:
 
 	// Gui creation
 
-	ErrCode CreatePanel(Doh3d::GPanel*& pPanel, float pPosX, float pPosY, float pSizeX, float pSizeY, const std::string& pTextureName);
-	ErrCode CreateButton(Doh3d::GButton*& pButton, float pPosX, float pPosY, float pSizeX, float pSizeY,
+	ErrCode CreatePanel(Doh3d::GPanel*& pPanel, int pPosX, int pPosY, int pSizeX, int pSizeY, const std::string& pTextureName);
+	ErrCode CreateButton(Doh3d::GButton*& pButton, int pPosX, int pPosY, int pSizeX, int pSizeY,
 						 const std::string& pTexNameNormal, const std::string& pTexNamePressed, const std::string& pTexNameSelected, const std::string& pTexNameDisabled);
-	ErrCode CreateText(Doh3d::GText*& pGText, float pPosX, float pPosY, const std::string& pText, const std::string& pFontName = "Gadugi");
-	ErrCode CreateGGrid(Doh3d::GGrid*& pGGrid, float pPosX, float pPosY, float pSizeX, float pSizeY, int pNumberOfCells,
+	ErrCode CreateText(Doh3d::GText*& pGText, int pPosX, int pPosY, const std::string& pText, const std::string& pFontName = "Gadugi");
+	ErrCode CreateGGrid(Doh3d::GGrid*& pGGrid, int pPosX, int pPosY, int pSizeX, int pSizeY, int pNumberOfCells,
 						const std::string& pTextureName, const std::string& pFrameTextureName);
 
 private:
@@ -97,6 +101,9 @@ private:
 	D3DXMATRIX m_transformMatrix;
 
 	const Prototype* m_whatToBuild;
+
+	bool m_isRemovalMode;
+	RealThing* m_thingToRemove;
 
 
 	ErrCode CreateMainMenu();

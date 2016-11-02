@@ -36,6 +36,15 @@ ErrCode Game::OnMouseDown(bool& pHandled, int pButton)
 				return err;
 			}
 		}
+		else if (m_gui.IsRemovalMode())
+		{
+			err = TryRemove();
+			if (err != err_noErr)
+			{
+				echo("ERROR: Error while Remove().");
+				return err;
+			}
+		}
 	}
 	else if (pButton == MBUTTON_RIGHT)
 	{
@@ -45,6 +54,15 @@ ErrCode Game::OnMouseDown(bool& pHandled, int pButton)
 			if (err != err_noErr)
 			{
 				echo("ERROR: Can't select -1 belt item.");
+				return err;
+			}
+		}
+		else if (m_gui.IsRemovalMode())
+		{
+			err = m_gui.SwitchRemovalMode(false);
+			if (err != err_noErr)
+			{
+				echo("ERROR: Can't turn the removal mode off.");
 				return err;
 			}
 		}
@@ -107,6 +125,14 @@ ErrCode Game::OnKeyDown(bool& pHandled, int pKey)
 		else if (pKey == DIK_8) err = SelectBeltItem(7);
 		else if (pKey == DIK_9) err = SelectBeltItem(8);
 		else if (pKey == DIK_0) err = SelectBeltItem(9);
+
+		else if (pKey == DIK_LCONTROL) err = BeginRemoveMode();
+	}
+
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't handle key down: \"", pKey, "\".");
+		return err;
 	}
 
 	return err_noErr;
@@ -114,5 +140,19 @@ ErrCode Game::OnKeyDown(bool& pHandled, int pKey)
 
 ErrCode Game::OnKeyUp(bool& pHandled, int pKey)
 {
+	LOG("Game::OnKeyUp()");
+	ErrCode err = err_noErr;
+
+	if (m_mode == GameMode::InGame)
+	{
+		if (pKey == DIK_LCONTROL) err = EndRemoveMode();
+	}
+
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't handle key up: \"", pKey, "\".");
+		return err;
+	}
+
 	return err_noErr;
 }

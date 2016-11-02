@@ -104,6 +104,9 @@ ErrCode Gui::Draw(Doh3d::Sprite& pSprite)
 	pSprite.Get()->SetTransform(&m_transformMatrix);
 	for (auto& gui : m_guis)
 	{
+		if (!gui->IsVisible())
+			continue;
+
 		err3d = gui->Draw(pSprite);
 		if (err3d != err3d_noErr)
 		{
@@ -176,32 +179,30 @@ ErrCode Gui::CreateMainMenu()
 	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
 	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
 
-	CreatePanel(MainMenu_Background, 0, 0,
-		(float)(screenWidth), (float)(screenHeight),
-				"MainMenu_1920_1080_1.png");
+	CreatePanel(MainMenu_Background, 0, 0, screenWidth, screenHeight, "MainMenu_1920_1080_1.png");
 
-	CreateButton(MainMenu_CreateNewMapBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 224), 256, 32,
+	CreateButton(MainMenu_CreateNewMapBtn, screenWidth - 256 - 64, screenHeight - 224, 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	MainMenu_CreateNewMapBtn->SetFont("Gadugi");
 	MainMenu_CreateNewMapBtn->SetText("Create new map");
 	MainMenu_CreateNewMapBtn->SetOnClickEvent(std::bind(&Game::StartNewMap, m_game));
 
-	CreateButton(MainMenu_LoadMapBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 176), 256, 32,
+	CreateButton(MainMenu_LoadMapBtn, screenWidth - 256 - 64, screenHeight - 176, 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	MainMenu_LoadMapBtn->SetFont("Gadugi");
 	MainMenu_LoadMapBtn->SetText("Load map");
 	MainMenu_LoadMapBtn->SetOnClickEvent(std::bind(&Game::LoadMap, m_game));
 
-	CreateButton(MainMenu_ExitBtn, (FLOAT)(screenWidth - 256 - 64), (FLOAT)(screenHeight - 96), 256, 32,
+	CreateButton(MainMenu_ExitBtn, screenWidth - 256 - 64, screenHeight - 96, 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	MainMenu_ExitBtn->SetFont("Gadugi");
 	MainMenu_ExitBtn->SetText("Exit");
 	MainMenu_ExitBtn->SetOnClickEvent(std::bind(&Game::End, m_game));
 
-	CreateText(MainMenu_VersionText, 12, (FLOAT)(screenHeight - 30), "");
+	CreateText(MainMenu_VersionText, 12, screenHeight - 30, "");
 	std::string version;
 	if (!Log::GetProductVersion("SpaceExplorers.exe", version))
 	{
@@ -215,18 +216,17 @@ ErrCode Gui::CreateMainMenu()
 
 ErrCode Gui::CreateGameGui()
 {
+	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
+	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
+
 	CreatePanel(InfoPanel, 20, 20, 256, 96, "Panel_256_96_1.png");
 
 	CreateText(InfoText, 38, 34, "");
 
 	int gridSizeX = 735;
 	int gridSizeY = 96;
-	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
-	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
-
-	CreateGGrid(InventoryGrid,
-		(float)((screenWidth - gridSizeX) / 2), (float)((screenHeight - gridSizeY)),
-				(float)gridSizeX, (float)gridSizeY, 10, "Inventory_735_96_1.png", "Frame_68_68_1.png");
+	CreateGGrid(InventoryGrid, (screenWidth - gridSizeX) / 2, (screenHeight - gridSizeY),
+				gridSizeX, gridSizeY, 10, "Inventory_735_96_1.png", "Frame_68_68_1.png");
 
 	InventoryGrid->SetFrameOffset(D3DXVECTOR3(14, 14, 0));
 	InventoryGrid->SetGridOffset(D3DXVECTOR3(16, 16, 0));
@@ -241,6 +241,9 @@ ErrCode Gui::CreateGameGui()
 	InventoryGrid->Items()[3] = &Prototype::Find("Table");
 	InventoryGrid->Items()[4] = &Prototype::Find("Door");
 
+	CreatePanel(RemovalPanel, screenWidth - 80, 16, 64, 64, "Bulldoze_64_64_1.png");
+	RemovalPanel->IsVisible() = false;
+
 	return err_noErr;
 }
 
@@ -249,23 +252,23 @@ ErrCode Gui::CreateEscapeMenu()
 	int screenWidth = Doh3d::RenderMan::GetRenderPars().ResolutionWidth;
 	int screenHeight = Doh3d::RenderMan::GetRenderPars().ResolutionHeight;
 
-	CreatePanel(EscapeMenu_Fade, 0, 0, (FLOAT)screenWidth, (FLOAT)screenHeight, "MenuFade_32_32_1.png");
+	CreatePanel(EscapeMenu_Fade, 0, 0, screenWidth, screenHeight, "MenuFade_32_32_1.png");
 
-	CreateButton(EscapeMenu_ReturnToGame, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 - 88), 256, 32,
+	CreateButton(EscapeMenu_ReturnToGame, (screenWidth - 256) / 2, (screenHeight - 32) / 2 - 88, 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	EscapeMenu_ReturnToGame->SetFont("Gadugi");
 	EscapeMenu_ReturnToGame->SetText("Return to Game");
 	EscapeMenu_ReturnToGame->SetOnClickEvent(std::bind(&Game::ReturnToGame, m_game));
 
-	CreateButton(EscapeMenu_SaveMap, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 - 40), 256, 32,
+	CreateButton(EscapeMenu_SaveMap, (screenWidth - 256) / 2, (screenHeight - 32) / 2 - 40, 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	EscapeMenu_SaveMap->SetFont("Gadugi");
 	EscapeMenu_SaveMap->SetText("Save Map");
 	EscapeMenu_SaveMap->SetOnClickEvent(std::bind(&Game::SaveMap, m_game));
 
-	CreateButton(EscapeMenu_ExitToMain, (FLOAT)((screenWidth - 256) / 2), (FLOAT)((screenHeight - 32) / 2 + 24), 256, 32,
+	CreateButton(EscapeMenu_ExitToMain, (screenWidth - 256) / 2, (screenHeight - 32) / 2 + 24, 256, 32,
 				 "Button_256_32_1.png", "ButtonPressed_256_32_1.png",
 				 "ButtonLight_256_32_1.png", "ButtonBw_256_32_1.png");
 	EscapeMenu_ExitToMain->SetFont("Gadugi");
@@ -298,5 +301,27 @@ ErrCode Gui::SetNewGuiIfNeeded()
 	}
 
 	m_newGuiReady = false;
+	return err_noErr;
+}
+
+
+ErrCode Gui::SwitchRemovalMode(bool pOn)
+{
+	m_isRemovalMode = pOn;
+	RemovalPanel->IsVisible() = pOn;
+
+	if (pOn)
+	{
+		if (m_thingToRemove = m_scene->HitTest())
+		{
+			if (m_thingToRemove->GetChilds().empty())
+				m_thingToRemove->DrawColor() = D3DCOLOR_ARGB(255, 155, 255, 155);
+			else
+				m_thingToRemove->DrawColor() = D3DCOLOR_ARGB(255, 255, 155, 155);
+		}
+	}
+	else if (m_thingToRemove != nullptr)
+		m_thingToRemove->ResetDrawColor();
+
 	return err_noErr;
 }

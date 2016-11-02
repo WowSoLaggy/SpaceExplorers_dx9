@@ -73,6 +73,10 @@ public:
 	ErrCode SaveMap();
 	ErrCode LoadMap();
 
+	ErrCode BeginRemoveMode();
+	ErrCode EndRemoveMode();
+	ErrCode TryRemove();
+
 private:
 
 	volatile bool m_isRun;

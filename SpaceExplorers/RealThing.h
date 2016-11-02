@@ -36,6 +36,10 @@ public:
 	D3DXVECTOR3& Position() { return m_position; }
 	const D3DXVECTOR3& Position() const { return m_position; }
 
+	D3DCOLOR& DrawColor() { return m_drawColor; }
+	const D3DCOLOR& DrawColor() const { return m_drawColor; }
+	void ResetDrawColor() { m_drawColor = D3DCOLOR_ARGB(255, 255, 255, 255); }
+
 	virtual bool IsPassable() const override;
 	virtual bool IsVentilated() const override;
 
@@ -49,6 +53,7 @@ public:
 public:
 
 	D3DXVECTOR3 m_position;
+	D3DCOLOR m_drawColor;
 
 	const Prototype& m_prototype;
 
