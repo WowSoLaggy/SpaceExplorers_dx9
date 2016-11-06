@@ -95,6 +95,13 @@ ErrCode Prototype::Init(const std::string& pPathToObjsFile)
 				prototype.Behaviour() = ConvertStringToBehaviour(param.text().as_string());
 			else if (std::string("Texture").compare(param.name()) == 0)
 				; // Used only for editor
+			else if (std::string("AnimationSet").compare(param.name()) == 0)
+			{
+				// TODO: Continue with animation
+				Doh3d::AnimationSet animationSet;
+				Doh3d::Animation animation;
+				animationSet.Animations.push_back(animation);
+			}
 			else
 			{
 				echo("ERROR: Invalid parameter in the objs file: \"", param.name(), "\".");

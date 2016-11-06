@@ -15,10 +15,12 @@ namespace ObjectEditor.src.Model
         const string c_physicsCat = "Physical properties";
         const string c_behaviourCat = "Behaviour";
         const string c_constructionCat = "Construction";
+        const string c_animationCat = "Animation";
 
 
         public RealThing()
         {
+            AnimationSet = new AnimationSet();
         }
 
         public RealThing(string pTypeName)
@@ -27,6 +29,7 @@ namespace ObjectEditor.src.Model
                 throw new Exception("Empty RealThing.TypeName provided.");
 
             TypeName = pTypeName;
+            AnimationSet = new AnimationSet();
         }
 
 
@@ -74,5 +77,17 @@ namespace ObjectEditor.src.Model
         [Description("Behaviour preset")]
         [Category(c_behaviourCat)]
         public ThingBehaviours Behaviour { get; set; } = ThingBehaviours.None;
+        
+
+        [Description("Set of animations defined for this thing")]
+        [Category(c_animationCat)]
+        [Editor(typeof(AnimationsUiEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public AnimationSet AnimationSet { get; set; }
+
+        [Description("Number of animations defined for this thing")]
+        [Category(c_animationCat)]
+        [ReadOnly(true)]
+        [XmlIgnore]
+        public int AnimationsCount { get { return AnimationSet.Count; } set { } }
     }
 }

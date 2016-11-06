@@ -57,6 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="src\Controller\AnimationsUiEditor.cs" />
     <Compile Include="src\Controller\Controller.cs" />
     <Compile Include="src\Controller\DocumentBinder.cs" />
     <Compile Include="src\Controller\DocumentLoader.cs" />
@@ -65,10 +66,18 @@
     <Compile Include="src\Controller\TextureLoader.cs" />
     <Compile Include="src\Controller\TexturePickerUiEditor.cs" />
     <Compile Include="src\Controller\Utils.cs" />
+    <Compile Include="src\Model\Animation.cs" />
+    <Compile Include="src\Model\AnimationSet.cs" />
     <Compile Include="src\Model\Document.cs" />
     <Compile Include="src\Model\RealThing.cs" />
     <Compile Include="src\Model\TextureContainer.cs" />
     <Compile Include="src\Model\ThingBehaviours.cs" />
+    <Compile Include="src\View\AnimationEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\View\AnimationEditorForm.Designer.cs">
+      <DependentUpon>AnimationEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +102,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\View\AnimationEditorForm.resx">
+      <DependentUpon>AnimationEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
