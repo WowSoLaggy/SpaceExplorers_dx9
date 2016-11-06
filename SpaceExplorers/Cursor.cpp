@@ -2,7 +2,7 @@
 #include "Cursor.h"
 
 
-const std::string Cursor::c_textureNameNormal = "Cursor_32_32_1.png";
+const std::string Cursor::c_textureNameNormal = "Cursor_32_32_1_n.png";
 
 
 ErrCode Cursor::SetNormal()

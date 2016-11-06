@@ -13,6 +13,7 @@ namespace ObjectEditor.src.Model
         const string c_generalCat = "General";
         const string c_textureCat = "Texture";
         const string c_physicsCat = "Physical properties";
+        const string c_behaviourCat = "Behaviour";
         const string c_constructionCat = "Construction";
 
 
@@ -35,50 +36,13 @@ namespace ObjectEditor.src.Model
         public string TypeName { get; set; }
 
 
-
-        [Browsable(false)]
-        [XmlIgnore]
+        [Category(c_textureCat)]
+        [Description("Texture of the thing.")]
+        [Editor(typeof(TexturePickerUiEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public TextureContainer Texture { get; set; } = new TextureContainer();
 
-        [Description("Path to the texture.")]
-        [Category(c_textureCat)]
-        [Editor(typeof(System.Windows.Forms.Design.FileNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public string TextureFilePath
-        {
-            get { return Texture.FileName; }
-            set { Texture.FileName = Path.IsPathRooted(value) ? Utils.MakeRelativePath(Directory.GetCurrentDirectory() + "\\Textures\\", value) : value; }
-        }
-
-        [ReadOnly(true)]
-        [Description("Width of the texture.")]
-        [Category(c_textureCat)]
-        [XmlIgnore]
-        public int TextureWidth
-        {
-            get { return Texture.Width; }
-            set { Texture.Width = value; }
-        }
-
-        [ReadOnly(true)]
-        [Description("Height of the texture.")]
-        [Category(c_textureCat)]
-        [XmlIgnore]
-        public int TextureHeight
-        {
-            get { return Texture.Height; }
-            set { Texture.Height = value; }
-        }
-
-        [ReadOnly(true)]
-        [Description("Number of frames in the texture.")]
-        [Category(c_textureCat)]
-        [XmlIgnore]
-        public int TextureFramesCount
-        {
-            get { return Texture.NumberOfFrames; }
-            set { Texture.NumberOfFrames = value; }
-        }
-
+        [Browsable(false)]
+        public string TextureFileName { get { return Texture.ToString(); }  set { } }
 
 
         [Description("Indicates whether the large creature (like human) can pass through this thing.")]
@@ -92,14 +56,23 @@ namespace ObjectEditor.src.Model
 
         [Description("Does this thing requires lattice as a basement")]
         [Category(c_constructionCat)]
-        public bool NeedsLattice { get; set; } = true;
+        public bool NeedsLattice { get; set; } = false;
 
         [Description("Does this thing requires floor as a basement")]
         [Category(c_constructionCat)]
-        public bool NeedsFloor { get; set; } = true;
+        public bool NeedsFloor { get; set; } = false;
 
         [Description("Does this thing can be built only in the open space")]
         [Category(c_constructionCat)]
-        public bool NeedsSpace { get; set; } = true;
+        public bool NeedsSpace { get; set; } = false;
+
+        [Description("Does this thing require any surface to be built (floor, table, ...)")]
+        [Category(c_constructionCat)]
+        public bool NeedsSurface { get; set; } = true;
+
+
+        [Description("Behaviour preset")]
+        [Category(c_behaviourCat)]
+        public ThingBehaviours Behaviour { get; set; } = ThingBehaviours.None;
     }
 }

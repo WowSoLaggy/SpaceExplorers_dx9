@@ -45,21 +45,17 @@ namespace ObjectEditor.src.Controller
 
         static public void UpdateThingTextureWindow(Document pDocument, MainForm pMainForm)
         {
+            RemoveTexturePreview(pMainForm);
+
             var node = pMainForm.treeThings.SelectedNode;
             if (node == null || node.Parent == null)
-            {
-                RemoveTexturePreview(pMainForm);
                 return;
-            }
 
 
             var thing = pDocument.Things.Find(pThing => pThing.TypeName == node.Text);
-            string fileName = "Textures\\" + thing.Texture.FileName;
-            if (string.IsNullOrEmpty(thing.Texture.FileName) || !File.Exists(fileName))
-            {
-                RemoveTexturePreview(pMainForm);
+            string fileName = "Textures\\" + thing.Texture.ToString();
+            if (string.IsNullOrEmpty(thing.Texture.ToString()) || !File.Exists(fileName))
                 return;
-            }
 
 
             try
@@ -68,8 +64,6 @@ namespace ObjectEditor.src.Controller
             }
             catch (Exception)
             {
-                RemoveTexturePreview(pMainForm);
-                return;
             }
         }
 

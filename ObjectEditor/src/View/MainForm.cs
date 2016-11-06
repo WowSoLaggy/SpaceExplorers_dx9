@@ -87,5 +87,10 @@ namespace ObjectEditor
         {
             Controller.OnThingChanged();
         }
+
+        private void editorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Controller.OpenTextureEditor();
+        }
     }
 }

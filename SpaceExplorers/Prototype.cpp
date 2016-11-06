@@ -77,7 +77,7 @@ ErrCode Prototype::Init(const std::string& pPathToObjsFile)
 		{
 			if (std::string("TypeName").compare(param.name()) == 0)
 				prototype.TypeName() = param.text().as_string();
-			else if (std::string("TextureFilePath").compare(param.name()) == 0)
+			else if (std::string("TextureFileName").compare(param.name()) == 0)
 				prototype.TextureFilePath() = param.text().as_string();
 			else if (std::string("IsPassable").compare(param.name()) == 0)
 				prototype.IsPassable() = param.text().as_bool();
@@ -89,6 +89,12 @@ ErrCode Prototype::Init(const std::string& pPathToObjsFile)
 				prototype.NeedsFloor() = param.text().as_bool();
 			else if (std::string("NeedsSpace").compare(param.name()) == 0)
 				prototype.NeedsSpace() = param.text().as_bool();
+			else if (std::string("NeedsSurface").compare(param.name()) == 0)
+				prototype.NeedsSurface() = param.text().as_bool();
+			else if (std::string("Behaviour").compare(param.name()) == 0)
+				prototype.Behaviour() = ConvertStringToBehaviour(param.text().as_string());
+			else if (std::string("Texture").compare(param.name()) == 0)
+				; // Used only for editor
 			else
 			{
 				echo("ERROR: Invalid parameter in the objs file: \"", param.name(), "\".");
@@ -131,6 +137,21 @@ bool Prototype::CheckPrerequisites(Tile* pTile) const
 		if (pFloor == nullptr)
 			return false;
 		else if (pFloor->GetChilds().size() != 0)
+			return false;
+	}
+
+	if (NeedsSurface())
+	{
+		auto* pTable = pTile->FindChild("Table", -1);
+		if (pTable == nullptr)
+		{
+			auto* pFloor = pTile->FindChild("Floor", -1);
+			if (pFloor == nullptr)
+				return false;
+			else if (pFloor->GetChilds().size() != 0)
+				return false;
+		}
+		else if (pTable->GetChilds().size() != 0)
 			return false;
 	}
 

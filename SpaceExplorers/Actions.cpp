@@ -64,7 +64,7 @@ ErrCode Game::EscapeHit()
 ErrCode Game::InfoUnderCursor()
 {
 	Vector2 coords = m_scene->GetTileCoords(Doh3d::InputMan::GetCursorPosition());
-	auto* pTile = m_scene->HitTest();
+	auto* pTile = m_scene->HitTestTile();
 	auto* pThing = m_scene->HitTest();
 
 	std::string text = "(" + std::to_string(coords.x) + ", " + std::to_string(coords.y) + "): ";
@@ -196,8 +196,24 @@ ErrCode Game::TryBuild()
 		auto* pBasement = tile->FindChild("Floor");
 		if (!pBasement)
 		{
-			echo("ERROR: Can't find lattice, though it was checked.");
+			echo("ERROR: Can't find floor, though it was checked.");
 			return err_cantFindRequiredBasement;
+		}
+
+		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		pBasement->AddChild(newThing);
+	}
+	else if (pPrototype->NeedsSurface())
+	{
+		auto* pBasement = tile->FindChild("Table");
+		if (!pBasement)
+		{
+			pBasement = tile->FindChild("Floor");
+			if (!pBasement)
+			{
+				echo("ERROR: Can't find floor, though it was checked.");
+				return err_cantFindRequiredBasement;
+			}
 		}
 
 		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());

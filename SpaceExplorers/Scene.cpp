@@ -84,7 +84,7 @@ ErrCode Scene::Draw(Doh3d::Sprite& pSprite) const
 	// Background
 
 	pSprite.Get()->SetTransform(&m_backgroundTransformMatrix);
-	hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_backgroundTi).Get(), 0, 0, &D3DXVECTOR3(0, 0, 0), D3DCOLOR_ARGB(255, 255, 255, 255));
+	hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_backgroundTi).Get(), &Doh3d::ResourceMan::GetTexture(m_backgroundTi).GetFrame(0), 0, &D3DXVECTOR3(0, 0, 0), D3DCOLOR_ARGB(255, 255, 255, 255));
 	if (hRes != S_OK)
 	{
 		echo("ERROR: Can't draw scene background.");

@@ -37,6 +37,9 @@
     <Filter Include="rsrc">
       <UniqueIdentifier>{ec08a597-291c-411f-b9a0-c9223c5b6705}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Prototype">
+      <UniqueIdentifier>{b1a11932-50fa-4847-b3e2-6427ee36c640}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -90,9 +93,6 @@
     <ClCompile Include="MapGenerator.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Prototype.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="GuiCreation.cpp">
       <Filter>src\Game\Gui</Filter>
     </ClCompile>
@@ -101,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="MapSaveLoad.cpp">
       <Filter>src\Game\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Prototype.cpp">
+      <Filter>src\Game\Prototype</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +146,6 @@
     <ClInclude Include="..\libs\pugixml\pugixml.hpp">
       <Filter>libs\pugixml</Filter>
     </ClInclude>
-    <ClInclude Include="Prototype.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
     <ClInclude Include="MapGenerator.h">
       <Filter>src\Game</Filter>
     </ClInclude>
@@ -154,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>rsrc</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype.h">
+      <Filter>src\Game\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="ThingBehaviours.h">
+      <Filter>src\Game\Prototype</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@
 
 #include "ErrCodes.h"
 #include "Tile.h"
+#include "ThingBehaviours.h"
 
 
 class Prototype : public Doh3d::GridItem
@@ -48,6 +49,13 @@ public:
 	bool& NeedsSpace() { return m_needsSpace; }
 	const bool& NeedsSpace() const { return m_needsSpace; }
 
+	bool& NeedsSurface() { return m_needsSurface; }
+	const bool& NeedsSurface() const { return m_needsSurface; }
+
+
+	ThingBehaviour& Behaviour() { return m_behaviour; }
+	const ThingBehaviour& Behaviour() const { return m_behaviour; }
+
 
 	bool CheckPrerequisites(Tile* pTile) const;
 
@@ -71,7 +79,9 @@ private:
 	bool m_needsLattice;
 	bool m_needsFloor;
 	bool m_needsSpace;
+	bool m_needsSurface;
 
+	ThingBehaviour m_behaviour;
 
 	static std::vector<Prototype> s_prototypes;
 };

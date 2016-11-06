@@ -3,16 +3,12 @@ using ObjectEditor.src.Model;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
+using ObjectEditor.src.View;
 
 namespace ObjectEditor.src.Controller
 {
     static class Controller
     {
-        static Controller()
-        {
-        }
-
-
         static private Document m_curDocument;
 
 
@@ -261,6 +257,12 @@ namespace ObjectEditor.src.Controller
             m_curDocument.Changed = true;
             UpdateMainCaption();
             DocumentBinder.UpdateThingTextureWindow(m_curDocument, MainForm.GetInstance());
+        }
+
+
+        static public void OpenTextureEditor()
+        {
+            new TextureEditorForm().ShowDialog(MainForm.GetInstance());
         }
     }
 }

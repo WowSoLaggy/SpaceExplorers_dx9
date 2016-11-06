@@ -31,6 +31,7 @@ namespace ObjectEditor.src.Controller
             Document document = (Document)xmlSerializer.Deserialize(textReader);
             textReader.Close();
 
+            document.Things.Sort((x, y) => x.TypeName.CompareTo(y.TypeName));
 
             document.Changed = false;
             return document;

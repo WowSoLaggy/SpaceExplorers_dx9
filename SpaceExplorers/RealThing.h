@@ -40,6 +40,7 @@ public:
 	const D3DCOLOR& DrawColor() const { return m_drawColor; }
 	void ResetDrawColor() { m_drawColor = D3DCOLOR_ARGB(255, 255, 255, 255); }
 
+
 	virtual bool IsPassable() const override;
 	virtual bool IsVentilated() const override;
 

@@ -3,49 +3,118 @@
   <FileName>D:\Work\SpaceExplorers\bin\Data\main.objs</FileName>
   <Things>
     <Thing>
+      <TypeName>Blinker</TypeName>
+      <Texture>
+        <Name>Blinker</Name>
+        <Width>9</Width>
+        <Height>13</Height>
+        <NumberOfFrames>2</NumberOfFrames>
+        <CheckAlpha>true</CheckAlpha>
+        <Extension>.png</Extension>
+      </Texture>
+      <TextureFileName>Blinker_9_13_2_a.png</TextureFileName>
+      <IsPassable>true</IsPassable>
+      <IsVentilated>true</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>false</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
+      <NeedsSurface>true</NeedsSurface>
+      <Behaviour>None</Behaviour>
+    </Thing>
+    <Thing>
+      <TypeName>Door</TypeName>
+      <Texture>
+        <Name>Door</Name>
+        <Width>64</Width>
+        <Height>64</Height>
+        <NumberOfFrames>1</NumberOfFrames>
+        <CheckAlpha>true</CheckAlpha>
+        <Extension>.png</Extension>
+      </Texture>
+      <TextureFileName>Door_64_64_1_a.png</TextureFileName>
+      <IsPassable>false</IsPassable>
+      <IsVentilated>false</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>true</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
+      <NeedsSurface>false</NeedsSurface>
+      <Behaviour>Door</Behaviour>
+    </Thing>
+    <Thing>
       <TypeName>Floor</TypeName>
-      <TextureFilePath>Floor_64_64_1.png</TextureFilePath>
+      <Texture>
+        <Name>Floor</Name>
+        <Width>64</Width>
+        <Height>64</Height>
+        <NumberOfFrames>1</NumberOfFrames>
+        <CheckAlpha>true</CheckAlpha>
+        <Extension>.png</Extension>
+      </Texture>
+      <TextureFileName>Floor_64_64_1_a.png</TextureFileName>
       <IsPassable>true</IsPassable>
       <IsVentilated>true</IsVentilated>
       <NeedsLattice>true</NeedsLattice>
       <NeedsFloor>false</NeedsFloor>
       <NeedsSpace>false</NeedsSpace>
-    </Thing>
-    <Thing>
-      <TypeName>Wall</TypeName>
-      <TextureFilePath>Wall_64_64_1.png</TextureFilePath>
-      <IsPassable>false</IsPassable>
-      <IsVentilated>false</IsVentilated>
-      <NeedsLattice>false</NeedsLattice>
-      <NeedsFloor>true</NeedsFloor>
-      <NeedsSpace>false</NeedsSpace>
-    </Thing>
-    <Thing>
-      <TypeName>Table</TypeName>
-      <TextureFilePath>Table_64_64_1.png</TextureFilePath>
-      <IsPassable>false</IsPassable>
-      <IsVentilated>true</IsVentilated>
-      <NeedsLattice>false</NeedsLattice>
-      <NeedsFloor>true</NeedsFloor>
-      <NeedsSpace>false</NeedsSpace>
-    </Thing>
-    <Thing>
-      <TypeName>Door</TypeName>
-      <TextureFilePath>Door_64_64_1.png</TextureFilePath>
-      <IsPassable>false</IsPassable>
-      <IsVentilated>false</IsVentilated>
-      <NeedsLattice>false</NeedsLattice>
-      <NeedsFloor>true</NeedsFloor>
-      <NeedsSpace>false</NeedsSpace>
+      <NeedsSurface>false</NeedsSurface>
+      <Behaviour>None</Behaviour>
     </Thing>
     <Thing>
       <TypeName>Lattice</TypeName>
-      <TextureFilePath>Lattice_64_64_1.png</TextureFilePath>
+      <Texture>
+        <Name>Lattice</Name>
+        <Width>64</Width>
+        <Height>64</Height>
+        <NumberOfFrames>1</NumberOfFrames>
+        <CheckAlpha>true</CheckAlpha>
+        <Extension>.png</Extension>
+      </Texture>
+      <TextureFileName>Lattice_64_64_1_a.png</TextureFileName>
       <IsPassable>true</IsPassable>
       <IsVentilated>true</IsVentilated>
       <NeedsLattice>false</NeedsLattice>
       <NeedsFloor>false</NeedsFloor>
       <NeedsSpace>true</NeedsSpace>
+      <NeedsSurface>false</NeedsSurface>
+      <Behaviour>None</Behaviour>
+    </Thing>
+    <Thing>
+      <TypeName>Table</TypeName>
+      <Texture>
+        <Name>Table</Name>
+        <Width>64</Width>
+        <Height>64</Height>
+        <NumberOfFrames>1</NumberOfFrames>
+        <CheckAlpha>true</CheckAlpha>
+        <Extension>.png</Extension>
+      </Texture>
+      <TextureFileName>Table_64_64_1_a.png</TextureFileName>
+      <IsPassable>false</IsPassable>
+      <IsVentilated>true</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>true</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
+      <NeedsSurface>false</NeedsSurface>
+      <Behaviour>None</Behaviour>
+    </Thing>
+    <Thing>
+      <TypeName>Wall</TypeName>
+      <Texture>
+        <Name>Wall</Name>
+        <Width>64</Width>
+        <Height>64</Height>
+        <NumberOfFrames>1</NumberOfFrames>
+        <CheckAlpha>true</CheckAlpha>
+        <Extension>.png</Extension>
+      </Texture>
+      <TextureFileName>Wall_64_64_1_a.png</TextureFileName>
+      <IsPassable>false</IsPassable>
+      <IsVentilated>false</IsVentilated>
+      <NeedsLattice>false</NeedsLattice>
+      <NeedsFloor>true</NeedsFloor>
+      <NeedsSpace>false</NeedsSpace>
+      <NeedsSurface>false</NeedsSurface>
+      <Behaviour>None</Behaviour>
     </Thing>
   </Things>
 </Document>

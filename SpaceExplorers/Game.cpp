@@ -226,7 +226,7 @@ ErrCode Game::OnNewGame()
 	ErrCode err;
 
 	m_mode = GameMode::InGame;
-	m_scene->SetBackground("Space_1920_1024_1.png");
+	m_scene->SetBackground("Space_1920_1024_1_n.png");
 	err = m_gui.CreateOrUpdateGui(GuiMode::InGame);
 	if (err != err_noErr)
 	{

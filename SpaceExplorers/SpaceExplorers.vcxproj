@@ -204,6 +204,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Thing.h" />
+    <ClInclude Include="ThingBehaviours.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
