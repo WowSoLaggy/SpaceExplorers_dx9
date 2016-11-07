@@ -80,6 +80,27 @@ ErrCode Game::End()
 	return err_noErr;
 }
 
+ErrCode Game::Update(float pDeltaTime)
+{
+	LOG("Game::Update()");
+	ErrCode err;
+
+	if (HasMap() && m_mode == GameMode::InGame)
+	{
+		for (auto &tile : m_map->Tiles())
+		{
+			err = tile.Update(pDeltaTime);
+			if (err != err_noErr)
+			{
+				echo("ERROR: Can't update tile.");
+				return err;
+			}
+		}
+	}
+
+	return err_noErr;
+}
+
 
 ErrCode Game::OnRenderDeviceReset()
 {

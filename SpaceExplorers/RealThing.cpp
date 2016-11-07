@@ -10,7 +10,7 @@ ErrCode RealThing::Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) cons
 	HRESULT hRes;
 
 	hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).Get(),
-							   &Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).GetFrame(0),
+							   &Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).GetFrame(m_ac.GetCurrentFrame()),
 							   0, &(m_position - pOffset), m_drawColor);
 	if (hRes != S_OK)
 	{
@@ -24,12 +24,20 @@ ErrCode RealThing::Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) cons
 ErrCode RealThing::Load()
 {
 	ResetDrawColor();
+	m_ac.SetAnimationSet(&m_prototype.AnimationSet());
+	m_ac.PlayAnimation("Default", -1);
 	return Doh3d::ITreeThing<ErrCode>::Load();
 }
 
 ErrCode RealThing::Unload()
 {
 	return Doh3d::ITreeThing<ErrCode>::Unload();
+}
+
+ErrCode RealThing::Update(float pDeltaTime)
+{
+	m_ac.Update(pDeltaTime);
+	return Doh3d::ITreeThing<ErrCode>::Update(pDeltaTime);
 }
 
 

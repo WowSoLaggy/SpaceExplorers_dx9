@@ -304,3 +304,21 @@ D3DXVECTOR2 Scene::GetCursorAbsoluteCoords()
 {
 	return Doh3d::InputMan::GetCursorPosition() + D3DXVECTOR2(m_viewport.Left() * TILESIZE, m_viewport.Top() * TILESIZE);
 }
+
+
+ErrCode Scene::Update(float pDeltaTime)
+{
+	LOG("Scene::Update()");
+	ErrCode err;
+
+	// Update game
+
+	err = Engine::GetInstance()->GetGame().Update(pDeltaTime);
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't update game.");
+		return err;
+	}
+
+	return err_noErr;
+}

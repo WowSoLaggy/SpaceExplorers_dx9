@@ -11,8 +11,7 @@ namespace ObjectEditor.src.Model
     {
         private List<Animation> m_animations = new List<Animation>();
 
-        [XmlArray("Animations")]
-        [XmlArrayItem("Animation")]
+        [XmlElement("Animation")]
         public List<Animation> Animations { get { return m_animations; } }
 
         [XmlIgnore]

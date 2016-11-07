@@ -17,6 +17,9 @@ public:
 	int GetWidth() const { return m_width; }
 	int GetHeight() const { return m_height; }
 
+	std::vector<Tile>& Tiles() { return m_tiles; }
+	const std::vector<Tile>& Tiles() const { return m_tiles; }
+
 	Tile& GetTile(int x, int y) { return m_tiles[x + y * m_width]; }
 	const Tile& GetTile(int x, int y) const { return m_tiles[x + y * m_width]; }
 

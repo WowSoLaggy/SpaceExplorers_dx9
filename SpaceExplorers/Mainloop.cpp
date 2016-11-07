@@ -47,6 +47,15 @@ ErrCode Engine::Mainloop()
 			break;
 		}
 
+		// Scene update
+
+		err = m_scene.Update(0.01f); ///< TODO: proper delta time
+		if (err != err_noErr)
+		{
+			echo("ERROR: Can't update scene.");
+			break;
+		}
+
 		// Scene drawing
 
 		err = m_scene.Draw(m_sprite);

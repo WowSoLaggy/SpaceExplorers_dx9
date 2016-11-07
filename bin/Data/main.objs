@@ -21,13 +21,12 @@
       <NeedsSurface>true</NeedsSurface>
       <Behaviour>None</Behaviour>
       <AnimationSet>
-        <Animations>
-          <Animation>
-            <Name>Blink</Name>
-            <BeginFrame>1</BeginFrame>
-            <EndFrame>2</EndFrame>
-          </Animation>
-        </Animations>
+        <Animation>
+          <Name>Default</Name>
+          <BeginFrame>1</BeginFrame>
+          <EndFrame>2</EndFrame>
+          <Interval>0.5</Interval>
+        </Animation>
       </AnimationSet>
     </Thing>
     <Thing>
@@ -48,9 +47,7 @@
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
       <Behaviour>Door</Behaviour>
-      <AnimationSet>
-        <Animations />
-      </AnimationSet>
+      <AnimationSet />
     </Thing>
     <Thing>
       <TypeName>Floor</TypeName>
@@ -70,9 +67,7 @@
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
       <Behaviour>None</Behaviour>
-      <AnimationSet>
-        <Animations />
-      </AnimationSet>
+      <AnimationSet />
     </Thing>
     <Thing>
       <TypeName>Lattice</TypeName>
@@ -92,9 +87,7 @@
       <NeedsSpace>true</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
       <Behaviour>None</Behaviour>
-      <AnimationSet>
-        <Animations />
-      </AnimationSet>
+      <AnimationSet />
     </Thing>
     <Thing>
       <TypeName>Table</TypeName>
@@ -114,9 +107,7 @@
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
       <Behaviour>None</Behaviour>
-      <AnimationSet>
-        <Animations />
-      </AnimationSet>
+      <AnimationSet />
     </Thing>
     <Thing>
       <TypeName>Wall</TypeName>
@@ -136,9 +127,7 @@
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
       <Behaviour>None</Behaviour>
-      <AnimationSet>
-        <Animations />
-      </AnimationSet>
+      <AnimationSet />
     </Thing>
   </Things>
 </Document>

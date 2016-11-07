@@ -50,6 +50,7 @@ public:
 	virtual ErrCode Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) const override;
 	virtual ErrCode Load() override;
 	virtual ErrCode Unload() override;
+	virtual ErrCode Update(float pDeltaTime) override;
 
 public:
 
@@ -57,6 +58,8 @@ public:
 	D3DCOLOR m_drawColor;
 
 	const Prototype& m_prototype;
+
+	Doh3d::AnimationController m_ac;
 
 };
 

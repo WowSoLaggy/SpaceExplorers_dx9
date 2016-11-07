@@ -29,6 +29,8 @@ public:
 	ErrCode Start(Scene& pScene);
 	ErrCode End();
 
+	ErrCode Update(float pDeltaTime);
+
 	bool IsRun() { return m_isRun; }
 	GameMode Mode() { return m_mode; }
 

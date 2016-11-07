@@ -105,6 +105,9 @@
     <ClCompile Include="Prototype.cpp">
       <Filter>src\Game\Prototype</Filter>
     </ClCompile>
+    <ClCompile Include="PrototypesParsingFromFile.cpp">
+      <Filter>src\Game\Prototype</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

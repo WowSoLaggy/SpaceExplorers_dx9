@@ -56,6 +56,9 @@ public:
 	ThingBehaviour& Behaviour() { return m_behaviour; }
 	const ThingBehaviour& Behaviour() const { return m_behaviour; }
 
+	Doh3d::AnimationSet& AnimationSet() { return m_animationSet; }
+	const Doh3d::AnimationSet& AnimationSet() const { return m_animationSet; }
+
 
 	bool CheckPrerequisites(Tile* pTile) const;
 
@@ -82,8 +85,15 @@ private:
 	bool m_needsSurface;
 
 	ThingBehaviour m_behaviour;
+	Doh3d::AnimationSet m_animationSet;
+
 
 	static std::vector<Prototype> s_prototypes;
+
+
+	static ErrCode LoadPrototypesFromFile(const std::string& pPathToObjsFile);
+	static ErrCode ParseAnimationSet(const pugi::xml_node& pNode, Prototype& pPrototype);
+
 };
 
 

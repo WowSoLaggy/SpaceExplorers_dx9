@@ -45,6 +45,7 @@ enum ErrCode
 	err_realThingHasNoParent,
 	err_cantLoadThing,
 	err_cantUnloadThing,
+	err_cantParseAnimation,
 
 	err_end
 };

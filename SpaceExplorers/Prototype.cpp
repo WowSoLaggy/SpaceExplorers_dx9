@@ -39,79 +39,13 @@ Prototype& Prototype::Find(const std::string& pTypeName)
 ErrCode Prototype::Init(const std::string& pPathToObjsFile)
 {
 	LOG("Prototype::Init()");
+	ErrCode err;
 
-	// Load xml objects file
-
-	pugi::xml_document objsFile;
-	pugi::xml_parse_result parseResult = objsFile.load_file(pPathToObjsFile.c_str());
-	if (parseResult.status != 0)
+	err = LoadPrototypesFromFile(pPathToObjsFile);
+	if (err != err_noErr)
 	{
-		echo("ERROR: Invalid object file. Error description: \"", parseResult.description(), "\".");
-		return err_invalidObjsFile;
-	}
-
-	// Find "Things" node
-
-	auto documentNode = objsFile.child("Document");
-	if (documentNode == nullptr)
-	{
-		echo("ERROR: Can't parse objects file. Can't find the \"Document\" xml node.");
-		return err_invalidObjsFile;
-	}
-
-	auto thingsNode = documentNode.child("Things");
-	if (thingsNode == nullptr)
-	{
-		echo("ERROR: Can't parse objects file. Can't find the \"Things\" xml node.");
-		return err_invalidObjsFile;
-	}
-
-	// Parse prototypes
-
-	for (auto& it : thingsNode)
-	{
-		Prototype prototype;
-
-		auto param = it.first_child();
-		while (param != nullptr)
-		{
-			if (std::string("TypeName").compare(param.name()) == 0)
-				prototype.TypeName() = param.text().as_string();
-			else if (std::string("TextureFileName").compare(param.name()) == 0)
-				prototype.TextureFilePath() = param.text().as_string();
-			else if (std::string("IsPassable").compare(param.name()) == 0)
-				prototype.IsPassable() = param.text().as_bool();
-			else if (std::string("IsVentilated").compare(param.name()) == 0)
-				prototype.IsVentilated() = param.text().as_bool();
-			else if (std::string("NeedsLattice").compare(param.name()) == 0)
-				prototype.NeedsLattice() = param.text().as_bool();
-			else if (std::string("NeedsFloor").compare(param.name()) == 0)
-				prototype.NeedsFloor() = param.text().as_bool();
-			else if (std::string("NeedsSpace").compare(param.name()) == 0)
-				prototype.NeedsSpace() = param.text().as_bool();
-			else if (std::string("NeedsSurface").compare(param.name()) == 0)
-				prototype.NeedsSurface() = param.text().as_bool();
-			else if (std::string("Behaviour").compare(param.name()) == 0)
-				prototype.Behaviour() = ConvertStringToBehaviour(param.text().as_string());
-			else if (std::string("Texture").compare(param.name()) == 0)
-				; // Used only for editor
-			else if (std::string("AnimationSet").compare(param.name()) == 0)
-			{
-				// TODO: Continue with animation
-				Doh3d::AnimationSet animationSet;
-				Doh3d::Animation animation;
-				animationSet.Animations.push_back(animation);
-			}
-			else
-			{
-				echo("ERROR: Invalid parameter in the objs file: \"", param.name(), "\".");
-				return err_invalidObjsFile;
-			}
-
-			param = param.next_sibling();
-		}
-
-		s_prototypes.push_back(prototype);
+		echo("ERROR: Can't load prototypes from the file.");
+		return err;
 	}
 
 	return err_noErr;

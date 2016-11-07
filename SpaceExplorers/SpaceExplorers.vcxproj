@@ -175,6 +175,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Prototype.cpp" />
+    <ClCompile Include="PrototypesParsingFromFile.cpp" />
     <ClCompile Include="RealThing.cpp" />
     <ClCompile Include="MapSaveLoad.cpp" />
     <ClCompile Include="Scene.cpp" />

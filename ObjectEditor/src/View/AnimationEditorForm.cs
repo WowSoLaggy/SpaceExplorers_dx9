@@ -32,7 +32,7 @@ namespace ObjectEditor.src.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AnimationSet.Animations.Add(new Animation("Default", 1, 1));
+            AnimationSet.Animations.Add(new Animation());
             UpdateDataSources();
         }
 

@@ -40,6 +40,8 @@ ErrCode Map::SaveToFile(const Map& pMap, const std::string& pFileName)
 		writeString(pChild->GetPrototype().TypeName());
 		writeVector(pChild->m_position);
 
+		// TODO: save animation
+
 		writeInt(pChild->GetChilds().size());
 		for (auto* pChild : pChild->GetChilds())
 			writeChild(dynamic_cast<RealThing*>(pChild));

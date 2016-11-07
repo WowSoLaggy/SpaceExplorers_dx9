@@ -26,6 +26,7 @@ public:
 	ErrCode Unload();
 
 	ErrCode Draw(Doh3d::Sprite& pSprite) const;
+	ErrCode Update(float pDeltaTime);
 
 
 	Doh3d::Viewport& GetViewport() { return m_viewport; }
