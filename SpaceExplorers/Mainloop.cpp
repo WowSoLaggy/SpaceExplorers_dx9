@@ -18,12 +18,17 @@ ErrCode Engine::Mainloop()
 		return err;
 	}
 
+	Timer timer;
+	timer.Start();
+	float deltaTime = 0;
 
 	m_isRun = true;
 	while (m_isRun && m_game.IsRun())
 	{
 		if (Doh3d::WinPeekExit())
 			break;
+
+		deltaTime = (float)timer.Restart();
 
 		// RenderMan
 
@@ -49,7 +54,7 @@ ErrCode Engine::Mainloop()
 
 		// Scene update
 
-		err = m_scene.Update(0.01f); ///< TODO: proper delta time
+		err = m_scene.Update(deltaTime);
 		if (err != err_noErr)
 		{
 			echo("ERROR: Can't update scene.");

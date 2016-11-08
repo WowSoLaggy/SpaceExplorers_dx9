@@ -25,6 +25,9 @@ ErrCode Game::OnMouseDown(bool& pHandled, int pButton)
 	LOG("Game::OnMouseDown()");
 	ErrCode err;
 
+	if (m_mode != GameMode::InGame)
+		return err_noErr;
+
 	if (pButton == MBUTTON_LEFT)
 	{
 		if (m_gui.IsBuildMode())
@@ -32,7 +35,7 @@ ErrCode Game::OnMouseDown(bool& pHandled, int pButton)
 			err = TryBuild();
 			if (err != err_noErr)
 			{
-				echo("ERROR: Error while Build().");
+				echo("ERROR: Error while TryBuild().");
 				return err;
 			}
 		}
@@ -41,7 +44,16 @@ ErrCode Game::OnMouseDown(bool& pHandled, int pButton)
 			err = TryRemove();
 			if (err != err_noErr)
 			{
-				echo("ERROR: Error while Remove().");
+				echo("ERROR: Error while TryRemove().");
+				return err;
+			}
+		}
+		else
+		{
+			err = Interact();
+			if (err != err_noErr)
+			{
+				echo("ERROR: Error while Interact().");
 				return err;
 			}
 		}

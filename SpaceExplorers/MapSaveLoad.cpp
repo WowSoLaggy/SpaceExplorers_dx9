@@ -38,7 +38,7 @@ ErrCode Map::SaveToFile(const Map& pMap, const std::string& pFileName)
 	std::function<void(const RealThing* pChild)> writeChild = [&](const RealThing* pChild)
 	{
 		writeString(pChild->GetPrototype().TypeName());
-		writeVector(pChild->m_position);
+		writeVector(pChild->Position());
 
 		// TODO: save animation
 

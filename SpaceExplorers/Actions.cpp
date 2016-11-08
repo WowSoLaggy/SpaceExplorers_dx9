@@ -298,3 +298,18 @@ ErrCode Game::TryRemove()
 
 	return err_noErr;
 }
+
+
+ErrCode Game::Interact()
+{
+	RealThing* thingToInteract = m_scene->HitTest();
+	if (!thingToInteract)
+		return err_noErr;
+
+	if (thingToInteract->GetPrototype().Behaviour() != ThingBehaviour::Door)
+		return err_noErr;
+
+	thingToInteract->Ac().PlayAnimation("Open", 1);
+
+	return err_noErr;
+}

@@ -35,11 +35,11 @@
         <Name>Door</Name>
         <Width>64</Width>
         <Height>64</Height>
-        <NumberOfFrames>1</NumberOfFrames>
+        <NumberOfFrames>6</NumberOfFrames>
         <CheckAlpha>true</CheckAlpha>
         <Extension>.png</Extension>
       </Texture>
-      <TextureFileName>Door_64_64_1_a.png</TextureFileName>
+      <TextureFileName>Door_64_64_6_a.png</TextureFileName>
       <IsPassable>false</IsPassable>
       <IsVentilated>false</IsVentilated>
       <NeedsLattice>false</NeedsLattice>
@@ -47,7 +47,14 @@
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
       <Behaviour>Door</Behaviour>
-      <AnimationSet />
+      <AnimationSet>
+        <Animation>
+          <Name>Open</Name>
+          <BeginFrame>1</BeginFrame>
+          <EndFrame>6</EndFrame>
+          <Interval>0.15</Interval>
+        </Animation>
+      </AnimationSet>
     </Thing>
     <Thing>
       <TypeName>Floor</TypeName>

@@ -33,6 +33,9 @@ public:
 
 	const Prototype& GetPrototype() const { return m_prototype; }
 
+	Doh3d::AnimationController& Ac() { return m_ac; }
+	const Doh3d::AnimationController& Ac() const { return m_ac; }
+
 	D3DXVECTOR3& Position() { return m_position; }
 	const D3DXVECTOR3& Position() const { return m_position; }
 
@@ -52,7 +55,7 @@ public:
 	virtual ErrCode Unload() override;
 	virtual ErrCode Update(float pDeltaTime) override;
 
-public:
+private:
 
 	D3DXVECTOR3 m_position;
 	D3DCOLOR m_drawColor;

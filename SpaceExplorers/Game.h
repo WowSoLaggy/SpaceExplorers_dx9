@@ -79,6 +79,8 @@ public:
 	ErrCode EndRemoveMode();
 	ErrCode TryRemove();
 
+	ErrCode Interact();
+
 private:
 
 	volatile bool m_isRun;
