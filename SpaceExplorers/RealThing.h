@@ -7,6 +7,7 @@
 #include "ErrCodes.h"
 #include "Thing.h"
 #include "Prototype.h"
+#include "RealThingStates.h"
 
 
 class RealThing : public Thing
@@ -31,6 +32,12 @@ public:
 		, m_position(pPosition) { }
 
 
+	virtual ErrCode Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) const override;
+	virtual ErrCode Load() override;
+	virtual ErrCode Unload() override;
+	virtual ErrCode Update(float pDeltaTime) override;
+
+
 	const Prototype& GetPrototype() const { return m_prototype; }
 
 	Doh3d::AnimationController& Ac() { return m_ac; }
@@ -48,12 +55,13 @@ public:
 	virtual bool IsVentilated() const override;
 
 	virtual Thing* HitTest() override;
+	
+	ErrCode Interact();
 
 
-	virtual ErrCode Draw(Doh3d::Sprite& pSprite, const D3DXVECTOR3& pOffset) const override;
-	virtual ErrCode Load() override;
-	virtual ErrCode Unload() override;
-	virtual ErrCode Update(float pDeltaTime) override;
+	bool IsDoor() const { return m_prototype.Behaviour() == ThingBehaviour::Door; }
+	bool IsOpen() const { return m_states.Test(State::Open); }
+
 
 private:
 
@@ -63,6 +71,8 @@ private:
 	const Prototype& m_prototype;
 
 	Doh3d::AnimationController m_ac;
+
+	StateSet m_states;
 
 };
 

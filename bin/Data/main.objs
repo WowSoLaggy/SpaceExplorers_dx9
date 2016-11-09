@@ -54,6 +54,12 @@
           <EndFrame>6</EndFrame>
           <Interval>0.15</Interval>
         </Animation>
+        <Animation>
+          <Name>Close</Name>
+          <BeginFrame>6</BeginFrame>
+          <EndFrame>1</EndFrame>
+          <Interval>0.15</Interval>
+        </Animation>
       </AnimationSet>
     </Thing>
     <Thing>

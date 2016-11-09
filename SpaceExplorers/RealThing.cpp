@@ -44,7 +44,8 @@ ErrCode RealThing::Update(float pDeltaTime)
 
 bool RealThing::IsPassable() const
 {
-	if (!m_prototype.IsPassable())
+	if (!m_prototype.IsPassable() &&
+		!(IsDoor() && IsOpen()))
 		return false;
 
 	for (auto& child : m_childs)
@@ -59,7 +60,8 @@ bool RealThing::IsPassable() const
 
 bool RealThing::IsVentilated() const
 {
-	if (!m_prototype.IsVentilated())
+	if (!m_prototype.IsVentilated() &&
+		!(IsDoor() && IsOpen()))
 		return false;
 
 	for (auto& child : m_childs)
@@ -80,5 +82,25 @@ Thing* RealThing::HitTest()
 		return pThing;
 
 	auto point = Engine::GetInstance()->GetScene().GetCursorAbsoluteCoords() - D3DXVECTOR2(m_position.x, m_position.y);
-	return Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).HitTest(point) ? this : nullptr;
+	return Doh3d::ResourceMan::GetTexture(m_prototype.Ti()).HitTest(point, m_ac.GetCurrentFrame()) ? this : nullptr;
+}
+
+
+ErrCode RealThing::Interact()
+{
+	if (IsDoor())
+	{
+		if (IsOpen())
+		{
+			m_states.Remove(State::Open);
+			m_ac.PlayAnimation("Close", 1);
+		}
+		else
+		{
+			m_states.Add(State::Open);
+			m_ac.PlayAnimation("Open", 1);
+		}
+	}
+
+	return err_noErr;
 }

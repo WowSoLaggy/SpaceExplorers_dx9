@@ -302,14 +302,19 @@ ErrCode Game::TryRemove()
 
 ErrCode Game::Interact()
 {
+	LOG("Game::Interact()");
+	ErrCode err;
+
 	RealThing* thingToInteract = m_scene->HitTest();
 	if (!thingToInteract)
 		return err_noErr;
 
-	if (thingToInteract->GetPrototype().Behaviour() != ThingBehaviour::Door)
-		return err_noErr;
-
-	thingToInteract->Ac().PlayAnimation("Open", 1);
+	err = thingToInteract->Interact();
+	if (err != err_noErr)
+	{
+		echo("ERROR: Can't interact with object: \"", thingToInteract->GetPrototype().TypeName(), "\".");
+		return err;
+	}
 
 	return err_noErr;
 }

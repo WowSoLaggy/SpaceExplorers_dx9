@@ -40,6 +40,9 @@
     <Filter Include="src\Game\Prototype">
       <UniqueIdentifier>{b1a11932-50fa-4847-b3e2-6427ee36c640}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Map\Atmosphere">
+      <UniqueIdentifier>{482ab468-6dc0-4610-94de-4a915ef1b361}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -108,6 +111,9 @@
     <ClCompile Include="PrototypesParsingFromFile.cpp">
       <Filter>src\Game\Prototype</Filter>
     </ClCompile>
+    <ClCompile Include="Atmosphere.cpp">
+      <Filter>src\Game\Map\Atmosphere</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -163,6 +169,12 @@
     </ClInclude>
     <ClInclude Include="ThingBehaviours.h">
       <Filter>src\Game\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="RealThingStates.h">
+      <Filter>src\Game\Map\Things</Filter>
+    </ClInclude>
+    <ClInclude Include="Atmosphere.h">
+      <Filter>src\Game\Map\Atmosphere</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

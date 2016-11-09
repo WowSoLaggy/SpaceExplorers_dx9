@@ -5,6 +5,7 @@
 
 
 #include <Windows.h>
+#include <numeric>
 #include <pugixml\pugixml.hpp>
 
 #include "Doh3d.h"
