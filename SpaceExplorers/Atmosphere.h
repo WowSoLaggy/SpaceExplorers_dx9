@@ -5,16 +5,7 @@
 
 
 #include "ErrCodes.h"
-
-
-enum class Gas
-{
-	None = 0,
-	Oxygen,
-	Nitrogen,
-
-	SIZE
-};
+#include "Gases.h"
 
 
 class Atmosphere
@@ -29,10 +20,14 @@ public:
 	double& V() { return v; }
 	const double& V() const { return v; }
 
+	double P();
+
 	double GetGasMass(Gas pGas);
 	double GetGasPercentage(Gas pGas);
 
 private:
+
+	const double R = 8.3144598;
 
 	double t;						///< K°
 	double v;						///< m^3

@@ -114,6 +114,12 @@
     <ClCompile Include="Atmosphere.cpp">
       <Filter>src\Game\Map\Atmosphere</Filter>
     </ClCompile>
+    <ClCompile Include="Gases.cpp">
+      <Filter>src\Game\Map\Atmosphere</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>src\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -175,6 +181,12 @@
     </ClInclude>
     <ClInclude Include="Atmosphere.h">
       <Filter>src\Game\Map\Atmosphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Gases.h">
+      <Filter>src\Game\Map\Atmosphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>src\Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

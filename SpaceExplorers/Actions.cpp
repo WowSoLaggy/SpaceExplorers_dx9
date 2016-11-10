@@ -3,6 +3,7 @@
 
 #include "Engine.h"
 #include "RealThing.h"
+#include "Utils.h"
 
 
 ErrCode Game::EscapeHit()
@@ -72,9 +73,22 @@ ErrCode Game::InfoUnderCursor()
 	if (pThing != nullptr) text.append(pThing->GetPrototype().TypeName());
 	if (!pTile || pTile->IsPassable()) text.append(" P");
 	if (!pTile || pTile->IsVentilated()) text.append(" V");
-	
 
 	m_gui.InfoText->SetText(text);
+
+	text = "";
+	for (int i = 0; i < (int)Gas::SIZE; ++i)
+	{
+		text.append(GetGasShortName(static_cast<Gas>(i))).append(": ")
+			.append(round2(!pTile ? 0 : pTile->Atmosphere().GetGasPercentage(static_cast<Gas>(i)))).append(" ");
+	}
+	m_gui.GasesText->SetText(text);
+
+	text =
+		std::string("T: ").append(round2(!pTile ? 0 : pTile->Atmosphere().T()))
+		.append(", P: ").append(round2(!pTile ? 0 : pTile->Atmosphere().P()))
+		.append(", V: ").append(round2(!pTile ? 0 : pTile->Atmosphere().V()));
+	m_gui.AtmosText->SetText(text);
 
 	return err_noErr;
 }

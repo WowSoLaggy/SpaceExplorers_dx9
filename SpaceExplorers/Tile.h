@@ -15,9 +15,12 @@ public:
 
 	Tile();
 
+	class Atmosphere& Atmosphere() { return m_atmosphere; }
+	const class Atmosphere& Atmosphere() const { return m_atmosphere; }
+
 private:
 
-	Atmosphere m_atmosphere;
+	class Atmosphere m_atmosphere;
 
 };
 

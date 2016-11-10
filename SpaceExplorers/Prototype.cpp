@@ -18,6 +18,10 @@ ErrCode Prototype::Load()
 			echo("ERROR: Can't get TI for prototype (type name: \"", prototype.TypeName(), "\"): \"", prototype.TextureFilePath(), "\".");
 			return err_cantGetTi;
 		}
+
+		D3DXVECTOR2 size = Doh3d::ResourceMan::GetTexture(prototype.Ti()).GetSize();
+		prototype.m_size = D3DXVECTOR3(size.x, size.y, 0);
+		prototype.m_size2 = D3DXVECTOR3(std::round(size.x / 2), std::round(size.y / 2), 0);
 	}
 
 	return err_noErr;

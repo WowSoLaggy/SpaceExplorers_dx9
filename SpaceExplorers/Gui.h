@@ -48,6 +48,8 @@ public:
 
 	Doh3d::GPanel* InfoPanel;
 	Doh3d::GText* InfoText;
+	Doh3d::GText* GasesText;
+	Doh3d::GText* AtmosText;
 	Doh3d::GGrid* InventoryGrid;
 	Doh3d::GPanel* RemovalPanel;
 

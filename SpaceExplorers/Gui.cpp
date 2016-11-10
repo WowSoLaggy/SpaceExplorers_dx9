@@ -221,7 +221,9 @@ ErrCode Gui::CreateGameGui()
 
 	CreatePanel(InfoPanel, 20, 20, 256, 96, "Panel_256_96_1_n.png");
 
-	CreateText(InfoText, 38, 34, "");
+	CreateText(InfoText, 35, 31, "");
+	CreateText(GasesText, 35, 57, "");
+	CreateText(AtmosText, 35, 83, "");
 
 	int gridSizeX = 735;
 	int gridSizeY = 96;

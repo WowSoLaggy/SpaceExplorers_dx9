@@ -16,6 +16,7 @@ class Scene
 public:
 
 	static const int TILESIZE;
+	static const int TILESIZE2;
 
 public:
 

@@ -33,6 +33,10 @@ public:
 	const int& Ti() const { return m_ti; }
 
 
+	const D3DXVECTOR3& GetSize() const { return m_size; }
+	const D3DXVECTOR3& GetSize2() const { return m_size2; }
+
+
 	bool& IsPassable() { return m_isPassable; }
 	const bool& IsPassable() const { return m_isPassable; }
 
@@ -52,7 +56,7 @@ public:
 	bool& NeedsSurface() { return m_needsSurface; }
 	const bool& NeedsSurface() const { return m_needsSurface; }
 
-
+	
 	ThingBehaviour& Behaviour() { return m_behaviour; }
 	const ThingBehaviour& Behaviour() const { return m_behaviour; }
 
@@ -62,6 +66,7 @@ public:
 
 	bool CheckPrerequisites(Tile* pTile) const;
 
+public:
 
 	static ErrCode Load();
 	static ErrCode Unload();
@@ -76,6 +81,9 @@ private:
 	std::string m_textureName;
 	int m_ti;
 
+	D3DXVECTOR3 m_size;
+	D3DXVECTOR3 m_size2;
+
 	bool m_isPassable;
 	bool m_isVentilated;
 
@@ -87,9 +95,9 @@ private:
 	ThingBehaviour m_behaviour;
 	Doh3d::AnimationSet m_animationSet;
 
+private:
 
 	static std::vector<Prototype> s_prototypes;
-
 
 	static ErrCode LoadPrototypesFromFile(const std::string& pPathToObjsFile);
 	static ErrCode ParseAnimationSet(const pugi::xml_node& pNode, Prototype& pPrototype);
