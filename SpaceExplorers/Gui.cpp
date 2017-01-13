@@ -83,18 +83,27 @@ ErrCode Gui::Draw(Doh3d::Sprite& pSprite)
 
 		if (m_whatToBuild != nullptr)
 		{
-			D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
-
-			Tile* tile = m_scene->HitTestTile();
-			auto color = m_whatToBuild->CheckPrerequisites(tile) ? D3DCOLOR_ARGB(255, 155, 255, 155) : D3DCOLOR_ARGB(255, 255, 155, 155);
-
-			position2 = m_scene->GetScreenCoords(m_scene->GetTileCoords(position2));
-			D3DXVECTOR3 position3(position2.x, position2.y, 0);
-			hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_whatToBuild->Ti()).Get(), &Doh3d::ResourceMan::GetTexture(m_whatToBuild->Ti()).GetFrame(0), 0, &position3, color);
-			if (hRes != S_OK)
+			if (Tile* tile = m_scene->HitTestTile())
 			{
-				echo("ERROR: Can't draw thing (type name: \"", m_whatToBuild->TypeName(), "\").");
-				return err_cantDrawThing;
+				bool canBuild = m_whatToBuild->CheckPrerequisites(tile);
+				if (!m_whatToBuild->TileBased() && !tile->TileRect().
+					ContainsRect(m_whatToBuild->GetRect() + m_scene->GetCursorAbsoluteCoords() - m_whatToBuild->GetSize2()))
+					canBuild = false;
+
+				auto color = canBuild ? D3DCOLOR_ARGB(255, 155, 255, 155) : D3DCOLOR_ARGB(255, 255, 155, 155);
+
+				D3DXVECTOR2 position2 = Doh3d::InputMan::GetCursorPosition();
+				if (m_whatToBuild->TileBased())
+					position2 = m_scene->GetScreenCoords(m_scene->GetTileCoords(position2));
+				else
+					position2 -= m_whatToBuild->GetSize2();
+				D3DXVECTOR3 position3(position2.x, position2.y, 0);
+				hRes = pSprite.Get()->Draw(Doh3d::ResourceMan::GetTexture(m_whatToBuild->Ti()).Get(), &Doh3d::ResourceMan::GetTexture(m_whatToBuild->Ti()).GetFrame(0), 0, &position3, color);
+				if (hRes != S_OK)
+				{
+					echo("ERROR: Can't draw thing (type name: \"", m_whatToBuild->TypeName(), "\").");
+					return err_cantDrawThing;
+				}
 			}
 		}
 	}

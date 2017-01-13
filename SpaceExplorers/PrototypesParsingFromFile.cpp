@@ -58,6 +58,8 @@ ErrCode Prototype::LoadPrototypesFromFile(const std::string& pPathToObjsFile)
 				prototype.NeedsSpace() = param.text().as_bool();
 			else if (std::string("NeedsSurface").compare(param.name()) == 0)
 				prototype.NeedsSurface() = param.text().as_bool();
+			else if (std::string("TileBased").compare(param.name()) == 0)
+				prototype.TileBased() = param.text().as_bool();
 			else if (std::string("Behaviour").compare(param.name()) == 0)
 				prototype.Behaviour() = ConvertStringToBehaviour(param.text().as_string());
 			else if (std::string("Texture").compare(param.name()) == 0)

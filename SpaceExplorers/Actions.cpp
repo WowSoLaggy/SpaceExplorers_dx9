@@ -229,8 +229,16 @@ ErrCode Game::TryBuild()
 				return err_cantFindRequiredBasement;
 			}
 		}
-
-		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		
+		if (pPrototype->TileBased())
+			newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		else
+		{
+			if (!tile->TileRect().ContainsRect(
+				pPrototype->GetRect() + m_scene->GetCursorAbsoluteCoords() - pPrototype->GetSize2()))
+				return err_noErr;
+			newThing = new RealThing(pPrototype->TypeName(), m_scene->GetCursorAbsoluteCoords() - pPrototype->GetSize2());
+		}
 		pBasement->AddChild(newThing);
 	}
 	else

@@ -73,6 +73,10 @@ namespace ObjectEditor.src.Model
         [Category(c_constructionCat)]
         public bool NeedsSurface { get; set; } = true;
 
+        [Description("Does this thing occupies the whole tile or it's position on the tile can vary")]
+        [Category(c_constructionCat)]
+        public bool TileBased { get; set; } = true;
+
 
         [Description("Behaviour preset")]
         [Category(c_behaviourCat)]

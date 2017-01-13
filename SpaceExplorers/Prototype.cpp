@@ -20,8 +20,9 @@ ErrCode Prototype::Load()
 		}
 
 		D3DXVECTOR2 size = Doh3d::ResourceMan::GetTexture(prototype.Ti()).GetSize();
-		prototype.m_size = D3DXVECTOR3(size.x, size.y, 0);
-		prototype.m_size2 = D3DXVECTOR3(std::round(size.x / 2), std::round(size.y / 2), 0);
+		prototype.m_size = D3DXVECTOR2(size.x, size.y);
+		prototype.m_size2 = D3DXVECTOR2(std::round(size.x / 2), std::round(size.y / 2));
+		prototype.m_rect = Doh3d::Geometry::Rect(0, 0, prototype.m_size.x, prototype.m_size.y);
 	}
 
 	return err_noErr;
@@ -98,6 +99,10 @@ bool Prototype::CheckPrerequisites(Tile* pTile) const
 		}
 		else if (pTable->GetChilds().size() != 0)
 			return false;
+
+		if (!TileBased())
+		{
+		}
 	}
 
 	return true;

@@ -33,8 +33,9 @@ public:
 	const int& Ti() const { return m_ti; }
 
 
-	const D3DXVECTOR3& GetSize() const { return m_size; }
-	const D3DXVECTOR3& GetSize2() const { return m_size2; }
+	const D3DXVECTOR2& GetSize() const { return m_size; }
+	const D3DXVECTOR2& GetSize2() const { return m_size2; }
+	const Doh3d::Geometry::Rect& GetRect() const { return m_rect; }
 
 
 	bool& IsPassable() { return m_isPassable; }
@@ -55,6 +56,9 @@ public:
 
 	bool& NeedsSurface() { return m_needsSurface; }
 	const bool& NeedsSurface() const { return m_needsSurface; }
+
+	bool& TileBased() { return m_tileBased; }
+	const bool& TileBased() const { return m_tileBased; }
 
 	
 	ThingBehaviour& Behaviour() { return m_behaviour; }
@@ -81,8 +85,9 @@ private:
 	std::string m_textureName;
 	int m_ti;
 
-	D3DXVECTOR3 m_size;
-	D3DXVECTOR3 m_size2;
+	D3DXVECTOR2 m_size;
+	D3DXVECTOR2 m_size2;
+	Doh3d::Geometry::Rect m_rect;
 
 	bool m_isPassable;
 	bool m_isVentilated;
@@ -91,6 +96,7 @@ private:
 	bool m_needsFloor;
 	bool m_needsSpace;
 	bool m_needsSurface;
+	bool m_tileBased;
 
 	ThingBehaviour m_behaviour;
 	Doh3d::AnimationSet m_animationSet;

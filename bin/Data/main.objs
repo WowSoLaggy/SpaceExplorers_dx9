@@ -19,6 +19,7 @@
       <NeedsFloor>false</NeedsFloor>
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>true</NeedsSurface>
+      <TileBased>false</TileBased>
       <Behaviour>None</Behaviour>
       <AnimationSet>
         <Animation>
@@ -46,6 +47,7 @@
       <NeedsFloor>true</NeedsFloor>
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
+      <TileBased>true</TileBased>
       <Behaviour>Door</Behaviour>
       <AnimationSet>
         <Animation>
@@ -79,6 +81,7 @@
       <NeedsFloor>false</NeedsFloor>
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
+      <TileBased>true</TileBased>
       <Behaviour>None</Behaviour>
       <AnimationSet />
     </Thing>
@@ -99,6 +102,7 @@
       <NeedsFloor>false</NeedsFloor>
       <NeedsSpace>true</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
+      <TileBased>true</TileBased>
       <Behaviour>None</Behaviour>
       <AnimationSet />
     </Thing>
@@ -119,6 +123,7 @@
       <NeedsFloor>true</NeedsFloor>
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
+      <TileBased>true</TileBased>
       <Behaviour>None</Behaviour>
       <AnimationSet />
     </Thing>
@@ -139,6 +144,7 @@
       <NeedsFloor>true</NeedsFloor>
       <NeedsSpace>false</NeedsSpace>
       <NeedsSurface>false</NeedsSurface>
+      <TileBased>true</TileBased>
       <Behaviour>None</Behaviour>
       <AnimationSet />
     </Thing>
