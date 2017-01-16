@@ -178,7 +178,7 @@
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Prototype.cpp" />
     <ClCompile Include="PrototypesParsingFromFile.cpp" />
-    <ClCompile Include="RealThing.cpp" />
+    <ClCompile Include="Thing.cpp" />
     <ClCompile Include="MapSaveLoad.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Startup.cpp" />
@@ -188,7 +188,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Thing.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
@@ -205,12 +205,12 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapGenerator.h" />
     <ClInclude Include="Prototype.h" />
-    <ClInclude Include="RealThing.h" />
-    <ClInclude Include="RealThingStates.h" />
+    <ClInclude Include="Thing.h" />
+    <ClInclude Include="ThingStates.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Thing.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="ThingBehaviours.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Utils.h" />

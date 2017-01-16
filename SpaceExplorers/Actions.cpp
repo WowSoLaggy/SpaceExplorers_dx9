@@ -2,7 +2,7 @@
 #include "Game.h"
 
 #include "Engine.h"
-#include "RealThing.h"
+#include "Thing.h"
 #include "Utils.h"
 
 
@@ -186,11 +186,11 @@ ErrCode Game::TryBuild()
 	if (!tile || !pPrototype->CheckPrerequisites(tile))
 		return err_noErr;
 
-	RealThing* newThing = nullptr;
+	Thing* newThing = nullptr;
 
 	if (pPrototype->NeedsSpace())
 	{
-		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		newThing = new Thing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
 		tile->AddChild(newThing);
 	}
 	else if (pPrototype->NeedsLattice())
@@ -202,7 +202,7 @@ ErrCode Game::TryBuild()
 			return err_cantFindRequiredBasement;
 		}
 
-		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		newThing = new Thing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
 		pBasement->AddChild(newThing);
 	}
 	else if (pPrototype->NeedsFloor())
@@ -214,7 +214,7 @@ ErrCode Game::TryBuild()
 			return err_cantFindRequiredBasement;
 		}
 
-		newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+		newThing = new Thing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
 		pBasement->AddChild(newThing);
 	}
 	else if (pPrototype->NeedsSurface())
@@ -231,13 +231,13 @@ ErrCode Game::TryBuild()
 		}
 		
 		if (pPrototype->TileBased())
-			newThing = new RealThing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
+			newThing = new Thing(pPrototype->TypeName(), m_scene->GetAbsoluteCoordsTileTopLeft());
 		else
 		{
 			if (!tile->TileRect().ContainsRect(
 				pPrototype->GetRect() + m_scene->GetCursorAbsoluteCoords() - pPrototype->GetSize2()))
 				return err_noErr;
-			newThing = new RealThing(pPrototype->TypeName(), m_scene->GetCursorAbsoluteCoords() - pPrototype->GetSize2());
+			newThing = new Thing(pPrototype->TypeName(), m_scene->GetCursorAbsoluteCoords() - pPrototype->GetSize2());
 		}
 		pBasement->AddChild(newThing);
 	}
@@ -297,7 +297,7 @@ ErrCode Game::TryRemove()
 	LOG("Game::TryRemove()");
 	ErrCode err;
 
-	RealThing* thingToRemove = m_scene->HitTest();
+	Thing* thingToRemove = m_scene->HitTest();
 	if (!thingToRemove || !thingToRemove->GetChilds().empty())
 		return err_noErr;
 
@@ -327,7 +327,7 @@ ErrCode Game::Interact()
 	LOG("Game::Interact()");
 	ErrCode err;
 
-	RealThing* thingToInteract = m_scene->HitTest();
+	Thing* thingToInteract = m_scene->HitTest();
 	if (!thingToInteract)
 		return err_noErr;
 

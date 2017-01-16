@@ -248,10 +248,10 @@ Tile* Scene::HitTestTile()
 	return Engine::GetInstance()->GetGame().GetMap()->HitTestTile(position);
 }
 
-RealThing* Scene::HitTest()
+Thing* Scene::HitTest()
 {
 	if (auto* pTile = HitTestTile())
-		return dynamic_cast<RealThing*>(pTile->HitTest());
+		return dynamic_cast<Thing*>(pTile->HitTest());
 
 	return nullptr;
 }

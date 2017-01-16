@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Map.h"
 
-#include "RealThing.h"
+#include "Thing.h"
 
 
 const std::string Map::c_mapFolder = "Data/Maps/";
@@ -35,7 +35,7 @@ ErrCode Map::SaveToFile(const Map& pMap, const std::string& pFileName)
 		outFile.write((char*)&pVector.z, sizeof(pVector.z));
 	};
 
-	std::function<void(const RealThing* pChild)> writeChild = [&](const RealThing* pChild)
+	std::function<void(const Thing* pChild)> writeChild = [&](const Thing* pChild)
 	{
 		writeString(pChild->GetPrototype().TypeName());
 		writeVector(pChild->Position());
@@ -44,7 +44,7 @@ ErrCode Map::SaveToFile(const Map& pMap, const std::string& pFileName)
 
 		writeInt(pChild->GetChilds().size());
 		for (auto* pChild : pChild->GetChilds())
-			writeChild(dynamic_cast<RealThing*>(pChild));
+			writeChild(dynamic_cast<Thing*>(pChild));
 	};
 
 
@@ -55,7 +55,7 @@ ErrCode Map::SaveToFile(const Map& pMap, const std::string& pFileName)
 	{
 		writeInt(tile.GetChilds().size());
 		for (auto* pChild : tile.GetChilds())
-			writeChild(dynamic_cast<RealThing*>(pChild));
+			writeChild(dynamic_cast<Thing*>(pChild));
 	}
 
 	return err_noErr;
@@ -94,7 +94,7 @@ ErrCode Map::LoadFromFile(Map*& pMap, const std::string& pFileName)
 		inFile.read((char*)&pVector.z, sizeof(pVector.z));
 	};
 
-	std::function<RealThing*()> loadChild = [&]() -> RealThing*
+	std::function<Thing*()> loadChild = [&]() -> Thing*
 	{
 		std::string prototypeName;
 		readString(prototypeName);
@@ -102,7 +102,7 @@ ErrCode Map::LoadFromFile(Map*& pMap, const std::string& pFileName)
 		D3DXVECTOR3 position;
 		readVector(position);
 
-		RealThing* pRealThing = new RealThing(prototypeName, position);
+		Thing* pRealThing = new Thing(prototypeName, position);
 
 		int numChilds;
 		readInt(numChilds);

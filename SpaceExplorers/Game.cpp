@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Game.h"
 
-#include "RealThing.h"
+#include "Thing.h"
 #include "MapGenerator.h"
 
 
@@ -199,7 +199,7 @@ ErrCode Game::StartNewMap()
 	LOG("Game::StartNewMap()");
 	ErrCode err;
 
-	m_map.reset(MapGenerator::CreateStartLocation());
+	m_map.reset(MapGenerator::CreateEmpty());
 
 	err = OnNewGame();
 	if (err != err_noErr)

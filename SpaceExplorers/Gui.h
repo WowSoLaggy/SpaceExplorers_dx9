@@ -105,7 +105,7 @@ private:
 	const Prototype* m_whatToBuild;
 
 	bool m_isRemovalMode;
-	RealThing* m_thingToRemove;
+	Thing* m_thingToRemove;
 
 
 	ErrCode CreateMainMenu();

@@ -5,11 +5,11 @@
 
 
 #include "ErrCodes.h"
-#include "Thing.h"
+#include "Entity.h"
 #include "Atmosphere.h"
 
 
-class Tile : public Thing
+class Tile : public Entity
 {
 public:
 

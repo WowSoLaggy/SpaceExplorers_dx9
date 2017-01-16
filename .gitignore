@@ -300,9 +300,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-bin/Data/*.*
-!bin/Data/main.objs
-bin/Data/ObjectEditor.exe
-bin/Data/ObjectEditor.exe
-bin/Data/Maps/main.map
-bin/Data/ObjectEditor.exe

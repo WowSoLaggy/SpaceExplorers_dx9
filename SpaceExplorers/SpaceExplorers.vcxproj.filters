@@ -75,9 +75,6 @@
     <ClCompile Include="Tile.cpp">
       <Filter>src\Game\Map\Things</Filter>
     </ClCompile>
-    <ClCompile Include="RealThing.cpp">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClCompile>
     <ClCompile Include="GameInput.cpp">
       <Filter>src\Game</Filter>
     </ClCompile>
@@ -86,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="Gui.cpp">
       <Filter>src\Game\Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="Thing.cpp">
-      <Filter>src\Game\Map\Things</Filter>
     </ClCompile>
     <ClCompile Include="..\libs\pugixml\pugixml.cpp">
       <Filter>libs\pugixml</Filter>
@@ -120,6 +114,12 @@
     <ClCompile Include="Utils.cpp">
       <Filter>src\Common</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>src\Game\Map\Things</Filter>
+    </ClCompile>
+    <ClCompile Include="Thing.cpp">
+      <Filter>src\Game\Map\Things</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -146,14 +146,8 @@
     <ClInclude Include="Tile.h">
       <Filter>src\Game\Map\Things</Filter>
     </ClInclude>
-    <ClInclude Include="RealThing.h">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClInclude>
     <ClInclude Include="Gui.h">
       <Filter>src\Game\Gui</Filter>
-    </ClInclude>
-    <ClInclude Include="Thing.h">
-      <Filter>src\Game\Map\Things</Filter>
     </ClInclude>
     <ClInclude Include="..\libs\pugixml\pugiconfig.hpp">
       <Filter>libs\pugixml</Filter>
@@ -176,9 +170,6 @@
     <ClInclude Include="ThingBehaviours.h">
       <Filter>src\Game\Prototype</Filter>
     </ClInclude>
-    <ClInclude Include="RealThingStates.h">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClInclude>
     <ClInclude Include="Atmosphere.h">
       <Filter>src\Game\Map\Atmosphere</Filter>
     </ClInclude>
@@ -187,6 +178,15 @@
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>src\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>src\Game\Map\Things</Filter>
+    </ClInclude>
+    <ClInclude Include="ThingStates.h">
+      <Filter>src\Game\Map\Things</Filter>
+    </ClInclude>
+    <ClInclude Include="Thing.h">
+      <Filter>src\Game\Map\Things</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
