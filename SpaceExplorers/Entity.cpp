@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "Entity.h"
+#include "Thing.h"
 
-#include "RealThing.h"
+#include "Thing.h"
 
 
 bool Entity::IsPassable() const
@@ -36,12 +36,12 @@ Entity* Entity::FindChild(const std::string& pChildName, int pDepth) const
 
 	for (auto& child : m_childs)
 	{
-		if (RealThing* pRealThing = dynamic_cast<RealThing*>(child))
+		if (Thing* pThing = dynamic_cast<Thing*>(child))
 		{
-			if (pRealThing->GetPrototype().TypeName().compare(pChildName) == 0)
-				return pRealThing;
+			if (pThing->GetPrototype().TypeName().compare(pChildName) == 0)
+				return pThing;
 
-			auto* pGrandChild = pRealThing->FindChild(pChildName);
+			auto* pGrandChild = pThing->FindChild(pChildName);
 			if (pGrandChild != nullptr)
 				return pGrandChild;
 		}
@@ -55,11 +55,10 @@ Entity* Entity::HitTest()
 {
 	for (auto& child : m_childs)
 	{
-		if (RealThing* pRealThing = dynamic_cast<RealThing*>(child))
+		if (Thing* pThing = dynamic_cast<Thing*>(child))
 		{
-			Entity* pThing = pRealThing->HitTest();
-			if (pThing != nullptr)
-				return pThing;
+			if (Entity* pHitThing = pThing->HitTest())
+				return pHitThing;
 		}
 	}
 
