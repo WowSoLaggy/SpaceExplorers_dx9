@@ -4,44 +4,14 @@
     <Filter Include="src">
       <UniqueIdentifier>{428bed0a-b89f-4343-b885-c2697e9fb6c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Engine">
-      <UniqueIdentifier>{16b7275f-a627-42b9-846d-524e4d88e88a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Common">
-      <UniqueIdentifier>{4431eaaa-cea9-4431-bee0-a492f2ed66ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Cursor">
-      <UniqueIdentifier>{bb603243-92d9-45ff-9dc2-3f6f891cc443}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game">
-      <UniqueIdentifier>{3e8e6742-c0d4-4ba9-be13-16dec1eb1b18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Map">
-      <UniqueIdentifier>{b2e61c1c-672f-4c99-a720-597a5214520e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Gui">
-      <UniqueIdentifier>{ac5437f1-c9fa-4c96-81f0-a4dd6634b8c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="libs">
       <UniqueIdentifier>{79d563ac-589c-4b85-97c3-8deae3b2ede8}</UniqueIdentifier>
     </Filter>
     <Filter Include="libs\pugixml">
       <UniqueIdentifier>{dad52473-a214-403d-886f-9e94924278c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game\Map\Things">
-      <UniqueIdentifier>{820b4b56-7faf-49b8-8655-f0b412d65f6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Scene">
-      <UniqueIdentifier>{2218adca-3c23-4b75-9543-fb1c9ac85ac8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="rsrc">
       <UniqueIdentifier>{ec08a597-291c-411f-b9a0-c9223c5b6705}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Prototype">
-      <UniqueIdentifier>{b1a11932-50fa-4847-b3e2-6427ee36c640}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Game\Map\Atmosphere">
-      <UniqueIdentifier>{482ab468-6dc0-4610-94de-4a915ef1b361}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -51,103 +21,13 @@
     <ClCompile Include="Startup.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>src\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Mainloop.cpp">
-      <Filter>src\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandlers.cpp">
-      <Filter>src\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Cursor.cpp">
-      <Filter>src\Cursor</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>src\Game\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>src\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClCompile>
-    <ClCompile Include="GameInput.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Actions.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Gui.cpp">
-      <Filter>src\Game\Gui</Filter>
-    </ClCompile>
     <ClCompile Include="..\libs\pugixml\pugixml.cpp">
       <Filter>libs\pugixml</Filter>
-    </ClCompile>
-    <ClCompile Include="MapGenerator.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GuiCreation.cpp">
-      <Filter>src\Game\Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="GuiInput.cpp">
-      <Filter>src\Game\Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="MapSaveLoad.cpp">
-      <Filter>src\Game\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Prototype.cpp">
-      <Filter>src\Game\Prototype</Filter>
-    </ClCompile>
-    <ClCompile Include="PrototypesParsingFromFile.cpp">
-      <Filter>src\Game\Prototype</Filter>
-    </ClCompile>
-    <ClCompile Include="Atmosphere.cpp">
-      <Filter>src\Game\Map\Atmosphere</Filter>
-    </ClCompile>
-    <ClCompile Include="Gases.cpp">
-      <Filter>src\Game\Map\Atmosphere</Filter>
-    </ClCompile>
-    <ClCompile Include="Utils.cpp">
-      <Filter>src\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClCompile>
-    <ClCompile Include="Thing.cpp">
-      <Filter>src\Game\Map\Things</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>src\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ErrCodes.h">
-      <Filter>src\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Cursor.h">
-      <Filter>src\Cursor</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>src\Game\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>src\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClInclude>
-    <ClInclude Include="Gui.h">
-      <Filter>src\Game\Gui</Filter>
     </ClInclude>
     <ClInclude Include="..\libs\pugixml\pugiconfig.hpp">
       <Filter>libs\pugixml</Filter>
@@ -155,38 +35,8 @@
     <ClInclude Include="..\libs\pugixml\pugixml.hpp">
       <Filter>libs\pugixml</Filter>
     </ClInclude>
-    <ClInclude Include="MapGenerator.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>src\Common</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>rsrc</Filter>
-    </ClInclude>
-    <ClInclude Include="Prototype.h">
-      <Filter>src\Game\Prototype</Filter>
-    </ClInclude>
-    <ClInclude Include="ThingBehaviours.h">
-      <Filter>src\Game\Prototype</Filter>
-    </ClInclude>
-    <ClInclude Include="Atmosphere.h">
-      <Filter>src\Game\Map\Atmosphere</Filter>
-    </ClInclude>
-    <ClInclude Include="Gases.h">
-      <Filter>src\Game\Map\Atmosphere</Filter>
-    </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>src\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClInclude>
-    <ClInclude Include="ThingStates.h">
-      <Filter>src\Game\Map\Things</Filter>
-    </ClInclude>
-    <ClInclude Include="Thing.h">
-      <Filter>src\Game\Map\Things</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
