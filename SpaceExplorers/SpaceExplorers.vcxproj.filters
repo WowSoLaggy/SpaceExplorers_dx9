@@ -13,6 +13,9 @@
     <Filter Include="rsrc">
       <UniqueIdentifier>{ec08a597-291c-411f-b9a0-c9223c5b6705}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game">
+      <UniqueIdentifier>{38e3d144-df8d-46cb-8dfb-9a29acd4790b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -23,6 +26,9 @@
     </ClCompile>
     <ClCompile Include="..\libs\pugixml\pugixml.cpp">
       <Filter>libs\pugixml</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>src\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>rsrc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>src\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
