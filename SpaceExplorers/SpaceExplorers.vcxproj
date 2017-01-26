@@ -167,6 +167,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputDevice.cpp" />
+    <ClCompile Include="RenderDevice.cpp" />
+    <ClCompile Include="MainLoop.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Startup.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -179,7 +183,10 @@
     <ClInclude Include="..\libs\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\libs\pugixml\pugixml.hpp" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InputDevice.h" />
+    <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>

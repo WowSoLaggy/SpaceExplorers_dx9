@@ -16,6 +16,15 @@
     <Filter Include="src\Game">
       <UniqueIdentifier>{38e3d144-df8d-46cb-8dfb-9a29acd4790b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\GameRender">
+      <UniqueIdentifier>{fbb959f3-f0bc-418b-9930-9e33cff83809}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameInput">
+      <UniqueIdentifier>{2670a23b-6281-452f-a591-31d20a6b0b9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene">
+      <UniqueIdentifier>{a615415e-5344-41d4-ab45-104292a814be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -29,6 +38,18 @@
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MainLoop.cpp">
+      <Filter>src\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderDevice.cpp">
+      <Filter>src\GameRender</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDevice.cpp">
+      <Filter>src\GameInput</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>src\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +67,15 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>src\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderDevice.h">
+      <Filter>src\GameRender</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDevice.h">
+      <Filter>src\GameInput</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
