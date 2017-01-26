@@ -10,6 +10,8 @@ public:
 
   bool update();
 
+  virtual bool visit(Doh3d::ITreeItem& pTreeItem) override;
+
 };
 
 

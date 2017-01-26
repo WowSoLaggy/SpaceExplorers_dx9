@@ -10,7 +10,8 @@ bool SceneDrawer::draw()
     return false;
 
   const Scene scene;
-  scene.traverseTree(*this);
+  if (!scene.traverseTree(*this))
+    return false;
 
   // TODO: remove
   Sleep(10);
@@ -21,10 +22,6 @@ bool SceneDrawer::draw()
   return true;
 }
 
-bool SceneDrawer::visit(Doh3d::ITreeItem& pTreeItem)
-{
-  return true;
-}
 
 bool SceneDrawer::visit(const Doh3d::ITreeItem& pTreeItem) const
 {

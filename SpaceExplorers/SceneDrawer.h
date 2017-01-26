@@ -10,7 +10,6 @@ public:
 
   bool draw();
 
-  virtual bool visit(Doh3d::ITreeItem& pTreeItem) override;
   virtual bool visit(const Doh3d::ITreeItem& pTreeItem) const override;
 
 };
