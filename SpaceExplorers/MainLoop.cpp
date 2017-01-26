@@ -36,17 +36,16 @@ bool Game::mainLoop()
       continue;
     }
 
-    // Draw
+    // Update scene
+
+    if (!d_sceneUpdater.update())
+      break;
+
+    // Draw scene
+
+    if (!d_sceneDrawer.draw())
+      break;
     
-    if (!Doh3d::Drawer::beginScene())
-      break;
-
-    // TODO: remove
-    Sleep(10);
-
-    if (!Doh3d::Drawer::endScene())
-      break;
-
     // TODO: remove
     Sleep(10);
 

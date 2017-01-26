@@ -51,6 +51,12 @@
     <ClCompile Include="Scene.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="SceneDrawer.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneUpdater.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -75,6 +81,12 @@
       <Filter>src\GameInput</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneDrawer.h">
+      <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneUpdater.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>

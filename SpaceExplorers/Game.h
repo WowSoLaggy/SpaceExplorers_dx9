@@ -6,6 +6,8 @@
 
 #include "RenderDevice.h"
 #include "InputDevice.h"
+#include "SceneUpdater.h"
+#include "SceneDrawer.h"
 
 
 class Game
@@ -29,6 +31,8 @@ private:
 
   RenderDevice d_renderDevice;
   InputDevice d_inputDevice;
+  SceneUpdater d_sceneUpdater;
+  SceneDrawer d_sceneDrawer;
 
   bool d_runMainLoop;
 

@@ -171,6 +171,8 @@
     <ClCompile Include="RenderDevice.cpp" />
     <ClCompile Include="MainLoop.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneDrawer.cpp" />
+    <ClCompile Include="SceneUpdater.cpp" />
     <ClCompile Include="Startup.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -187,6 +189,8 @@
     <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneDrawer.h" />
+    <ClInclude Include="SceneUpdater.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
