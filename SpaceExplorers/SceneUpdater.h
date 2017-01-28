@@ -4,13 +4,11 @@
 #define INC_SCENEUPDATER_H
 
 
-class SceneUpdater : public Doh3d::IVisiter
+class SceneUpdater
 {
 public:
 
   bool update();
-
-  virtual bool visit(Doh3d::ITreeItem& pTreeItem) override;
 
 };
 

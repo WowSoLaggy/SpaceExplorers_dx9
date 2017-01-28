@@ -10,7 +10,7 @@ bool SceneDrawer::draw()
     return false;
 
   const Scene scene;
-  if (!scene.traverseTree(*this))
+  if (!scene.drawTree(2))
     return false;
 
   // TODO: remove
@@ -19,11 +19,5 @@ bool SceneDrawer::draw()
   if (!Doh3d::Drawer::endScene())
     return false;
 
-  return true;
-}
-
-
-bool SceneDrawer::visit(const Doh3d::ITreeItem& pTreeItem) const
-{
   return true;
 }

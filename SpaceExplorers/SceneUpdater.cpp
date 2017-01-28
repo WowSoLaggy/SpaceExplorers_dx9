@@ -7,14 +7,8 @@
 bool SceneUpdater::update()
 {
   Scene scene;
-  if (!scene.traverseTree(*this))
+  if (!scene.updateTree(1))
     return false;
 
-  return true;
-}
-
-
-bool SceneUpdater::visit(Doh3d::ITreeItem& pTreeItem)
-{
   return true;
 }

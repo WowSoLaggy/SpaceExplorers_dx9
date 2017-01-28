@@ -4,7 +4,10 @@
 #define INC_SCENE_H
 
 
-class Scene : public Doh3d::ITreeItem
+#include "Object.h"
+
+
+class Scene : public Object
 {
 public:
 

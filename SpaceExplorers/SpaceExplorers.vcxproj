@@ -168,6 +168,7 @@
     </ClCompile>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputDevice.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="RenderDevice.cpp" />
     <ClCompile Include="MainLoop.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="..\libs\pugixml\pugixml.hpp" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputDevice.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />

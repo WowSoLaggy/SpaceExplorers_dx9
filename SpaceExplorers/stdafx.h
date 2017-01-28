@@ -10,7 +10,7 @@
 #include <iomanip>
 #include <pugixml\pugixml.hpp>
 
-#include "Doh3d.h"
+#include <Doh3d.h>
 
 
 #endif // STDAFX_H

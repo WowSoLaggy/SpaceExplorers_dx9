@@ -25,6 +25,9 @@
     <Filter Include="src\Scene">
       <UniqueIdentifier>{a615415e-5344-41d4-ab45-104292a814be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Objects">
+      <UniqueIdentifier>{da44cb27-e4f7-41e8-8bab-11b0beb2f5ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -57,6 +60,9 @@
     <ClCompile Include="SceneUpdater.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>src\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -88,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="SceneUpdater.h">
       <Filter>src\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>src\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

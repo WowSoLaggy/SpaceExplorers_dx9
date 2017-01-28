@@ -4,13 +4,11 @@
 #define INC_SCENEDRAWER_H
 
 
-class SceneDrawer : public Doh3d::IVisiter
+class SceneDrawer
 {
 public:
 
   bool draw();
-
-  virtual bool visit(const Doh3d::ITreeItem& pTreeItem) const override;
 
 };
 
