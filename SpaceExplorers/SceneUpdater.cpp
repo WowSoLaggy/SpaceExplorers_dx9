@@ -4,10 +4,9 @@
 #include "Scene.h"
 
 
-bool SceneUpdater::update()
+bool SceneUpdater::update(Scene& pScene, float pDt)
 {
-  Scene scene;
-  if (!scene.updateTree(1))
+  if (!pScene.updateTree(pDt))
     return false;
 
   return true;

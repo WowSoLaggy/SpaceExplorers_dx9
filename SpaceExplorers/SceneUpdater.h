@@ -4,11 +4,14 @@
 #define INC_SCENEUPDATER_H
 
 
+#include "Scene.h"
+
+
 class SceneUpdater
 {
 public:
 
-  bool update();
+  bool update(Scene& scene, float pDt);
 
 };
 

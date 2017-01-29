@@ -167,12 +167,18 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameInitializer.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="Gui.cpp" />
+    <ClCompile Include="GuiCreator.cpp" />
+    <ClCompile Include="Panel.cpp" />
     <ClCompile Include="InputDevice.cpp" />
-    <ClCompile Include="Object.cpp" />
     <ClCompile Include="RenderDevice.cpp" />
     <ClCompile Include="MainLoop.cpp" />
+    <ClCompile Include="ResourceController.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneDrawer.cpp" />
+    <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SceneUpdater.cpp" />
     <ClCompile Include="Startup.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -181,19 +187,27 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\libs\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\libs\pugixml\pugixml.hpp" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameInitializer.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="Gui.h" />
+    <ClInclude Include="GuiCreator.h" />
+    <ClInclude Include="Panel.h" />
     <ClInclude Include="InputDevice.h" />
-    <ClInclude Include="Object.h" />
+    <ClInclude Include="SceneObject.h" />
     <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ResourceController.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneDrawer.h" />
     <ClInclude Include="SceneUpdater.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Doh3d\Doh3d\Doh3d.vcxproj">

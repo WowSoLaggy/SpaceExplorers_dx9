@@ -4,11 +4,18 @@
 #define INC_SCENEDRAWER_H
 
 
+#include "Scene.h"
+
+
 class SceneDrawer
 {
 public:
 
-  bool draw();
+  bool draw(const Scene& pScene);
+
+private:
+
+  Doh3d::Sprite d_sprite;
 
 };
 

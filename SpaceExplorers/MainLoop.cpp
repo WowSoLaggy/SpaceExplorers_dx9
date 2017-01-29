@@ -10,6 +10,8 @@ bool Game::mainLoop()
   timer.Start();
   float deltaTime = 0;
 
+  d_gameLogic.onGameStart(d_scene);
+
   d_runMainLoop = true;
   while (d_runMainLoop)
   {
@@ -38,12 +40,12 @@ bool Game::mainLoop()
 
     // Update scene
 
-    if (!d_sceneUpdater.update())
+    if (!d_sceneUpdater.update(d_scene, deltaTime))
       break;
 
     // Draw scene
 
-    if (!d_sceneDrawer.draw())
+    if (!d_sceneDrawer.draw(d_scene))
       break;
     
     // TODO: remove

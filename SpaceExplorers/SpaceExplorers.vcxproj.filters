@@ -25,8 +25,23 @@
     <Filter Include="src\Scene">
       <UniqueIdentifier>{a615415e-5344-41d4-ab45-104292a814be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Objects">
+    <Filter Include="src\ResourceController">
+      <UniqueIdentifier>{41308742-6044-480c-be5e-0fd4c65e0828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Gui">
+      <UniqueIdentifier>{aa99fa69-917b-4fbe-8005-4c9d8cba1680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Logic">
+      <UniqueIdentifier>{8c1aa63c-d206-48a9-9ab4-b373cff97225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Scene\SceneObjects">
       <UniqueIdentifier>{da44cb27-e4f7-41e8-8bab-11b0beb2f5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Logic\GameObjects">
+      <UniqueIdentifier>{8e1eb1b6-d545-4c37-bd02-6e1a096de66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Gui\GuiObjects">
+      <UniqueIdentifier>{10e26eb6-6bea-430e-8454-5bdf19acc832}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,8 +75,29 @@
     <ClCompile Include="SceneUpdater.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>src\Objects</Filter>
+    <ClCompile Include="ResourceController.cpp">
+      <Filter>src\ResourceController</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogic.cpp">
+      <Filter>src\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneObject.cpp">
+      <Filter>src\Scene\SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInitializer.cpp">
+      <Filter>src\Scene\SceneObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiCreator.cpp">
+      <Filter>src\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui.cpp">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
+      <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,8 +131,29 @@
     <ClInclude Include="SceneUpdater.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>src\Objects</Filter>
+    <ClInclude Include="ResourceController.h">
+      <Filter>src\ResourceController</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogic.h">
+      <Filter>src\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObject.h">
+      <Filter>src\Scene\SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInitializer.h">
+      <Filter>src\Scene\SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiCreator.h">
+      <Filter>src\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Gui.h">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

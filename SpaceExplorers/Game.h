@@ -8,6 +8,8 @@
 #include "InputDevice.h"
 #include "SceneUpdater.h"
 #include "SceneDrawer.h"
+#include "Scene.h"
+#include "GameLogic.h"
 
 
 class Game
@@ -19,8 +21,8 @@ public:
 
 private:
 
-  const std::string GAME_NAME = "SpaceExplorers";
-  const std::string GAME_FILE_NAME = GAME_NAME + ".exe";
+  const std::string GAME_NAME = "The Space Explorers Game";
+  const std::string GAME_FILE_NAME = "SpaceExplorers.exe";
 
   const std::string LOG_DIR_NAME = "Logs";
   const std::string LOG_FILE_NAME = "Log.txt";
@@ -33,6 +35,8 @@ private:
   InputDevice d_inputDevice;
   SceneUpdater d_sceneUpdater;
   SceneDrawer d_sceneDrawer;
+  Scene d_scene;
+  GameLogic d_gameLogic;
 
   bool d_runMainLoop;
 

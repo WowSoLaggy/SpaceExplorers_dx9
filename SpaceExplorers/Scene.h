@@ -4,19 +4,14 @@
 #define INC_SCENE_H
 
 
-#include "Object.h"
+#include "SceneObject.h"
 
 
-class Scene : public Object
+class Scene : public SceneObject
 {
 public:
 
-  bool& lol() { return d_lol; }
-  const bool& lol() const { return d_lol; }
-
-private:
-
-  bool d_lol;
+  virtual ~Scene();
 
 };
 
