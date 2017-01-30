@@ -6,6 +6,12 @@
 
 bool SceneDrawer::draw(const Scene& pScene)
 {
+  // TODO: Move it to another place
+  {
+    if (!d_sprite.reload())
+      return false;
+  }
+
   if (!Doh3d::Drawer::beginScene())
     return false;
 

@@ -35,12 +35,27 @@ bool GameInitializer::updateSelf(float pDt)
 
 bool GameInitializer::initGameLoadMenu()
 {
-  if (auto* pScene = scene())
+  LOG(__FUNCTION__);
+
+  auto* pScene = scene();
+  if (!pScene)
   {
-    auto* pGui = GuiCreator::create_gui();
-    pScene->addChildBack(pGui);
-    pGui->addChildBack(GuiCreator::create_loadScreen_backGround());
+    echo("ERROR: Can't find scene to initialize.");
+    return false;
   }
+
+  // TODO: This should be in some another place (I am more than sure)
+  {
+    const std::string c_textureDir = "Data/Textures/";
+    const std::string c_fontDir = "Data/Fonts/";
+    Doh3d::ResourceMan::setTextureDir(c_textureDir);
+    Doh3d::ResourceMan::setFontDir(c_fontDir);
+    Doh3d::ResourceMan::init();
+  }
+
+  auto* pGui = GuiCreator::create_gui();
+  pScene->addChildBack(pGui);
+  pGui->addChildBack(GuiCreator::create_loadScreen_backGround());
 
   d_state = State::GameLoading;
   return true;
