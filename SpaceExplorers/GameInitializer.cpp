@@ -44,7 +44,7 @@ bool GameInitializer::initGameLoadMenu()
     return false;
   }
 
-  // TODO: This should be in some another place (I am more than sure)
+  // TODO: This should be in some other place (I am more than sure)
   {
     const std::string c_textureDir = "Data/Textures/";
     const std::string c_fontDir = "Data/Fonts/";
@@ -53,9 +53,9 @@ bool GameInitializer::initGameLoadMenu()
     Doh3d::ResourceMan::init();
   }
 
-  auto* pGui = GuiCreator::create_gui();
-  pScene->addChildBack(pGui);
-  pGui->addChildBack(GuiCreator::create_loadScreen_backGround());
+  auto* pGuiObject = GuiCreator::create_guiObject();
+  pScene->addChildBack(pGuiObject);
+  pGuiObject->addChildBack(GuiCreator::create_loadScreen_backGround());
 
   d_state = State::GameLoading;
   return true;

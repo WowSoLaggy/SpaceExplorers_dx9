@@ -93,10 +93,10 @@
     <ClCompile Include="Tile.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Gui.cpp">
+    <ClCompile Include="Panel.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Panel.cpp">
+    <ClCompile Include="GuiObject.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -149,10 +149,10 @@
     <ClInclude Include="Tile.h">
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Gui.h">
+    <ClInclude Include="Panel.h">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Panel.h">
+    <ClInclude Include="GuiObject.h">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
   </ItemGroup>

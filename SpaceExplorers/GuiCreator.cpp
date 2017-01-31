@@ -2,9 +2,9 @@
 #include "GuiCreator.h"
 
 
-Gui* GuiCreator::create_gui()
+GuiObject* GuiCreator::create_guiObject()
 {
-  return new Gui();
+  return new GuiObject();
 }
 
 

@@ -4,7 +4,7 @@
 #define INC_GUICREATOR_H
 
 
-#include "Gui.h"
+#include "GuiObject.h"
 #include "Panel.h"
 
 
@@ -12,7 +12,7 @@ class GuiCreator
 {
 public:
 
-  static Gui* create_gui();
+  static GuiObject* create_guiObject();
 
   static Panel* create_loadScreen_backGround();
 
