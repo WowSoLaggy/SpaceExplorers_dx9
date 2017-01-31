@@ -18,6 +18,8 @@ public:
   virtual bool updateSelf(float pDt) override;
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
+  virtual bool loadAllTextures() override;
+
   bool setTexture(const std::string& pTextureName);
 
 private:

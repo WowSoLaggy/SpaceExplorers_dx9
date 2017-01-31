@@ -5,9 +5,9 @@
 #include "GuiCreator.h"
 
 
-GameInitializer::GameInitializer()
+GameInitializer::GameInitializer(const std::string& pTextureDir, const std::string& pFontDir)
+  : d_textureDir(pTextureDir), d_fontDir(pFontDir), d_state(State::NotInited)
 {
-  d_state = State::NotInited;
 }
 
 bool GameInitializer::updateSelf(float pDt)
@@ -35,6 +35,40 @@ bool GameInitializer::updateSelf(float pDt)
 
 bool GameInitializer::initGameLoadMenu()
 {
+  if (!initResourceManager())
+    return false;
+
+  if (!createLoadingGui())
+    return false;
+
+  d_state = State::GameLoading;
+
+  // TODO: start a new thread to load the rest
+
+  return true;
+}
+
+bool GameInitializer::checkGameIsLoaded()
+{
+  if (d_state != State::GameLoaded)
+    return true;
+
+  return true;
+}
+
+
+bool GameInitializer::initResourceManager()
+{
+  Doh3d::ResourceMan::setTextureDir(d_textureDir);
+  Doh3d::ResourceMan::setFontDir(d_fontDir);
+  if (!Doh3d::ResourceMan::init())
+    return false;
+
+  return true;
+}
+
+bool GameInitializer::createLoadingGui()
+{
   LOG(__FUNCTION__);
 
   auto* pScene = scene();
@@ -44,24 +78,28 @@ bool GameInitializer::initGameLoadMenu()
     return false;
   }
 
-  // TODO: This should be in some other place (I am more than sure)
-  {
-    const std::string c_textureDir = "Data/Textures/";
-    const std::string c_fontDir = "Data/Fonts/";
-    Doh3d::ResourceMan::setTextureDir(c_textureDir);
-    Doh3d::ResourceMan::setFontDir(c_fontDir);
-    Doh3d::ResourceMan::init();
-  }
 
   auto* pGuiObject = GuiCreator::create_guiObject();
+  if (!pGuiObject)
+  {
+    echo("ERROR: Can't create GuiObject.");
+    return false;
+  }
+
   pScene->addChildBack(pGuiObject);
-  pGuiObject->addChildBack(GuiCreator::create_loadScreen_backGround());
 
-  d_state = State::GameLoading;
-  return true;
-}
 
-bool GameInitializer::checkGameIsLoaded()
-{
+  auto* pBackground = GuiCreator::create_loadScreen_background();
+  if (!pBackground)
+  {
+    echo("ERROR: Can't create the background for the loading screen.");
+    return false;
+  }
+
+  if (!pBackground->loadAllTextures())
+    return false;
+
+  pGuiObject->addChildBack(pBackground);
+
   return true;
 }

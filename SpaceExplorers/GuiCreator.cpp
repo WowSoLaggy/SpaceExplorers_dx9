@@ -8,13 +8,13 @@ GuiObject* GuiCreator::create_guiObject()
 }
 
 
-Panel* GuiCreator::create_loadScreen_backGround()
+Panel* GuiCreator::create_loadScreen_background()
 {
-  const std::string texture_fileName_loadScreen_backGround = "Loading_256_64_1_n.png";
+  const std::string texture_fileName_loadScreen_background = "Loading_256_64_1_n.png";
 
   auto* pPanel = new Panel();
 
-  if (!pPanel->setTexture(texture_fileName_loadScreen_backGround))
+  if (!pPanel->setTexture(texture_fileName_loadScreen_background))
   {
     delete pPanel;
     return false;

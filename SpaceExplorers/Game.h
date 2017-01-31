@@ -28,6 +28,9 @@ private:
   const std::string LOG_FILE_NAME = "Log.txt";
   const std::string LOG_FILE_FULL_NAME = LOG_DIR_NAME + "/" + LOG_FILE_NAME;
 
+  const std::string TEXTURE_DIR = "Data/Textures/";
+  const std::string FONT_DIR = "Data/Fonts/";
+
 
 private:
 

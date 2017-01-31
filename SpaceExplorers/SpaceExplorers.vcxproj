@@ -179,6 +179,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneDrawer.cpp" />
     <ClCompile Include="SceneObject.cpp" />
+    <ClCompile Include="SceneObjectCreator.cpp" />
     <ClCompile Include="SceneUpdater.cpp" />
     <ClCompile Include="Startup.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -206,6 +207,7 @@
     <ClInclude Include="ResourceController.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneDrawer.h" />
+    <ClInclude Include="SceneObjectCreator.h" />
     <ClInclude Include="SceneUpdater.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Tile.h" />

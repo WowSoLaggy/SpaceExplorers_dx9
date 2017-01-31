@@ -10,7 +10,7 @@ bool Game::mainLoop()
   timer.Start();
   float deltaTime = 0;
 
-  d_gameLogic.onGameStart(d_scene);
+  d_gameLogic.onGameStart(d_scene, TEXTURE_DIR, FONT_DIR);
 
   d_runMainLoop = true;
   while (d_runMainLoop)

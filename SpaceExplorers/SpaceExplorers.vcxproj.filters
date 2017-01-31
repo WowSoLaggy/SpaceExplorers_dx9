@@ -99,6 +99,9 @@
     <ClCompile Include="GuiObject.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
+    <ClCompile Include="SceneObjectCreator.cpp">
+      <Filter>src\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="IGui.h">
       <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneObjectCreator.h">
+      <Filter>src\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

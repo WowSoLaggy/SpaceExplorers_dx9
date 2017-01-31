@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "GameLogic.h"
 
-#include "GameInitializer.h"
+#include "SceneObjectCreator.h"
 
 
-void GameLogic::onGameStart(Scene& pScene)
+void GameLogic::onGameStart(Scene& pScene, const std::string& pTextureDir, const std::string& pFontDir)
 {
-  pScene.addChildBack(new GameInitializer());
+  pScene.addChildBack(SceneObjectCreator::create_gameInitializer(pTextureDir, pFontDir));
 }

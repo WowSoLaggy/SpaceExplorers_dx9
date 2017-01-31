@@ -14,7 +14,7 @@ public:
 
   static GuiObject* create_guiObject();
 
-  static Panel* create_loadScreen_backGround();
+  static Panel* create_loadScreen_background();
 
 };
 

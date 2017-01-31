@@ -11,7 +11,7 @@ class GameLogic
 {
 public:
 
-  void onGameStart(Scene& pScene);
+  void onGameStart(Scene& pScene, const std::string& pTextureDir, const std::string& pFontDir);
 
 };
 

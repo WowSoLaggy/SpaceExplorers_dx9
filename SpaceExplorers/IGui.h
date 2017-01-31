@@ -4,7 +4,7 @@
 #define INC_IGUI_H
 
 
-class IGui : public Doh3d::IPosition
+class IGui : public Doh3d::IPositioned, public Doh3d::ITextured
 {
 public:
 

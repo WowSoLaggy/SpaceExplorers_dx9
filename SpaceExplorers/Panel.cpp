@@ -25,13 +25,18 @@ bool Panel::drawSelf(Doh3d::Sprite& pSprite) const
 }
 
 
+bool Panel::loadAllTextures()
+{
+  if (!Doh3d::ResourceMan::getTexture(d_ti).load())
+    return false;
+
+  return true;
+}
+
+
 bool Panel::setTexture(const std::string& pTextureName)
 {
   if (!Doh3d::ResourceMan::getTi(pTextureName, d_ti))
-    return false;
-
-  // TODO: This should not be here
-  if (!Doh3d::ResourceMan::getTexture(d_ti).load())
     return false;
   
   return true;
