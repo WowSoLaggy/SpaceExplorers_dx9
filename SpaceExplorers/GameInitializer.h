@@ -34,6 +34,8 @@ private:
 
   bool initResourceManager();
   bool createLoadingGui();
+  bool startGameLoadingThread();
+  void loadGame();
 
 };
 

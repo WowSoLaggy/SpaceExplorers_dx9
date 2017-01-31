@@ -41,9 +41,8 @@ bool GameInitializer::initGameLoadMenu()
   if (!createLoadingGui())
     return false;
 
-  d_state = State::GameLoading;
-
-  // TODO: start a new thread to load the rest
+  if (!startGameLoadingThread())
+    return false;
 
   return true;
 }
@@ -102,4 +101,19 @@ bool GameInitializer::createLoadingGui()
   pGuiObject->addChildBack(pBackground);
 
   return true;
+}
+
+bool GameInitializer::startGameLoadingThread()
+{
+  d_state = State::GameLoading;
+
+  std::thread loadGameThread(std::bind(&GameInitializer::loadGame, this));
+  loadGameThread.detach();
+
+  return true;
+}
+
+void GameInitializer::loadGame()
+{
+  // TODO:
 }

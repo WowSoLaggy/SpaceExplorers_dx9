@@ -8,9 +8,11 @@
 #include <numeric>
 #include <sstream>
 #include <iomanip>
-#include <pugixml\pugixml.hpp>
+#include <thread>
 
 #include <Doh3d.h>
+
+#include <pugixml\pugixml.hpp>
 
 
 #endif // STDAFX_H
