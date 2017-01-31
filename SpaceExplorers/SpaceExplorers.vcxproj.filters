@@ -155,6 +155,9 @@
     <ClInclude Include="GuiObject.h">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
+    <ClInclude Include="IGui.h">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceExplorers.rc">

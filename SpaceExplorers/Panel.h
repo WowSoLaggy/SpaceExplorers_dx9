@@ -5,9 +5,10 @@
 
 
 #include "SceneObject.h"
+#include "IGui.h"
 
 
-class Panel : public virtual SceneObject
+class Panel : public virtual SceneObject, public virtual IGui
 {
 public:
 

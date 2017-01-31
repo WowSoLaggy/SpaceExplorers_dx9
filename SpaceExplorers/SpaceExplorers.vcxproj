@@ -197,6 +197,7 @@
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GuiObject.h" />
     <ClInclude Include="GuiCreator.h" />
+    <ClInclude Include="IGui.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="SceneObject.h" />

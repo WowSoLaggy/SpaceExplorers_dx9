@@ -15,16 +15,9 @@ bool Panel::updateSelf(float pDt)
 
 bool Panel::drawSelf(Doh3d::Sprite& pSprite) const
 {
-  LOG(__FUNCTION__);
-  int hRes;
-
-  // TODO: remove it from here
-  D3DXVECTOR3 d_position(0, 0, 0);
-  hRes = pSprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
-                      0, &d_position, D3DCOLOR_ARGB(255, 255, 255, 255));
-  if (hRes != S_OK)
+  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
+                    0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
-    echo("ERROR: Can't draw sprite.");
     return false;
   }
 
