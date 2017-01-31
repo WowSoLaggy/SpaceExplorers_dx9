@@ -12,6 +12,8 @@ GameInitializer::GameInitializer(const std::string& pTextureDir, const std::stri
 
 bool GameInitializer::updateSelf(float pDt)
 {
+  LOG(__FUNCTION__);
+
   switch (d_state)
   {
 
@@ -21,12 +23,21 @@ bool GameInitializer::updateSelf(float pDt)
     break;
 
   case State::GameLoading:
+  case State::GameLoadOk:
+  case State::GameLoadFailed:
     if (!checkGameIsLoaded())
       return false;
     break;
 
-  default:
+  case State::SOME_NEW_STATE:
+    // TODO: what to do after it?
     break;
+
+  default:
+  {
+    echo("ERROR: Unexpected state for the GameInitializer object.");
+    return false;
+  }
   }
 
   return true;
@@ -49,10 +60,17 @@ bool GameInitializer::initGameLoadMenu()
 
 bool GameInitializer::checkGameIsLoaded()
 {
-  if (d_state != State::GameLoaded)
+  if (d_state == State::GameLoading)
     return true;
+  if (d_state == State::GameLoadFailed)
+    return false;
+  if (d_state == State::GameLoadOk)
+  {
+    d_state = State::SOME_NEW_STATE;
+    return true;
+  }
 
-  return true;
+  return false;
 }
 
 
@@ -115,5 +133,11 @@ bool GameInitializer::startGameLoadingThread()
 
 void GameInitializer::loadGame()
 {
-  // TODO:
+  if (!Doh3d::ResourceMan::loadResources())
+  {
+    d_state = State::GameLoadFailed;
+    return;
+  }
+
+  d_state = State::GameLoadOk;
 }

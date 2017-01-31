@@ -21,7 +21,9 @@ private:
   {
     NotInited,
     GameLoading,
-    GameLoaded,
+    GameLoadOk,
+    GameLoadFailed,
+    SOME_NEW_STATE, // TODO: change to the appropriate one
   };
 
   const std::string d_textureDir;
