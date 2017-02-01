@@ -29,8 +29,11 @@ bool GameInitializer::updateSelf(float pDt)
       return false;
     break;
 
-  case State::SOME_NEW_STATE:
-    // TODO: what to do after it?
+  case State::ReadyForMainMenu:
+    if (!createMainMenu())
+      return false;
+    if (!deleteSelf())
+      return false;
     break;
 
   default:
@@ -66,7 +69,7 @@ bool GameInitializer::checkGameIsLoaded()
     return false;
   if (d_state == State::GameLoadOk)
   {
-    d_state = State::SOME_NEW_STATE;
+    d_state = State::ReadyForMainMenu;
     return true;
   }
 
@@ -142,4 +145,39 @@ void GameInitializer::loadGame()
   }
 
   d_state = State::GameLoadOk;
+}
+
+bool GameInitializer::createMainMenu()
+{
+  LOG(__FUNCTION__);
+
+  auto* pScene = scene();
+  if (!pScene)
+  {
+    echo("ERROR: Can't find scene to create main menu for.");
+    return false;
+  }
+
+  // TODO: create main menu
+
+  return true;
+}
+
+bool GameInitializer::deleteSelf()
+{
+  LOG(__FUNCTION__);
+
+  auto* pScene = scene();
+  if (!pScene)
+  {
+    echo("ERROR: Can't find scene to delete self from.");
+    return false;
+  }
+
+  // TODO: think of something to avoid self-deletion.
+  // May be set own parent to nullptr and delete all childs without parent in updateTree?
+  // Or the Game class should control this object much like game already creates this object?
+  pScene->removeChild(this);
+
+  return true;
 }

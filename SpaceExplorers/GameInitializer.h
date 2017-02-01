@@ -23,7 +23,7 @@ private:
     GameLoading,
     GameLoadOk,
     GameLoadFailed,
-    SOME_NEW_STATE, // TODO: change to the appropriate one
+    ReadyForMainMenu,
   };
 
   const std::string d_textureDir;
@@ -38,6 +38,8 @@ private:
   bool createLoadingGui();
   bool startGameLoadingThread();
   void loadGame();
+  bool createMainMenu();
+  bool deleteSelf();
 
 };
 
