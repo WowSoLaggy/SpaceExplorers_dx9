@@ -115,6 +115,7 @@ bool GameInitializer::createLoadingGui()
 
   if (!pBackground->loadAllTextures())
     return false;
+  pBackground->setPosition(Doh3d::Screen::getClientCenter() - pBackground->getSizeHalf());
 
   pGuiObject->addChildBack(pBackground);
 

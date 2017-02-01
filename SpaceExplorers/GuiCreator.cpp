@@ -10,15 +10,22 @@ GuiObject* GuiCreator::create_guiObject()
 
 Panel* GuiCreator::create_loadScreen_background()
 {
-  const std::string texture_fileName_loadScreen_background = "Loading_256_64_1_n.png";
+  // TODO: Where should these consts be kept?
+  const std::string loadScreen_background_texture_fileName = "Loading_256_64_1_n.png";
+  const Doh3d::Size2 loadScreen_background_size = { 256, 64 };
+
 
   auto* pPanel = new Panel();
 
-  if (!pPanel->setTexture(texture_fileName_loadScreen_background))
+
+  if (!pPanel->setTexture(loadScreen_background_texture_fileName))
   {
     delete pPanel;
     return false;
   }
+
+  pPanel->setSize(loadScreen_background_size);
+
 
   return pPanel;
 }
