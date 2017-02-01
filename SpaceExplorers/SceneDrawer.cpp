@@ -6,12 +6,6 @@
 
 bool SceneDrawer::draw(const Scene& pScene)
 {
-  // TODO: Move it to another place
-  {
-    if (!d_sprite.reload())
-      return false;
-  }
-
   if (!Doh3d::Drawer::beginScene())
     return false;
 
@@ -22,7 +16,7 @@ bool SceneDrawer::draw(const Scene& pScene)
   if (!pScene.drawTree(d_sprite))
     return false;
 
-  // TODO: remove
+  // TODO: remove sleep
   Sleep(10);
 
 
@@ -30,6 +24,15 @@ bool SceneDrawer::draw(const Scene& pScene)
     return false;
 
   if (!Doh3d::Drawer::endScene())
+    return false;
+
+  return true;
+}
+
+
+bool SceneDrawer::onRenderDeviceRecreate()
+{
+  if (!d_sprite.reload())
     return false;
 
   return true;

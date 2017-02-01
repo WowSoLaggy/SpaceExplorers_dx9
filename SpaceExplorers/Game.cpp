@@ -27,3 +27,12 @@ bool Game::unregisterWinClass()
   Doh3d::WinClass::unregisterClass();
   return true;
 }
+
+
+bool Game::onRenderDeviceRecreate()
+{
+  if (!d_sceneDrawer.onRenderDeviceRecreate())
+    return false;
+
+  return true;
+}

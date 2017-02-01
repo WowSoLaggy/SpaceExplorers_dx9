@@ -48,6 +48,8 @@ private:
   bool mainLoop();
   bool unregisterWinClass();
 
+  bool onRenderDeviceRecreate();
+
 };
 
 

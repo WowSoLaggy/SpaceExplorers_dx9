@@ -26,6 +26,10 @@ bool Game::mainLoop()
     {
       if (!d_renderDevice.recreate(GAME_NAME))
         break;
+
+      if (!onRenderDeviceRecreate())
+        break;
+
       continue;
     }
 
@@ -48,7 +52,7 @@ bool Game::mainLoop()
     if (!d_sceneDrawer.draw(d_scene))
       break;
     
-    // TODO: remove
+    // TODO: remove sleep
     Sleep(10);
 
   } // while (d_runMainLoop)
