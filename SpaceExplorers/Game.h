@@ -6,6 +6,7 @@
 
 #include "RenderDevice.h"
 #include "InputDevice.h"
+#include "ResourceController.h"
 #include "SceneUpdater.h"
 #include "SceneDrawer.h"
 #include "Scene.h"
@@ -36,6 +37,7 @@ private:
 
   RenderDevice d_renderDevice;
   InputDevice d_inputDevice;
+  ResourceController d_resourceController;
   SceneUpdater d_sceneUpdater;
   SceneDrawer d_sceneDrawer;
   Scene d_scene;
@@ -44,9 +46,9 @@ private:
   bool d_runMainLoop;
 
 
-  bool registerWinClass(const Doh3d::StartupPars& pStartupPars);
+  bool init(const Doh3d::StartupPars& pStartupPars);
   bool mainLoop();
-  bool unregisterWinClass();
+  bool dispose();
 
   bool onRenderDeviceRecreate();
 

@@ -8,6 +8,9 @@ class InputDevice
 {
 public:
 
+  bool init();
+  bool dispose();
+
   bool check();
   bool recreate();
 

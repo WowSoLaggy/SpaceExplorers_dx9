@@ -4,8 +4,6 @@
 
 bool Game::mainLoop()
 {
-  LOG(__FUNCTION__);
-
   Timer timer;
   timer.Start();
   float deltaTime = 0;

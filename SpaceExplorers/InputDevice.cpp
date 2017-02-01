@@ -2,6 +2,17 @@
 #include "InputDevice.h"
 
 
+bool InputDevice::init()
+{
+  return Doh3d::InputMan::init();
+}
+
+bool InputDevice::dispose()
+{
+  return Doh3d::InputMan::dispose();
+}
+
+
 bool InputDevice::check()
 {
   return Doh3d::InputMan::isCreated() && Doh3d::InputMan::checkDevices();

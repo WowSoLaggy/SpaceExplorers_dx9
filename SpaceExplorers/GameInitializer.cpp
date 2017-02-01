@@ -76,9 +76,10 @@ bool GameInitializer::checkGameIsLoaded()
 
 bool GameInitializer::initResourceManager()
 {
+  // TODO: change to calls to teh ResourceController of this project
   Doh3d::ResourceMan::setTextureDir(d_textureDir);
   Doh3d::ResourceMan::setFontDir(d_fontDir);
-  if (!Doh3d::ResourceMan::init())
+  if (!Doh3d::ResourceMan::indexResources())
     return false;
 
   return true;

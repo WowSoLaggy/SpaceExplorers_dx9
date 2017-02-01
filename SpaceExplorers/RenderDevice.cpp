@@ -2,6 +2,17 @@
 #include "RenderDevice.h"
 
 
+bool RenderDevice::init()
+{
+  return Doh3d::RenderMan::init();
+}
+
+bool RenderDevice::dispose()
+{
+  return Doh3d::RenderMan::dispose();
+}
+
+
 bool RenderDevice::check()
 {
   return Doh3d::RenderMan::isCreated();
