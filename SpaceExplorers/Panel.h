@@ -15,9 +15,6 @@ public:
   Panel();
   virtual ~Panel() { }
 
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
-
   virtual bool loadAllTextures() override;
 
   bool setTexture(const std::string& pTextureName);
@@ -25,6 +22,9 @@ public:
 private:
 
   Doh3d::TextureId d_ti;
+
+  virtual bool updateSelf(float pDt) override;
+  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
 

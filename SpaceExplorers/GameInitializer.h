@@ -13,8 +13,6 @@ public:
 
   GameInitializer(const std::string& pTextureDir, const std::string& pFontDir);
 
-  virtual bool updateSelf(float pDt) override;
-
 private:
 
   enum class State
@@ -40,6 +38,8 @@ private:
   void loadGame();
   bool createMainMenu();
   bool deleteSelf();
+
+  virtual bool updateSelf(float pDt) override;
 
 };
 

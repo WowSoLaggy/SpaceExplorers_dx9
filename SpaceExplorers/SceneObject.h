@@ -13,13 +13,15 @@ public:
 
   virtual ~SceneObject() { }
 
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
-
 protected:
 
   Scene* scene();
   const Scene* scene() const;
+
+private:
+
+  virtual bool updateSelf(float pDt) override;
+  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
 

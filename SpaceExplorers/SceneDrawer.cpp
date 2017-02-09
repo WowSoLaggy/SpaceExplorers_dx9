@@ -13,7 +13,7 @@ bool SceneDrawer::draw(const Scene& pScene)
     return false;
 
 
-  if (!pScene.drawTree(d_sprite))
+  if (!pScene.draw(d_sprite))
     return false;
 
   // TODO: remove sleep
