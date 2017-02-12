@@ -36,8 +36,8 @@ private:
   bool createLoadingGui();
   bool startGameLoadingThread();
   void loadGame();
-  bool createMainMenu();
   bool deleteLoadingGui();
+  bool createMainMenu();
   bool deleteSelf();
 
   virtual bool updateSelf(float pDt) override;

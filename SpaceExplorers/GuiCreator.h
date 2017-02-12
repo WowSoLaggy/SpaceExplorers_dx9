@@ -16,6 +16,8 @@ public:
 
   static Panel* create_loadScreen_background();
 
+  static Panel* create_mainMenu_backGround();
+
 };
 
 

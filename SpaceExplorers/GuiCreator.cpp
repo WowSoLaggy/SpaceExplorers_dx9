@@ -33,3 +33,26 @@ Panel* GuiCreator::create_loadScreen_background()
 
   return pPanel;
 }
+
+
+Panel* GuiCreator::create_mainMenu_backGround()
+{
+  const std::string mainMenu_background_texture_fileName = "MainMenu_1920_1080_1_n.png";
+  const Doh3d::Size2 mainMenu_background_size = { 1920, 1080 };
+
+
+  auto* pPanel = new Panel();
+  pPanel->name() = GuiNames::MAINMENU_BACKGROUND;
+
+
+  if (!pPanel->setTexture(mainMenu_background_texture_fileName))
+  {
+    delete pPanel;
+    return nullptr;
+  }
+
+  pPanel->setSize(mainMenu_background_size);
+
+
+  return pPanel;
+}

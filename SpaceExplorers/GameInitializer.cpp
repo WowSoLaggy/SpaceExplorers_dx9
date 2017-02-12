@@ -150,22 +150,6 @@ void GameInitializer::loadGame()
   d_state = State::GameLoadOk;
 }
 
-bool GameInitializer::createMainMenu()
-{
-  LOG(__FUNCTION__);
-
-  auto* pScene = scene();
-  if (!pScene)
-  {
-    echo("ERROR: Can't find the scene to create main menu for.");
-    return false;
-  }
-
-  // TODO: create main menu
-
-  return true;
-}
-
 bool GameInitializer::deleteLoadingGui()
 {
   LOG(__FUNCTION__);
@@ -185,6 +169,40 @@ bool GameInitializer::deleteLoadingGui()
   }
 
   pLoadingScreenBackground->deleteThis();
+
+  return true;
+}
+
+bool GameInitializer::createMainMenu()
+{
+  LOG(__FUNCTION__);
+
+  auto* pScene = scene();
+  if (!pScene)
+  {
+    echo("ERROR: Can't find the scene to create main menu for.");
+    return false;
+  }
+
+  // TODO: move this to some inline func (maybe search for scene also?)
+  auto* pGuiObject = pScene->findChild(GuiNames::GUI_OBJECT);
+  if (!pGuiObject)
+  {
+    echo("ERROR: Can't create GuiObject.");
+    return false;
+  }
+
+  
+  auto* pBackground = GuiCreator::create_mainMenu_backGround();
+  if (!pBackground)
+  {
+    echo("ERROR: Can't create the background for the main menu.");
+    return false;
+  }
+  pBackground->setPosition(Doh3d::Position2::zero());
+  pGuiObject->addChildBack(pBackground);
+
+  // TODO: create main menu
 
   return true;
 }
