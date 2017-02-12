@@ -44,3 +44,21 @@ const Scene* SceneObject::scene() const
       return nullptr;
   }
 }
+
+
+SceneObject* SceneObject::findChild(const std::string& pChildName) const
+{
+  for (auto* pChild : d_children)
+  {
+    if (auto* pSceneObject = dynamic_cast<SceneObject*>(pChild))
+    {
+      if (pSceneObject->name() == pChildName)
+        return pSceneObject;
+
+      if (pSceneObject = pSceneObject->findChild(pChildName))
+        return pSceneObject;
+    }
+  }
+
+  return nullptr;
+}

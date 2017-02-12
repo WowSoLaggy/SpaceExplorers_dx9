@@ -164,6 +164,9 @@
     <ClInclude Include="SceneObjectCreator.h">
       <Filter>src\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="GuiNames.h">
+      <Filter>src\Gui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceExplorers.rc">

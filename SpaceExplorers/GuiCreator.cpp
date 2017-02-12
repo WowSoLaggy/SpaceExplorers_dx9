@@ -1,10 +1,14 @@
 #include "stdafx.h"
 #include "GuiCreator.h"
 
+#include "GuiNames.h"
+
 
 GuiObject* GuiCreator::create_guiObject()
 {
-  return new GuiObject();
+  auto* pGuiObject = new GuiObject();
+  pGuiObject->name() = GuiNames::GUI_OBJECT;
+  return pGuiObject;
 }
 
 
@@ -15,12 +19,13 @@ Panel* GuiCreator::create_loadScreen_background()
 
 
   auto* pPanel = new Panel();
+  pPanel->name() = GuiNames::LOADING_SCREEN_BACKGROUND;
 
 
   if (!pPanel->setTexture(loadScreen_background_texture_fileName))
   {
     delete pPanel;
-    return false;
+    return nullptr;
   }
 
   pPanel->setSize(loadScreen_background_size);

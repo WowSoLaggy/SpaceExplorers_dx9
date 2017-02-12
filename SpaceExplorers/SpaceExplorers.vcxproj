@@ -196,6 +196,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInitializer.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GuiNames.h" />
     <ClInclude Include="GuiObject.h" />
     <ClInclude Include="GuiCreator.h" />
     <ClInclude Include="IGui.h" />

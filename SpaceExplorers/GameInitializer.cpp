@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 #include "GuiCreator.h"
+#include "GuiNames.h"
 
 
 GameInitializer::GameInitializer(const std::string& pTextureDir, const std::string& pFontDir)
@@ -30,6 +31,8 @@ bool GameInitializer::updateSelf(float pDt)
     break;
 
   case State::ReadyForMainMenu:
+    if (!deleteLoadingGui())
+      return false;
     if (!createMainMenu())
       return false;
     if (!deleteSelf())
@@ -154,11 +157,34 @@ bool GameInitializer::createMainMenu()
   auto* pScene = scene();
   if (!pScene)
   {
-    echo("ERROR: Can't find scene to create main menu for.");
+    echo("ERROR: Can't find the scene to create main menu for.");
     return false;
   }
 
   // TODO: create main menu
+
+  return true;
+}
+
+bool GameInitializer::deleteLoadingGui()
+{
+  LOG(__FUNCTION__);
+
+  auto* pScene = scene();
+  if (!pScene)
+  {
+    echo("ERROR: Can't find the scene to create main menu for.");
+    return false;
+  }
+
+  auto* pLoadingScreenBackground = pScene->findChild(GuiNames::LOADING_SCREEN_BACKGROUND);
+  if (!pLoadingScreenBackground)
+  {
+    echo("ERROR: Can't find the loading screen background.");
+    return false;
+  }
+
+  pLoadingScreenBackground->deleteThis();
 
   return true;
 }
