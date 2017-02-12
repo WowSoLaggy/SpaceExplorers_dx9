@@ -6,6 +6,7 @@
 
 #include "GuiObject.h"
 #include "Panel.h"
+#include "Cursor.h"
 
 
 class GuiCreator
@@ -13,6 +14,7 @@ class GuiCreator
 public:
 
   static GuiObject* create_guiObject();
+  static Cursor* create_cursor();
 
   static Panel* create_loadScreen_background();
 

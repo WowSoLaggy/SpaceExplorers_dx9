@@ -8,6 +8,7 @@ namespace GuiNames
 {
 
   const std::string GUI_OBJECT = "Gui Object";
+  const std::string CURSOR = "Cursor";
 
   const std::string LOADING_SCREEN_BACKGROUND = "Loading Screen Background";
 

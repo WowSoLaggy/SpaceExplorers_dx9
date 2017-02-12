@@ -11,6 +11,28 @@ GuiObject* GuiCreator::create_guiObject()
   return pGuiObject;
 }
 
+Cursor* GuiCreator::create_cursor()
+{
+  const std::string cursor_texture_fileName = "Cursor_32_32_1_n.png";
+  const Doh3d::Size2 cursor_size = { 32, 32 };
+
+
+  auto* pCursor = new Cursor();
+  pCursor->name() = GuiNames::CURSOR;
+
+
+  if (!pCursor->setTexture(cursor_texture_fileName))
+  {
+    delete pCursor;
+    return nullptr;
+  }
+
+  pCursor->setSize(cursor_size);
+
+
+  return pCursor;
+}
+
 
 Panel* GuiCreator::create_loadScreen_background()
 {

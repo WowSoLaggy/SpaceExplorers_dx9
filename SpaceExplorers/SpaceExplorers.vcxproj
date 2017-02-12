@@ -166,6 +166,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameInitializer.cpp" />
     <ClCompile Include="GameLogic.cpp" />
@@ -193,6 +194,7 @@
   <ItemGroup>
     <ClInclude Include="..\libs\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\libs\pugixml\pugixml.hpp" />
+    <ClInclude Include="Cursor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInitializer.h" />
     <ClInclude Include="GameLogic.h" />

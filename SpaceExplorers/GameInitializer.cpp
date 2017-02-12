@@ -11,6 +11,7 @@ GameInitializer::GameInitializer(const std::string& pTextureDir, const std::stri
 {
 }
 
+
 bool GameInitializer::updateSelf(float pDt)
 {
   LOG(__FUNCTION__);
@@ -201,6 +202,16 @@ bool GameInitializer::createMainMenu()
   }
   pBackground->setPosition(Doh3d::Position2::zero());
   pGuiObject->addChildBack(pBackground);
+
+
+  auto* pCursor = GuiCreator::create_cursor();
+  if (!pCursor)
+  {
+    echo("ERROR: Can't create the cursor.");
+    return false;
+  }
+  pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
+  pGuiObject->addChildBack(pCursor);
 
   // TODO: create main menu
 

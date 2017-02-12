@@ -36,8 +36,8 @@ Doh3d::InputPars InputDevice::getInputPars()
 {
   Doh3d::InputPars inputPars;
 
-  inputPars.mouseSensX() = 2;
-  inputPars.mouseSensY() = 2;
+  inputPars.mouseSensX() = 1;
+  inputPars.mouseSensY() = 1;
 
   // TODO:
   /*inputPars.onMouseMove() = std::bind(&Engine::OnMouseMove, this);

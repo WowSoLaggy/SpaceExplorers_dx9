@@ -102,6 +102,9 @@
     <ClCompile Include="SceneObjectCreator.cpp">
       <Filter>src\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Cursor.cpp">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="GuiNames.h">
       <Filter>src\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="Cursor.h">
+      <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
