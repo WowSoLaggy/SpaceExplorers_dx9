@@ -165,19 +165,6 @@ bool GameInitializer::createMainMenu()
 
 bool GameInitializer::deleteSelf()
 {
-  LOG(__FUNCTION__);
-
-  auto* pScene = scene();
-  if (!pScene)
-  {
-    echo("ERROR: Can't find scene to delete self from.");
-    return false;
-  }
-
-  // TODO: think of something to avoid self-deletion.
-  // May be set own parent to nullptr and delete all childs without parent in updateTree?
-  // Or the Game class should control this object much like game already creates this object?
-  pScene->removeChild(this);
-
+  deleteThis();
   return true;
 }
