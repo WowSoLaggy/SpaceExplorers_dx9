@@ -5,8 +5,9 @@
 
 
 #include "GuiObject.h"
-#include "Panel.h"
 #include "Cursor.h"
+#include "Panel.h"
+#include "Button.h"
 
 
 class GuiCreator
@@ -19,6 +20,7 @@ public:
   static Panel* create_loadScreen_background();
 
   static Panel* create_mainMenu_backGround();
+  static Button* create_mainMenu_button();
 
 };
 

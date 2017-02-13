@@ -193,6 +193,10 @@ bool GameInitializer::createMainMenu()
     return false;
   }
 
+
+  // TODO: group Gui groups under one more GuiObject with name ("MainMenu" or "Loading", ...)
+  // so that all the group can be easily found and deleted
+
   
   auto* pBackground = GuiCreator::create_mainMenu_backGround();
   if (!pBackground)
@@ -204,6 +208,16 @@ bool GameInitializer::createMainMenu()
   pGuiObject->addChildBack(pBackground);
 
 
+  auto* pExitButton = GuiCreator::create_mainMenu_button();
+  if (!pExitButton)
+  {
+    echo("ERROR: Can't create the main menu button.");
+    return false;
+  }
+  pExitButton->setPosition(Doh3d::Screen::getClientCenter() - pExitButton->getSizeHalf());
+  pGuiObject->addChildBack(pExitButton);
+
+  
   auto* pCursor = GuiCreator::create_cursor();
   if (!pCursor)
   {
@@ -213,7 +227,6 @@ bool GameInitializer::createMainMenu()
   pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
   pGuiObject->addChildBack(pCursor);
 
-  // TODO: create main menu
 
   return true;
 }

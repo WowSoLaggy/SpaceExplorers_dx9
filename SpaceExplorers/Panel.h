@@ -15,6 +15,9 @@ public:
   Panel();
   virtual ~Panel() { }
 
+  // TODO: this method is used only once (when loading the game)
+  // All this should be in some other way - there is absolutely no need to override it
+  // in every Gui class (or not?)
   virtual bool loadAllTextures() override;
 
   bool setTexture(const std::string& pTextureName);

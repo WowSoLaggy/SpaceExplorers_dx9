@@ -105,6 +105,9 @@
     <ClCompile Include="Cursor.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -171,6 +174,12 @@
       <Filter>src\Gui</Filter>
     </ClInclude>
     <ClInclude Include="Cursor.h">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonStates.h">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
   </ItemGroup>

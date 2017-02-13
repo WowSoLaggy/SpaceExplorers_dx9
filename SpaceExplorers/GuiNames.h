@@ -13,6 +13,7 @@ namespace GuiNames
   const std::string LOADING_SCREEN_BACKGROUND = "Loading Screen Background";
 
   const std::string MAINMENU_BACKGROUND = "MainMenu Background";
+  const std::string MAINMENU_BUTTON = "MainMenu Button";
 
 } // ns GuiNames
 
