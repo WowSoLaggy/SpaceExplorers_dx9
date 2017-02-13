@@ -39,6 +39,8 @@ Doh3d::InputPars InputDevice::getInputPars()
   inputPars.mouseSensX() = 1;
   inputPars.mouseSensY() = 1;
 
+  inputPars.mouseAcceleration() = true;
+
   // TODO:
   /*inputPars.onMouseMove() = std::bind(&Engine::OnMouseMove, this);
   inputPars.onMouseDown() = std::bind(&Engine::OnMouseDown, this, std::placeholders::_1);
