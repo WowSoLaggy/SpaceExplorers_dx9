@@ -46,8 +46,12 @@ const Scene* SceneObject::scene() const
 }
 
 
-SceneObject* SceneObject::findChild(const std::string& pChildName) const
+SceneObject* SceneObject::findChild(const std::string& pChildName, int pDepth /* = -1 */) const
 {
+  if (pDepth == 0)
+    return nullptr;
+  --pDepth;
+
   for (auto* pChild : d_children)
   {
     if (auto* pSceneObject = dynamic_cast<SceneObject*>(pChild))
@@ -55,7 +59,7 @@ SceneObject* SceneObject::findChild(const std::string& pChildName) const
       if (pSceneObject->name() == pChildName)
         return pSceneObject;
 
-      if (pSceneObject = pSceneObject->findChild(pChildName))
+      if (pSceneObject = pSceneObject->findChild(pChildName, pDepth))
         return pSceneObject;
     }
   }

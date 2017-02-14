@@ -16,7 +16,7 @@ public:
   std::string& name() { return d_name; }
   const std::string& name() const { return d_name; }
 
-  SceneObject* findChild(const std::string& pChildName) const;
+  SceneObject* findChild(const std::string& pChildName, int pDepth = -1) const;
 
 protected:
 
