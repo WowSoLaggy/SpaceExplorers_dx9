@@ -41,14 +41,13 @@ Doh3d::InputPars InputDevice::getInputPars()
 
   inputPars.mouseAcceleration() = true;
 
-  // TODO:
-  /*inputPars.onMouseMove() = std::bind(&Engine::OnMouseMove, this);
-  inputPars.onMouseDown() = std::bind(&Engine::OnMouseDown, this, std::placeholders::_1);
-  inputPars.onMouseUp() = std::bind(&Engine::OnMouseUp, this, std::placeholders::_1);
+  inputPars.onMouseMove() = std::bind(&InputDevice::OnMouseMove, this);
+  inputPars.onMouseDown() = std::bind(&InputDevice::OnMouseDown, this, std::placeholders::_1);
+  inputPars.onMouseUp() = std::bind(&InputDevice::OnMouseUp, this, std::placeholders::_1);
 
-  inputPars.onKeyPressed() = std::bind(&Engine::OnKeyPressed, this, std::placeholders::_1);
-  inputPars.onKeyDown() = std::bind(&Engine::OnKeyDown, this, std::placeholders::_1);
-  inputPars.onKeyUp() = std::bind(&Engine::OnKeyUp, this, std::placeholders::_1);*/
+  inputPars.onKeyPressed() = std::bind(&InputDevice::OnKeyPressed, this, std::placeholders::_1);
+  inputPars.onKeyDown() = std::bind(&InputDevice::OnKeyDown, this, std::placeholders::_1);
+  inputPars.onKeyUp() = std::bind(&InputDevice::OnKeyUp, this, std::placeholders::_1);
 
   return inputPars;
 }

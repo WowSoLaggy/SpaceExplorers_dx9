@@ -173,6 +173,7 @@
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GuiObject.cpp" />
     <ClCompile Include="GuiCreator.cpp" />
+    <ClCompile Include="InputHandlers.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="RenderDevice.cpp" />

@@ -18,6 +18,17 @@ private:
 
   Doh3d::InputPars getInputPars();
 
+
+  // Input handlers
+
+  bool OnMouseMove();
+  bool OnMouseDown(int pButton);
+  bool OnMouseUp(int pButton);
+
+  bool OnKeyPressed(int pKey);
+  bool OnKeyDown(int pKey);
+  bool OnKeyUp(int pKey);
+
 };
 
 

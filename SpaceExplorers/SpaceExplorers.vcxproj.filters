@@ -108,6 +108,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
+    <ClCompile Include="InputHandlers.cpp">
+      <Filter>src\GameInput</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
