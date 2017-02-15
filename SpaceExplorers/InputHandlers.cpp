@@ -2,33 +2,33 @@
 #include "InputDevice.h"
 
 
-bool InputDevice::OnMouseMove()
+bool InputDevice::onMouseMove()
 {
   return true;
 }
 
-bool InputDevice::OnMouseDown(int pButton)
+bool InputDevice::onMouseDown(int pButton)
 {
   return true;
 }
 
-bool InputDevice::OnMouseUp(int pButton)
+bool InputDevice::onMouseUp(int pButton)
 {
   return true;
 }
 
 
-bool InputDevice::OnKeyPressed(int pKey)
+bool InputDevice::onKeyPressed(int pKey)
 {
   return true;
 }
 
-bool InputDevice::OnKeyDown(int pKey)
+bool InputDevice::onKeyDown(int pKey)
 {
   return true;
 }
 
-bool InputDevice::OnKeyUp(int pKey)
+bool InputDevice::onKeyUp(int pKey)
 {
   return true;
 }

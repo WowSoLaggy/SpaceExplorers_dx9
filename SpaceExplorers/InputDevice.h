@@ -4,7 +4,7 @@
 #define INC_INPUTDEVICE_H
 
 
-class InputDevice
+class InputDevice : public Doh3d::IInputHandler
 {
 public:
 
@@ -21,13 +21,13 @@ private:
 
   // Input handlers
 
-  bool OnMouseMove();
-  bool OnMouseDown(int pButton);
-  bool OnMouseUp(int pButton);
+  virtual bool onMouseMove() override;
+  virtual bool onMouseDown(int pButton) override;
+  virtual bool onMouseUp(int pButton) override;
 
-  bool OnKeyPressed(int pKey);
-  bool OnKeyDown(int pKey);
-  bool OnKeyUp(int pKey);
+  virtual bool onKeyPressed(int pKey) override;
+  virtual bool onKeyDown(int pKey) override;
+  virtual bool onKeyUp(int pKey) override;
 
 };
 
