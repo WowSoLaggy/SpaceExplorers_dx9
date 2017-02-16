@@ -22,12 +22,12 @@ private:
   // Input handlers
 
   virtual bool onMouseMove() override;
-  virtual bool onMouseDown(int pButton) override;
-  virtual bool onMouseUp(int pButton) override;
+  virtual bool onMouseDown(Doh3d::MouseButton pButton) override;
+  virtual bool onMouseUp(Doh3d::MouseButton pButton) override;
 
-  virtual bool onKeyPressed(int pKey) override;
-  virtual bool onKeyDown(int pKey) override;
-  virtual bool onKeyUp(int pKey) override;
+  virtual bool onKeyPressed(Doh3d::Key pKey) override;
+  virtual bool onKeyDown(Doh3d::Key pKey) override;
+  virtual bool onKeyUp(Doh3d::Key pKey) override;
 
 };
 

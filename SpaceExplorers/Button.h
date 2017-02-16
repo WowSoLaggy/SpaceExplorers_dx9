@@ -36,6 +36,17 @@ private:
   virtual bool updateSelf(float pDt) override;
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
+  
+  // Input handlers
+
+  virtual bool onMouseMove() override;
+  virtual bool onMouseDown(Doh3d::MouseButton pButton) override;
+  virtual bool onMouseUp(Doh3d::MouseButton pButton) override;
+
+  virtual bool onKeyPressed(Doh3d::Key pKey) override;
+  virtual bool onKeyDown(Doh3d::Key pKey) override;
+  virtual bool onKeyUp(Doh3d::Key pKey) override;
+
 };
 
 
