@@ -114,6 +114,9 @@
     <ClCompile Include="Button_input.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
+    <ClCompile Include="IGui.cpp">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">

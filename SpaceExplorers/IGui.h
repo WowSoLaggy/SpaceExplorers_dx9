@@ -11,6 +11,8 @@ public:
 
   virtual ~IGui() { }
 
+  bool containsPoint(Doh3d::Position2 pPoint);
+
 };
 
 

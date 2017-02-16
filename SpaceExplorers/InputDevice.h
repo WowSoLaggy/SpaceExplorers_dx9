@@ -18,7 +18,7 @@ private:
 
   Doh3d::InputPars getInputPars();
 
-
+  
   // Input handlers
 
   virtual bool onMouseMove() override;
