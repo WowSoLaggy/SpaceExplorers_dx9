@@ -35,7 +35,7 @@ bool Game::mainLoop()
 
     if (!d_inputDevice.check())
     {
-      if (!d_inputDevice.recreate())
+      if (!d_inputDevice.recreate(d_scene))
         break;
       continue;
     }

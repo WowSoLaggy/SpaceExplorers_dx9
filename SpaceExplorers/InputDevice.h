@@ -4,6 +4,9 @@
 #define INC_INPUTDEVICE_H
 
 
+class Scene;
+
+
 class InputDevice : public Doh3d::IInputHandler
 {
 public:
@@ -12,11 +15,13 @@ public:
   bool dispose();
 
   bool check();
-  bool recreate();
+  bool recreate(Scene& pScene);
 
 private:
 
   Doh3d::InputPars getInputPars();
+
+  Scene* d_pScene;
 
   
   // Input handlers

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "InputDevice.h"
 
+#include "Scene.h"
+
 
 bool InputDevice::init()
 {
@@ -18,7 +20,7 @@ bool InputDevice::check()
   return Doh3d::InputMan::isCreated() && Doh3d::InputMan::checkDevices();
 }
 
-bool InputDevice::recreate()
+bool InputDevice::recreate(Scene& pScene)
 {
   LOG(__FUNCTION__);
 
@@ -27,6 +29,8 @@ bool InputDevice::recreate()
     echo("ERROR: Can't recreate InputMan.");
     return false;
   }
+
+  d_pScene = &pScene;
 
   return true;
 }

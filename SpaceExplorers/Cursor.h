@@ -19,6 +19,17 @@ public:
 
   bool setTexture(const std::string& pTextureName);
 
+
+  // Input handlers
+
+  virtual bool onMouseMove() override { return false; }
+  virtual bool onMouseDown(Doh3d::MouseButton pButton) override { return false; }
+  virtual bool onMouseUp(Doh3d::MouseButton pButton) override { return false; }
+
+  virtual bool onKeyPressed(Doh3d::Key pKey) override { return false; }
+  virtual bool onKeyDown(Doh3d::Key pKey) override { return false; }
+  virtual bool onKeyUp(Doh3d::Key pKey) override { return false; }
+
 private:
 
   Doh3d::TextureId d_ti;
