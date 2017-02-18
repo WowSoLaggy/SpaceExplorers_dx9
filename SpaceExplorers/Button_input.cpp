@@ -47,12 +47,8 @@ bool Button::onMouseUp(Doh3d::MouseButton pButton)
   {
     if (d_state == ButtonState::Pressed)
     {
-      // TODO: add click to button
-      /*if (!click())
-      {
-        echo("ERROR: Error occurred while button click.");
+      if (!click())
         return false;
-      }*/
     }
 
     d_state = ButtonState::Selected;

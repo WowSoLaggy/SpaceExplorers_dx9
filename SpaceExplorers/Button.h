@@ -25,6 +25,10 @@ public:
     const std::string& pTextureNameDisabled);
 
 
+  void setOnClickEvent(std::function<bool()> pEvent) { d_onClickEvent = pEvent; }
+  bool click();
+
+
   // Input handlers
 
   virtual bool onMouseMove() override;
@@ -43,6 +47,8 @@ private:
   Doh3d::TextureId d_tiDisabled;
 
   ButtonState d_state;
+
+  std::function<bool()> d_onClickEvent;
 
   virtual bool updateSelf(float pDt) override;
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;

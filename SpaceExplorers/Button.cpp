@@ -86,3 +86,21 @@ bool Button::setTexture(
 
   return true;
 }
+
+
+bool Button::click()
+{
+  LOG("GButton::click()");
+
+  // TODO: return visibility
+  if ((d_state == ButtonState::Disabled)/* || (!d_isVisible)*/)
+    return true;
+
+  if (d_onClickEvent != nullptr)
+  {
+    if (!d_onClickEvent())
+      return false;
+  }
+
+  return true;
+}
