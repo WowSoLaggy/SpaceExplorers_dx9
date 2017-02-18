@@ -172,8 +172,9 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameInitializer.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GuiControlCreator.cpp" />
     <ClCompile Include="GuiObject.cpp" />
-    <ClCompile Include="GuiCreator.cpp" />
+    <ClCompile Include="GuiController.cpp" />
     <ClCompile Include="IGui.cpp" />
     <ClCompile Include="InputHandlers.cpp" />
     <ClCompile Include="Panel.cpp" />
@@ -204,9 +205,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameInitializer.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GuiControlCreator.h" />
     <ClInclude Include="GuiNames.h" />
     <ClInclude Include="GuiObject.h" />
-    <ClInclude Include="GuiCreator.h" />
+    <ClInclude Include="GuiController.h" />
     <ClInclude Include="IGui.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="InputDevice.h" />

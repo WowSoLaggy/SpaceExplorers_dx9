@@ -92,7 +92,7 @@ bool Button::click()
 {
   LOG("GButton::click()");
 
-  // TODO: return visibility
+  // TODO: return the visibility check
   if ((d_state == ButtonState::Disabled)/* || (!d_isVisible)*/)
     return true;
 

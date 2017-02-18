@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef INC_GUICREATOR_H
-#define INC_GUICREATOR_H
+#ifndef INC_GUICONTROLCREATOR_H
+#define INC_GUICONTROLCREATOR_H
 
 
 #include "GuiObject.h"
@@ -10,7 +10,7 @@
 #include "Button.h"
 
 
-class GuiCreator
+class GuiControlCreator
 {
 public:
 
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif // INC_GUICREATOR_H
+#endif // INC_GUICONTROLCREATOR_H

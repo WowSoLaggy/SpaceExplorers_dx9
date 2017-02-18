@@ -87,9 +87,6 @@
     <ClCompile Include="GameInitializer.cpp">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClCompile>
-    <ClCompile Include="GuiCreator.cpp">
-      <Filter>src\Gui</Filter>
-    </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
@@ -116,6 +113,12 @@
     </ClCompile>
     <ClCompile Include="IGui.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiControlCreator.cpp">
+      <Filter>src\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiController.cpp">
+      <Filter>src\Gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,9 +164,6 @@
     <ClInclude Include="GameInitializer.h">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GuiCreator.h">
-      <Filter>src\Gui</Filter>
-    </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
@@ -190,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="ButtonStates.h">
       <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiControlCreator.h">
+      <Filter>src\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiController.h">
+      <Filter>src\Gui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,8 +2,9 @@
 #include "GameInitializer.h"
 
 #include "Scene.h"
-#include "GuiCreator.h"
-#include "GuiNames.h"
+#include "GuiControlCreator.h"  ///< TODO remove this header
+#include "GuiController.h"
+#include "GuiNames.h"           ///< TODO remove this header
 
 
 GameInitializer::GameInitializer(const std::string& pTextureDir, const std::string& pFontDir)
@@ -103,29 +104,8 @@ bool GameInitializer::createLoadingGui()
     return false;
   }
 
-
-  auto* pGuiObject = GuiCreator::create_guiObject();
-  if (!pGuiObject)
-  {
-    echo("ERROR: Can't create GuiObject.");
+  if (!GuiController::createLoadingGui(*pScene))
     return false;
-  }
-
-  pScene->addChildBack(pGuiObject);
-
-
-  auto* pBackground = GuiCreator::create_loadScreen_background();
-  if (!pBackground)
-  {
-    echo("ERROR: Can't create the background for the loading screen.");
-    return false;
-  }
-
-  if (!pBackground->loadAllTextures())
-    return false;
-  pBackground->setPosition(Doh3d::Screen::getClientCenter() - pBackground->getSizeHalf());
-
-  pGuiObject->addChildBack(pBackground);
 
   return true;
 }
@@ -162,14 +142,8 @@ bool GameInitializer::deleteLoadingGui()
     return false;
   }
 
-  auto* pLoadingScreenBackground = pScene->findChild(GuiNames::LOADING_SCREEN_BACKGROUND);
-  if (!pLoadingScreenBackground)
-  {
-    echo("ERROR: Can't find the loading screen background.");
+  if (!GuiController::deleteLoadingGui(*pScene))
     return false;
-  }
-
-  pLoadingScreenBackground->deleteThis();
 
   return true;
 }
@@ -185,48 +159,8 @@ bool GameInitializer::createMainMenu()
     return false;
   }
 
-  // TODO: move this to some inline func (maybe search for scene also?)
-  auto* pGuiObject = pScene->findChild(GuiNames::GUI_OBJECT);
-  if (!pGuiObject)
-  {
-    echo("ERROR: Can't create GuiObject.");
+  if (!GuiController::createMainMenu(*pScene))
     return false;
-  }
-
-
-  // TODO: group Gui groups under one more GuiObject with name ("MainMenu" or "Loading", ...)
-  // so that all the group can be easily found and deleted
-
-  
-  auto* pBackground = GuiCreator::create_mainMenu_backGround();
-  if (!pBackground)
-  {
-    echo("ERROR: Can't create the background for the main menu.");
-    return false;
-  }
-  pBackground->setPosition(Doh3d::Position2::zero());
-  pGuiObject->addChildBack(pBackground);
-
-
-  auto* pExitButton = GuiCreator::create_mainMenu_button();
-  if (!pExitButton)
-  {
-    echo("ERROR: Can't create the main menu button.");
-    return false;
-  }
-  pExitButton->setPosition(Doh3d::Screen::getClientCenter() - pExitButton->getSizeHalf());
-  pGuiObject->addChildBack(pExitButton);
-
-  
-  auto* pCursor = GuiCreator::create_cursor();
-  if (!pCursor)
-  {
-    echo("ERROR: Can't create the cursor.");
-    return false;
-  }
-  pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
-  pGuiObject->addChildBack(pCursor);
-
 
   return true;
 }

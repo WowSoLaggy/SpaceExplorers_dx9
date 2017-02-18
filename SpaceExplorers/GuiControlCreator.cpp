@@ -1,17 +1,17 @@
 #include "stdafx.h"
-#include "GuiCreator.h"
+#include "GuiControlCreator.h"
 
 #include "GuiNames.h"
 
 
-GuiObject* GuiCreator::create_guiObject()
+GuiObject* GuiControlCreator::create_guiObject()
 {
   auto* pGuiObject = new GuiObject();
   pGuiObject->name() = GuiNames::GUI_OBJECT;
   return pGuiObject;
 }
 
-Cursor* GuiCreator::create_cursor()
+Cursor* GuiControlCreator::create_cursor()
 {
   const std::string cursor_texture_fileName = "Cursor_32_32_1_n.png";
   const Doh3d::Size2 cursor_size = { 32, 32 };
@@ -34,7 +34,7 @@ Cursor* GuiCreator::create_cursor()
 }
 
 
-Panel* GuiCreator::create_loadScreen_background()
+Panel* GuiControlCreator::create_loadScreen_background()
 {
   const std::string loadScreen_background_texture_fileName = "Loading_256_64_1_n.png";
   const Doh3d::Size2 loadScreen_background_size = { 256, 64 };
@@ -57,7 +57,7 @@ Panel* GuiCreator::create_loadScreen_background()
 }
 
 
-Panel* GuiCreator::create_mainMenu_backGround()
+Panel* GuiControlCreator::create_mainMenu_backGround()
 {
   const std::string mainMenu_background_texture_fileName = "MainMenu_1920_1080_1_n.png";
   const Doh3d::Size2 mainMenu_background_size = { 1920, 1080 }; //< TODO: this size should be adapted for the screen resolution
@@ -80,7 +80,7 @@ Panel* GuiCreator::create_mainMenu_backGround()
   return pPanel;
 }
 
-Button* GuiCreator::create_mainMenu_button()
+Button* GuiControlCreator::create_mainMenu_button()
 {
   const std::string mainMenu_button_texture_fileName_normal = "Button_256_32_1_n.png";
   const std::string mainMenu_button_texture_fileName_pressed = "ButtonPressed_256_32_1_n.png";
