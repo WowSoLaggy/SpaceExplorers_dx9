@@ -1,17 +1,19 @@
 #pragma once
 
-#ifndef INC_GAMEINITIALIZER_H
-#define INC_GAMEINITIALIZER_H
+#ifndef INC_GAMECONTROLLER_H
+#define INC_GAMECONTROLLER_H
 
 
 #include "SceneObject.h"
 
 
-class GameInitializer : public SceneObject
+class GameController : public SceneObject
 {
 public:
 
-  GameInitializer(const std::string& pTextureDir, const std::string& pFontDir);
+  GameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir);
+
+  void stopGame();
 
 private:
 
@@ -22,11 +24,15 @@ private:
     GameLoadOk,
     GameLoadFailed,
     ReadyForMainMenu,
+    InGame,
+    GameStopping,
+    GameStopped,
   };
 
   const std::string d_textureDir;
   const std::string d_fontDir;
 
+  bool& d_runMainLoop;
   State d_state;
 
   bool initGameLoadMenu();
@@ -38,11 +44,12 @@ private:
   void loadGame();
   bool deleteLoadingGui();
   bool createMainMenu();
-  bool deleteSelf();
+
+  bool unloadGame();
 
   virtual bool updateSelf(float pDt) override;
 
 };
 
 
-#endif // INC_GAMEINITIALIZER_H
+#endif // INC_GAMECONTROLLER_H

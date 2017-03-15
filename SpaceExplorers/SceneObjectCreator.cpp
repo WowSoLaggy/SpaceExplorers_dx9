@@ -2,7 +2,7 @@
 #include "SceneObjectCreator.h"
 
 
-GameInitializer* SceneObjectCreator::create_gameInitializer(const std::string& pTextureDir, const std::string& pFontDir)
+GameController* SceneObjectCreator::create_gameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
 {
-  return new GameInitializer(pTextureDir, pFontDir);
+  return new GameController(pRunMainLoop, pTextureDir, pFontDir);
 }

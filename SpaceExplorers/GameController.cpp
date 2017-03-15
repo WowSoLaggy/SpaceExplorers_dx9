@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "GameInitializer.h"
+#include "GameController.h"
 
 #include "Scene.h"
 #include "GuiControlCreator.h"  ///< TODO remove this header
@@ -7,13 +7,19 @@
 #include "GuiNames.h"           ///< TODO remove this header
 
 
-GameInitializer::GameInitializer(const std::string& pTextureDir, const std::string& pFontDir)
-  : d_textureDir(pTextureDir), d_fontDir(pFontDir), d_state(State::NotInited)
+GameController::GameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
+  : d_runMainLoop(pRunMainLoop), d_textureDir(pTextureDir), d_fontDir(pFontDir), d_state(State::NotInited)
 {
 }
 
 
-bool GameInitializer::updateSelf(float pDt)
+void GameController::stopGame()
+{
+  d_state = State::GameStopping;
+}
+
+
+bool GameController::updateSelf(float pDt)
 {
   LOG(__FUNCTION__);
 
@@ -37,8 +43,17 @@ bool GameInitializer::updateSelf(float pDt)
       return false;
     if (!createMainMenu())
       return false;
-    if (!deleteSelf())
+    break;
+
+  case State::InGame:
+    break;
+
+  case State::GameStopping:
+    if (!unloadGame())
       return false;
+    break;
+
+  case State::GameStopped:
     break;
 
   default:
@@ -52,7 +67,7 @@ bool GameInitializer::updateSelf(float pDt)
 }
 
 
-bool GameInitializer::initGameLoadMenu()
+bool GameController::initGameLoadMenu()
 {
   if (!initResourceManager())
     return false;
@@ -66,7 +81,7 @@ bool GameInitializer::initGameLoadMenu()
   return true;
 }
 
-bool GameInitializer::checkGameIsLoaded()
+bool GameController::checkGameIsLoaded()
 {
   if (d_state == State::GameLoading)
     return true;
@@ -82,7 +97,7 @@ bool GameInitializer::checkGameIsLoaded()
 }
 
 
-bool GameInitializer::initResourceManager()
+bool GameController::initResourceManager()
 {
   // TODO: change to calls to teh ResourceController of this project
   Doh3d::ResourceMan::setTextureDir(d_textureDir);
@@ -93,7 +108,7 @@ bool GameInitializer::initResourceManager()
   return true;
 }
 
-bool GameInitializer::createLoadingGui()
+bool GameController::createLoadingGui()
 {
   LOG(__FUNCTION__);
 
@@ -110,17 +125,17 @@ bool GameInitializer::createLoadingGui()
   return true;
 }
 
-bool GameInitializer::startGameLoadingThread()
+bool GameController::startGameLoadingThread()
 {
   d_state = State::GameLoading;
 
-  std::thread loadGameThread(std::bind(&GameInitializer::loadGame, this));
+  std::thread loadGameThread(std::bind(&GameController::loadGame, this));
   loadGameThread.detach();
 
   return true;
 }
 
-void GameInitializer::loadGame()
+void GameController::loadGame()
 {
   if (!Doh3d::ResourceMan::loadResources())
   {
@@ -131,7 +146,7 @@ void GameInitializer::loadGame()
   d_state = State::GameLoadOk;
 }
 
-bool GameInitializer::deleteLoadingGui()
+bool GameController::deleteLoadingGui()
 {
   LOG(__FUNCTION__);
 
@@ -148,7 +163,7 @@ bool GameInitializer::deleteLoadingGui()
   return true;
 }
 
-bool GameInitializer::createMainMenu()
+bool GameController::createMainMenu()
 {
   LOG(__FUNCTION__);
 
@@ -162,11 +177,15 @@ bool GameInitializer::createMainMenu()
   if (!GuiController::createMainMenu(*pScene))
     return false;
 
+  d_state = State::InGame;
+
   return true;
 }
 
-bool GameInitializer::deleteSelf()
+
+bool GameController::unloadGame()
 {
-  deleteThis();
+  d_state = State::GameStopped;
+  d_runMainLoop = false;
   return true;
 }

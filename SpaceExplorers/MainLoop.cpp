@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Game.h"
 
+#include "GameLogic.h"
+
 
 bool Game::mainLoop()
 {
@@ -8,9 +10,11 @@ bool Game::mainLoop()
   timer.Start();
   float deltaTime = 0;
 
-  d_gameLogic.onGameStart(d_scene, TEXTURE_DIR, FONT_DIR);
 
-  d_runMainLoop = true;
+  bool d_runMainLoop = true;
+  GameLogic::startGame(d_scene, d_runMainLoop, TEXTURE_DIR, FONT_DIR);
+
+
   while (d_runMainLoop)
   {
     if (Doh3d::winPeekExit())

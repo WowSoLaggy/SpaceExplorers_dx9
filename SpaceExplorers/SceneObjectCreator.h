@@ -4,14 +4,14 @@
 #define INC_SCENEOBJECTCREATOR_H
 
 
-#include "GameInitializer.h"
+#include "GameController.h"
 
 
 class SceneObjectCreator
 {
 public:
 
-  static GameInitializer* create_gameInitializer(const std::string& pTextureDir, const std::string& pFontDir);
+  static GameController* create_gameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir);
 
 };
 

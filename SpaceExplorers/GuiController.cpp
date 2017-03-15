@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "GuiControlCreator.h"
 #include "GuiNames.h"
+#include "GameLogic.h"
 
 
 bool GuiController::createLoadingGui(Scene& pScene)
@@ -87,6 +88,7 @@ bool GuiController::createMainMenu(Scene& pScene)
     return false;
   }
   pExitButton->setPosition(Doh3d::Screen::getClientCenter() - pExitButton->getSizeHalf());
+  pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
   pGuiObject->addChildBack(pExitButton);
 
 

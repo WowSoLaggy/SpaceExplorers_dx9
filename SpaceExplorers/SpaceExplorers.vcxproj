@@ -170,7 +170,7 @@
     <ClCompile Include="Button_input.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameInitializer.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GuiControlCreator.cpp" />
     <ClCompile Include="GuiObject.cpp" />
@@ -203,7 +203,7 @@
     <ClInclude Include="ButtonStates.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GameInitializer.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GuiControlCreator.h" />
     <ClInclude Include="GuiNames.h" />

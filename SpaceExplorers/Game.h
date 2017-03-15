@@ -10,7 +10,6 @@
 #include "SceneUpdater.h"
 #include "SceneDrawer.h"
 #include "Scene.h"
-#include "GameLogic.h"
 
 
 class Game
@@ -41,9 +40,6 @@ private:
   SceneUpdater d_sceneUpdater;
   SceneDrawer d_sceneDrawer;
   Scene d_scene;
-  GameLogic d_gameLogic;
-
-  bool d_runMainLoop;
 
 
   bool init(const Doh3d::StartupPars& pStartupPars);
