@@ -17,7 +17,7 @@ public:
 
   bool containsPoint(Doh3d::Position2 pPoint);
 
-  virtual const Doh3d::Position2& getPosition() const override;
+  virtual const Doh3d::Position2 getPosition() const override;
 
 };
 

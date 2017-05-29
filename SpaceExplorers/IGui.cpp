@@ -8,14 +8,12 @@ bool IGui::containsPoint(Doh3d::Position2 pPoint)
 }
 
 
-const Doh3d::Position2& IGui::getPosition() const
+const Doh3d::Position2 IGui::getPosition() const
 {
-  if (const auto* pParent = dynamic_cast<const IGui*>(parent()))
-  {
-    // TODO: Think about how this can be done better without the static one
-    static Doh3d::Position2 position = IPositioned2::getPosition() + pParent->getPosition();
-    return position;
-  }
+  auto position = IPositioned2::getPosition();
 
-  return IPositioned2::getPosition();
+  if (const auto* pParent = dynamic_cast<const IGui*>(parent()))
+    position += pParent->getPosition();
+
+  return position;
 }
