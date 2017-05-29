@@ -194,6 +194,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +222,7 @@
     <ClInclude Include="SceneObjectCreator.h" />
     <ClInclude Include="SceneUpdater.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>

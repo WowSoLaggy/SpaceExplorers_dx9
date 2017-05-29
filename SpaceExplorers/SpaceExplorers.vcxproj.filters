@@ -120,6 +120,9 @@
     <ClCompile Include="GameController.cpp">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>src\Gui\GuiObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -196,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="GameController.h">
       <Filter>src\Scene\SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
