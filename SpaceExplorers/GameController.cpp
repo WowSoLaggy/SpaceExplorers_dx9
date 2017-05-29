@@ -99,7 +99,7 @@ bool GameController::checkGameIsLoaded()
 
 bool GameController::initResourceManager()
 {
-  // TODO: change to calls to teh ResourceController of this project
+  // TODO: change to calls to the ResourceController of this project
   Doh3d::ResourceMan::setTextureDir(d_textureDir);
   Doh3d::ResourceMan::setFontDir(d_fontDir);
   if (!Doh3d::ResourceMan::indexResources())
