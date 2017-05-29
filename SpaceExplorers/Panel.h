@@ -8,7 +8,7 @@
 #include "IGui.h"
 
 
-class Panel : public virtual SceneObject, public virtual IGui
+class Panel : public IGui
 {
 public:
 

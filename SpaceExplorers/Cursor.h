@@ -8,7 +8,7 @@
 #include "IGui.h"
 
 
-class Cursor : public virtual SceneObject, public virtual IGui
+class Cursor : public IGui
 {
 public:
 
