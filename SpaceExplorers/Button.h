@@ -4,12 +4,11 @@
 #define INC_BUTTON_H
 
 
-#include "SceneObject.h"
 #include "IGui.h"
 #include "ButtonStates.h"
 
 
-class Button : public virtual SceneObject, public virtual IGui
+class Button : public IGui
 {
 public:
 
@@ -27,6 +26,14 @@ public:
 
   void setOnClickEvent(std::function<bool()> pEvent) { d_onClickEvent = pEvent; }
   bool click();
+
+
+  virtual void setSize(const Doh3d::Size2& pSize) override;
+
+
+  bool setText(const std::string& pText);
+  bool setFont(const std::string& pFontName);
+  bool setTextAlign(Doh3d::TextAlign pTextAlign);
 
 
   // Input handlers
@@ -47,6 +54,8 @@ private:
   Doh3d::TextureId d_tiDisabled;
 
   ButtonState d_state;
+
+  Doh3d::TextContainer d_textContainer;
 
   std::function<bool()> d_onClickEvent;
 

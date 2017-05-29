@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Button.h"
 
+#include "Text.h"
+
 
 Button::Button()
 {
@@ -21,6 +23,8 @@ bool Button::updateSelf(float pDt)
 bool Button::drawSelf(Doh3d::Sprite& pSprite) const
 {
   LOG(__FUNCTION__);
+
+  // Draw the main texture
 
   int ti = d_tiNormal;
 
@@ -46,6 +50,15 @@ bool Button::drawSelf(Doh3d::Sprite& pSprite) const
 
   if (!pSprite.draw(Doh3d::ResourceMan::getTexture(ti).get(), &Doh3d::ResourceMan::getTexture(ti).getFrame(0),
                     0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
+  {
+    return false;
+  }
+
+  // Draw the text
+  
+  if (d_textContainer.hasText() &&
+    !pSprite.draw(d_textContainer.getTexture(), &d_textContainer.getRect(),
+                    0, (getPosition() + d_textContainer.getPosition()), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
   }
@@ -90,7 +103,7 @@ bool Button::setTexture(
 
 bool Button::click()
 {
-  LOG("GButton::click()");
+  LOG(__FUNCTION__);
 
   // TODO: return the visibility check
   if ((d_state == ButtonState::Disabled)/* || (!d_isVisible)*/)
@@ -100,6 +113,57 @@ bool Button::click()
   {
     if (!d_onClickEvent())
       return false;
+  }
+
+  return true;
+}
+
+
+void Button::setSize(const Doh3d::Size2& pSize)
+{
+  LOG(__FUNCTION__);
+
+  IGui::setSize(pSize);
+
+  if (!d_textContainer.setBasisPosition(pSize / 2))
+    echo("ERROR: Can't set the text basis position for Button.");
+}
+
+
+bool Button::setText(const std::string& pText)
+{
+  LOG(__FUNCTION__);
+
+  if (!d_textContainer.setText(pText))
+  {
+    echo("ERROR: Can't set text to the Button.");
+    return false;
+  }
+
+  return true;
+}
+
+bool Button::setFont(const std::string& pFontName)
+{
+  LOG(__FUNCTION__);
+
+  if (!d_textContainer.setFont(pFontName))
+  {
+    echo("ERROR: Can't set font to the Button.");
+    return false;
+  }
+
+  return true;
+}
+
+bool Button::setTextAlign(Doh3d::TextAlign pTextAlign)
+{
+  LOG(__FUNCTION__);
+
+  if (!d_textContainer.setTextAlign(pTextAlign))
+  {
+    echo("ERROR: Can't set text align to the Button.");
+    return false;
   }
 
   return true;

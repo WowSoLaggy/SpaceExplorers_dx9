@@ -106,5 +106,19 @@ Button* GuiControlCreator::create_mainMenu_button()
   pButton->setSize(mainMenu_button_size);
 
 
+  pButton->setFont("Gadugi");
+  pButton->setTextAlign(Doh3d::TextAlign::Center);
+
+
   return pButton;
+}
+
+Text* GuiControlCreator::create_mainMenu_text()
+{
+  auto* pText = new Text();
+  pText->name() = GuiNames::MAINMENU_TEXT;
+
+  pText->setFont("Gadugi");
+
+  return pText;
 }
