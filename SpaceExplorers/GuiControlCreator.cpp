@@ -7,7 +7,6 @@
 GuiObject* GuiControlCreator::create_guiObject()
 {
   auto* pGuiObject = new GuiObject();
-  pGuiObject->name() = GuiNames::GUI_OBJECT;
   return pGuiObject;
 }
 
@@ -18,7 +17,7 @@ Cursor* GuiControlCreator::create_cursor()
 
 
   auto* pCursor = new Cursor();
-  pCursor->name() = GuiNames::CURSOR;
+  pCursor->setName(GuiNames::CURSOR);
 
 
   if (!pCursor->setTexture(cursor_texture_fileName))
@@ -41,7 +40,7 @@ Panel* GuiControlCreator::create_loadScreen_background()
 
 
   auto* pPanel = new Panel();
-  pPanel->name() = GuiNames::LOADING_SCREEN_BACKGROUND;
+  pPanel->setName(GuiNames::LOADING_SCREEN_BACKGROUND);
 
 
   if (!pPanel->setTexture(loadScreen_background_texture_fileName))
@@ -65,7 +64,7 @@ Panel* GuiControlCreator::create_mainMenu_backGround()
 
 
   auto* pPanel = new Panel();
-  pPanel->name() = GuiNames::MAINMENU_BACKGROUND;
+  pPanel->setName(GuiNames::MAINMENU_BACKGROUND);
 
 
   if (!pPanel->setTexture(mainMenu_background_texture_fileName))
@@ -90,7 +89,7 @@ Button* GuiControlCreator::create_mainMenu_button()
 
 
   auto* pButton = new Button();
-  pButton->name() = GuiNames::MAINMENU_BUTTON;
+  pButton->setName(GuiNames::MAINMENU_BUTTON);
 
 
   if (!pButton->setTexture(
@@ -116,7 +115,7 @@ Button* GuiControlCreator::create_mainMenu_button()
 Text* GuiControlCreator::create_mainMenu_text()
 {
   auto* pText = new Text();
-  pText->name() = GuiNames::MAINMENU_TEXT;
+  pText->setName(GuiNames::MAINMENU_TEXT);
 
   pText->setFont("Gadugi");
 

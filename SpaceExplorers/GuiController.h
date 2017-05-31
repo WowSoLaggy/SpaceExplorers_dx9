@@ -15,6 +15,7 @@ public:
   static bool deleteLoadingGui(Scene& pScene);
 
   static bool createMainMenu(Scene& pScene);
+  static bool deleteMainMenu(Scene& pScene);
 
 };
 

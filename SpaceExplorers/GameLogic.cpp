@@ -3,6 +3,7 @@
 
 #include "SceneObjectCreator.h"
 #include "GameController.h"
+#include "GuiController.h"
 
 
 bool GameLogic::startGame(Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
@@ -40,5 +41,8 @@ bool GameLogic::stopGame(Scene& pScene)
 
 bool GameLogic::startNewGame(Scene& pScene)
 {
+  if (!GuiController::deleteMainMenu(pScene))
+    return false;
+
   return true;
 }

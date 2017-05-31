@@ -13,8 +13,8 @@ public:
 
   virtual ~SceneObject() { }
 
-  std::string& name() { return d_name; }
   const std::string& name() const { return d_name; }
+  void setName(const std::string& pNewName) { d_name = pNewName; }
 
   SceneObject* findChild(const std::string& pChildName, int pDepth = -1) const;
 
