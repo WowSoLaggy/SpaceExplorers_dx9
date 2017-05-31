@@ -14,6 +14,8 @@ public:
   static bool startGame(Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir);
   static bool stopGame(Scene& pScene);
 
+  static bool startNewGame(Scene& pScene);
+
 };
 
 

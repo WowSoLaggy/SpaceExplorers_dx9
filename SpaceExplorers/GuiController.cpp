@@ -71,6 +71,8 @@ bool GuiController::createMainMenu(Scene& pScene)
   // so that all the group can be easily found and deleted
 
 
+  // Background
+
   auto* pBackground = GuiControlCreator::create_mainMenu_backGround();
   if (!pBackground)
   {
@@ -81,6 +83,23 @@ bool GuiController::createMainMenu(Scene& pScene)
   pGuiObject->addChildBack(pBackground);
 
 
+  // Start new game
+
+  auto* pStartNewGameButton = GuiControlCreator::create_mainMenu_button();
+  if (!pStartNewGameButton)
+  {
+    echo("ERROR: Can't create the main menu button.");
+    return false;
+  }
+  pStartNewGameButton->setText("Start new game");
+  pStartNewGameButton->setPosition(Doh3d::Screen::getClientRightBottom() - pStartNewGameButton->getSize() +
+                                   Doh3d::Position2(-64, -64 - 32 - 24));
+  pStartNewGameButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
+  pGuiObject->addChildBack(pStartNewGameButton);
+
+
+  // Exit
+
   auto* pExitButton = GuiControlCreator::create_mainMenu_button();
   if (!pExitButton)
   {
@@ -88,10 +107,13 @@ bool GuiController::createMainMenu(Scene& pScene)
     return false;
   }
   pExitButton->setText("Exit");
-  pExitButton->setPosition(Doh3d::Screen::getClientCenter() - pExitButton->getSizeHalf());
+  pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
+                           Doh3d::Position2(-64, -64));
   pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
   pGuiObject->addChildBack(pExitButton);
 
+
+  // Cursor
 
   auto* pCursor = GuiControlCreator::create_cursor();
   if (!pCursor)
@@ -101,6 +123,7 @@ bool GuiController::createMainMenu(Scene& pScene)
   }
   pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
   pGuiObject->addChildBack(pCursor);
+
 
   return true;
 }

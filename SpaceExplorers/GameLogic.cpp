@@ -36,3 +36,9 @@ bool GameLogic::stopGame(Scene& pScene)
 
   return true;
 }
+
+
+bool GameLogic::startNewGame(Scene& pScene)
+{
+  return true;
+}
