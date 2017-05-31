@@ -2,9 +2,7 @@
 #include "GameController.h"
 
 #include "Scene.h"
-#include "GuiControlCreator.h"  ///< TODO remove this header
 #include "GuiController.h"
-#include "GuiNames.h"           ///< TODO remove this header
 
 
 GameController::GameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
