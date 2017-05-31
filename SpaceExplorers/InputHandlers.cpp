@@ -5,7 +5,7 @@
 #include "GuiObject.h"
 
 
-bool InputDevice::onMouseMove()
+bool InputDevice::onMouseMove(bool& pHandled)
 {
   LOG(__FUNCTION__);
 
@@ -22,33 +22,34 @@ bool InputDevice::onMouseMove()
     return false;
   }
 
-  std::function<bool(SceneObject*)> checkObject = [&](SceneObject* pSceneObject)
+  std::function<bool(SceneObject*, bool&)> checkObject = [&](SceneObject* pSceneObject, bool& pHandled)
   {
-    // TODO: check whether the "rchildren" works, check when there will be guis to check it on
     for (auto* pChild : pSceneObject->rchildren())
     {
       if (auto* sceneObject = dynamic_cast<SceneObject*>(pChild))
       {
-        if (checkObject(sceneObject))
+        if (!checkObject(sceneObject, pHandled))
+          return false;
+        if (pHandled)
           return true;
       }
     }
 
     if (auto* pGui = dynamic_cast<Doh3d::IInputHandler*>(pSceneObject))
     {
-      if (pGui->onMouseMove())
-        return true;
+      if (!pGui->onMouseMove(pHandled))
+        return false;
     }
 
-    return false;
+    return true;
   };
 
-  checkObject(pGuiObject);
+  checkObject(pGuiObject, pHandled);
 
   return true;
 }
 
-bool InputDevice::onMouseDown(Doh3d::MouseButton pButton)
+bool InputDevice::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
 {
   LOG(__FUNCTION__);
 
@@ -65,33 +66,34 @@ bool InputDevice::onMouseDown(Doh3d::MouseButton pButton)
     return false;
   }
 
-  std::function<bool(SceneObject*)> checkObject = [&](SceneObject* pSceneObject)
+  std::function<bool(SceneObject*, bool&)> checkObject = [&](SceneObject* pSceneObject, bool& pHandled)
   {
-    // TODO: check whether the "rchildren" works, check when there will be guis to check it on
     for (auto* pChild : pSceneObject->rchildren())
     {
       if (auto* sceneObject = dynamic_cast<SceneObject*>(pChild))
       {
-        if (checkObject(sceneObject))
+        if (!checkObject(sceneObject, pHandled))
+          return false;
+        if (pHandled)
           return true;
       }
     }
 
     if (auto* pGui = dynamic_cast<Doh3d::IInputHandler*>(pSceneObject))
     {
-      if (pGui->onMouseDown(pButton))
-        return true;
+      if (!pGui->onMouseDown(pButton, pHandled))
+        return false;
     }
 
-    return false;
+    return true;
   };
 
-  checkObject(pGuiObject);
+  checkObject(pGuiObject, pHandled);
 
   return true;
 }
 
-bool InputDevice::onMouseUp(Doh3d::MouseButton pButton)
+bool InputDevice::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 {
   LOG(__FUNCTION__);
 
@@ -108,28 +110,29 @@ bool InputDevice::onMouseUp(Doh3d::MouseButton pButton)
     return false;
   }
 
-  std::function<bool(SceneObject*)> checkObject = [&](SceneObject* pSceneObject)
+  std::function<bool(SceneObject*, bool&)> checkObject = [&](SceneObject* pSceneObject, bool& pHandled)
   {
-    // TODO: check whether the "rchildren" works, check when there will be guis to check it on
     for (auto* pChild : pSceneObject->rchildren())
     {
       if (auto* sceneObject = dynamic_cast<SceneObject*>(pChild))
       {
-        if (checkObject(sceneObject))
+        if (!checkObject(sceneObject, pHandled))
+          return false;
+        if (pHandled)
           return true;
       }
     }
 
     if (auto* pGui = dynamic_cast<Doh3d::IInputHandler*>(pSceneObject))
     {
-      if (pGui->onMouseUp(pButton))
-        return true;
+      if (!pGui->onMouseUp(pButton, pHandled))
+        return false;
     }
 
-    return false;
+    return true;
   };
 
-  checkObject(pGuiObject);
+  checkObject(pGuiObject, pHandled);
 
   return true;
 }

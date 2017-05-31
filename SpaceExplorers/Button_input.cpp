@@ -2,13 +2,17 @@
 #include "Button.h"
 
 
-bool Button::onMouseMove()
+bool Button::onMouseMove(bool& pHandled)
 {
+  pHandled = false;
+
   if (d_state == ButtonState::Disabled)
     return true;
 
   if (containsPoint(Doh3d::InputMan::getCursorPosition()))
   {
+    pHandled = true;
+
     if (d_state == ButtonState::Normal)
       d_state = ButtonState::Selected;
   }
@@ -18,8 +22,10 @@ bool Button::onMouseMove()
   return true;
 }
 
-bool Button::onMouseDown(Doh3d::MouseButton pButton)
+bool Button::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
 {
+  pHandled = false;
+
   if (d_state == ButtonState::Disabled)
     return true;
 
@@ -29,22 +35,29 @@ bool Button::onMouseDown(Doh3d::MouseButton pButton)
     return true;
 
   if (containsPoint(Doh3d::InputMan::getCursorPosition()))
+  {
+    pHandled = true;
     d_state = ButtonState::Pressed;
+  }
   else
     d_state = ButtonState::Normal;
 
   return true;
 }
 
-bool Button::onMouseUp(Doh3d::MouseButton pButton)
+bool Button::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 {
   LOG(__FUNCTION__);
+
+  pHandled = false;
 
   if (pButton != MBUTTON_LEFT)
     return true;
 
   if (containsPoint(Doh3d::InputMan::getCursorPosition()))
   {
+    pHandled = true;
+
     if (d_state == ButtonState::Pressed)
     {
       if (!click())
