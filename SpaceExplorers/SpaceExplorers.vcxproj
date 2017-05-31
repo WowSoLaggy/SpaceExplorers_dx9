@@ -177,6 +177,7 @@
     <ClCompile Include="GuiController.cpp" />
     <ClCompile Include="IGui.cpp" />
     <ClCompile Include="InputHandlers.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="InputDevice.cpp" />
     <ClCompile Include="RenderDevice.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="GuiObject.h" />
     <ClInclude Include="GuiController.h" />
     <ClInclude Include="IGui.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="InputDevice.h" />
     <ClInclude Include="SceneObject.h" />

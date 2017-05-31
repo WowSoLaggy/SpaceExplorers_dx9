@@ -123,6 +123,9 @@
     <ClCompile Include="Text.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Text.h">
       <Filter>src\Gui\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
