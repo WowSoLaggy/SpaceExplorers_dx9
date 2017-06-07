@@ -16,6 +16,10 @@ public:
 
   static bool startNewGame(Scene& pScene);
 
+private:
+
+  static bool createMap(Scene& pScene);
+
 };
 
 

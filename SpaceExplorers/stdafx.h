@@ -9,6 +9,7 @@
 #include <sstream>
 #include <iomanip>
 #include <thread>
+#include <cassert>
 
 #include <Doh3d.h>
 

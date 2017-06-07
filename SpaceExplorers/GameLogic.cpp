@@ -4,6 +4,7 @@
 #include "SceneObjectCreator.h"
 #include "GameController.h"
 #include "GuiController.h"
+#include "Map.h"
 
 
 bool GameLogic::startGame(Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
@@ -43,6 +44,21 @@ bool GameLogic::startNewGame(Scene& pScene)
 {
   if (!GuiController::deleteMainMenu(pScene))
     return false;
+  
+  if (!createMap(pScene))
+    return false;
+
+  return true;
+}
+
+
+bool GameLogic::createMap(Scene& pScene)
+{
+  auto* pMap = Map::createMap();
+  if (!pMap)
+    return false;
+
+  pScene.addChildBack(pMap);
 
   return true;
 }
