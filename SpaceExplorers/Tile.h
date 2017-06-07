@@ -4,10 +4,10 @@
 #define INC_TILE_H
 
 
-#include "SceneObject.h"
+#include "IGameObject.h"
 
 
-class Tile : public SceneObject
+class Tile : public IGameObject
 {
 public:
 

@@ -172,6 +172,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="IGameObject.cpp" />
     <ClCompile Include="GuiControlCreator.cpp" />
     <ClCompile Include="GuiObject.cpp" />
     <ClCompile Include="GuiController.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="IGameObject.h" />
     <ClInclude Include="GuiControlCreator.h" />
     <ClInclude Include="GuiNames.h" />
     <ClInclude Include="GuiObject.h" />

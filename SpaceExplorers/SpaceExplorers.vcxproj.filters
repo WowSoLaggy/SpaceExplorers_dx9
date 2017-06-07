@@ -129,6 +129,9 @@
     <ClCompile Include="MapBackground.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="IGameObject.cpp">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -213,6 +216,9 @@
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapBackground.h">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="IGameObject.h">
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
