@@ -19,6 +19,10 @@ private:
 
   Doh3d::TextureId d_ti;
 
+  D3DXMATRIX d_transformMatrix;
+
+  void updateScale();
+
   virtual bool updateSelf(float pDt) override;
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 };
