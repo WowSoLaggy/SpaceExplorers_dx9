@@ -23,7 +23,7 @@ public:
 
 private:
 
-  Map();
+  Map(int i_width, int i_height);
 
   int d_width;
   int d_height;

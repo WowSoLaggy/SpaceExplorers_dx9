@@ -2,9 +2,9 @@
 #include "Map.h"
 
 
-Map::Map()
-  : d_width(20)
-  , d_height(20)
+Map::Map(int i_width, int i_height)
+  : d_width(i_width)
+  , d_height(i_height)
 {
   d_background.reset(new MapBackground());
   d_background->setTexture("Space_1920_1024_1_n.png");
@@ -19,7 +19,8 @@ Map::~Map()
 
 Map* Map::createMap()
 {
-  return new Map();
+  auto* pMap = new Map(20, 20);
+  return pMap;
 }
 
 
