@@ -7,7 +7,8 @@ class PrototypeCollection
 {
 public:
 
-  static void loadAllPrototypes();
+  static bool initAllPrototypes();
+  static bool loadAllPrototypes();
 
   static const Prototype* find(const std::string& i_name);
 

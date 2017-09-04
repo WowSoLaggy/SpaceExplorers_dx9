@@ -3,6 +3,7 @@
 
 #include "Scene.h"
 #include "GuiController.h"
+#include "PrototypeCollection.h"
 
 
 GameController::GameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
@@ -136,6 +137,18 @@ bool GameController::startGameLoadingThread()
 void GameController::loadGame()
 {
   if (!Doh3d::ResourceMan::loadResources())
+  {
+    d_state = State::GameLoadFailed;
+    return;
+  }
+
+  if (!PrototypeCollection::initAllPrototypes())
+  {
+    d_state = State::GameLoadFailed;
+    return;
+  }
+
+  if (!PrototypeCollection::loadAllPrototypes())
   {
     d_state = State::GameLoadFailed;
     return;
