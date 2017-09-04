@@ -63,15 +63,17 @@ bool Map::drawSelf(Doh3d::Sprite& pSprite) const
       return false;
   }
 
-  D3DXMATRIX tileOffsetTransform;
+  Doh3d::Position2I originalTranslation = pSprite.getTranslation();
+  Doh3d::Position2I currentTranslation;
 
   for (int y = 0; y < d_height; ++y)
   {
     for (int x = 0; x < d_width; ++x)
     {
-      D3DXMatrixTranslation(&tileOffsetTransform, (FLOAT)(x * Tile::DEFAULT_TILE_SIZE), (FLOAT)(y * Tile::DEFAULT_TILE_SIZE), 0);
-
-      pSprite.setTransform(&tileOffsetTransform);
+      currentTranslation = originalTranslation +
+        Doh3d::Position2I(x * Tile::DEFAULT_TILE_SIZE, y * Tile::DEFAULT_TILE_SIZE);
+      pSprite.setTranslation(currentTranslation);
+      
       if (!getTileAt(x, y)->draw(pSprite))
         return false;
     }
