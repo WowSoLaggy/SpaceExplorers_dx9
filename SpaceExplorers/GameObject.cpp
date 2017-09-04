@@ -17,3 +17,14 @@ const Doh3d::Position2 GameObject::getPosition() const
 
   return position;
 }
+
+
+bool GameObject::updateSelf(float pDt)
+{
+  return true;
+}
+
+bool GameObject::drawSelf(Doh3d::Sprite& pSprite) const
+{
+  return true;
+}

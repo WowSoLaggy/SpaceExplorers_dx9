@@ -17,4 +17,7 @@ private:
 
   const Prototype& d_prototype;
 
+  virtual bool updateSelf(float pDt) override;
+  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
+
 };
