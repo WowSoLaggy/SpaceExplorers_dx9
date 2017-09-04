@@ -141,6 +141,9 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="GameObjectCreator.cpp">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -234,6 +237,9 @@
       <Filter>src\Logic\GameObjects\Prototype</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
+      <Filter>src\Logic\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectCreator.h">
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
