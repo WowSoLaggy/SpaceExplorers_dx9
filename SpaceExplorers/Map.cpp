@@ -23,9 +23,9 @@ Map* Map::createMap()
 {
   auto* pMap = new Map(20, 20);
 
-  for (int y = 2; y <= 4; ++y)
+  for (int y = 2; y <= 8; ++y)
   {
-    for (int x = 2; x <= 4; ++x)
+    for (int x = 2; x <= 6; ++x)
       pMap->getTileAt(x, y)->setTurf(GameObjectCreator::createLattice());
   }
 
