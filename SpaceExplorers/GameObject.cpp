@@ -26,5 +26,12 @@ bool GameObject::updateSelf(float pDt)
 
 bool GameObject::drawSelf(Doh3d::Sprite& pSprite) const
 {
+  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
+                    &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
+                    0, Doh3d::Position2(0, 0), D3DCOLOR_ARGB(255, 255, 255, 255)))
+  {
+    return false;
+  }
+
   return true;
 }
