@@ -28,7 +28,7 @@ bool GameObject::drawSelf(Doh3d::Sprite& pSprite) const
 {
   if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
                     &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
-                    0, Doh3d::Position2I(0, 0), D3DCOLOR_ARGB(255, 255, 255, 255)))
+                    0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
   }
