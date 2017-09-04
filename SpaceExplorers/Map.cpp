@@ -2,6 +2,7 @@
 #include "Map.h"
 
 #include "GameObjectCreator.h"
+#include "Scene.h"
 
 
 Map::Map(int i_width, int i_height)
@@ -57,20 +58,36 @@ bool Map::updateSelf(float pDt)
 
 bool Map::drawSelf(Doh3d::Sprite& pSprite) const
 {
+  LOG(__FUNCTION__);
+
   if (d_background.get())
   {
     if (!d_background->draw(pSprite))
       return false;
   }
 
-  Doh3d::Position2I originalTranslation = pSprite.getTranslation();
+  auto* pScene = getScene();
+  if (!pScene)
+  {
+    echo("ERROR: Can't find its own scene.");
+    return false;
+  }
+
+  auto* pCamera = pScene->findChild("Camera", 1);
+  if (!pCamera)
+  {
+    echo("ERROR: Can't find camera.");
+    return false;
+  }
+
+  Doh3d::Position2I cameraTranslation = pSprite.getTranslation();
   Doh3d::Position2I currentTranslation;
 
   for (int y = 0; y < d_height; ++y)
   {
     for (int x = 0; x < d_width; ++x)
     {
-      currentTranslation = originalTranslation +
+      currentTranslation = cameraTranslation +
         Doh3d::Position2I(x * Tile::DEFAULT_TILE_SIZE, y * Tile::DEFAULT_TILE_SIZE);
       pSprite.setTranslation(currentTranslation);
       
