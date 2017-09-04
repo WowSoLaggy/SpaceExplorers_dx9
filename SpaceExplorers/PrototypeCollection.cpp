@@ -7,12 +7,13 @@ std::vector<Prototype> PrototypeCollection::d_prototypes;
 
 bool PrototypeCollection::initAllPrototypes()
 {
-  Prototype prototype;
-
-  prototype.setName("Lattice");
-  prototype.setTileBased(true);
-  prototype.setTextureName("Lattice_64_64_1_a.png");
-  d_prototypes.push_back(prototype);
+  {
+    Prototype prototype;
+    prototype.setName("Lattice");
+    prototype.setTileBased(true);
+    prototype.setTextureName("Lattice_64_64_1_a.png");
+    d_prototypes.push_back(prototype);
+  }
 
   return true;
 }
