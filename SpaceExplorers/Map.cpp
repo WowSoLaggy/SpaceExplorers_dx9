@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Map.h"
 
+#include "GameObjectCreator.h"
+
 
 Map::Map(int i_width, int i_height)
   : d_width(i_width)
@@ -20,6 +22,13 @@ Map::~Map()
 Map* Map::createMap()
 {
   auto* pMap = new Map(20, 20);
+
+  for (int y = 2; y <= 4; ++y)
+  {
+    for (int x = 2; x <= 4; ++x)
+      pMap->getTileAt(x, y)->setTurf(GameObjectCreator::createLattice());
+  }
+
   return pMap;
 }
 
