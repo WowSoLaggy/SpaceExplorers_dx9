@@ -9,7 +9,7 @@ Cursor::Cursor()
 
 bool Cursor::updateSelf(float pDt)
 {
-  setPosition(Doh3d::InputMan::getCursorPosition());
+  setPosition(Doh3d::InputMan::getCursor().getPosition());
 
   return true;
 }

@@ -9,7 +9,7 @@ bool Button::onMouseMove(bool& pHandled)
   if (d_state == ButtonState::Disabled)
     return true;
 
-  if (containsPoint(Doh3d::InputMan::getCursorPosition()))
+  if (containsPoint(Doh3d::InputMan::getCursor().getPosition()))
   {
     pHandled = true;
 
@@ -34,7 +34,7 @@ bool Button::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
   if (pButton != MBUTTON_LEFT)
     return true;
 
-  if (containsPoint(Doh3d::InputMan::getCursorPosition()))
+  if (containsPoint(Doh3d::InputMan::getCursor().getPosition()))
   {
     pHandled = true;
     d_state = ButtonState::Pressed;
@@ -54,7 +54,7 @@ bool Button::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
   if (pButton != MBUTTON_LEFT)
     return true;
 
-  if (containsPoint(Doh3d::InputMan::getCursorPosition()))
+  if (containsPoint(Doh3d::InputMan::getCursor().getPosition()))
   {
     pHandled = true;
 
