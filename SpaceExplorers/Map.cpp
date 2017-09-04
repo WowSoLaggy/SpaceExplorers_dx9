@@ -58,7 +58,10 @@ bool Map::updateSelf(float pDt)
 bool Map::drawSelf(Doh3d::Sprite& pSprite) const
 {
   if (d_background.get())
-    d_background->draw(pSprite);
+  {
+    if (!d_background->draw(pSprite))
+      return false;
+  }
 
   D3DXMATRIX tileOffsetTransform;
 
