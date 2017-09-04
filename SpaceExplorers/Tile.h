@@ -8,6 +8,10 @@ class Tile : public SceneObject
 {
 public:
 
+  static const int DEFAULT_TILE_SIZE = 64;
+
+public:
+
   Tile();
   virtual ~Tile();
 
