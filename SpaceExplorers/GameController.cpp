@@ -111,7 +111,7 @@ bool GameController::createLoadingGui()
 {
   LOG(__FUNCTION__);
 
-  auto* pScene = scene();
+  auto* pScene = getScene();
   if (!pScene)
   {
     echo("ERROR: Can't find scene to initialize.");
@@ -161,7 +161,7 @@ bool GameController::deleteLoadingGui()
 {
   LOG(__FUNCTION__);
 
-  auto* pScene = scene();
+  auto* pScene = getScene();
   if (!pScene)
   {
     echo("ERROR: Can't find the scene to create main menu for.");
@@ -178,7 +178,7 @@ bool GameController::createMainMenu()
 {
   LOG(__FUNCTION__);
 
-  auto* pScene = scene();
+  auto* pScene = getScene();
   if (!pScene)
   {
     echo("ERROR: Can't find the scene to create main menu for.");

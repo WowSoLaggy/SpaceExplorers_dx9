@@ -13,15 +13,15 @@ public:
 
   virtual ~SceneObject() { }
 
-  const std::string& name() const { return d_name; }
+  const std::string& getName() const { return d_name; }
   void setName(const std::string& pNewName) { d_name = pNewName; }
 
   SceneObject* findChild(const std::string& pChildName, int pDepth = -1) const;
 
 protected:
 
-  Scene* scene();
-  const Scene* scene() const;
+  Scene* getScene();
+  const Scene* getScene() const;
 
 private:
 

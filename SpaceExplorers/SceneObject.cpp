@@ -15,7 +15,7 @@ bool SceneObject::drawSelf(Doh3d::Sprite& pSprite) const
 }
 
 
-Scene* SceneObject::scene()
+Scene* SceneObject::getScene()
 {
   SceneObject* pSceneObject = this;
   
@@ -30,7 +30,7 @@ Scene* SceneObject::scene()
   }
 }
 
-const Scene* SceneObject::scene() const
+const Scene* SceneObject::getScene() const
 {
   const SceneObject* pSceneObject = this;
 
@@ -56,7 +56,7 @@ SceneObject* SceneObject::findChild(const std::string& pChildName, int pDepth /*
   {
     if (auto* pSceneObject = dynamic_cast<SceneObject*>(pChild))
     {
-      if (pSceneObject->name() == pChildName)
+      if (pSceneObject->getName() == pChildName)
         return pSceneObject;
 
       if (pSceneObject = pSceneObject->findChild(pChildName, pDepth))
