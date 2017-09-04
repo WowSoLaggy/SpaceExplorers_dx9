@@ -1,13 +1,9 @@
 #pragma once
 
-#ifndef INC_TILE_H
-#define INC_TILE_H
+#include "SceneObject.h"
 
 
-#include "IGameObject.h"
-
-
-class Tile : public IGameObject
+class Tile : public SceneObject
 {
 public:
 
@@ -18,6 +14,3 @@ private:
   virtual bool updateSelf(float pDt) override;
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 };
-
-
-#endif // INC_TILE_H
