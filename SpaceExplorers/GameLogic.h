@@ -19,6 +19,7 @@ public:
 private:
 
   static bool createMap(Scene& pScene);
+  static bool createCamera(Scene& pScene);
 
 };
 

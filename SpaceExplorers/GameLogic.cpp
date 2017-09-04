@@ -5,6 +5,7 @@
 #include "GameController.h"
 #include "GuiController.h"
 #include "Map.h"
+#include "Camera.h"
 
 
 bool GameLogic::startGame(Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
@@ -48,6 +49,9 @@ bool GameLogic::startNewGame(Scene& pScene)
   if (!createMap(pScene))
     return false;
 
+  if (!createCamera(pScene))
+    return false;
+
   return true;
 }
 
@@ -60,5 +64,14 @@ bool GameLogic::createMap(Scene& pScene)
 
   pScene.addChildBack(pMap);
 
+  return true;
+}
+
+bool GameLogic::createCamera(Scene& pScene)
+{
+  auto* pCamera = new Camera();
+  pCamera->setName("Camera");
+  pCamera->setPosition({ 0, 0 });
+  pScene.addChildBack(pCamera);
   return true;
 }
