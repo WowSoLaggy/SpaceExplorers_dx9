@@ -30,6 +30,12 @@ Map* Map::createMap()
       pMap->getTileAt(x, y)->setTurf(GameObjectCreator::createLattice());
   }
 
+  
+  auto* pMan = GameObjectCreator::createMan();
+  pMan->setPosition({ 128, 128 });
+  pMap->addChildBack(pMan);
+
+
   return pMap;
 }
 
