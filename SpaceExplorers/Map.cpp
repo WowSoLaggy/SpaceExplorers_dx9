@@ -102,5 +102,7 @@ bool Map::drawSelf(Doh3d::Sprite& pSprite) const
     }
   }
 
+  pSprite.setTranslation(cameraTranslation);
+
   return true;
 }
