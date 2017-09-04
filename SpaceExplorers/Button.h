@@ -28,7 +28,7 @@ public:
   bool click();
 
 
-  virtual void setSize(const Doh3d::Size2& pSize) override;
+  virtual void setSize(const Doh3d::Size2I& pSize) override;
 
 
   bool setText(const std::string& pText);

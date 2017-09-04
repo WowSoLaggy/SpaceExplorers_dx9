@@ -4,14 +4,14 @@
 #include "Prototype.h"
 
 
-class GameObject : public SceneObject, public Doh3d::IPositioned2
+class GameObject : public SceneObject, public Doh3d::IPositioned2I
 {
 public:
 
   GameObject(const Prototype& i_prototype);
   virtual ~GameObject() { }
 
-  virtual const Doh3d::Position2 getPosition() const override;
+  virtual const Doh3d::Position2I getPosition() const override;
 
 private:
 

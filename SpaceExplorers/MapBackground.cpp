@@ -14,10 +14,11 @@ bool MapBackground::updateSelf(float pDt)
 
 bool MapBackground::drawSelf(Doh3d::Sprite& pSprite) const
 {
-  pSprite.setTransform(&d_transformMatrix);
+  pSprite.setTranslation(Doh3d::Position2I::zero());
+  pSprite.setScale(d_scale);
 
   if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
-                    0, Doh3d::Position2(0, 0), D3DCOLOR_ARGB(255, 255, 255, 255)))
+                    0, Doh3d::Position2I::zero(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
   }
@@ -46,10 +47,9 @@ void MapBackground::updateScale()
     (FLOAT)Doh3d::RenderMan::getRenderPars().resolutionWidth(),
     (FLOAT)Doh3d::RenderMan::getRenderPars().resolutionHeight());
   auto backgroundSize = Doh3d::ResourceMan::getTexture(d_ti).getSize();
-  D3DXVECTOR2 scale = D3DXVECTOR2(sizeOrig.x / backgroundSize.x, sizeOrig.y / backgroundSize.y);
-  if (scale.x > scale.y)
-    scale.y = scale.x;
+  d_scale = { sizeOrig.x / backgroundSize.x, sizeOrig.y / backgroundSize.y };
+  if (d_scale.x > d_scale.y)
+    d_scale.y = d_scale.x;
   else
-    scale.x = scale.y;
-  D3DXMatrixTransformation2D(&d_transformMatrix, &scaleCenter, 0, &scale, 0, 0, 0);
+    d_scale.x = d_scale.y;
 }

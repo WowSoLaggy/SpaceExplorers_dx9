@@ -2,15 +2,15 @@
 #include "IGui.h"
 
 
-bool IGui::containsPoint(Doh3d::Position2 pPoint)
+bool IGui::containsPoint(Doh3d::Position2I pPoint)
 {
   return Doh3d::Geometry::RectI(getPosition(), getSize()).containsPoint(pPoint);
 }
 
 
-const Doh3d::Position2 IGui::getPosition() const
+const Doh3d::Position2I IGui::getPosition() const
 {
-  auto position = IPositioned2::getPosition();
+  auto position = IPositioned2I::getPosition();
 
   if (const auto* pParent = dynamic_cast<const IGui*>(parent()))
     position += pParent->getPosition();

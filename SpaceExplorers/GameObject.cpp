@@ -8,9 +8,9 @@ GameObject::GameObject(const Prototype& i_prototype)
 }
 
 
-const Doh3d::Position2 GameObject::getPosition() const
+const Doh3d::Position2I GameObject::getPosition() const
 {
-  auto position = IPositioned2::getPosition();
+  auto position = IPositioned2I::getPosition();
 
   if (const auto* pParent = dynamic_cast<const GameObject*>(parent()))
     position += pParent->getPosition();
@@ -28,7 +28,7 @@ bool GameObject::drawSelf(Doh3d::Sprite& pSprite) const
 {
   if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
                     &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
-                    0, Doh3d::Position2(0, 0), D3DCOLOR_ARGB(255, 255, 255, 255)))
+                    0, Doh3d::Position2I(0, 0), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
   }

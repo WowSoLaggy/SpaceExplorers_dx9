@@ -119,7 +119,7 @@ bool Button::click()
 }
 
 
-void Button::setSize(const Doh3d::Size2& pSize)
+void Button::setSize(const Doh3d::Size2I& pSize)
 {
   LOG(__FUNCTION__);
 

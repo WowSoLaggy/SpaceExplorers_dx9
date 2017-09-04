@@ -19,7 +19,7 @@ private:
 
   Doh3d::TextureId d_ti;
 
-  D3DXMATRIX d_transformMatrix;
+  Doh3d::Vector2F d_scale;
 
   void updateScale();
 

@@ -49,6 +49,7 @@ bool GuiController::createLoadingGui(Scene& pScene)
 
   if (!pBackground->loadAllTextures())
     return false;
+
   pBackground->setPosition(Doh3d::Screen::getClientCenter() - pBackground->getSizeHalf());
 
   pLoadingScreenGroup->addChildBack(pBackground);
@@ -106,7 +107,7 @@ bool GuiController::createMainMenu(Scene& pScene)
     echo("ERROR: Can't create the background for the main menu.");
     return false;
   }
-  pBackground->setPosition(Doh3d::Position2::zero());
+  pBackground->setPosition(Doh3d::Position2I::zero());
   pMainMenuGroup->addChildBack(pBackground);
 
 
@@ -120,7 +121,7 @@ bool GuiController::createMainMenu(Scene& pScene)
   }
   pStartNewGameButton->setText("Start new game");
   pStartNewGameButton->setPosition(Doh3d::Screen::getClientRightBottom() - pStartNewGameButton->getSize() +
-                                   Doh3d::Position2(-64, -64 - 32 - 24));
+                                   Doh3d::Position2I(-64, -64 - 32 - 24));
   pStartNewGameButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
   pMainMenuGroup->addChildBack(pStartNewGameButton);
 
@@ -135,7 +136,7 @@ bool GuiController::createMainMenu(Scene& pScene)
   }
   pExitButton->setText("Exit");
   pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
-                           Doh3d::Position2(-64, -64));
+                           Doh3d::Position2I(-64, -64));
   pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
   pMainMenuGroup->addChildBack(pExitButton);
 

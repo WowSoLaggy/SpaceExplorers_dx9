@@ -13,7 +13,7 @@ GuiObject* GuiControlCreator::create_guiObject()
 Cursor* GuiControlCreator::create_cursor()
 {
   const std::string cursor_texture_fileName = "Cursor_32_32_1_n.png";
-  const Doh3d::Size2 cursor_size = { 32, 32 };
+  const Doh3d::Size2I cursor_size = { 32, 32 };
 
 
   auto* pCursor = new Cursor();
@@ -36,7 +36,7 @@ Cursor* GuiControlCreator::create_cursor()
 Panel* GuiControlCreator::create_loadScreen_background()
 {
   const std::string loadScreen_background_texture_fileName = "Loading_256_64_1_n.png";
-  const Doh3d::Size2 loadScreen_background_size = { 256, 64 };
+  const Doh3d::Size2I loadScreen_background_size = { 256, 64 };
 
 
   auto* pPanel = new Panel();
@@ -59,7 +59,7 @@ Panel* GuiControlCreator::create_loadScreen_background()
 Panel* GuiControlCreator::create_mainMenu_backGround()
 {
   const std::string mainMenu_background_texture_fileName = "MainMenu_1920_1080_1_n.png";
-  const Doh3d::Size2 mainMenu_background_size = { 1920, 1080 }; //< TODO: this size should be adapted for the screen resolution
+  const Doh3d::Size2I mainMenu_background_size = { 1920, 1080 }; //< TODO: this size should be adapted for the screen resolution
                                                                 //< Maybe it should use some option like "stretch" or "fit to screen"
 
 
@@ -85,7 +85,7 @@ Button* GuiControlCreator::create_mainMenu_button()
   const std::string mainMenu_button_texture_fileName_pressed = "ButtonPressed_256_32_1_n.png";
   const std::string mainMenu_button_texture_fileName_selected = "ButtonLight_256_32_1_n.png";
   const std::string mainMenu_button_texture_fileName_disabled = "ButtonBw_256_32_1_n.png";
-  const Doh3d::Size2 mainMenu_button_size = { 256, 32 };
+  const Doh3d::Size2I mainMenu_button_size = { 256, 32 };
 
 
   auto* pButton = new Button();
