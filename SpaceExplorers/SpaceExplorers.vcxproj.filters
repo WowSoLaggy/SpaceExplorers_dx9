@@ -43,6 +43,9 @@
     <Filter Include="src\Gui\GuiObjects">
       <UniqueIdentifier>{10e26eb6-6bea-430e-8454-5bdf19acc832}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Logic\GameObjects\Prototype">
+      <UniqueIdentifier>{21b755bb-dc90-4a31-a3e1-c12417028432}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -129,7 +132,13 @@
     <ClCompile Include="MapBackground.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="IGameObject.cpp">
+    <ClCompile Include="Prototype.cpp">
+      <Filter>src\Logic\GameObjects\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="PrototypeCollection.cpp">
+      <Filter>src\Logic\GameObjects\Prototype</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -218,7 +227,13 @@
     <ClInclude Include="MapBackground.h">
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="IGameObject.h">
+    <ClInclude Include="Prototype.h">
+      <Filter>src\Logic\GameObjects\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="PrototypeCollection.h">
+      <Filter>src\Logic\GameObjects\Prototype</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
       <Filter>src\Logic\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

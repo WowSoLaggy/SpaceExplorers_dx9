@@ -172,7 +172,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="IGameObject.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GuiControlCreator.cpp" />
     <ClCompile Include="GuiObject.cpp" />
     <ClCompile Include="GuiController.cpp" />
@@ -182,6 +182,8 @@
     <ClCompile Include="MapBackground.cpp" />
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="InputDevice.cpp" />
+    <ClCompile Include="Prototype.cpp" />
+    <ClCompile Include="PrototypeCollection.cpp" />
     <ClCompile Include="RenderDevice.cpp" />
     <ClCompile Include="MainLoop.cpp" />
     <ClCompile Include="ResourceController.cpp" />
@@ -209,7 +211,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameLogic.h" />
-    <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="GuiControlCreator.h" />
     <ClInclude Include="GuiNames.h" />
     <ClInclude Include="GuiObject.h" />
@@ -219,6 +221,8 @@
     <ClInclude Include="MapBackground.h" />
     <ClInclude Include="Panel.h" />
     <ClInclude Include="InputDevice.h" />
+    <ClInclude Include="Prototype.h" />
+    <ClInclude Include="PrototypeCollection.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="RenderDevice.h" />
     <ClInclude Include="resource.h" />
