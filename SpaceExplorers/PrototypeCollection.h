@@ -7,12 +7,14 @@ class PrototypeCollection
 {
 public:
 
-  void loadAllPrototypes();
+  static void loadAllPrototypes();
 
-  const Prototype* find(const std::string& i_name);
+  static const Prototype* find(const std::string& i_name);
 
 private:
 
-  std::vector<Prototype> d_prototypes;
+  PrototypeCollection() { } //< Hide ctor
+
+  static std::vector<Prototype> d_prototypes;
 
 };

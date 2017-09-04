@@ -2,13 +2,15 @@
 #include "PrototypeCollection.h"
 
 
+std::vector<Prototype> PrototypeCollection::d_prototypes;
+
+
 void PrototypeCollection::loadAllPrototypes()
 {
   Prototype prototype;
 
   prototype.setName("Lattice");
   prototype.setTileBased(true);
-
   d_prototypes.push_back(prototype);
 }
 
