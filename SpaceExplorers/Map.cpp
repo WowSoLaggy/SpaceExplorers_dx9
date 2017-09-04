@@ -35,13 +35,11 @@ Map* Map::createMap()
 
 Tile* Map::getTileAt(int pX, int pY)
 {
-  if (pX < 0 || d_width <= pX ||
-      pY < 0 || d_height <= pY)
-  {
-    assert(false);
-    return nullptr;
-  }
+  return &(d_tiles[pX + d_width * pY]);
+}
 
+const Tile* Map::getTileAt(int pX, int pY) const
+{
   return &(d_tiles[pX + d_width * pY]);
 }
 
@@ -62,10 +60,18 @@ bool Map::drawSelf(Doh3d::Sprite& pSprite) const
   if (d_background.get())
     d_background->draw(pSprite);
 
-  for (auto& tile : d_tiles)
+  D3DXMATRIX tileOffsetTransform;
+
+  for (int y = 0; y < d_height; ++y)
   {
-    if (!tile.draw(pSprite))
-      return false;
+    for (int x = 0; x < d_width; ++x)
+    {
+      D3DXMatrixTranslation(&tileOffsetTransform, (FLOAT)(x * Tile::DEFAULT_TILE_SIZE), (FLOAT)(y * Tile::DEFAULT_TILE_SIZE), 0);
+
+      pSprite.setTransform(&tileOffsetTransform);
+      if (!getTileAt(x, y)->draw(pSprite))
+        return false;
+    }
   }
 
   return true;

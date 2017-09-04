@@ -20,6 +20,7 @@ public:
   virtual ~Map();
 
   Tile* getTileAt(int pX, int pY);
+  const Tile* getTileAt(int pX, int pY) const;
 
 private:
 
