@@ -144,6 +144,9 @@
     <ClCompile Include="GameObjectCreator.cpp">
       <Filter>src\Logic\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>src\Scene\SceneObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -241,6 +244,9 @@
     </ClInclude>
     <ClInclude Include="GameObjectCreator.h">
       <Filter>src\Logic\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>src\Scene\SceneObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

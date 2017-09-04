@@ -168,6 +168,7 @@
     </ClCompile>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Button_input.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameController.cpp" />
@@ -208,6 +209,7 @@
     <ClInclude Include="..\libs\pugixml\pugixml.hpp" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonStates.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Cursor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameController.h" />
