@@ -8,5 +8,6 @@ class GameObjectCreator
 public:
 
   static GameObject* createLattice();
+  static GameObject* createMan();
 
 };

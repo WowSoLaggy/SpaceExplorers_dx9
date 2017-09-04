@@ -15,6 +15,14 @@ bool PrototypeCollection::initAllPrototypes()
     d_prototypes.push_back(prototype);
   }
 
+  {
+    Prototype prototype;
+    prototype.setName("Man");
+    prototype.setTileBased(false);
+    prototype.setTextureName("Man_64_64_4_a.png");
+    d_prototypes.push_back(prototype);
+  }
+
   return true;
 }
 
