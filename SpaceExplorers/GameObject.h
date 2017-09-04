@@ -4,7 +4,8 @@
 #include "Prototype.h"
 
 
-class GameObject : public SceneObject, public Doh3d::IPositioned2I
+class GameObject : public SceneObject,
+  public Doh3d::IPositioned2I, public Doh3d::IControlable
 {
 public:
 
