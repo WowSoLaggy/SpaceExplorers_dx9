@@ -13,6 +13,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setTileBased(true);
     prototype.setMovable(false);
     prototype.setTextureName("Lattice_64_64_1_a.png");
+    prototype.setSize({ 64, 64 });
     d_prototypes.push_back(prototype);
   }
 
@@ -22,6 +23,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setTileBased(false);
     prototype.setMovable(true);
     prototype.setTextureName("Man_64_64_4_a.png");
+    prototype.setSize({ 64, 64 });
     d_prototypes.push_back(prototype);
   }
 
