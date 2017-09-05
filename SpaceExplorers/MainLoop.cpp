@@ -11,11 +11,11 @@ bool Engine::mainLoop()
   float deltaTime = 0;
 
 
-  bool d_runMainLoop = true;
-  GameLogic::startGame(*this, d_scene, d_runMainLoop, TEXTURE_DIR, FONT_DIR);
+  bool runMainLoop = true;
+  GameLogic::startGame(*this, d_scene, runMainLoop, TEXTURE_DIR, FONT_DIR);
 
 
-  while (d_runMainLoop)
+  while (runMainLoop)
   {
     if (Doh3d::winPeekExit())
       break;
