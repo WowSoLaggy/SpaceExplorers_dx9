@@ -32,7 +32,7 @@ Map* Map::createMap()
 
   
   auto* pMan = GameObjectCreator::createMan();
-  pMan->setPosition({ 128, 128 });
+  pMan->getMovementModel().setPosition({ 160, 160 });
   pMan->setName("Player");
   pMap->addChildBack(pMan);
 
