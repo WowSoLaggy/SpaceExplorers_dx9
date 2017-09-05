@@ -3,6 +3,7 @@
 
 #include "GameObjectCreator.h"
 #include "Scene.h"
+#include "Camera.h"
 
 
 Map::Map(int i_width, int i_height)
@@ -80,14 +81,14 @@ bool Map::drawSelf(Doh3d::Sprite& pSprite) const
     return false;
   }
 
-  auto* pCamera = pScene->findChild("Camera", 1);
+  auto* pCamera = dynamic_cast<Camera*>(pScene->findChild("Camera", 1));
   if (!pCamera)
   {
     echo("ERROR: Can't find camera.");
     return false;
   }
 
-  Doh3d::Position2I cameraTranslation = pSprite.getTranslation();
+  Doh3d::Position2I cameraTranslation = -pCamera->getPosition();
   Doh3d::Position2I currentTranslation;
 
   for (int y = 0; y < d_height; ++y)
