@@ -14,6 +14,9 @@ bool MapBackground::updateSelf(float pDt)
 
 bool MapBackground::drawSelf(Doh3d::Sprite& pSprite) const
 {
+  auto originalTranslation = pSprite.getTranslation();
+  auto originalScale = pSprite.getScale();
+
   pSprite.setTranslation(Doh3d::Position2I::zero());
   pSprite.setScale(d_scale);
 
@@ -22,6 +25,9 @@ bool MapBackground::drawSelf(Doh3d::Sprite& pSprite) const
   {
     return false;
   }
+
+  pSprite.setTranslation(originalTranslation);
+  pSprite.setScale(originalScale);
 
   return true;
 }
