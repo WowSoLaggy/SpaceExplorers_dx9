@@ -150,6 +150,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClCompile>
+    <ClCompile Include="InputControllers.cpp">
+      <Filter>src\GameInput</Filter>
+    </ClCompile>
     <ClCompile Include="MovementModel.cpp">
       <Filter>src\Logic\Models</Filter>
     </ClCompile>

@@ -140,15 +140,24 @@ bool InputDevice::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 
 bool InputDevice::onKeyPressed(Doh3d::Key pKey)
 {
+  for (auto* pController : d_controllers)
+    pController->onKeyPressed(pKey);
+
   return true;
 }
 
 bool InputDevice::onKeyDown(Doh3d::Key pKey)
 {
+  for (auto* pController : d_controllers)
+    pController->onKeyDown(pKey);
+
   return true;
 }
 
 bool InputDevice::onKeyUp(Doh3d::Key pKey)
 {
+  for (auto* pController : d_controllers)
+    pController->onKeyUp(pKey);
+
   return true;
 }

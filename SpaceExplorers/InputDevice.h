@@ -17,11 +17,17 @@ public:
   bool check();
   bool recreate(Scene& pScene);
 
+  Doh3d::Controller* createNewController();
+  Doh3d::Controller* getController(Doh3d::ControllerId i_controllerId);
+  bool removeController(Doh3d::ControllerId i_controllerId);
+
 private:
 
   Doh3d::InputPars getInputPars();
 
   Scene* d_pScene;
+
+  std::vector<Doh3d::Controller*> d_controllers;
 
   
   // Input handlers
