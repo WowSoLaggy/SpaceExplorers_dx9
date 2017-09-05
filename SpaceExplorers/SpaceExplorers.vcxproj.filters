@@ -46,6 +46,9 @@
     <Filter Include="src\Logic\GameObjects\Prototype">
       <UniqueIdentifier>{21b755bb-dc90-4a31-a3e1-c12417028432}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Logic\Models">
+      <UniqueIdentifier>{ff56224a-643c-41da-b7d8-57b3ab49626a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -147,6 +150,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClCompile>
+    <ClCompile Include="MovementModel.cpp">
+      <Filter>src\Logic\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -247,6 +253,9 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>src\Scene\SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementModel.h">
+      <Filter>src\Logic\Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

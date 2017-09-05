@@ -178,6 +178,7 @@
     <ClCompile Include="GuiControlCreator.cpp" />
     <ClCompile Include="GuiObject.cpp" />
     <ClCompile Include="GuiController.cpp" />
+    <ClCompile Include="MovementModel.cpp" />
     <ClCompile Include="IGui.cpp" />
     <ClCompile Include="InputHandlers.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="GuiNames.h" />
     <ClInclude Include="GuiObject.h" />
     <ClInclude Include="GuiController.h" />
+    <ClInclude Include="MovementModel.h" />
     <ClInclude Include="IGui.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapBackground.h" />
