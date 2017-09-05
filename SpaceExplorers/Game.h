@@ -18,6 +18,7 @@ public:
 
   void run(const Doh3d::StartupPars& pStartupPars);
 
+  InputDevice& getInputDevice() { return d_inputDevice; }
 
 private:
 
@@ -30,7 +31,6 @@ private:
 
   const std::string TEXTURE_DIR = "Data/Textures/";
   const std::string FONT_DIR = "Data/Fonts/";
-
 
 private:
 
