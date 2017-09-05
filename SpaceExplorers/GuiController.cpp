@@ -134,7 +134,7 @@ bool GuiController::createMainMenu(Scene& pScene)
     echo("ERROR: Can't create the main menu button.");
     return false;
   }
-  pExitButton->setText("Exit");
+  pExitButton->setText("Exit to Desktop");
   pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
                            Doh3d::Position2I(-64, -64));
   pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
