@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "InputDevice.h"
 
-#include "Scene.h"
+#include "Game.h"
 
 
 bool InputDevice::init()
@@ -20,17 +20,17 @@ bool InputDevice::check()
   return Doh3d::InputMan::isCreated() && Doh3d::InputMan::checkDevices();
 }
 
-bool InputDevice::recreate(Scene& pScene)
+bool InputDevice::recreate(Game& i_game)
 {
   LOG(__FUNCTION__);
+
+  d_game = &i_game;
 
   if (!Doh3d::InputMan::recreate(getInputPars()))
   {
     echo("ERROR: Can't recreate InputMan.");
     return false;
   }
-
-  d_pScene = &pScene;
 
   return true;
 }
@@ -45,7 +45,7 @@ Doh3d::InputPars InputDevice::getInputPars()
 
   inputPars.mouseAcceleration() = true;
 
-  inputPars.inputHandler() = this;
+  inputPars.inputHandler() = d_game;
 
   return inputPars;
 }

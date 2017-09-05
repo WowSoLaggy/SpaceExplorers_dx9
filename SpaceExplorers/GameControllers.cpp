@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "InputDevice.h"
+#include "Game.h"
 
 
-Doh3d::Controller* InputDevice::createNewController()
+Doh3d::Controller* Game::createNewController()
 {
   static int newId = 0;
 
@@ -12,7 +12,7 @@ Doh3d::Controller* InputDevice::createNewController()
   return pController;
 }
 
-Doh3d::Controller* InputDevice::getController(Doh3d::ControllerId i_controllerId)
+Doh3d::Controller* Game::getController(Doh3d::ControllerId i_controllerId)
 {
   auto it = std::find_if(d_controllers.begin(), d_controllers.end(),
                          [&](auto* i_controller) { return i_controller->getId() == i_controllerId; });
@@ -22,7 +22,7 @@ Doh3d::Controller* InputDevice::getController(Doh3d::ControllerId i_controllerId
   return *it;
 }
 
-bool InputDevice::removeController(Doh3d::ControllerId i_controllerId)
+bool Game::removeController(Doh3d::ControllerId i_controllerId)
 {
   d_controllers.erase(
     std::remove_if(d_controllers.begin(), d_controllers.end(),

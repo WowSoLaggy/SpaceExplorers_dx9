@@ -1,39 +1,42 @@
 #include "stdafx.h"
-#include "GameLogic.h"
+#include "Game.h"
 
 #include "SceneObjectCreator.h"
-#include "GameController.h"
 #include "GuiController.h"
 #include "Map.h"
 #include "Camera.h"
 
 
-Engine* GameLogic::d_engine = nullptr;
-
-
-bool GameLogic::startGame(Engine& i_engine, Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
+Game* Game::create(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
 {
   LOG(__FUNCTION__);
 
-  d_engine = &i_engine;
+  auto* pGame = new Game();
 
   auto* pGameController = SceneObjectCreator::create_gameController(pRunMainLoop, pTextureDir, pFontDir);
   if (!pGameController)
   {
     echo("ERROR: Can't create GameController.");
-    return false;
+    return nullptr;
   }
 
-  pScene.addChildBack(pGameController);
+  pGame->getScene().addChildBack(pGameController);
 
-  return true;
+  return pGame;
 }
 
-bool GameLogic::stopGame(Scene& pScene)
+
+Game::Game()
+  : d_scene(*this)
+{
+}
+
+
+bool Game::stop()
 {
   LOG(__FUNCTION__);
 
-  auto* pGameController = Doh3d::findChildByType<GameController>(pScene, 1);
+  auto* pGameController = Doh3d::findChildByType<GameController>(d_scene, 1);
   if (!pGameController)
   {
     echo("ERROR: Can't find GameController.");
@@ -42,52 +45,50 @@ bool GameLogic::stopGame(Scene& pScene)
 
   pGameController->stopGame();
 
-  d_engine = nullptr;
-
   return true;
 }
 
 
-bool GameLogic::startNewGame(Scene& pScene)
+bool Game::startNewGame()
 {
-  if (!GuiController::deleteMainMenu(pScene))
-    return false;
-  
-  if (!createMap(pScene))
+  if (!GuiController::deleteMainMenu(d_scene))
     return false;
 
-  if (!createCamera(pScene))
+  if (!createMap())
     return false;
 
-  if (!createController(pScene))
+  if (!createBindCamera())
+    return false;
+
+  if (!createBindController())
     return false;
 
   return true;
 }
 
 
-bool GameLogic::createMap(Scene& pScene)
+bool Game::createMap()
 {
   auto* pMap = Map::createMap();
   if (!pMap)
     return false;
 
   pMap->setName("Map");
-  pScene.addChildBack(pMap);
+  d_scene.addChildBack(pMap);
 
   return true;
 }
 
-bool GameLogic::createCamera(Scene& pScene)
+bool Game::createBindCamera()
 {
   LOG(__FUNCTION__);
 
   auto* pCamera = new Camera();
   pCamera->setName("Camera");
   pCamera->setPosition({ 0, 0 });
-  pScene.addChildBack(pCamera);
+  d_scene.addChildBack(pCamera);
 
-  auto* pPlayer = dynamic_cast<GameObject*>(pScene.findChild("Player", 2));
+  auto* pPlayer = dynamic_cast<GameObject*>(d_scene.findChild("Player", 2));
   if (!pPlayer)
   {
     echo("ERROR: Can't find Player.");
@@ -99,13 +100,18 @@ bool GameLogic::createCamera(Scene& pScene)
   return true;
 }
 
-bool GameLogic::createController(Scene& pScene)
+bool Game::createBindController()
 {
   LOG(__FUNCTION__);
 
-  auto* pController = d_engine->getInputDevice().createNewController();
+  auto* pController = createNewController();
+  if (!pController)
+  {
+    echo("ERROR: Can't create controller.");
+    return false;
+  }
 
-  auto* pPlayer = dynamic_cast<GameObject*>(pScene.findChild("Player", 2));
+  auto* pPlayer = dynamic_cast<GameObject*>(d_scene.findChild("Player", 2));
   if (!pPlayer)
   {
     echo("ERROR: Can't find Player.");

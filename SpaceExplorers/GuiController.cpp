@@ -4,7 +4,7 @@
 #include "Scene.h"
 #include "GuiControlCreator.h"
 #include "GuiNames.h"
-#include "GameLogic.h"
+#include "Game.h"
 
 
 bool GuiController::createLoadingGui(Scene& pScene)
@@ -122,7 +122,7 @@ bool GuiController::createMainMenu(Scene& pScene)
   pStartNewGameButton->setText("Start new game");
   pStartNewGameButton->setPosition(Doh3d::Screen::getClientRightBottom() - pStartNewGameButton->getSize() +
                                    Doh3d::Position2I(-64, -64 - 32 - 24));
-  pStartNewGameButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
+  pStartNewGameButton->setOnClickEvent([&]() { return pScene.getGame().startNewGame(); });
   pMainMenuGroup->addChildBack(pStartNewGameButton);
 
 
@@ -137,7 +137,7 @@ bool GuiController::createMainMenu(Scene& pScene)
   pExitButton->setText("Exit to Desktop");
   pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
                            Doh3d::Position2I(-64, -64));
-  pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
+  pExitButton->setOnClickEvent([&]() { return pScene.getGame().stop(); });
   pMainMenuGroup->addChildBack(pExitButton);
 
 
@@ -221,7 +221,7 @@ bool GuiController::createIngameMenu(Scene& pScene)
   pToMainMenuButton->setText("Exit to Main Menu");
   pToMainMenuButton->setPosition(Doh3d::Screen::getClientRightBottom() - pToMainMenuButton->getSize() +
                                    Doh3d::Position2I(-64, -64 - 32 - 24));
-  pToMainMenuButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
+  pToMainMenuButton->setOnClickEvent([&]() { return pScene.getGame().startNewGame(); });
   pIngameMenuGroup->addChildBack(pToMainMenuButton);
 
 
@@ -236,7 +236,7 @@ bool GuiController::createIngameMenu(Scene& pScene)
   pExitButton->setText("Exit to Desktop");
   pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
                            Doh3d::Position2I(-64, -64));
-  pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
+  pExitButton->setOnClickEvent([&]() { return pScene.getGame().stop(); });
   pIngameMenuGroup->addChildBack(pExitButton);
 
 

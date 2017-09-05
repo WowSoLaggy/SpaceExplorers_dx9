@@ -1,21 +1,15 @@
 #include "stdafx.h"
-#include "InputDevice.h"
+#include "Game.h"
 
 #include "Scene.h"
 #include "GuiObject.h"
 
 
-bool InputDevice::onMouseMove(bool& pHandled)
+bool Game::onMouseMove(bool& pHandled)
 {
   LOG(__FUNCTION__);
 
-  if (!d_pScene)
-  {
-    echo("ERROR: InputDevice has no scene.");
-    return false;
-  }
-
-  auto* pGuiObject = Doh3d::findChildByType<GuiObject>(*d_pScene, 1);
+  auto* pGuiObject = Doh3d::findChildByType<GuiObject>(d_scene, 1);
   if (!pGuiObject)
   {
     echo("ERROR: Can't find GuiObject.");
@@ -49,17 +43,11 @@ bool InputDevice::onMouseMove(bool& pHandled)
   return true;
 }
 
-bool InputDevice::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
+bool Game::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
 {
   LOG(__FUNCTION__);
 
-  if (!d_pScene)
-  {
-    echo("ERROR: InputDevice has no scene.");
-    return false;
-  }
-
-  auto* pGuiObject = Doh3d::findChildByType<GuiObject>(*d_pScene, 1);
+  auto* pGuiObject = Doh3d::findChildByType<GuiObject>(d_scene, 1);
   if (!pGuiObject)
   {
     echo("ERROR: Can't find GuiObject.");
@@ -93,17 +81,11 @@ bool InputDevice::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
   return true;
 }
 
-bool InputDevice::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
+bool Game::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 {
   LOG(__FUNCTION__);
 
-  if (!d_pScene)
-  {
-    echo("ERROR: InputDevice has no scene.");
-    return false;
-  }
-
-  auto* pGuiObject = Doh3d::findChildByType<GuiObject>(*d_pScene, 1);
+  auto* pGuiObject = Doh3d::findChildByType<GuiObject>(d_scene, 1);
   if (!pGuiObject)
   {
     echo("ERROR: Can't find GuiObject.");
@@ -138,7 +120,7 @@ bool InputDevice::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 }
 
 
-bool InputDevice::onKeyPressed(Doh3d::Key pKey)
+bool Game::onKeyPressed(Doh3d::Key pKey)
 {
   for (auto* pController : d_controllers)
     pController->onKeyPressed(pKey);
@@ -146,7 +128,7 @@ bool InputDevice::onKeyPressed(Doh3d::Key pKey)
   return true;
 }
 
-bool InputDevice::onKeyDown(Doh3d::Key pKey)
+bool Game::onKeyDown(Doh3d::Key pKey)
 {
   for (auto* pController : d_controllers)
     pController->onKeyDown(pKey);
@@ -154,7 +136,7 @@ bool InputDevice::onKeyDown(Doh3d::Key pKey)
   return true;
 }
 
-bool InputDevice::onKeyUp(Doh3d::Key pKey)
+bool Game::onKeyUp(Doh3d::Key pKey)
 {
   for (auto* pController : d_controllers)
     pController->onKeyUp(pKey);

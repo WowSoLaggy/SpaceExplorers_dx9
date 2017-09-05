@@ -28,26 +28,29 @@
     <Filter Include="src\Gui">
       <UniqueIdentifier>{aa99fa69-917b-4fbe-8005-4c9d8cba1680}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Logic">
-      <UniqueIdentifier>{8c1aa63c-d206-48a9-9ab4-b373cff97225}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Scene\SceneObjects">
       <UniqueIdentifier>{da44cb27-e4f7-41e8-8bab-11b0beb2f5ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Logic\GameObjects">
-      <UniqueIdentifier>{8e1eb1b6-d545-4c37-bd02-6e1a096de66c}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Gui\GuiObjects">
       <UniqueIdentifier>{10e26eb6-6bea-430e-8454-5bdf19acc832}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Logic\GameObjects\Prototype">
-      <UniqueIdentifier>{21b755bb-dc90-4a31-a3e1-c12417028432}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Logic\Models">
-      <UniqueIdentifier>{ff56224a-643c-41da-b7d8-57b3ab49626a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Engine">
       <UniqueIdentifier>{38e3d144-df8d-46cb-8dfb-9a29acd4790b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameLogic">
+      <UniqueIdentifier>{8c1aa63c-d206-48a9-9ab4-b373cff97225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameLogic\GameObjects">
+      <UniqueIdentifier>{8e1eb1b6-d545-4c37-bd02-6e1a096de66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameLogic\GameObjects\Prototype">
+      <UniqueIdentifier>{21b755bb-dc90-4a31-a3e1-c12417028432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameLogic\Models">
+      <UniqueIdentifier>{ff56224a-643c-41da-b7d8-57b3ab49626a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameLogic\Input">
+      <UniqueIdentifier>{2894897d-8e72-41e2-a58c-988bf32938af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -81,14 +84,11 @@
     <ClCompile Include="ResourceController.cpp">
       <Filter>src\ResourceController</Filter>
     </ClCompile>
-    <ClCompile Include="GameLogic.cpp">
-      <Filter>src\Logic</Filter>
-    </ClCompile>
     <ClCompile Include="SceneObject.cpp">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Panel.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
@@ -104,9 +104,6 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandlers.cpp">
-      <Filter>src\GameInput</Filter>
     </ClCompile>
     <ClCompile Include="Button_input.cpp">
       <Filter>src\Gui\GuiObjects</Filter>
@@ -127,34 +124,40 @@
       <Filter>src\Gui\GuiObjects</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapBackground.cpp">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Prototype.cpp">
-      <Filter>src\Logic\GameObjects\Prototype</Filter>
+      <Filter>src\GameLogic\GameObjects\Prototype</Filter>
     </ClCompile>
     <ClCompile Include="PrototypeCollection.cpp">
-      <Filter>src\Logic\GameObjects\Prototype</Filter>
+      <Filter>src\GameLogic\GameObjects\Prototype</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectCreator.cpp">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClCompile>
-    <ClCompile Include="InputControllers.cpp">
-      <Filter>src\GameInput</Filter>
-    </ClCompile>
     <ClCompile Include="MovementModel.cpp">
-      <Filter>src\Logic\Models</Filter>
+      <Filter>src\GameLogic\Models</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>src\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>src\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="GameControllers.cpp">
+      <Filter>src\GameLogic\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInput.cpp">
+      <Filter>src\GameLogic\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,14 +191,11 @@
     <ClInclude Include="ResourceController.h">
       <Filter>src\ResourceController</Filter>
     </ClInclude>
-    <ClInclude Include="GameLogic.h">
-      <Filter>src\Logic</Filter>
-    </ClInclude>
     <ClInclude Include="SceneObject.h">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Panel.h">
       <Filter>src\Gui\GuiObjects</Filter>
@@ -234,31 +234,34 @@
       <Filter>src\Gui\GuiObjects</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapBackground.h">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Prototype.h">
-      <Filter>src\Logic\GameObjects\Prototype</Filter>
+      <Filter>src\GameLogic\GameObjects\Prototype</Filter>
     </ClInclude>
     <ClInclude Include="PrototypeCollection.h">
-      <Filter>src\Logic\GameObjects\Prototype</Filter>
+      <Filter>src\GameLogic\GameObjects\Prototype</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectCreator.h">
-      <Filter>src\Logic\GameObjects</Filter>
+      <Filter>src\GameLogic\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>src\Scene\SceneObjects</Filter>
     </ClInclude>
     <ClInclude Include="MovementModel.h">
-      <Filter>src\Logic\Models</Filter>
+      <Filter>src\GameLogic\Models</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>src\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>src\GameLogic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

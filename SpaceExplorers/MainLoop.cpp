@@ -1,18 +1,25 @@
 #include "stdafx.h"
 #include "Engine.h"
 
-#include "GameLogic.h"
+#include "Game.h"
 
 
 bool Engine::mainLoop()
 {
+  LOG(__FUNCTION__);
+
   Timer timer;
   timer.Start();
   float deltaTime = 0;
 
 
   bool runMainLoop = true;
-  GameLogic::startGame(*this, d_scene, runMainLoop, TEXTURE_DIR, FONT_DIR);
+  d_game = Game::create(runMainLoop, TEXTURE_DIR, FONT_DIR);
+  if (!d_game)
+  {
+    echo("ERROR: Can't create game.");
+    return false;
+  }
 
 
   while (runMainLoop)
@@ -39,19 +46,19 @@ bool Engine::mainLoop()
 
     if (!d_inputDevice.check())
     {
-      if (!d_inputDevice.recreate(d_scene))
+      if (!d_inputDevice.recreate(*d_game))
         break;
       continue;
     }
 
     // Update scene
 
-    if (!d_sceneUpdater.update(d_scene, deltaTime))
+    if (!d_sceneUpdater.update(d_game->getScene(), deltaTime))
       break;
 
     // Draw scene
 
-    if (!d_sceneDrawer.draw(d_scene))
+    if (!d_sceneDrawer.draw(d_game->getScene()))
       break;
     
     // TODO: remove sleep

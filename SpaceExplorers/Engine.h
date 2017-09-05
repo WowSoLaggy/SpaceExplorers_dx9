@@ -5,7 +5,9 @@
 #include "ResourceController.h"
 #include "SceneUpdater.h"
 #include "SceneDrawer.h"
-#include "Scene.h"
+
+
+class Game;
 
 
 class Engine
@@ -13,8 +15,6 @@ class Engine
 public:
 
   void run(const Doh3d::StartupPars& pStartupPars);
-
-  InputDevice& getInputDevice() { return d_inputDevice; }
 
 private:
 
@@ -35,7 +35,8 @@ private:
   ResourceController d_resourceController;
   SceneUpdater d_sceneUpdater;
   SceneDrawer d_sceneDrawer;
-  Scene d_scene;
+  
+  Game* d_game;
 
 
   bool init(const Doh3d::StartupPars& pStartupPars);
