@@ -113,7 +113,7 @@ bool GuiController::createMainMenu(Scene& pScene)
 
   // Start new game
 
-  auto* pStartNewGameButton = GuiControlCreator::create_mainMenu_button();
+  auto* pStartNewGameButton = GuiControlCreator::create_menu_button();
   if (!pStartNewGameButton)
   {
     echo("ERROR: Can't create the main menu button.");
@@ -128,7 +128,7 @@ bool GuiController::createMainMenu(Scene& pScene)
 
   // Exit
 
-  auto* pExitButton = GuiControlCreator::create_mainMenu_button();
+  auto* pExitButton = GuiControlCreator::create_menu_button();
   if (!pExitButton)
   {
     echo("ERROR: Can't create the main menu button.");

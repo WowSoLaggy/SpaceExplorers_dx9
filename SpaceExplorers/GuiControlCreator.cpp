@@ -64,7 +64,7 @@ Panel* GuiControlCreator::create_mainMenu_backGround()
 
 
   auto* pPanel = new Panel();
-  pPanel->setName(GuiNames::MAINMENU_BACKGROUND);
+  pPanel->setName(GuiNames::MENU_BACKGROUND);
 
 
   if (!pPanel->setTexture(mainMenu_background_texture_fileName))
@@ -79,7 +79,7 @@ Panel* GuiControlCreator::create_mainMenu_backGround()
   return pPanel;
 }
 
-Button* GuiControlCreator::create_mainMenu_button()
+Button* GuiControlCreator::create_menu_button()
 {
   const std::string mainMenu_button_texture_fileName_normal = "Button_256_32_1_n.png";
   const std::string mainMenu_button_texture_fileName_pressed = "ButtonPressed_256_32_1_n.png";
@@ -89,7 +89,7 @@ Button* GuiControlCreator::create_mainMenu_button()
 
 
   auto* pButton = new Button();
-  pButton->setName(GuiNames::MAINMENU_BUTTON);
+  pButton->setName(GuiNames::MENU_BUTTON);
 
 
   if (!pButton->setTexture(
@@ -112,10 +112,10 @@ Button* GuiControlCreator::create_mainMenu_button()
   return pButton;
 }
 
-Text* GuiControlCreator::create_mainMenu_text()
+Text* GuiControlCreator::create_menu_text()
 {
   auto* pText = new Text();
-  pText->setName(GuiNames::MAINMENU_TEXT);
+  pText->setName(GuiNames::MENU_TEXT);
 
   pText->setFont("Gadugi");
 

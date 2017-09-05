@@ -20,9 +20,10 @@ public:
 
   static Panel* create_loadScreen_background();
 
+  static Button* create_menu_button();
+  static Text* create_menu_text();
+
   static Panel* create_mainMenu_backGround();
-  static Button* create_mainMenu_button();
-  static Text* create_mainMenu_text();
 
 };
 
