@@ -3,6 +3,15 @@
 #include "Scene.h"
 
 
+enum class GameState
+{
+  Unknown,
+  MainMenu,
+  InGame,
+  EscapeMenu,
+};
+
+
 class Game : public Doh3d::IInputHandler
 {
 public:
@@ -41,6 +50,8 @@ private:
 
   Scene d_scene;
   std::vector<Doh3d::Controller*> d_controllers;
+
+  GameState d_gameState;
 
   bool createMap();
   bool createBindCamera();

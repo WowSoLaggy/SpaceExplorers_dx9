@@ -28,6 +28,7 @@ Game* Game::create(bool& pRunMainLoop, const std::string& pTextureDir, const std
 
 Game::Game()
   : d_scene(*this)
+  , d_gameState(GameState::Unknown)
 {
 }
 
@@ -35,6 +36,8 @@ Game::Game()
 bool Game::stop()
 {
   LOG(__FUNCTION__);
+
+  d_gameState = GameState::Unknown;
 
   auto* pGameController = Doh3d::findChildByType<GameController>(d_scene, 1);
   if (!pGameController)
@@ -62,6 +65,8 @@ bool Game::startNewGame()
 
   if (!createBindController())
     return false;
+
+  d_gameState = GameState::InGame;
 
   return true;
 }

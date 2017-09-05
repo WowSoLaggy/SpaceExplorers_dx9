@@ -122,24 +122,33 @@ bool Game::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 
 bool Game::onKeyPressed(Doh3d::Key pKey)
 {
-  for (auto* pController : d_controllers)
-    pController->onKeyPressed(pKey);
+  if (d_gameState == GameState::InGame)
+  {
+    for (auto* pController : d_controllers)
+      pController->onKeyPressed(pKey);
+  }
 
   return true;
 }
 
 bool Game::onKeyDown(Doh3d::Key pKey)
 {
-  for (auto* pController : d_controllers)
-    pController->onKeyDown(pKey);
+  if (d_gameState == GameState::InGame)
+  {
+    for (auto* pController : d_controllers)
+      pController->onKeyDown(pKey);
+  }
 
   return true;
 }
 
 bool Game::onKeyUp(Doh3d::Key pKey)
 {
-  for (auto* pController : d_controllers)
-    pController->onKeyUp(pKey);
+  if (d_gameState == GameState::InGame)
+  {
+    for (auto* pController : d_controllers)
+      pController->onKeyUp(pKey);
+  }
 
   return true;
 }
