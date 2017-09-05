@@ -24,6 +24,7 @@ public:
   static Text* create_menu_text();
 
   static Panel* create_mainMenu_backGround();
+  static Panel* create_ingameMenu_backGround();
 
 };
 

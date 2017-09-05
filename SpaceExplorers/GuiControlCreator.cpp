@@ -121,3 +121,27 @@ Text* GuiControlCreator::create_menu_text()
 
   return pText;
 }
+
+
+Panel* GuiControlCreator::create_ingameMenu_backGround()
+{
+  const std::string ingameMenu_background_texture_fileName = "MenuFade_32_32_1_n.png";
+  const Doh3d::Size2I ingameMenu_background_size = { 1920, 1080 }; //< TODO: this size should be adapted for the screen resolution
+                                                                 //< Maybe it should use some option like "stretch" or "fit to screen"
+
+
+  auto* pPanel = new Panel();
+  pPanel->setName(GuiNames::MENU_BACKGROUND);
+
+
+  if (!pPanel->setTexture(ingameMenu_background_texture_fileName))
+  {
+    delete pPanel;
+    return nullptr;
+  }
+
+  pPanel->setSize(ingameMenu_background_size);
+
+
+  return pPanel;
+}
