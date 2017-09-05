@@ -171,3 +171,102 @@ bool GuiController::deleteMainMenu(Scene& pScene)
 
   return true;
 }
+
+
+bool GuiController::createIngameMenu(Scene& pScene)
+{
+  LOG(__FUNCTION__);
+
+  auto* pGuiObject = pScene.findChild(GuiNames::GROUP_GUI);
+  if (!pGuiObject)
+  {
+    echo("ERROR: Can't create GuiObject.");
+    return false;
+  }
+
+
+  // Main menu Gui object
+
+  auto* pIngameMenuGroup = GuiControlCreator::create_guiObject();
+  if (!pIngameMenuGroup)
+  {
+    echo("ERROR: Can't create GuiObject.");
+    return false;
+  }
+
+  pIngameMenuGroup->setName(GuiNames::GROUP_INGAMEMENU);
+  pGuiObject->addChildBack(pIngameMenuGroup);
+
+
+  // Background
+
+  auto* pBackground = GuiControlCreator::create_mainMenu_backGround();
+  if (!pBackground)
+  {
+    echo("ERROR: Can't create the background for the main menu.");
+    return false;
+  }
+  pBackground->setPosition(Doh3d::Position2I::zero());
+  pIngameMenuGroup->addChildBack(pBackground);
+
+
+  // To Main Menu
+
+  auto* pToMainGameButton = GuiControlCreator::create_menu_button();
+  if (!pToMainGameButton)
+  {
+    echo("ERROR: Can't create the main menu button.");
+    return false;
+  }
+  pToMainGameButton->setText("Exit to Main Menu");
+  pToMainGameButton->setPosition(Doh3d::Screen::getClientRightBottom() - pToMainGameButton->getSize() +
+                                   Doh3d::Position2I(-64, -64 - 32 - 24));
+  pToMainGameButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
+  pIngameMenuGroup->addChildBack(pToMainGameButton);
+
+
+  // Exit
+
+  auto* pExitButton = GuiControlCreator::create_menu_button();
+  if (!pExitButton)
+  {
+    echo("ERROR: Can't create the main menu button.");
+    return false;
+  }
+  pExitButton->setText("Exit to Desktop");
+  pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
+                           Doh3d::Position2I(-64, -64));
+  pExitButton->setOnClickEvent([&]() { return GameLogic::stopGame(pScene); });
+  pIngameMenuGroup->addChildBack(pExitButton);
+
+
+  // Cursor
+
+  auto* pCursor = GuiControlCreator::create_cursor();
+  if (!pCursor)
+  {
+    echo("ERROR: Can't create the cursor.");
+    return false;
+  }
+  pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
+  pIngameMenuGroup->addChildBack(pCursor);
+
+
+  return true;
+}
+
+bool GuiController::deleteIngameMenu(Scene& pScene)
+{
+  LOG(__FUNCTION__);
+
+  auto* pIngameMenuGroup = pScene.findChild(GuiNames::GROUP_INGAMEMENU);
+  if (!pIngameMenuGroup)
+  {
+    echo("ERROR: Can't find the ingame menu Gui group.");
+    return false;
+  }
+
+  pIngameMenuGroup->deleteThis();
+
+  return true;
+}

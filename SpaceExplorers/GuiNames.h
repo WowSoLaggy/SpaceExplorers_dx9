@@ -10,6 +10,7 @@ namespace GuiNames
   const std::string GROUP_GUI = "Gui Object";
   const std::string GROUP_LOADING_SCREEN = "Loading Screen";
   const std::string GROUP_MAINMENU = "Main Menu";
+  const std::string GROUP_INGAMEMENU = "Ingame Menu";
 
   const std::string CURSOR = "Cursor";
 

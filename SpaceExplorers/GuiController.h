@@ -17,6 +17,9 @@ public:
   static bool createMainMenu(Scene& pScene);
   static bool deleteMainMenu(Scene& pScene);
 
+  static bool createIngameMenu(Scene& pScene);
+  static bool deleteIngameMenu(Scene& pScene);
+
 };
 
 
