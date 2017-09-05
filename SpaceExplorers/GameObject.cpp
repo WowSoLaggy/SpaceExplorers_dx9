@@ -21,7 +21,7 @@ const Doh3d::Position2I GameObject::getPosition() const
 
 bool GameObject::updateSelf(float pDt)
 {
-  if (!d_movementModel.update(pDt))
+  if (d_prototype.getMovable() && !d_movementModel.update(pDt))
     return false;
 
   setPosition(d_movementModel.getPosition());

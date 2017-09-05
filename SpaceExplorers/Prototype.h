@@ -11,6 +11,9 @@ public:
   bool getTileBased() const { return d_tileBased; }
   void setTileBased(bool i_tileBased) { d_tileBased = i_tileBased; }
 
+  bool getMovable() const { return d_movable; }
+  void setMovable(bool i_movable) { d_movable = i_movable; }
+
   const std::string& getTextureName() const { return d_textureName; }
   void setTextureName(const std::string& i_textureName) { d_textureName = i_textureName; }
 
@@ -22,6 +25,7 @@ private:
   std::string d_name;
 
   bool d_tileBased;
+  bool d_movable;
 
   std::string d_textureName;
   int d_ti;
