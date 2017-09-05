@@ -80,10 +80,22 @@ bool GameLogic::createMap(Scene& pScene)
 
 bool GameLogic::createCamera(Scene& pScene)
 {
+  LOG(__FUNCTION__);
+
   auto* pCamera = new Camera();
   pCamera->setName("Camera");
   pCamera->setPosition({ 0, 0 });
   pScene.addChildBack(pCamera);
+
+  auto* pPlayer = dynamic_cast<GameObject*>(pScene.findChild("Player", 2));
+  if (!pPlayer)
+  {
+    echo("ERROR: Can't find Player.");
+    return false;
+  }
+
+  pCamera->bindToObject(pPlayer);
+
   return true;
 }
 
@@ -93,14 +105,7 @@ bool GameLogic::createController(Scene& pScene)
 
   auto* pController = d_game->getInputDevice().createNewController();
 
-  auto* pMap = pScene.findChild("Map", 1);
-  if (!pMap)
-  {
-    echo("ERROR: Can't find map.");
-    return false;
-  }
-
-  auto* pPlayer = dynamic_cast<GameObject*>(pMap->findChild("Player", 1));
+  auto* pPlayer = dynamic_cast<GameObject*>(pScene.findChild("Player", 2));
   if (!pPlayer)
   {
     echo("ERROR: Can't find Player.");
