@@ -8,9 +8,14 @@
 #include "Camera.h"
 
 
-bool GameLogic::startGame(Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
+Game* GameLogic::d_game = nullptr;
+
+
+bool GameLogic::startGame(Game& i_game, Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
 {
   LOG(__FUNCTION__);
+
+  d_game = &i_game;
 
   auto* pGameController = SceneObjectCreator::create_gameController(pRunMainLoop, pTextureDir, pFontDir);
   if (!pGameController)
@@ -37,6 +42,8 @@ bool GameLogic::stopGame(Scene& pScene)
 
   pGameController->stopGame();
 
+  d_game = nullptr;
+
   return true;
 }
 
@@ -52,6 +59,9 @@ bool GameLogic::startNewGame(Scene& pScene)
   if (!createCamera(pScene))
     return false;
 
+  if (!createController(pScene))
+    return false;
+
   return true;
 }
 
@@ -62,6 +72,7 @@ bool GameLogic::createMap(Scene& pScene)
   if (!pMap)
     return false;
 
+  pMap->setName("Map");
   pScene.addChildBack(pMap);
 
   return true;
@@ -73,5 +84,30 @@ bool GameLogic::createCamera(Scene& pScene)
   pCamera->setName("Camera");
   pCamera->setPosition({ 0, 0 });
   pScene.addChildBack(pCamera);
+  return true;
+}
+
+bool GameLogic::createController(Scene& pScene)
+{
+  LOG(__FUNCTION__);
+
+  auto* pController = d_game->getInputDevice().createNewController();
+
+  auto* pMap = pScene.findChild("Map", 1);
+  if (!pMap)
+  {
+    echo("ERROR: Can't find map.");
+    return false;
+  }
+
+  auto* pPlayer = dynamic_cast<GameObject*>(pMap->findChild("Player", 1));
+  if (!pPlayer)
+  {
+    echo("ERROR: Can't find Player.");
+    return false;
+  }
+
+  pController->bindObject(pPlayer);
+
   return true;
 }

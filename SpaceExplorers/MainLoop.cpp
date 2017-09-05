@@ -12,7 +12,7 @@ bool Game::mainLoop()
 
 
   bool d_runMainLoop = true;
-  GameLogic::startGame(d_scene, d_runMainLoop, TEXTURE_DIR, FONT_DIR);
+  GameLogic::startGame(*this, d_scene, d_runMainLoop, TEXTURE_DIR, FONT_DIR);
 
 
   while (d_runMainLoop)
