@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef INC_INPUTDEVICE_H
-#define INC_INPUTDEVICE_H
-
 
 class Scene;
 
@@ -41,6 +38,3 @@ private:
   virtual bool onKeyUp(Doh3d::Key pKey) override;
 
 };
-
-
-#endif // INC_INPUTDEVICE_H

@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_IGUI_H
-#define INC_IGUI_H
-
-
 #include "SceneObject.h"
 
 
@@ -20,6 +16,3 @@ public:
   virtual const Doh3d::Position2I getPosition() const override;
 
 };
-
-
-#endif // INC_IGUI_H

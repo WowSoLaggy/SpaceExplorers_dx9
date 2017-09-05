@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_CURSOR_H
-#define INC_CURSOR_H
-
-
 #include "SceneObject.h"
 #include "IGui.h"
 
@@ -27,6 +23,3 @@ private:
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
-
-
-#endif // INC_CURSOR_H

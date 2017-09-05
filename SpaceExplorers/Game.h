@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_GAME_H
-#define INC_GAME_H
-
-
 #include "RenderDevice.h"
 #include "InputDevice.h"
 #include "ResourceController.h"
@@ -49,6 +45,3 @@ private:
   bool onRenderDeviceRecreate();
 
 };
-
-
-#endif // INC_GAME_H

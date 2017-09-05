@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_GUICONTROLCREATOR_H
-#define INC_GUICONTROLCREATOR_H
-
-
 #include "GuiObject.h"
 #include "Cursor.h"
 #include "Panel.h"
@@ -27,6 +23,3 @@ public:
   static Panel* create_ingameMenu_backGround();
 
 };
-
-
-#endif // INC_GUICONTROLCREATOR_H

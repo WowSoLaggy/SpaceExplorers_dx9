@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef INC_RENDERDEVICE_H
-#define INC_RENDERDEVICE_H
-
 
 class RenderDevice
 {
@@ -19,6 +16,3 @@ private:
   Doh3d::RenderPars getRenderPars();
 
 };
-
-
-#endif // INC_RENDERDEVICE_H

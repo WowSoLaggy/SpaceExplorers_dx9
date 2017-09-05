@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef INC_GUINAMES_H
-#define INC_GUINAMES_H
-
 
 namespace GuiNames
 {
@@ -21,6 +18,3 @@ namespace GuiNames
   const std::string MENU_TEXT = "Menu Text";
 
 } // ns GuiNames
-
-
-#endif // INC_GUINAMES_H

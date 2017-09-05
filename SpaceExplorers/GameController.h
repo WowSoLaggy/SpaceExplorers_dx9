@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_GAMECONTROLLER_H
-#define INC_GAMECONTROLLER_H
-
-
 #include "SceneObject.h"
 
 
@@ -50,6 +46,3 @@ private:
   virtual bool updateSelf(float pDt) override;
 
 };
-
-
-#endif // INC_GAMECONTROLLER_H

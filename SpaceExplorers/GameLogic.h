@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_GAMELOGIC_H
-#define INC_GAMELOGIC_H
-
-
 #include "Game.h"
 #include "Scene.h"
 
@@ -26,6 +22,3 @@ private:
   static bool createController(Scene& pScene);
 
 };
-
-
-#endif // INC_GAMELOGIC_H

@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef INC_SCENEOBJECT_H
-#define INC_SCENEOBJECT_H
-
 
 class Scene;
 
@@ -31,6 +28,3 @@ private:
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
-
-
-#endif // INC_SCENEOBJECT_H

@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_TEXT_H
-#define INC_TEXT_H
-
-
 #include "SceneObject.h"
 #include "IGui.h"
 
@@ -31,6 +27,3 @@ private:
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
-
-
-#endif // INC_TEXT_H

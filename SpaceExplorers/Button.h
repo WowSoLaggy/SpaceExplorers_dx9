@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_BUTTON_H
-#define INC_BUTTON_H
-
-
 #include "IGui.h"
 #include "ButtonStates.h"
 
@@ -63,6 +59,3 @@ private:
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
-
-
-#endif // INC_BUTTON_H

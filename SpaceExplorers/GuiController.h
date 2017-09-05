@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef INC_GUICONTROLLER_H
-#define INC_GUICONTROLLER_H
-
 
 class Scene;
 
@@ -21,6 +18,3 @@ public:
   static bool deleteIngameMenu(Scene& pScene);
 
 };
-
-
-#endif // INC_GUICONTROLLER_H

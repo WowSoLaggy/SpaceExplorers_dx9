@@ -1,9 +1,5 @@
 #pragma once
 
-#ifndef INC_SCENE_H
-#define INC_SCENE_H
-
-
 #include "SceneObject.h"
 
 
@@ -14,6 +10,3 @@ public:
   virtual ~Scene();
 
 };
-
-
-#endif // INC_SCENE_H
