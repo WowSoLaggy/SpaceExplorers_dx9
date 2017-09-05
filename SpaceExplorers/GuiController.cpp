@@ -212,17 +212,17 @@ bool GuiController::createIngameMenu(Scene& pScene)
 
   // To Main Menu
 
-  auto* pToMainGameButton = GuiControlCreator::create_menu_button();
-  if (!pToMainGameButton)
+  auto* pToMainMenuButton = GuiControlCreator::create_menu_button();
+  if (!pToMainMenuButton)
   {
     echo("ERROR: Can't create the main menu button.");
     return false;
   }
-  pToMainGameButton->setText("Exit to Main Menu");
-  pToMainGameButton->setPosition(Doh3d::Screen::getClientRightBottom() - pToMainGameButton->getSize() +
+  pToMainMenuButton->setText("Exit to Main Menu");
+  pToMainMenuButton->setPosition(Doh3d::Screen::getClientRightBottom() - pToMainMenuButton->getSize() +
                                    Doh3d::Position2I(-64, -64 - 32 - 24));
-  pToMainGameButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
-  pIngameMenuGroup->addChildBack(pToMainGameButton);
+  pToMainMenuButton->setOnClickEvent([&]() { return GameLogic::startNewGame(pScene); });
+  pIngameMenuGroup->addChildBack(pToMainMenuButton);
 
 
   // Exit
