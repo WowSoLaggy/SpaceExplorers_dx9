@@ -8,14 +8,14 @@
 #include "Camera.h"
 
 
-Game* GameLogic::d_game = nullptr;
+Engine* GameLogic::d_engine = nullptr;
 
 
-bool GameLogic::startGame(Game& i_game, Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
+bool GameLogic::startGame(Engine& i_engine, Scene& pScene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
 {
   LOG(__FUNCTION__);
 
-  d_game = &i_game;
+  d_engine = &i_engine;
 
   auto* pGameController = SceneObjectCreator::create_gameController(pRunMainLoop, pTextureDir, pFontDir);
   if (!pGameController)
@@ -42,7 +42,7 @@ bool GameLogic::stopGame(Scene& pScene)
 
   pGameController->stopGame();
 
-  d_game = nullptr;
+  d_engine = nullptr;
 
   return true;
 }
@@ -103,7 +103,7 @@ bool GameLogic::createController(Scene& pScene)
 {
   LOG(__FUNCTION__);
 
-  auto* pController = d_game->getInputDevice().createNewController();
+  auto* pController = d_engine->getInputDevice().createNewController();
 
   auto* pPlayer = dynamic_cast<GameObject*>(pScene.findChild("Player", 2));
   if (!pPlayer)

@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "Game.h"
+#include "Engine.h"
 
 
-void Game::run(const Doh3d::StartupPars& pStartupPars)
+void Engine::run(const Doh3d::StartupPars& pStartupPars)
 {
   CreateDirectory(LOG_DIR_NAME.c_str(), nullptr);
   LOGINIT(LOG_FILE_FULL_NAME, GAME_NAME, GAME_FILE_NAME);
@@ -17,7 +17,7 @@ void Game::run(const Doh3d::StartupPars& pStartupPars)
 }
 
 
-bool Game::init(const Doh3d::StartupPars& pStartupPars)
+bool Engine::init(const Doh3d::StartupPars& pStartupPars)
 {
   if (!Doh3d::WinClass::registerClass(pStartupPars, GAME_NAME))
     return false;
@@ -32,7 +32,7 @@ bool Game::init(const Doh3d::StartupPars& pStartupPars)
   return true;
 }
 
-bool Game::dispose()
+bool Engine::dispose()
 {
   // Ignore return values, try to do all disposes
 
@@ -46,7 +46,7 @@ bool Game::dispose()
 }
 
 
-bool Game::onRenderDeviceRecreate()
+bool Engine::onRenderDeviceRecreate()
 {
   if (!d_sceneDrawer.onRenderDeviceRecreate())
     return false;

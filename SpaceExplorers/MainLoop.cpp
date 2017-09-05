@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "Game.h"
+#include "Engine.h"
 
 #include "GameLogic.h"
 
 
-bool Game::mainLoop()
+bool Engine::mainLoop()
 {
   Timer timer;
   timer.Start();

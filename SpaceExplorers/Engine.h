@@ -8,7 +8,7 @@
 #include "Scene.h"
 
 
-class Game
+class Engine
 {
 public:
 

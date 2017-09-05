@@ -13,9 +13,6 @@
     <Filter Include="rsrc">
       <UniqueIdentifier>{ec08a597-291c-411f-b9a0-c9223c5b6705}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Game">
-      <UniqueIdentifier>{38e3d144-df8d-46cb-8dfb-9a29acd4790b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\GameRender">
       <UniqueIdentifier>{fbb959f3-f0bc-418b-9930-9e33cff83809}</UniqueIdentifier>
     </Filter>
@@ -49,6 +46,9 @@
     <Filter Include="src\Logic\Models">
       <UniqueIdentifier>{ff56224a-643c-41da-b7d8-57b3ab49626a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Engine">
+      <UniqueIdentifier>{38e3d144-df8d-46cb-8dfb-9a29acd4790b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -60,11 +60,8 @@
     <ClCompile Include="..\libs\pugixml\pugixml.cpp">
       <Filter>libs\pugixml</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="MainLoop.cpp">
-      <Filter>src\Game</Filter>
+      <Filter>src\Engine</Filter>
     </ClCompile>
     <ClCompile Include="RenderDevice.cpp">
       <Filter>src\GameRender</Filter>
@@ -156,6 +153,9 @@
     <ClCompile Include="MovementModel.cpp">
       <Filter>src\Logic\Models</Filter>
     </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>src\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -169,9 +169,6 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>rsrc</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="RenderDevice.h">
       <Filter>src\GameRender</Filter>
@@ -259,6 +256,9 @@
     </ClInclude>
     <ClInclude Include="MovementModel.h">
       <Filter>src\Logic\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>src\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
