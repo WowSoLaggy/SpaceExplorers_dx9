@@ -24,7 +24,11 @@ bool GameObject::updateSelf(float pDt)
   if (d_prototype.getMovable() && !d_movementModel.update(pDt))
     return false;
 
-  setPosition(d_movementModel.getPosition());
+  Doh3d::Position2I newPosition = d_prototype.getTileBased() ?
+    d_movementModel.getPosition() :
+    d_movementModel.getPosition() - d_prototype.getSize2();
+
+  setPosition(newPosition);
 
   return true;
 }

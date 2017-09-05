@@ -15,6 +15,9 @@ public:
 
   virtual const Doh3d::Position2I getPosition() const override;
 
+  const MovementModel& getMovementModel() const { return d_movementModel; }
+  MovementModel& getMovementModel() { return d_movementModel; }
+
 public:
 
   // IControlable implementation
