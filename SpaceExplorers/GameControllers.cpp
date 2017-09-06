@@ -9,6 +9,8 @@ Doh3d::Controller* Game::createNewController()
   auto* pController = new Doh3d::Controller(newId++);
   d_controllers.push_back(pController);
 
+  bindControllerActions(*pController);
+
   return pController;
 }
 
@@ -30,4 +32,15 @@ bool Game::removeController(Doh3d::ControllerId i_controllerId)
     d_controllers.end());
 
   return true;
+}
+
+
+void Game::bindControllerActions(Doh3d::Controller& i_controller)
+{
+  i_controller.clearBindings();
+
+  i_controller.bindKey(DIK_W, Action::GoUp);
+  i_controller.bindKey(DIK_D, Action::GoRight);
+  i_controller.bindKey(DIK_S, Action::GoDown);
+  i_controller.bindKey(DIK_A, Action::GoLeft);
 }

@@ -135,8 +135,14 @@ bool Game::onKeyDown(Doh3d::Key pKey)
 {
   if (d_gameState == GameState::InGame)
   {
-    for (auto* pController : d_controllers)
-      pController->onKeyDown(pKey);
+    switch (pKey)
+    {
+    case DIK_ESCAPE: showInGameMenu(); break;
+    default:
+      for (auto* pController : d_controllers)
+        pController->onKeyDown(pKey);
+      break;
+    }
   }
 
   return true;

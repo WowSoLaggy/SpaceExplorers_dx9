@@ -56,5 +56,6 @@ private:
   bool createMap();
   bool createBindCamera();
   bool createBindController();
+  void bindControllerActions(Doh3d::Controller& i_controller);
 
 };
