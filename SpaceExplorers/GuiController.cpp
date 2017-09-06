@@ -200,10 +200,10 @@ bool GuiController::createIngameMenu(Scene& pScene)
 
   // Background
 
-  auto* pBackground = GuiControlCreator::create_mainMenu_backGround();
+  auto* pBackground = GuiControlCreator::create_ingameMenu_backGround();
   if (!pBackground)
   {
-    echo("ERROR: Can't create the background for the main menu.");
+    echo("ERROR: Can't create the background for the ingame menu.");
     return false;
   }
   pBackground->setPosition(Doh3d::Position2I::zero());
@@ -215,7 +215,7 @@ bool GuiController::createIngameMenu(Scene& pScene)
   auto* pToMainMenuButton = GuiControlCreator::create_menu_button();
   if (!pToMainMenuButton)
   {
-    echo("ERROR: Can't create the main menu button.");
+    echo("ERROR: Can't create the ingame menu button.");
     return false;
   }
   pToMainMenuButton->setText("Exit to Main Menu");
@@ -230,7 +230,7 @@ bool GuiController::createIngameMenu(Scene& pScene)
   auto* pExitButton = GuiControlCreator::create_menu_button();
   if (!pExitButton)
   {
-    echo("ERROR: Can't create the main menu button.");
+    echo("ERROR: Can't create the ingame menu button.");
     return false;
   }
   pExitButton->setText("Exit to Desktop");
