@@ -4,6 +4,11 @@
 #include "IGui.h"
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 class Panel : public IGui
 {
 public:
@@ -26,3 +31,6 @@ private:
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
+
+} // ns View
+} // ns SpaceExplorers

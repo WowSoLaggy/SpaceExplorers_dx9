@@ -4,6 +4,11 @@
 #include "Text.h"
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 Button::Button()
 {
   d_tiNormal = 0;
@@ -168,3 +173,6 @@ bool Button::setTextAlign(Doh3d::TextAlign pTextAlign)
 
   return true;
 }
+
+} // ns View
+} // ns SpaceExplorers

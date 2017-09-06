@@ -4,6 +4,11 @@
 #include "SceneObject.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 class Tile : public SceneObject
 {
 public:
@@ -28,3 +33,6 @@ private:
   virtual bool updateSelf(float pDt) override;
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 };
+
+} // ns Model
+} // ns SpaceExplorers

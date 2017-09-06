@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 class MovementModel : public Doh3d::IMovable
 {
 public:
@@ -20,3 +25,6 @@ private:
   bool d_goLeft;
 
 };
+
+} // ns Model
+} // ns SpaceExplorers

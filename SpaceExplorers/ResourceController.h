@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 class ResourceController
 {
 public:
@@ -9,3 +14,6 @@ public:
   bool dispose();
 
 };
+
+} // ns Engine
+} // ns SpaceExplorers

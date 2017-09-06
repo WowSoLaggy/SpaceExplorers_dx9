@@ -3,6 +3,11 @@
 #include "SceneObject.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 class Game;
 
 
@@ -21,3 +26,6 @@ private:
   Game& d_game;
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

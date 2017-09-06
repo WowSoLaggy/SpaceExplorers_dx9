@@ -6,6 +6,11 @@
 #include "Camera.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 Map::Map(int i_width, int i_height)
   : d_width(i_width)
   , d_height(i_height)
@@ -108,3 +113,6 @@ bool Map::drawSelf(Doh3d::Sprite& pSprite) const
 
   return true;
 }
+
+} // ns Model
+} // ns SpaceExplorers

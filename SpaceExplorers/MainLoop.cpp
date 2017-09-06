@@ -4,6 +4,11 @@
 #include "Game.h"
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 bool Engine::mainLoop()
 {
   LOG(__FUNCTION__);
@@ -60,7 +65,7 @@ bool Engine::mainLoop()
 
     if (!d_sceneDrawer.draw(d_game->getScene()))
       break;
-    
+
     // TODO: remove sleep
     Sleep(10);
 
@@ -68,3 +73,6 @@ bool Engine::mainLoop()
 
   return true;
 }
+
+} // ns Engine
+} // ns SpaceExplorers

@@ -4,6 +4,11 @@
 #include "Game.h"
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 bool InputDevice::init()
 {
   return Doh3d::InputMan::init();
@@ -49,3 +54,6 @@ Doh3d::InputPars InputDevice::getInputPars()
 
   return inputPars;
 }
+
+} // ns Engine
+} // ns SpaceExplorers

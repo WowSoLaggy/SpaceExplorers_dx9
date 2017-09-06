@@ -2,6 +2,11 @@
 #include "RenderDevice.h"
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 bool RenderDevice::init()
 {
   return Doh3d::RenderMan::init();
@@ -40,3 +45,6 @@ Doh3d::RenderPars RenderDevice::getRenderPars()
 
   return renderPars;
 }
+
+} // ns Engine
+} // ns SpaceExplorers

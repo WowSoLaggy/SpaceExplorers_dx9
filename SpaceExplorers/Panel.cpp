@@ -2,6 +2,11 @@
 #include "Panel.h"
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 Panel::Panel()
 {
   d_ti = 0;
@@ -41,3 +46,6 @@ bool Panel::setTexture(const std::string& pTextureName)
   
   return true;
 }
+
+} // ns View
+} // ns SpaceExplorers

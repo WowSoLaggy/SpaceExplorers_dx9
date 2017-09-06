@@ -6,6 +6,11 @@
 #include "PrototypeCollection.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 GameController::GameController(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
   : d_runMainLoop(pRunMainLoop), d_textureDir(pTextureDir), d_fontDir(pFontDir), d_state(State::NotInited)
 {
@@ -200,3 +205,6 @@ bool GameController::unloadGame()
   d_runMainLoop = false;
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

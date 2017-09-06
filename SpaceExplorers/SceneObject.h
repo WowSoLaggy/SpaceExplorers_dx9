@@ -1,10 +1,12 @@
 #pragma once
 
 
-class Scene;
+namespace SpaceExplorers
+{
+namespace Controller
+{
 
-
-class SceneObject : public virtual Doh3d::IDrawableTreeItem, public virtual Doh3d::IUpdatableTreeItem
+class SceneObject
 {
 public:
 
@@ -13,18 +15,11 @@ public:
   const std::string& getName() const { return d_name; }
   void setName(const std::string& pNewName) { d_name = pNewName; }
 
-  SceneObject* findChild(const std::string& pChildName, int pDepth = -1) const;
-
-protected:
-
-  Scene* getScene();
-  const Scene* getScene() const;
-
 private:
 
   std::string d_name;
 
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
-
 };
+
+} // ns Controller
+} // ns SpaceExplorers

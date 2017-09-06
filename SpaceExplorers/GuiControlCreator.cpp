@@ -4,6 +4,11 @@
 #include "GuiNames.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 GuiObject* GuiControlCreator::create_guiObject()
 {
   auto* pGuiObject = new GuiObject();
@@ -145,3 +150,6 @@ Panel* GuiControlCreator::create_ingameMenu_backGround()
 
   return pPanel;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

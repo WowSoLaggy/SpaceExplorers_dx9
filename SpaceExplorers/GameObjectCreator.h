@@ -3,6 +3,11 @@
 #include "GameObject.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 class GameObjectCreator
 {
 public:
@@ -11,3 +16,6 @@ public:
   static GameObject* createMan();
 
 };
+
+} // ns Model
+} // ns SpaceExplorers

@@ -3,6 +3,11 @@
 #include "Prototype.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 class PrototypeCollection
 {
 public:
@@ -19,3 +24,6 @@ private:
   static std::vector<Prototype> d_prototypes;
 
 };
+
+} // ns Model
+} // ns SpaceExplorers

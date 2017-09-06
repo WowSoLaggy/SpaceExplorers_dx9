@@ -7,6 +7,11 @@
 #include "Text.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 class GuiControlCreator
 {
 public:
@@ -23,3 +28,6 @@ public:
   static Panel* create_ingameMenu_backGround();
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

@@ -4,6 +4,11 @@
 #include "Scene.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 bool SceneDrawer::draw(const Scene& pScene)
 {
   if (!Doh3d::Drawer::beginScene())
@@ -37,3 +42,6 @@ bool SceneDrawer::onRenderDeviceRecreate()
 
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

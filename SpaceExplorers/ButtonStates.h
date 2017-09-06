@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 enum class ButtonState
 {
   Normal,
@@ -8,3 +13,6 @@ enum class ButtonState
   Selected,
   Disabled,
 };
+
+} // ns View
+} // ns SpaceExplorers

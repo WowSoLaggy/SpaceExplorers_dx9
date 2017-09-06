@@ -7,6 +7,11 @@
 #include "Game.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 bool GuiController::createLoadingGui(Scene& pScene)
 {
   LOG(__FUNCTION__);
@@ -270,3 +275,6 @@ bool GuiController::deleteIngameMenu(Scene& pScene)
 
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

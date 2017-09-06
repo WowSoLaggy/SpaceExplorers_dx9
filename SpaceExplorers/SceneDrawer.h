@@ -3,6 +3,11 @@
 #include "Scene.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 class SceneDrawer
 {
 public:
@@ -16,3 +21,6 @@ private:
   Doh3d::Sprite d_sprite;
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

@@ -3,6 +3,11 @@
 #include "SceneObject.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 class GameController : public SceneObject
 {
 public:
@@ -46,3 +51,6 @@ private:
   virtual bool updateSelf(float pDt) override;
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

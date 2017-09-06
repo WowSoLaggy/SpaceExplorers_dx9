@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 class Game;
 
 
@@ -21,3 +26,6 @@ private:
   Game* d_game;
 
 };
+
+} // ns Engine
+} // ns SpaceExplorers

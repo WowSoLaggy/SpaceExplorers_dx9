@@ -3,6 +3,11 @@
 #include "Scene.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 enum class GameState
 {
   Unknown,
@@ -60,3 +65,6 @@ private:
   void bindControllerActions(Doh3d::Controller& i_controller);
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

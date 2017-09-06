@@ -1,6 +1,12 @@
 #include "stdafx.h"
 #include "Cursor.h"
 
+
+namespace SpaceExplorers
+{
+namespace View
+{
+
 Cursor::Cursor()
 {
   d_ti = 0;
@@ -42,3 +48,6 @@ bool Cursor::setTexture(const std::string& pTextureName)
 
   return true;
 }
+
+} // ns View
+} // ns SpaceExplorers

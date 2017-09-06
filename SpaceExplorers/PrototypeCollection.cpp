@@ -2,6 +2,11 @@
 #include "PrototypeCollection.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 std::vector<Prototype> PrototypeCollection::d_prototypes;
 
 
@@ -64,3 +69,6 @@ const Prototype* PrototypeCollection::find(const std::string& i_name)
 
   return &(*it);
 }
+
+} // ns Model
+} // ns SpaceExplorers

@@ -4,6 +4,11 @@
 #include "Tile.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 bool MovementModel::update(float i_dt)
 {
   const float MAX_ACCEL = Tile::DEFAULT_TILE_SIZE * 20;
@@ -58,3 +63,6 @@ bool MovementModel::update(float i_dt)
 
   return true;
 }
+
+} // ns Model
+} // ns SpaceExplorers

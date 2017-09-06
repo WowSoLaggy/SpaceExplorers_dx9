@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 class Prototype final
 {
 public:
@@ -38,3 +43,6 @@ private:
   Doh3d::Size2I d_size2;
 
 };
+
+} // ns Model
+} // ns SpaceExplorers

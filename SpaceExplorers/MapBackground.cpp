@@ -2,6 +2,11 @@
 #include "MapBackground.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 MapBackground::~MapBackground()
 {
 }
@@ -59,3 +64,6 @@ void MapBackground::updateScale()
   else
     d_scale.x = d_scale.y;
 }
+
+} // ns Model
+} // ns SpaceExplorers

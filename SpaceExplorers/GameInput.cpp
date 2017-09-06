@@ -5,6 +5,11 @@
 #include "GuiObject.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 bool Game::onMouseMove(bool& pHandled)
 {
   LOG(__FUNCTION__);
@@ -158,3 +163,6 @@ bool Game::onKeyUp(Doh3d::Key pKey)
 
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

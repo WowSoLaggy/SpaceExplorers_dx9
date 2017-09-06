@@ -7,6 +7,11 @@
 #include "SceneDrawer.h"
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 class Game;
 
 
@@ -35,7 +40,7 @@ private:
   ResourceController d_resourceController;
   SceneUpdater d_sceneUpdater;
   SceneDrawer d_sceneDrawer;
-  
+
   Game* d_game;
 
 
@@ -46,3 +51,6 @@ private:
   bool onRenderDeviceRecreate();
 
 };
+
+} // ns Engine
+} // ns SpaceExplorers

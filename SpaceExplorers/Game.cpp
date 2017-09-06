@@ -7,6 +7,11 @@
 #include "Camera.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 Game* Game::create(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
 {
   LOG(__FUNCTION__);
@@ -137,3 +142,6 @@ bool Game::createBindController()
 
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

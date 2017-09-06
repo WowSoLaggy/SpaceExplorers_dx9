@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 class Scene;
 
 
@@ -18,3 +23,6 @@ public:
   static bool deleteIngameMenu(Scene& pScene);
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

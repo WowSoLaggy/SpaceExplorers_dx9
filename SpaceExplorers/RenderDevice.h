@@ -1,6 +1,11 @@
 #pragma once
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 class RenderDevice
 {
 public:
@@ -16,3 +21,6 @@ private:
   Doh3d::RenderPars getRenderPars();
 
 };
+
+} // ns Engine
+} // ns SpaceExplorers

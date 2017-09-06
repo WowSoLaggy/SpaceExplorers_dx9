@@ -2,6 +2,11 @@
 #include "IGui.h"
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 bool IGui::containsPoint(Doh3d::Position2I pPoint)
 {
   return Doh3d::Geometry::RectI(getPosition(), getSize()).containsPoint(pPoint);
@@ -17,3 +22,6 @@ const Doh3d::Position2I IGui::getPosition() const
 
   return position;
 }
+
+} // ns View
+} // ns SpaceExplorers

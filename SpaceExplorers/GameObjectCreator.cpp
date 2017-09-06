@@ -4,6 +4,11 @@
 #include "PrototypeCollection.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 GameObject* GameObjectCreator::createLattice()
 {
   auto* pPrototype = PrototypeCollection::find("Lattice");
@@ -23,3 +28,6 @@ GameObject* GameObjectCreator::createMan()
   auto* pGameObject = new GameObject(*pPrototype);
   return pGameObject;
 }
+
+} // ns Model
+} // ns SpaceExplorers

@@ -4,6 +4,11 @@
 #include "Scene.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 bool SceneUpdater::update(Scene& pScene, float pDt)
 {
   if (!pScene.update(pDt))
@@ -11,3 +16,6 @@ bool SceneUpdater::update(Scene& pScene, float pDt)
 
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

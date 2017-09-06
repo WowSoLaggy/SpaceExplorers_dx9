@@ -2,6 +2,11 @@
 #include "Text.h"
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 Text::Text()
 {
 }
@@ -80,3 +85,6 @@ void Text::updateSize()
 {
   setSize({ d_textContainer.textWidth(), d_textContainer.textHeight() });
 }
+
+} // ns View
+} // ns SpaceExplorers

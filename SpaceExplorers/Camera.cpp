@@ -4,6 +4,11 @@
 #include "GameObject.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 void Camera::bindToObject(const GameObject* i_object)
 {
   if (d_bindedObject == i_object)
@@ -33,3 +38,6 @@ bool Camera::updateSelf(float i_dt)
 
   return true;
 }
+
+} // ns Controller
+} // ns SpaceExplorers

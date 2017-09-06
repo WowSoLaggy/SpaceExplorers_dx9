@@ -3,6 +3,11 @@
 #include "Scene.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 class SceneUpdater
 {
 public:
@@ -10,3 +15,6 @@ public:
   bool update(Scene& scene, float pDt);
 
 };
+
+} // ns Controller
+} // ns SpaceExplorers

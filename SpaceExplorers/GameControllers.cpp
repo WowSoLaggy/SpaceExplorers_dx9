@@ -2,6 +2,11 @@
 #include "Game.h"
 
 
+namespace SpaceExplorers
+{
+namespace Controller
+{
+
 Doh3d::Controller* Game::createNewController()
 {
   static int newId = 0;
@@ -44,3 +49,6 @@ void Game::bindControllerActions(Doh3d::Controller& i_controller)
   i_controller.bindKey(DIK_S, Action::GoDown);
   i_controller.bindKey(DIK_A, Action::GoLeft);
 }
+
+} // ns Controller
+} // ns SpaceExplorers

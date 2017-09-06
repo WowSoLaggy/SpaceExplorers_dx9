@@ -2,6 +2,11 @@
 #include "Engine.h"
 
 
+namespace SpaceExplorers
+{
+namespace Engine
+{
+
 void Engine::run(const Doh3d::StartupPars& pStartupPars)
 {
   CreateDirectory(LOG_DIR_NAME.c_str(), nullptr);
@@ -53,3 +58,6 @@ bool Engine::onRenderDeviceRecreate()
 
   return true;
 }
+
+} // ns Engine
+} // ns SpaceExplorers

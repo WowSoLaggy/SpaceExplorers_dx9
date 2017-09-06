@@ -2,6 +2,11 @@
 #include "Tile.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 Tile::Tile()
   : d_turf(nullptr)
 {
@@ -58,3 +63,6 @@ void Tile::resetTurf()
     d_turf = nullptr;
   }
 }
+
+} // ns Model
+} // ns SpaceExplorers

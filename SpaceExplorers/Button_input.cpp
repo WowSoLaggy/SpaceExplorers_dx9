@@ -2,6 +2,11 @@
 #include "Button.h"
 
 
+namespace SpaceExplorers
+{
+namespace View
+{
+
 bool Button::onMouseMove(bool& pHandled)
 {
   pHandled = false;
@@ -87,3 +92,6 @@ bool Button::onKeyUp(Doh3d::Key pKey)
 {
   return true;
 }
+
+} // ns View
+} // ns SpaceExplorers

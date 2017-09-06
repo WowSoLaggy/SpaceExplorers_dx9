@@ -5,6 +5,11 @@
 #include "MovementModel.h"
 
 
+namespace SpaceExplorers
+{
+namespace Model
+{
+
 class GameObject : public SceneObject,
   public Doh3d::IPositioned2I, public Doh3d::IControlable
 {
@@ -42,3 +47,6 @@ private:
   virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
+
+} // ns Model
+} // ns SpaceExplorers
