@@ -3,8 +3,6 @@
 #include "Scene.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -17,4 +15,3 @@ public:
 };
 
 } // ns Controller
-} // ns SpaceExplorers

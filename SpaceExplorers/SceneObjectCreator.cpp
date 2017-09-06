@@ -2,8 +2,6 @@
 #include "SceneObjectCreator.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -13,4 +11,3 @@ GameController* SceneObjectCreator::create_gameController(bool& pRunMainLoop, co
 }
 
 } // ns Controller
-} // ns SpaceExplorers

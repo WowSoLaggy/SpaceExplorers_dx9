@@ -2,8 +2,6 @@
 #include "Game.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -51,4 +49,3 @@ void Game::bindControllerActions(Doh3d::Controller& i_controller)
 }
 
 } // ns Controller
-} // ns SpaceExplorers

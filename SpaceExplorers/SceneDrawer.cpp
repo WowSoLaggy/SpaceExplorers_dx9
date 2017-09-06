@@ -4,8 +4,6 @@
 #include "Scene.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -44,4 +42,3 @@ bool SceneDrawer::onRenderDeviceRecreate()
 }
 
 } // ns Controller
-} // ns SpaceExplorers

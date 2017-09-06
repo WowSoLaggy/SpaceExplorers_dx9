@@ -4,8 +4,6 @@
 #include "Game.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -19,4 +17,3 @@ Scene::~Scene()
 }
 
 } // ns Controller
-} // ns SpaceExplorers

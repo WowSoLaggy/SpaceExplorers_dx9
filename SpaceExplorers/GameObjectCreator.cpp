@@ -4,8 +4,6 @@
 #include "PrototypeCollection.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -30,4 +28,3 @@ GameObject* GameObjectCreator::createMan()
 }
 
 } // ns Model
-} // ns SpaceExplorers

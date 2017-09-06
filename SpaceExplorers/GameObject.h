@@ -5,8 +5,6 @@
 #include "MovementModel.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -49,4 +47,3 @@ private:
 };
 
 } // ns Model
-} // ns SpaceExplorers

@@ -4,8 +4,6 @@
 #include "Tile.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -65,4 +63,3 @@ bool MovementModel::update(float i_dt)
 }
 
 } // ns Model
-} // ns SpaceExplorers

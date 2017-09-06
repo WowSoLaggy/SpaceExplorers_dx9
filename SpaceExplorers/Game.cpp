@@ -7,8 +7,6 @@
 #include "Camera.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -144,4 +142,3 @@ bool Game::createBindController()
 }
 
 } // ns Controller
-} // ns SpaceExplorers

@@ -165,6 +165,9 @@
     <ClCompile Include="Game.cpp">
       <Filter>src\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="InputController.cpp">
+      <Filter>src\Controller\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>src\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="InputController.h">
+      <Filter>src\Controller\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

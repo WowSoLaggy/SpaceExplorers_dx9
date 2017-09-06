@@ -2,8 +2,6 @@
 #include "RenderDevice.h"
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -47,4 +45,3 @@ Doh3d::RenderPars RenderDevice::getRenderPars()
 }
 
 } // ns Engine
-} // ns SpaceExplorers

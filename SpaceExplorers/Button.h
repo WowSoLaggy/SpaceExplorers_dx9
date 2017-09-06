@@ -4,8 +4,6 @@
 #include "ButtonStates.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -66,4 +64,3 @@ private:
 };
 
 } // ns View
-} // ns SpaceExplorers

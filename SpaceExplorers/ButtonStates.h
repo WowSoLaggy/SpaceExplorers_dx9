@@ -1,8 +1,6 @@
 #pragma once
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -15,4 +13,3 @@ enum class ButtonState
 };
 
 } // ns View
-} // ns SpaceExplorers

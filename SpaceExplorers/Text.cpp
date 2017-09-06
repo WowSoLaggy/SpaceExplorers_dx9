@@ -2,8 +2,6 @@
 #include "Text.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -87,4 +85,3 @@ void Text::updateSize()
 }
 
 } // ns View
-} // ns SpaceExplorers

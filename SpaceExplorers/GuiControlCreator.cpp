@@ -4,8 +4,6 @@
 #include "GuiNames.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -152,4 +150,3 @@ Panel* GuiControlCreator::create_ingameMenu_backGround()
 }
 
 } // ns Controller
-} // ns SpaceExplorers

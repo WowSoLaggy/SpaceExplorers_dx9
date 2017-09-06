@@ -7,8 +7,6 @@
 #include "SceneDrawer.h"
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -53,4 +51,3 @@ private:
 };
 
 } // ns Engine
-} // ns SpaceExplorers

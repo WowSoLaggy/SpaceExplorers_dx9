@@ -2,8 +2,6 @@
 #include "Button.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -94,4 +92,3 @@ bool Button::onKeyUp(Doh3d::Key pKey)
 }
 
 } // ns View
-} // ns SpaceExplorers

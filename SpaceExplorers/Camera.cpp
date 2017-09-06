@@ -4,8 +4,6 @@
 #include "GameObject.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -40,4 +38,3 @@ bool Camera::updateSelf(float i_dt)
 }
 
 } // ns Controller
-} // ns SpaceExplorers

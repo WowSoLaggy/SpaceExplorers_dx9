@@ -4,8 +4,6 @@
 #include "Game.h"
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -56,4 +54,3 @@ Doh3d::InputPars InputDevice::getInputPars()
 }
 
 } // ns Engine
-} // ns SpaceExplorers

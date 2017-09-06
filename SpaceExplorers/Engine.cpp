@@ -2,8 +2,6 @@
 #include "Engine.h"
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -60,4 +58,3 @@ bool Engine::onRenderDeviceRecreate()
 }
 
 } // ns Engine
-} // ns SpaceExplorers

@@ -1,8 +1,6 @@
 #pragma once
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -23,4 +21,3 @@ private:
 };
 
 } // ns Engine
-} // ns SpaceExplorers

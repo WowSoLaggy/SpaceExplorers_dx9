@@ -4,8 +4,6 @@
 #include "Text.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -175,4 +173,3 @@ bool Button::setTextAlign(Doh3d::TextAlign pTextAlign)
 }
 
 } // ns View
-} // ns SpaceExplorers

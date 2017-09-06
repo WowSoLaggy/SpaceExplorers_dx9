@@ -6,8 +6,6 @@
 #include "Camera.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -115,4 +113,3 @@ bool Map::drawSelf(Doh3d::Sprite& pSprite) const
 }
 
 } // ns Model
-} // ns SpaceExplorers

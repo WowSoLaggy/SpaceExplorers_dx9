@@ -5,8 +5,6 @@
 #include "GuiObject.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -165,4 +163,3 @@ bool Game::onKeyUp(Doh3d::Key pKey)
 }
 
 } // ns Controller
-} // ns SpaceExplorers

@@ -2,8 +2,6 @@
 #include "IGui.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -24,4 +22,3 @@ const Doh3d::Position2I IGui::getPosition() const
 }
 
 } // ns View
-} // ns SpaceExplorers

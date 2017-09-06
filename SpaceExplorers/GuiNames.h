@@ -1,8 +1,6 @@
 #pragma once
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 namespace GuiNames
@@ -23,4 +21,3 @@ const std::string MENU_TEXT = "Menu Text";
 
 } // ns GuiNames
 } // ns Controller
-} // ns SpaceExplorers

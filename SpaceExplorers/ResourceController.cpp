@@ -2,8 +2,6 @@
 #include "ResourceController.h"
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -18,4 +16,3 @@ bool ResourceController::dispose()
 }
 
 } // ns Engine
-} // ns SpaceExplorers

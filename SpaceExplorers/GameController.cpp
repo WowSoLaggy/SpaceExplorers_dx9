@@ -6,8 +6,6 @@
 #include "PrototypeCollection.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -207,4 +205,3 @@ bool GameController::unloadGame()
 }
 
 } // ns Controller
-} // ns SpaceExplorers

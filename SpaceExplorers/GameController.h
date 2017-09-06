@@ -3,8 +3,6 @@
 #include "SceneObject.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -53,4 +51,3 @@ private:
 };
 
 } // ns Controller
-} // ns SpaceExplorers

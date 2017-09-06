@@ -4,8 +4,6 @@
 #include "Game.h"
 
 
-namespace SpaceExplorers
-{
 namespace Engine
 {
 
@@ -75,4 +73,3 @@ bool Engine::mainLoop()
 }
 
 } // ns Engine
-} // ns SpaceExplorers

@@ -2,8 +2,6 @@
 #include "Tile.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -65,4 +63,3 @@ void Tile::resetTurf()
 }
 
 } // ns Model
-} // ns SpaceExplorers

@@ -7,8 +7,6 @@
 #include "Game.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -277,4 +275,3 @@ bool GuiController::deleteIngameMenu(Scene& pScene)
 }
 
 } // ns Controller
-} // ns SpaceExplorers

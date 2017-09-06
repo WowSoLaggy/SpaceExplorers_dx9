@@ -2,8 +2,6 @@
 #include "GameObject.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -51,4 +49,3 @@ bool GameObject::drawSelf(Doh3d::Sprite& pSprite) const
 }
 
 } // ns Model
-} // ns SpaceExplorers

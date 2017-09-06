@@ -2,8 +2,6 @@
 #include "Cursor.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -50,4 +48,3 @@ bool Cursor::setTexture(const std::string& pTextureName)
 }
 
 } // ns View
-} // ns SpaceExplorers

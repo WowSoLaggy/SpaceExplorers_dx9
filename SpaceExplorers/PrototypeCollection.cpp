@@ -2,8 +2,6 @@
 #include "PrototypeCollection.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -71,4 +69,3 @@ const Prototype* PrototypeCollection::find(const std::string& i_name)
 }
 
 } // ns Model
-} // ns SpaceExplorers

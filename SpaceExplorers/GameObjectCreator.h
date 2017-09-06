@@ -3,8 +3,6 @@
 #include "GameObject.h"
 
 
-namespace SpaceExplorers
-{
 namespace Model
 {
 
@@ -18,4 +16,3 @@ public:
 };
 
 } // ns Model
-} // ns SpaceExplorers

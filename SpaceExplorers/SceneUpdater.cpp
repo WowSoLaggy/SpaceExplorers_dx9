@@ -4,8 +4,6 @@
 #include "Scene.h"
 
 
-namespace SpaceExplorers
-{
 namespace Controller
 {
 
@@ -18,4 +16,3 @@ bool SceneUpdater::update(Scene& pScene, float pDt)
 }
 
 } // ns Controller
-} // ns SpaceExplorers

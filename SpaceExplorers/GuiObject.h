@@ -3,8 +3,6 @@
 #include "SceneObject.h"
 
 
-namespace SpaceExplorers
-{
 namespace View
 {
 
@@ -17,4 +15,3 @@ public:
 };
 
 } // ns View
-} // ns SpaceExplorers
