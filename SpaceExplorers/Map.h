@@ -18,6 +18,10 @@ public:
   Tile* getTileAt(int pX, int pY);
   const Tile* getTileAt(int pX, int pY) const;
 
+protected:
+
+  virtual bool drawChildren() const { return false; }
+
 private:
 
   Map(int i_width, int i_height);
