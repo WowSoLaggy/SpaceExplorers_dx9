@@ -71,6 +71,16 @@ bool Game::startNewGame()
   return true;
 }
 
+bool Game::showInGameMenu()
+{
+  if (!GuiController::createIngameMenu(d_scene))
+    return false;
+
+  d_gameState = GameState::EscapeMenu;
+
+  return true;
+}
+
 
 bool Game::createMap()
 {
@@ -79,7 +89,7 @@ bool Game::createMap()
     return false;
 
   pMap->setName("Map");
-  d_scene.addChildBack(pMap);
+  d_scene.addChildFront(pMap);
 
   return true;
 }

@@ -27,6 +27,7 @@ public:
   bool stop();
 
   bool startNewGame();
+  bool showInGameMenu();
 
 
   Doh3d::Controller* createNewController();
