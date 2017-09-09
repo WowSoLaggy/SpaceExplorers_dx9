@@ -1,11 +1,14 @@
 #pragma once
 
 
+namespace Controller
+{
+class Game;
+} // ns Controller
+
+
 namespace Engine
 {
-
-class Game;
-
 
 class InputDevice
 {
@@ -15,13 +18,13 @@ public:
   bool dispose();
 
   bool check();
-  bool recreate(Game& i_game);
+  bool recreate(Controller::Game& i_game);
 
 private:
 
   Doh3d::InputPars getInputPars();
 
-  Game* d_game;
+  Controller::Game* d_game;
 
 };
 

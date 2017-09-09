@@ -1,13 +1,13 @@
 #pragma once
 
-#include "SceneObject.h"
 #include "IGui.h"
 
 
 namespace View
 {
 
-class Text : public IGui
+class Text
+  : public IGui
 {
 public:
 
@@ -20,14 +20,15 @@ public:
   bool setFont(const std::string& pFontName);
   bool setTextAlign(Doh3d::TextAlign pTextAlign);
 
+
+  virtual bool update(float i_dt) override;
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
+
 private:
 
   Doh3d::TextContainer d_textContainer;
 
   void updateSize();
-
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
 

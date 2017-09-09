@@ -7,10 +7,9 @@
 namespace Model
 {
 
-bool MovementModel::update(float i_dt)
+bool MovementModel::beforeUpdate(float i_dt)
 {
   const float MAX_ACCEL = Tile::DEFAULT_TILE_SIZE * 20;
-  const float MAX_SPEED = Tile::DEFAULT_TILE_SIZE * 3;
   const float MIN_SPEED = 20;
 
   // Calc current accel
@@ -45,12 +44,16 @@ bool MovementModel::update(float i_dt)
   setAccel(currentAccel);
   setSpeed(speed);
 
-  if (!Doh3d::IMovable::update(i_dt))
-    return false;
+  return true;
+}
+
+bool MovementModel::afterUpdate(float i_dt)
+{
+  const float MAX_SPEED = Tile::DEFAULT_TILE_SIZE * 3;
 
   // Clamp maximum speed
 
-  speed = getSpeed();
+  auto speed = getSpeed();
   float speedLength = speed.length();
   
   if (speedLength > MAX_SPEED)

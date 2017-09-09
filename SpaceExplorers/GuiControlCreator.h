@@ -1,6 +1,5 @@
 #pragma once
 
-#include "GuiObject.h"
 #include "Cursor.h"
 #include "Panel.h"
 #include "Button.h"
@@ -14,16 +13,15 @@ class GuiControlCreator
 {
 public:
 
-  static GuiObject* create_guiObject();
-  static Cursor* create_cursor();
+  static View::Cursor* create_cursor();
 
-  static Panel* create_loadScreen_background();
+  static View::Panel* create_loadScreen_background();
 
-  static Button* create_menu_button();
-  static Text* create_menu_text();
+  static View::Button* create_menu_button();
+  static View::Text* create_menu_text();
 
-  static Panel* create_mainMenu_backGround();
-  static Panel* create_ingameMenu_backGround();
+  static View::Panel* create_mainMenu_backGround();
+  static View::Panel* create_escapeMenu_backGround();
 
 };
 

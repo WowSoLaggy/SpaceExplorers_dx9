@@ -1,6 +1,5 @@
 #pragma once
 
-#include "SceneObject.h"
 #include "Prototype.h"
 #include "MovementModel.h"
 
@@ -8,18 +7,22 @@
 namespace Model
 {
 
-class GameObject : public SceneObject,
-  public Doh3d::IPositioned2I, public Doh3d::IControlable
+class GameObject
+  : public Doh3d::IUpdatable
+  , public Doh3d::IDrawable
+  , public Doh3d::IControlable
+  , public Doh3d::INamed
 {
 public:
 
   GameObject(const Prototype& i_prototype);
   virtual ~GameObject() { }
 
-  virtual const Doh3d::Position2I getPosition() const override;
+  const Doh3d::Position2F& getPosition() const;
+  void setPosition(const Doh3d::Position2F& i_position);
 
-  const MovementModel& getMovementModel() const { return d_movementModel; }
-  MovementModel& getMovementModel() { return d_movementModel; }
+  virtual bool update(float i_dt) override;
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 
 public:
 
@@ -40,9 +43,6 @@ private:
   const Prototype& d_prototype;
 
   MovementModel d_movementModel;
-
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
 

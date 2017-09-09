@@ -4,7 +4,7 @@
 namespace Model
 {
 
-class MovementModel : public Doh3d::IMovable
+class MovementModel : public Doh3d::IMovable2F
 {
 public:
 
@@ -13,7 +13,8 @@ public:
   void setGoRight(bool i_on) { d_goRight = i_on; }
   void setGoLeft(bool i_on) { d_goLeft = i_on; }
 
-  virtual bool update(float i_dt) override;
+  virtual bool beforeUpdate(float i_dt) override;
+  virtual bool afterUpdate(float i_dt) override;
 
 private:
 

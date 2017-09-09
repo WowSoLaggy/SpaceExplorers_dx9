@@ -3,15 +3,15 @@
 #include "GameObject.h"
 
 
-namespace Model
+namespace Controller
 {
 
 class GameObjectCreator
 {
 public:
 
-  static GameObject* createLattice();
-  static GameObject* createMan();
+  static Model::GameObject* createLattice();
+  static Model::GameObject* createMan();
 
 };
 

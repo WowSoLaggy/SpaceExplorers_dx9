@@ -10,27 +10,27 @@ MapBackground::~MapBackground()
 }
 
 
-bool MapBackground::updateSelf(float pDt)
+bool MapBackground::update(float i_dt)
 {
   return true;
 }
 
-bool MapBackground::drawSelf(Doh3d::Sprite& pSprite) const
+bool MapBackground::draw(Doh3d::Sprite& i_sprite) const
 {
-  auto originalTranslation = pSprite.getTranslation();
-  auto originalScale = pSprite.getScale();
+  auto originalTranslation = i_sprite.getTranslation();
+  auto originalScale = i_sprite.getScale();
 
-  pSprite.setTranslation(Doh3d::Position2I::zero());
-  pSprite.setScale(d_scale);
+  i_sprite.setTranslation(Doh3d::Position2I::zero());
+  i_sprite.setScale(d_scale);
 
-  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
+  if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
                     0, Doh3d::Position2I::zero(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
   }
 
-  pSprite.setTranslation(originalTranslation);
-  pSprite.setScale(originalScale);
+  i_sprite.setTranslation(originalTranslation);
+  i_sprite.setScale(originalScale);
 
   return true;
 }

@@ -1,27 +1,32 @@
 #pragma once
 
-#include "SceneObject.h"
-
 
 namespace Controller
 {
 
+class Camera;
 class Game;
 
 
-class Scene : public SceneObject
+class Scene
 {
 public:
 
-  Scene(Game& i_game);
-  virtual ~Scene();
+  virtual ~Scene() { }
 
-  Game& getGame() { return d_game; }
-  const Game& getGame() const { return d_game; }
+  Camera* getCamera() { return d_camera; }
+  const Camera* getCamera() const { return d_camera; }
+
+  void setCamera(Camera* i_camera) { d_camera = i_camera; }
+
+  bool draw(const Game& i_game);
+
+  bool onRenderDeviceRecreate();
 
 private:
 
-  Game& d_game;
+  Doh3d::Sprite d_sprite;
+  Camera* d_camera;
 
 };
 

@@ -34,29 +34,35 @@
     <Filter Include="src\Model\GameObjects\Prototype">
       <UniqueIdentifier>{21b755bb-dc90-4a31-a3e1-c12417028432}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Controller">
-      <UniqueIdentifier>{231c4370-794c-4840-93b6-00fa4754ca8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Controller\Input">
-      <UniqueIdentifier>{2894897d-8e72-41e2-a58c-988bf32938af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Controller\Scene">
-      <UniqueIdentifier>{a615415e-5344-41d4-ab45-104292a814be}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Controller\Scene\SceneObjects">
-      <UniqueIdentifier>{da44cb27-e4f7-41e8-8bab-11b0beb2f5ce}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\View">
       <UniqueIdentifier>{dc289a8f-20bd-494d-9436-924a1d800e60}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\View\GuiObjects">
       <UniqueIdentifier>{10e26eb6-6bea-430e-8454-5bdf19acc832}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Controller\Gui">
-      <UniqueIdentifier>{aa99fa69-917b-4fbe-8005-4c9d8cba1680}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Model\MovementModel">
       <UniqueIdentifier>{ff56224a-643c-41da-b7d8-57b3ab49626a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers">
+      <UniqueIdentifier>{231c4370-794c-4840-93b6-00fa4754ca8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers\Input">
+      <UniqueIdentifier>{2894897d-8e72-41e2-a58c-988bf32938af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers\Scene">
+      <UniqueIdentifier>{a615415e-5344-41d4-ab45-104292a814be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers\Gui">
+      <UniqueIdentifier>{aa99fa69-917b-4fbe-8005-4c9d8cba1680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers\Game">
+      <UniqueIdentifier>{8a7eddd8-8b70-4475-ae76-5f2ee754d83f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers\Scene\Camera">
+      <UniqueIdentifier>{da44cb27-e4f7-41e8-8bab-11b0beb2f5ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Controllers\Map">
+      <UniqueIdentifier>{d6c80201-471b-4d02-b6e2-7f1520b3848b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -79,31 +85,16 @@
       <Filter>src\Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>src\Controller\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneDrawer.cpp">
-      <Filter>src\Controller\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneUpdater.cpp">
-      <Filter>src\Controller\Scene</Filter>
+      <Filter>src\Controllers\Scene</Filter>
     </ClCompile>
     <ClCompile Include="ResourceController.cpp">
       <Filter>src\Engine\ResourceController</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneObject.cpp">
-      <Filter>src\Controller\Scene\SceneObjects</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>src\Model\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Panel.cpp">
       <Filter>src\View\GuiObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="GuiObject.cpp">
-      <Filter>src\View\GuiObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneObjectCreator.cpp">
-      <Filter>src\Controller\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Cursor.cpp">
       <Filter>src\View\GuiObjects</Filter>
@@ -118,13 +109,10 @@
       <Filter>src\View\GuiObjects</Filter>
     </ClCompile>
     <ClCompile Include="GuiControlCreator.cpp">
-      <Filter>src\Controller\Gui</Filter>
+      <Filter>src\Controllers\Gui</Filter>
     </ClCompile>
     <ClCompile Include="GuiController.cpp">
-      <Filter>src\Controller\Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="GameController.cpp">
-      <Filter>src\Controller\Scene\SceneObjects</Filter>
+      <Filter>src\Controllers\Gui</Filter>
     </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>src\View\GuiObjects</Filter>
@@ -144,11 +132,8 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>src\Model\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectCreator.cpp">
-      <Filter>src\Model\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>src\Controller\Scene\SceneObjects</Filter>
+      <Filter>src\Controllers\Scene\Camera</Filter>
     </ClCompile>
     <ClCompile Include="MovementModel.cpp">
       <Filter>src\Model\MovementModel</Filter>
@@ -156,17 +141,26 @@
     <ClCompile Include="Engine.cpp">
       <Filter>src\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="GameControllers.cpp">
-      <Filter>src\Controller\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="GameInput.cpp">
-      <Filter>src\Controller\Input</Filter>
+    <ClCompile Include="Controllers.cpp">
+      <Filter>src\Controllers\Input</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>src\Controller</Filter>
+      <Filter>src\Controllers\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game_loading.cpp">
+      <Filter>src\Controllers\Game</Filter>
     </ClCompile>
     <ClCompile Include="InputController.cpp">
-      <Filter>src\Controller\Input</Filter>
+      <Filter>src\Controllers\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiGroup.cpp">
+      <Filter>src\Controllers\Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="MapController.cpp">
+      <Filter>src\Controllers\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectCreator.cpp">
+      <Filter>src\Controllers\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -189,19 +183,10 @@
       <Filter>src\Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>src\Controller\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneDrawer.h">
-      <Filter>src\Controller\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneUpdater.h">
-      <Filter>src\Controller\Scene</Filter>
+      <Filter>src\Controllers\Scene</Filter>
     </ClInclude>
     <ClInclude Include="ResourceController.h">
       <Filter>src\Engine\ResourceController</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneObject.h">
-      <Filter>src\Controller\Scene\SceneObjects</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>src\Model\GameObjects</Filter>
@@ -209,17 +194,8 @@
     <ClInclude Include="Panel.h">
       <Filter>src\View\GuiObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GuiObject.h">
-      <Filter>src\View\GuiObjects</Filter>
-    </ClInclude>
     <ClInclude Include="IGui.h">
       <Filter>src\View\GuiObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneObjectCreator.h">
-      <Filter>src\Controller\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="GuiNames.h">
-      <Filter>src\Controller\Gui</Filter>
     </ClInclude>
     <ClInclude Include="Cursor.h">
       <Filter>src\View\GuiObjects</Filter>
@@ -231,13 +207,10 @@
       <Filter>src\View\GuiObjects</Filter>
     </ClInclude>
     <ClInclude Include="GuiControlCreator.h">
-      <Filter>src\Controller\Gui</Filter>
+      <Filter>src\Controllers\Gui</Filter>
     </ClInclude>
     <ClInclude Include="GuiController.h">
-      <Filter>src\Controller\Gui</Filter>
-    </ClInclude>
-    <ClInclude Include="GameController.h">
-      <Filter>src\Controller\Scene\SceneObjects</Filter>
+      <Filter>src\Controllers\Gui</Filter>
     </ClInclude>
     <ClInclude Include="Text.h">
       <Filter>src\View\GuiObjects</Filter>
@@ -257,11 +230,8 @@
     <ClInclude Include="GameObject.h">
       <Filter>src\Model\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectCreator.h">
-      <Filter>src\Model\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>src\Controller\Scene\SceneObjects</Filter>
+      <Filter>src\Controllers\Scene\Camera</Filter>
     </ClInclude>
     <ClInclude Include="MovementModel.h">
       <Filter>src\Model\MovementModel</Filter>
@@ -269,11 +239,20 @@
     <ClInclude Include="Engine.h">
       <Filter>src\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>src\Controller</Filter>
-    </ClInclude>
     <ClInclude Include="InputController.h">
-      <Filter>src\Controller\Input</Filter>
+      <Filter>src\Controllers\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>src\Controllers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiGroup.h">
+      <Filter>src\Controllers\Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="MapController.h">
+      <Filter>src\Controllers\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectCreator.h">
+      <Filter>src\Controllers\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

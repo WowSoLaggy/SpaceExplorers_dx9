@@ -45,6 +45,10 @@ public:
   virtual bool onKeyDown(Doh3d::Key pKey) override;
   virtual bool onKeyUp(Doh3d::Key pKey) override;
 
+
+  virtual bool update(float i_dt) override;
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
+
 private:
 
   Doh3d::TextureId d_tiNormal;
@@ -57,9 +61,6 @@ private:
   Doh3d::TextContainer d_textContainer;
 
   std::function<bool()> d_onClickEvent;
-
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
 

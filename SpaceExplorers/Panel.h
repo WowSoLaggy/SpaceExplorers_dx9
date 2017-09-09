@@ -1,6 +1,5 @@
 #pragma once
 
-#include "SceneObject.h"
 #include "IGui.h"
 
 
@@ -21,12 +20,13 @@ public:
 
   bool setTexture(const std::string& pTextureName);
 
+
+  virtual bool update(float i_dt) override;
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
+
 private:
 
   Doh3d::TextureId d_ti;
-
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 
 };
 

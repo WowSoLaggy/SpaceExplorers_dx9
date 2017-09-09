@@ -9,20 +9,13 @@ namespace Engine
 
 bool Engine::mainLoop()
 {
-  LOG(__FUNCTION__);
-
   Timer timer;
   timer.Start();
   float deltaTime = 0;
 
 
   bool runMainLoop = true;
-  d_game = Game::create(runMainLoop, TEXTURE_DIR, FONT_DIR);
-  if (!d_game)
-  {
-    echo("ERROR: Can't create game.");
-    return false;
-  }
+  d_game = new Controller::Game(d_scene, runMainLoop, TEXTURE_DIR, FONT_DIR);
 
 
   while (runMainLoop)
@@ -54,14 +47,14 @@ bool Engine::mainLoop()
       continue;
     }
 
-    // Update scene
+    // Update game
 
-    if (!d_sceneUpdater.update(d_game->getScene(), deltaTime))
+    if (!d_game->update(deltaTime))
       break;
 
-    // Draw scene
+    // Draw game
 
-    if (!d_sceneDrawer.draw(d_game->getScene()))
+    if (!d_scene.draw(*d_game))
       break;
 
     // TODO: remove sleep

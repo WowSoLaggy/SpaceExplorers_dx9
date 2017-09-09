@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Engine.h"
 
+#include "Game.h"
+
 
 namespace Engine
 {
@@ -51,7 +53,7 @@ bool Engine::dispose()
 
 bool Engine::onRenderDeviceRecreate()
 {
-  if (!d_sceneDrawer.onRenderDeviceRecreate())
+  if (!d_scene.onRenderDeviceRecreate())
     return false;
 
   return true;

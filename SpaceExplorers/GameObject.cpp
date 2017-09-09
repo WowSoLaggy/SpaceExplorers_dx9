@@ -11,20 +11,20 @@ GameObject::GameObject(const Prototype& i_prototype)
 }
 
 
-const Doh3d::Position2I GameObject::getPosition() const
+const Doh3d::Position2F& GameObject::getPosition() const
 {
-  auto position = IPositioned2I::getPosition();
+  return d_movementModel.getPosition();
+}
 
-  if (const auto* pParent = dynamic_cast<const GameObject*>(parent()))
-    position += pParent->getPosition();
-
-  return position;
+void GameObject::setPosition(const Doh3d::Position2F& i_position)
+{
+  d_movementModel.setPosition(i_position);
 }
 
 
-bool GameObject::updateSelf(float pDt)
+bool GameObject::update(float i_dt)
 {
-  if (d_prototype.getMovable() && !d_movementModel.update(pDt))
+  if (d_prototype.getMovable() && !d_movementModel.update(i_dt))
     return false;
 
   Doh3d::Position2I newPosition = d_prototype.getTileBased() ?
@@ -36,9 +36,9 @@ bool GameObject::updateSelf(float pDt)
   return true;
 }
 
-bool GameObject::drawSelf(Doh3d::Sprite& pSprite) const
+bool GameObject::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
+  if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
                     &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
                     0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {

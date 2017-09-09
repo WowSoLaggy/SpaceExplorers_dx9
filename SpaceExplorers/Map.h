@@ -1,6 +1,5 @@
 #pragma once
 
-#include "SceneObject.h"
 #include "Tile.h"
 #include "MapBackground.h"
 
@@ -8,36 +7,36 @@
 namespace Model
 {
 
-class Map : public SceneObject
+class Map
 {
 public:
 
-  static Map* createMap();
-
-public:
-
+  Map( int i_width, int i_height);
   virtual ~Map();
+
+  int getWidth() { return d_width; }
+  int getHeight() { return d_height; }
+
+  MapBackground& getMapBackgound() { return d_background; }
+  const MapBackground& getMapBackgound() const { return d_background; }
 
   Tile* getTileAt(int pX, int pY);
   const Tile* getTileAt(int pX, int pY) const;
 
-protected:
+  std::vector<GameObject*>& getObjects() { return d_objects; }
+  const std::vector<GameObject*>& getObjects() const { return d_objects; }
 
-  virtual bool drawChildren() const { return false; }
+  void addGameObject(GameObject* i_gameObject);
 
 private:
-
-  Map(int i_width, int i_height);
 
   int d_width;
   int d_height;
 
+  MapBackground d_background;
+
   std::vector<Tile> d_tiles;
-
-  std::unique_ptr<MapBackground> d_background;
-
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
+  std::vector<GameObject*> d_objects;
 };
 
 } // ns Model

@@ -7,7 +7,7 @@
 namespace Controller
 {
 
-void Camera::bindToObject(const GameObject* i_object)
+void Camera::bindToObject(const Model::GameObject* i_object)
 {
   if (d_bindedObject == i_object)
     return;
@@ -27,12 +27,12 @@ void Camera::unbindFromObject()
 }
 
 
-bool Camera::updateSelf(float i_dt)
+bool Camera::update(float i_dt)
 {
   if (!d_bindedObject)
     return true;
 
-  setPosition(d_bindedObject->getMovementModel().getPosition() - Doh3d::Screen::getClientCenter());
+  setPosition(d_bindedObject->getPosition() - Doh3d::Screen::getClientCenter());
 
   return true;
 }

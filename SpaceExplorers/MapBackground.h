@@ -1,18 +1,21 @@
 #pragma once
 
-#include "SceneObject.h"
-
 
 namespace Model
 {
 
-class MapBackground : public SceneObject
+class MapBackground
+  : public Doh3d::IDrawable
+  , public Doh3d::IUpdatable
 {
 public:
 
   virtual ~MapBackground();
 
   bool setTexture(const std::string& pTexture);
+
+  virtual bool update(float i_dt) override;
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 
 private:
 
@@ -21,9 +24,6 @@ private:
   Doh3d::Vector2F d_scale;
 
   void updateScale();
-
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 };
 
 } // ns Model

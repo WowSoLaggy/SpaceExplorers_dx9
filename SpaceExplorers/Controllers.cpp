@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "Game.h"
+#include "InputController.h"
 
 
 namespace Controller
 {
 
-Doh3d::Controller* Game::createNewController()
+Doh3d::Controller* InputController::createNewController()
 {
   static int newId = 0;
 
@@ -17,7 +17,7 @@ Doh3d::Controller* Game::createNewController()
   return pController;
 }
 
-Doh3d::Controller* Game::getController(Doh3d::ControllerId i_controllerId)
+Doh3d::Controller* InputController::getController(Doh3d::ControllerId i_controllerId)
 {
   auto it = std::find_if(d_controllers.begin(), d_controllers.end(),
                          [&](auto* i_controller) { return i_controller->getId() == i_controllerId; });
@@ -27,7 +27,7 @@ Doh3d::Controller* Game::getController(Doh3d::ControllerId i_controllerId)
   return *it;
 }
 
-bool Game::removeController(Doh3d::ControllerId i_controllerId)
+bool InputController::removeController(Doh3d::ControllerId i_controllerId)
 {
   d_controllers.erase(
     std::remove_if(d_controllers.begin(), d_controllers.end(),
@@ -38,7 +38,7 @@ bool Game::removeController(Doh3d::ControllerId i_controllerId)
 }
 
 
-void Game::bindControllerActions(Doh3d::Controller& i_controller)
+void InputController::bindControllerActions(Doh3d::Controller& i_controller)
 {
   i_controller.clearBindings();
 

@@ -1,55 +1,95 @@
 #include "stdafx.h"
 #include "Game.h"
 
-#include "SceneObjectCreator.h"
 #include "GuiController.h"
 #include "Map.h"
 #include "Camera.h"
+#include "Scene.h"
+#include "GameObject.h"
 
 
 namespace Controller
 {
 
-Game* Game::create(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
-{
-  LOG(__FUNCTION__);
-
-  auto* pGame = new Game();
-
-  auto* pGameController = SceneObjectCreator::create_gameController(pRunMainLoop, pTextureDir, pFontDir);
-  if (!pGameController)
-  {
-    echo("ERROR: Can't create GameController.");
-    return nullptr;
-  }
-
-  pGame->getScene().addChildBack(pGameController);
-
-  return pGame;
-}
-
-
-Game::Game()
-  : d_scene(*this)
-  , d_gameState(GameState::Unknown)
+Game::Game(Scene& i_scene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir)
+  : d_scene(i_scene)
+  , d_gameState(GameState::NotInited)
+  , d_textureDir(pTextureDir)
+  , d_fontDir(pFontDir)
+  , d_runMainLoop(pRunMainLoop)
+  , d_inputController(*this)
+  , d_guiController(*this)
+  , d_mapController(*this)
 {
 }
 
 
 bool Game::stop()
 {
+  d_gameState = GameState::Stopping;
+  return true;
+}
+
+
+bool Game::draw(Doh3d::Sprite& i_sprite) const
+{
+  if (!d_guiController.draw(i_sprite))
+    return false;
+
+  if (!d_mapController.draw(i_sprite))
+    return false;
+
+  return true;
+}
+
+
+bool Game::update(float i_dt)
+{
   LOG(__FUNCTION__);
 
-  d_gameState = GameState::Unknown;
-
-  auto* pGameController = Doh3d::findChildByType<GameController>(d_scene, 1);
-  if (!pGameController)
+  switch (d_gameState)
   {
-    echo("ERROR: Can't find GameController.");
+
+  case GameState::NotInited:
+    if (!initGameLoadMenu())
+      return false;
+    break;
+
+  case GameState::Loading:
+  case GameState::LoadOk:
+  case GameState::LoadFailed:
+    if (!checkGameIsLoaded())
+      return false;
+    break;
+
+  case GameState::ReadyForMainMenu:
+    if (!deleteLoadingGui())
+      return false;
+    if (!createMainMenu())
+      return false;
+    break;
+
+  case GameState::MainMenu:
+  case GameState::InGame:
+  case GameState::EscapeMenu:
+    if (!updateControllers(i_dt))
+      return false;
+    break;
+
+  case GameState::Stopping:
+    if (!unloadGame())
+      return false;
+    break;
+
+  case GameState::Stopped:
+    break;
+
+  default:
+  {
+    echo("ERROR: Unexpected GameState.");
     return false;
   }
-
-  pGameController->stopGame();
+  }
 
   return true;
 }
@@ -57,10 +97,10 @@ bool Game::stop()
 
 bool Game::startNewGame()
 {
-  if (!GuiController::deleteMainMenu(d_scene))
+  if (!d_guiController.deleteMainMenu())
     return false;
 
-  if (!createMap())
+  if (!d_mapController.createMap(20, 20))
     return false;
 
   if (!createBindCamera())
@@ -76,7 +116,7 @@ bool Game::startNewGame()
 
 bool Game::showInGameMenu()
 {
-  if (!GuiController::createIngameMenu(d_scene))
+  if (!d_guiController.createEscapeMenu())
     return false;
 
   d_gameState = GameState::EscapeMenu;
@@ -85,35 +125,25 @@ bool Game::showInGameMenu()
 }
 
 
-bool Game::createMap()
-{
-  auto* pMap = Map::createMap();
-  if (!pMap)
-    return false;
-
-  pMap->setName("Map");
-  d_scene.addChildFront(pMap);
-
-  return true;
-}
-
 bool Game::createBindCamera()
 {
   LOG(__FUNCTION__);
 
   auto* pCamera = new Camera();
-  pCamera->setName("Camera");
+  d_scene.setCamera(pCamera);
   pCamera->setPosition({ 0, 0 });
-  d_scene.addChildBack(pCamera);
 
-  auto* pPlayer = dynamic_cast<GameObject*>(d_scene.findChild("Player", 2));
-  if (!pPlayer)
+  auto* pMap = d_mapController.getMap();
+
+  auto it = std::find_if(pMap->getObjects().cbegin(), pMap->getObjects().cend(),
+                         [](const Model::GameObject* i_gameObject) { return i_gameObject->getName() == "Player"; });
+  if (it == pMap->getObjects().cend())
   {
     echo("ERROR: Can't find Player.");
     return false;
   }
 
-  pCamera->bindToObject(pPlayer);
+  pCamera->bindToObject(*it);
 
   return true;
 }
@@ -122,21 +152,34 @@ bool Game::createBindController()
 {
   LOG(__FUNCTION__);
 
-  auto* pController = createNewController();
+  auto* pController = d_inputController.createNewController();
   if (!pController)
   {
     echo("ERROR: Can't create controller.");
     return false;
   }
 
-  auto* pPlayer = dynamic_cast<GameObject*>(d_scene.findChild("Player", 2));
-  if (!pPlayer)
+  auto* pMap = d_mapController.getMap();
+
+  auto it = std::find_if(pMap->getObjects().cbegin(), pMap->getObjects().cend(),
+                         [](const Model::GameObject* i_gameObject) { return i_gameObject->getName() == "Player"; });
+  if (it == pMap->getObjects().cend())
   {
     echo("ERROR: Can't find Player.");
     return false;
   }
 
-  pController->bindObject(pPlayer);
+  pController->bindObject(*it);
+
+  return true;
+}
+
+bool Game::updateControllers(float i_dt)
+{
+  if (!d_mapController.update(i_dt))
+    return false;
+  if (!d_guiController.update(i_dt))
+    return false;
 
   return true;
 }

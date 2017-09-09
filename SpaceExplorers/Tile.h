@@ -1,13 +1,14 @@
 #pragma once
 
 #include "GameObject.h"
-#include "SceneObject.h"
 
 
 namespace Model
 {
 
-class Tile : public SceneObject
+class Tile
+  : public Doh3d::IDrawable
+  , public Doh3d::IUpdatable
 {
 public:
 
@@ -24,12 +25,13 @@ public:
   const GameObject* getTurf() const { return d_turf; }
   GameObject* getTurf() { return d_turf; }
 
+  virtual bool update(float i_dt) override;
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
+
 private:
 
   GameObject* d_turf;
 
-  virtual bool updateSelf(float pDt) override;
-  virtual bool drawSelf(Doh3d::Sprite& pSprite) const override;
 };
 
 } // ns Model

@@ -4,26 +4,26 @@
 #include "PrototypeCollection.h"
 
 
-namespace Model
+namespace Controller
 {
 
-GameObject* GameObjectCreator::createLattice()
+Model::GameObject* GameObjectCreator::createLattice()
 {
-  auto* pPrototype = PrototypeCollection::find("Lattice");
+  auto* pPrototype = Model::PrototypeCollection::find("Lattice");
   if (!pPrototype)
     return nullptr;
 
-  auto* pGameObject = new GameObject(*pPrototype);
+  auto* pGameObject = new Model::GameObject(*pPrototype);
   return pGameObject;
 }
 
-GameObject* GameObjectCreator::createMan()
+Model::GameObject* GameObjectCreator::createMan()
 {
-  auto* pPrototype = PrototypeCollection::find("Man");
+  auto* pPrototype = Model::PrototypeCollection::find("Man");
   if (!pPrototype)
     return nullptr;
 
-  auto* pGameObject = new GameObject(*pPrototype);
+  auto* pGameObject = new Model::GameObject(*pPrototype);
   return pGameObject;
 }
 

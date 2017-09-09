@@ -1,30 +1,48 @@
 #pragma once
 
-#include "Scene.h"
+#include "InputController.h"
+#include "GuiController.h"
+#include "MapController.h"
 
 
 namespace Controller
 {
 
+class Scene;
+
 enum class GameState
 {
-  Unknown,
+  NotInited,
+  Loading,
+  LoadOk,
+  LoadFailed,
+  ReadyForMainMenu,
+  Stopping,
+  Stopped,
+
   MainMenu,
   InGame,
   EscapeMenu,
 };
 
 
-class Game : public Doh3d::IInputHandler
+class Game
+  : public Doh3d::IUpdatable
+  , public Doh3d::IDrawable
 {
-public:
-
-  static Game* create(bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir);
 
 public:
+
+  Game(Scene& i_scene, bool& pRunMainLoop, const std::string& pTextureDir, const std::string& pFontDir);
+
 
   const Scene& getScene() const { return d_scene; }
   Scene& getScene() { return d_scene; }
+
+  GameState getGameState() const { return d_gameState; }
+
+  InputController& getInputController() { return d_inputController; }
+  GuiController& getGuiController() { return d_guiController; }
 
 
   bool stop();
@@ -32,35 +50,45 @@ public:
   bool startNewGame();
   bool showInGameMenu();
 
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
+  virtual bool update(float i_dt) override;
 
-  Doh3d::Controller* createNewController();
-  Doh3d::Controller* getController(Doh3d::ControllerId i_controllerId);
-  bool removeController(Doh3d::ControllerId i_controllerId);
-
-
-  // Input handlers
-
-  virtual bool onMouseMove(bool& pHandled) override;
-  virtual bool onMouseDown(Doh3d::MouseButton pButton, bool& pHandled) override;
-  virtual bool onMouseUp(Doh3d::MouseButton pButton, bool& pHandled) override;
-
-  virtual bool onKeyPressed(Doh3d::Key pKey) override;
-  virtual bool onKeyDown(Doh3d::Key pKey) override;
-  virtual bool onKeyUp(Doh3d::Key pKey) override;
 
 private:
 
-  Game();
-
-  Scene d_scene;
-  std::vector<Doh3d::Controller*> d_controllers;
+  Scene& d_scene;
 
   GameState d_gameState;
 
-  bool createMap();
+  const std::string d_textureDir;
+  const std::string d_fontDir;
+
+  bool& d_runMainLoop;
+
+  InputController d_inputController;
+  GuiController d_guiController;
+  MapController d_mapController;
+
+
+  bool updateControllers(float i_dt);
+
+
+  // Game_loading
+
+  bool initGameLoadMenu();
+  bool checkGameIsLoaded();
+
+  bool initResourceManager();
+  bool createLoadingGui();
+  bool startGameLoadingThread();
+  void loadGame();
+  bool deleteLoadingGui();
+  bool createMainMenu();
+
+  bool unloadGame();
+
   bool createBindCamera();
   bool createBindController();
-  void bindControllerActions(Doh3d::Controller& i_controller);
 
 };
 

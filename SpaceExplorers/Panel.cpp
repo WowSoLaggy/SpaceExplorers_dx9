@@ -11,14 +11,14 @@ Panel::Panel()
 }
 
 
-bool Panel::updateSelf(float pDt)
+bool Panel::update(float i_dt)
 {
   return true;
 }
 
-bool Panel::drawSelf(Doh3d::Sprite& pSprite) const
+bool Panel::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
+  if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
                     0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;

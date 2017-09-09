@@ -18,12 +18,12 @@ Button::Button()
 }
 
 
-bool Button::updateSelf(float pDt)
+bool Button::update(float i_dt)
 {
   return true;
 }
 
-bool Button::drawSelf(Doh3d::Sprite& pSprite) const
+bool Button::draw(Doh3d::Sprite& i_sprite) const
 {
   LOG(__FUNCTION__);
 
@@ -51,7 +51,7 @@ bool Button::drawSelf(Doh3d::Sprite& pSprite) const
     break;
   }
 
-  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(ti).get(), &Doh3d::ResourceMan::getTexture(ti).getFrame(0),
+  if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(ti).get(), &Doh3d::ResourceMan::getTexture(ti).getFrame(0),
                     0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
@@ -60,7 +60,7 @@ bool Button::drawSelf(Doh3d::Sprite& pSprite) const
   // Draw the text
   
   if (d_textContainer.hasText() &&
-    !pSprite.draw(d_textContainer.getTexture(), &d_textContainer.getRect(),
+    !i_sprite.draw(d_textContainer.getTexture(), &d_textContainer.getRect(),
                     0, (getPosition() + d_textContainer.getPosition()), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;

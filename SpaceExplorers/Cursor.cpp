@@ -11,16 +11,16 @@ Cursor::Cursor()
 }
 
 
-bool Cursor::updateSelf(float pDt)
+bool Cursor::update(float i_dt)
 {
   setPosition(Doh3d::InputMan::getCursor().getPosition());
 
   return true;
 }
 
-bool Cursor::drawSelf(Doh3d::Sprite& pSprite) const
+bool Cursor::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (!pSprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
+  if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_ti).get(), &Doh3d::ResourceMan::getTexture(d_ti).getFrame(0),
                     0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;

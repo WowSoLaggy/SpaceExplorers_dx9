@@ -1,27 +1,30 @@
 #pragma once
 
-#include "SceneObject.h"
+
+namespace Model
+{
+class GameObject;
+} // ns Model
 
 
 namespace Controller
 {
 
-class GameObject;
-
-
-class Camera : public Doh3d::Camera, public SceneObject
+class Camera
+  : public Doh3d::IPositioned2I
+  , public Doh3d::IUpdatable
 {
 public:
 
-  void bindToObject(const GameObject* i_object);
+  void bindToObject(const Model::GameObject* i_object);
   void unbindFromObject();
+
+
+  virtual bool update(float i_dt) override;
 
 private:
 
-  const GameObject* d_bindedObject;
-
-  virtual bool updateSelf(float i_dt) override;
-
+  const Model::GameObject* d_bindedObject;
 };
 
 } // ns Controller

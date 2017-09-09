@@ -10,17 +10,17 @@ Text::Text()
 }
 
 
-bool Text::updateSelf(float pDt)
+bool Text::update(float i_dt)
 {
   return true;
 }
 
-bool Text::drawSelf(Doh3d::Sprite& pSprite) const
+bool Text::draw(Doh3d::Sprite& i_sprite) const
 {
   if (!d_textContainer.hasText())
     return true;
 
-  if (!pSprite.draw(d_textContainer.getTexture(), &d_textContainer.getRect(),
+  if (!i_sprite.draw(d_textContainer.getTexture(), &d_textContainer.getRect(),
                     0, (getPosition() + d_textContainer.getPosition()), D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;

@@ -1,44 +1,69 @@
 #include "stdafx.h"
 #include "GuiController.h"
 
-#include "Scene.h"
 #include "GuiControlCreator.h"
-#include "GuiNames.h"
 #include "Game.h"
 
 
 namespace Controller
 {
 
-bool GuiController::createLoadingGui(Scene& pScene)
+GuiController::GuiController(Game& i_game)
+  : d_game(i_game)
+{
+}
+
+
+bool GuiController::draw(Doh3d::Sprite& i_sprite) const
+{
+  for (auto* gui : d_groupLoadingScreen.getGuis())
+  {
+    if (!gui->draw(i_sprite))
+      return false;
+  }
+
+  for (auto* gui : d_groupMainMenu.getGuis())
+  {
+    if (!gui->draw(i_sprite))
+      return false;
+  }
+
+  for (auto* gui : d_groupEscapeMenu.getGuis())
+  {
+    if (!gui->draw(i_sprite))
+      return false;
+  }
+
+  return true;
+}
+
+bool GuiController::update(float i_dt)
+{
+  for (auto* gui : d_groupLoadingScreen.getGuis())
+  {
+    if (!gui->update(i_dt))
+      return false;
+  }
+
+  for (auto* gui : d_groupMainMenu.getGuis())
+  {
+    if (!gui->update(i_dt))
+      return false;
+  }
+
+  for (auto* gui : d_groupEscapeMenu.getGuis())
+  {
+    if (!gui->update(i_dt))
+      return false;
+  }
+
+  return true;
+}
+
+
+bool GuiController::createLoadingGui()
 {
   LOG(__FUNCTION__);
-
-
-  // Gui object
-
-  auto* pGuiObject = GuiControlCreator::create_guiObject();
-  if (!pGuiObject)
-  {
-    echo("ERROR: Can't create GuiObject.");
-    return false;
-  }
-
-  pGuiObject->setName(GuiNames::GROUP_GUI);
-  pScene.addChildBack(pGuiObject);
-
-
-  // Loading screen Gui object
-
-  auto* pLoadingScreenGroup = GuiControlCreator::create_guiObject();
-  if (!pLoadingScreenGroup)
-  {
-    echo("ERROR: Can't create GuiObject.");
-    return false;
-  }
-
-  pLoadingScreenGroup->setName(GuiNames::GROUP_LOADING_SCREEN);
-  pGuiObject->addChildBack(pLoadingScreenGroup);
 
 
   // Background
@@ -55,51 +80,22 @@ bool GuiController::createLoadingGui(Scene& pScene)
 
   pBackground->setPosition(Doh3d::Screen::getClientCenter() - pBackground->getSizeHalf());
 
-  pLoadingScreenGroup->addChildBack(pBackground);
+  d_groupLoadingScreen.addGui(pBackground);
+
 
   return true;
 }
 
-bool GuiController::deleteLoadingGui(Scene& pScene)
+bool GuiController::deleteLoadingGui()
 {
-  LOG(__FUNCTION__);
-
-  auto* pLoadingScreenGroup = pScene.findChild(GuiNames::GROUP_LOADING_SCREEN);
-  if (!pLoadingScreenGroup)
-  {
-    echo("ERROR: Can't find the loading screen Gui group.");
-    return false;
-  }
-
-  pLoadingScreenGroup->deleteThis();
-
+  d_groupLoadingScreen.deleteAll();
   return true;
 }
 
 
-bool GuiController::createMainMenu(Scene& pScene)
+bool GuiController::createMainMenu()
 {
   LOG(__FUNCTION__);
-
-  auto* pGuiObject = pScene.findChild(GuiNames::GROUP_GUI);
-  if (!pGuiObject)
-  {
-    echo("ERROR: Can't create GuiObject.");
-    return false;
-  }
-
-
-  // Main menu Gui object
-
-  auto* pMainMenuGroup = GuiControlCreator::create_guiObject();
-  if (!pMainMenuGroup)
-  {
-    echo("ERROR: Can't create GuiObject.");
-    return false;
-  }
-
-  pMainMenuGroup->setName(GuiNames::GROUP_MAINMENU);
-  pGuiObject->addChildBack(pMainMenuGroup);
 
 
   // Background
@@ -111,7 +107,7 @@ bool GuiController::createMainMenu(Scene& pScene)
     return false;
   }
   pBackground->setPosition(Doh3d::Position2I::zero());
-  pMainMenuGroup->addChildBack(pBackground);
+  d_groupMainMenu.addGui(pBackground);
 
 
   // Start new game
@@ -125,8 +121,8 @@ bool GuiController::createMainMenu(Scene& pScene)
   pStartNewGameButton->setText("Start new game");
   pStartNewGameButton->setPosition(Doh3d::Screen::getClientRightBottom() - pStartNewGameButton->getSize() +
                                    Doh3d::Position2I(-64, -64 - 32 - 24));
-  pStartNewGameButton->setOnClickEvent([&]() { return pScene.getGame().startNewGame(); });
-  pMainMenuGroup->addChildBack(pStartNewGameButton);
+  pStartNewGameButton->setOnClickEvent([&]() { return d_game.startNewGame(); });
+  d_groupMainMenu.addGui(pStartNewGameButton);
 
 
   // Exit
@@ -140,8 +136,8 @@ bool GuiController::createMainMenu(Scene& pScene)
   pExitButton->setText("Exit to Desktop");
   pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
                            Doh3d::Position2I(-64, -64));
-  pExitButton->setOnClickEvent([&]() { return pScene.getGame().stop(); });
-  pMainMenuGroup->addChildBack(pExitButton);
+  pExitButton->setOnClickEvent([&]() { return d_game.stop(); });
+  d_groupMainMenu.addGui(pExitButton);
 
 
   // Cursor
@@ -153,64 +149,34 @@ bool GuiController::createMainMenu(Scene& pScene)
     return false;
   }
   pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
-  pMainMenuGroup->addChildBack(pCursor);
+  d_groupMainMenu.addGui(pCursor);
 
 
   return true;
 }
 
-bool GuiController::deleteMainMenu(Scene& pScene)
+bool GuiController::deleteMainMenu()
 {
-  LOG(__FUNCTION__);
-
-  auto* pMainMenuGroup = pScene.findChild(GuiNames::GROUP_MAINMENU);
-  if (!pMainMenuGroup)
-  {
-    echo("ERROR: Can't find the main menu Gui group.");
-    return false;
-  }
-
-  pMainMenuGroup->deleteThis();
-
+  d_groupMainMenu.deleteAll();
   return true;
 }
 
 
-bool GuiController::createIngameMenu(Scene& pScene)
+bool GuiController::createEscapeMenu()
 {
   LOG(__FUNCTION__);
-
-  auto* pGuiObject = pScene.findChild(GuiNames::GROUP_GUI);
-  if (!pGuiObject)
-  {
-    echo("ERROR: Can't create GuiObject.");
-    return false;
-  }
-
-
-  // Main menu Gui object
-
-  auto* pIngameMenuGroup = GuiControlCreator::create_guiObject();
-  if (!pIngameMenuGroup)
-  {
-    echo("ERROR: Can't create GuiObject.");
-    return false;
-  }
-
-  pIngameMenuGroup->setName(GuiNames::GROUP_INGAMEMENU);
-  pGuiObject->addChildBack(pIngameMenuGroup);
 
 
   // Background
 
-  auto* pBackground = GuiControlCreator::create_ingameMenu_backGround();
+  auto* pBackground = GuiControlCreator::create_escapeMenu_backGround();
   if (!pBackground)
   {
-    echo("ERROR: Can't create the background for the ingame menu.");
+    echo("ERROR: Can't create the background for the escape menu.");
     return false;
   }
   pBackground->setPosition(Doh3d::Position2I::zero());
-  pIngameMenuGroup->addChildBack(pBackground);
+  d_groupEscapeMenu.addGui(pBackground);
 
 
   // To Main Menu
@@ -224,8 +190,8 @@ bool GuiController::createIngameMenu(Scene& pScene)
   pToMainMenuButton->setText("Exit to Main Menu");
   pToMainMenuButton->setPosition(Doh3d::Screen::getClientRightBottom() - pToMainMenuButton->getSize() +
                                    Doh3d::Position2I(-64, -64 - 32 - 24));
-  pToMainMenuButton->setOnClickEvent([&]() { return pScene.getGame().startNewGame(); });
-  pIngameMenuGroup->addChildBack(pToMainMenuButton);
+  pToMainMenuButton->setOnClickEvent([&]() { return d_game.startNewGame(); });
+  d_groupEscapeMenu.addGui(pToMainMenuButton);
 
 
   // Exit
@@ -239,8 +205,8 @@ bool GuiController::createIngameMenu(Scene& pScene)
   pExitButton->setText("Exit to Desktop");
   pExitButton->setPosition(Doh3d::Screen::getClientRightBottom() - pExitButton->getSize() +
                            Doh3d::Position2I(-64, -64));
-  pExitButton->setOnClickEvent([&]() { return pScene.getGame().stop(); });
-  pIngameMenuGroup->addChildBack(pExitButton);
+  pExitButton->setOnClickEvent([&]() { return d_game.stop(); });
+  d_groupEscapeMenu.addGui(pExitButton);
 
 
   // Cursor
@@ -252,25 +218,15 @@ bool GuiController::createIngameMenu(Scene& pScene)
     return false;
   }
   pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
-  pIngameMenuGroup->addChildBack(pCursor);
+  d_groupEscapeMenu.addGui(pCursor);
 
 
   return true;
 }
 
-bool GuiController::deleteIngameMenu(Scene& pScene)
+bool GuiController::deleteEscapeMenu()
 {
-  LOG(__FUNCTION__);
-
-  auto* pIngameMenuGroup = pScene.findChild(GuiNames::GROUP_INGAMEMENU);
-  if (!pIngameMenuGroup)
-  {
-    echo("ERROR: Can't find the ingame menu Gui group.");
-    return false;
-  }
-
-  pIngameMenuGroup->deleteThis();
-
+  d_groupEscapeMenu.deleteAll();
   return true;
 }
 

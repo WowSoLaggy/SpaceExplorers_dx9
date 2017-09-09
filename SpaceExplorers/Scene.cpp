@@ -7,13 +7,38 @@
 namespace Controller
 {
 
-Scene::Scene(Game& i_game)
-  : d_game(i_game)
+bool Scene::draw(const Game& i_game)
 {
+  if (!Doh3d::Drawer::beginScene())
+    return false;
+
+  if (!d_sprite.begin())
+    return false;
+
+
+  if (!i_game.draw(d_sprite))
+    return false;
+
+  // TODO: remove sleep
+  Sleep(10);
+
+
+  if (!d_sprite.end())
+    return false;
+
+  if (!Doh3d::Drawer::endScene())
+    return false;
+
+  return true;
 }
 
-Scene::~Scene()
+
+bool Scene::onRenderDeviceRecreate()
 {
+  if (!d_sprite.reload())
+    return false;
+
+  return true;
 }
 
 } // ns Controller

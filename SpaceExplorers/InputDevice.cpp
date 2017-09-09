@@ -23,7 +23,7 @@ bool InputDevice::check()
   return Doh3d::InputMan::isCreated() && Doh3d::InputMan::checkDevices();
 }
 
-bool InputDevice::recreate(Game& i_game)
+bool InputDevice::recreate(Controller::Game& i_game)
 {
   LOG(__FUNCTION__);
 
@@ -48,7 +48,7 @@ Doh3d::InputPars InputDevice::getInputPars()
 
   inputPars.mouseAcceleration() = true;
 
-  inputPars.inputHandler() = d_game;
+  inputPars.inputHandler() = &d_game->getInputController();
 
   return inputPars;
 }

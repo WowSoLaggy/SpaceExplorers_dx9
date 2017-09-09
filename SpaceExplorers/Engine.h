@@ -3,8 +3,13 @@
 #include "RenderDevice.h"
 #include "InputDevice.h"
 #include "ResourceController.h"
-#include "SceneUpdater.h"
-#include "SceneDrawer.h"
+#include "Scene.h"
+
+
+namespace Controller
+{
+class Game;
+} // ns Controller
 
 
 namespace Engine
@@ -36,11 +41,9 @@ private:
   RenderDevice d_renderDevice;
   InputDevice d_inputDevice;
   ResourceController d_resourceController;
-  SceneUpdater d_sceneUpdater;
-  SceneDrawer d_sceneDrawer;
 
-  Game* d_game;
-
+  Controller::Scene d_scene;
+  Controller::Game* d_game;
 
   bool init(const Doh3d::StartupPars& pStartupPars);
   bool mainLoop();

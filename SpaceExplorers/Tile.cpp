@@ -16,22 +16,22 @@ Tile::~Tile()
 }
 
 
-bool Tile::updateSelf(float pDt)
+bool Tile::update(float i_dt)
 {
   if (d_turf)
   {
-    if (!d_turf->update(pDt))
+    if (!d_turf->update(i_dt))
       return false;
   }
 
   return true;
 }
 
-bool Tile::drawSelf(Doh3d::Sprite& pSprite) const
+bool Tile::draw(Doh3d::Sprite& i_sprite) const
 {
   if (d_turf)
   {
-    if (!d_turf->draw(pSprite))
+    if (!d_turf->draw(i_sprite))
       return false;
   }
 

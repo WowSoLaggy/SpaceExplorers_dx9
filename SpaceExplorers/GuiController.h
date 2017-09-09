@@ -1,24 +1,46 @@
 #pragma once
 
+#include "GuiGroup.h"
+
 
 namespace Controller
 {
 
-class Scene;
+class Game;
 
 
 class GuiController
+  : public Doh3d::IUpdatable
+  , public Doh3d::IDrawable
 {
 public:
 
-  static bool createLoadingGui(Scene& pScene);
-  static bool deleteLoadingGui(Scene& pScene);
+  GuiController(Game& i_game);
 
-  static bool createMainMenu(Scene& pScene);
-  static bool deleteMainMenu(Scene& pScene);
 
-  static bool createIngameMenu(Scene& pScene);
-  static bool deleteIngameMenu(Scene& pScene);
+  virtual bool draw(Doh3d::Sprite& i_sprite) const override;
+  virtual bool update(float i_dt) override;
+
+
+  bool createLoadingGui();
+  bool deleteLoadingGui();
+  GuiGroup& getLoadingScreenGuiGroup() { return d_groupLoadingScreen; }
+
+  bool createMainMenu();
+  bool deleteMainMenu();
+  GuiGroup& getMainMenuGuiGroup() { return d_groupMainMenu; }
+
+  bool createEscapeMenu();
+  bool deleteEscapeMenu();
+  GuiGroup& getEscapeMenuGuiGroup() { return d_groupEscapeMenu; }
+
+private:
+
+  Game& d_game;
+
+  GuiGroup d_groupLoadingScreen;
+  GuiGroup d_groupMainMenu;
+  GuiGroup d_groupEscapeMenu;
 
 };
 
