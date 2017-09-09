@@ -16,6 +16,9 @@ GuiController::GuiController(Game& i_game)
 
 bool GuiController::draw(Doh3d::Sprite& i_sprite) const
 {
+  Doh3d::SpriteTransformGuard spriteTransformGuard(i_sprite);
+  i_sprite.resetTransform();
+
   for (auto* gui : d_groupLoadingScreen.getGuis())
   {
     if (!gui->draw(i_sprite))

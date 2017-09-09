@@ -17,8 +17,7 @@ bool MapBackground::update(float i_dt)
 
 bool MapBackground::draw(Doh3d::Sprite& i_sprite) const
 {
-  auto originalTranslation = i_sprite.getTranslation();
-  auto originalScale = i_sprite.getScale();
+  Doh3d::SpriteTransformGuard spriteTransformGuard(i_sprite);
 
   i_sprite.setTranslation(Doh3d::Position2I::zero());
   i_sprite.setScale(d_scale);
@@ -28,9 +27,6 @@ bool MapBackground::draw(Doh3d::Sprite& i_sprite) const
   {
     return false;
   }
-
-  i_sprite.setTranslation(originalTranslation);
-  i_sprite.setScale(originalScale);
 
   return true;
 }
