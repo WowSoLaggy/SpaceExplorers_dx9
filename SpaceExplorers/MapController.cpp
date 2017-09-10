@@ -73,7 +73,9 @@ bool MapController::draw(Doh3d::Sprite& i_sprite) const
   if (!pCamera)
     return false;
 
-  Doh3d::Position2I cameraTranslation = -pCamera->getPosition();
+  Doh3d::SpriteTransformGuard spriteTransformGuard(i_sprite);
+
+  const Doh3d::Position2I cameraTranslation = -pCamera->getPosition();
   Doh3d::Position2I currentTranslation;
 
   for (int y = 0; y < d_map->getHeight(); ++y)
