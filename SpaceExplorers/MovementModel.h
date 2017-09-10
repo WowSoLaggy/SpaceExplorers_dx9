@@ -8,6 +8,8 @@ class MovementModel : public Doh3d::IMovable2F
 {
 public:
 
+  MovementModel();
+
   void setGoUp(bool i_on) { d_goUp = i_on; }
   void setGoDown(bool i_on) { d_goDown = i_on; }
   void setGoRight(bool i_on) { d_goRight = i_on; }

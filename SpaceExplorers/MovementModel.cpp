@@ -7,6 +7,15 @@
 namespace Model
 {
 
+MovementModel::MovementModel()
+  : d_goUp(false)
+  , d_goRight(false)
+  , d_goDown(false)
+  , d_goLeft(false)
+{
+}
+
+
 bool MovementModel::beforeUpdate(float i_dt)
 {
   const float MAX_ACCEL = Tile::DEFAULT_TILE_SIZE * 20;

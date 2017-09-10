@@ -27,20 +27,18 @@ bool GameObject::update(float i_dt)
   if (d_prototype.getMovable() && !d_movementModel.update(i_dt))
     return false;
 
-  Doh3d::Position2I newPosition = d_prototype.getTileBased() ?
-    d_movementModel.getPosition() :
-    d_movementModel.getPosition() - d_prototype.getSize2();
-
-  setPosition(newPosition);
-
   return true;
 }
 
 bool GameObject::draw(Doh3d::Sprite& i_sprite) const
 {
+  Doh3d::Position2I position = d_prototype.getTileBased() ?
+    d_movementModel.getPosition() :
+    d_movementModel.getPosition() - d_prototype.getSize2();
+
   if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
                     &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
-                    0, getPosition(), D3DCOLOR_ARGB(255, 255, 255, 255)))
+                    0, position, D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
   }
