@@ -19,13 +19,27 @@ public:
   Tile();
   virtual ~Tile();
 
+  bool isSpace() const;
+
+
   void setTurf(GameObject* i_turf);
   void resetTurf();
 
-  bool isSpace() const;
+  void setFloor(GameObject* i_floor);
+  void resetFloor();
+
+  void setWall(GameObject* i_wall);
+  void resetWall();
+
 
   const GameObject* getTurf() const { return d_turf; }
   GameObject* getTurf() { return d_turf; }
+
+  const GameObject* getFloor() const { return d_floor; }
+  GameObject* getFloor() { return d_floor; }
+
+  const GameObject* getWall() const { return d_wall; }
+  GameObject* getWall() { return d_wall; }
 
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
@@ -33,6 +47,8 @@ public:
 private:
 
   GameObject* d_turf;
+  GameObject* d_floor;
+  GameObject* d_wall;
 
 };
 

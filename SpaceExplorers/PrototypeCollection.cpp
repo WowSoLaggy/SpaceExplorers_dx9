@@ -22,6 +22,26 @@ bool PrototypeCollection::initAllPrototypes()
 
   {
     Prototype prototype;
+    prototype.setName("Floor");
+    prototype.setTileBased(true);
+    prototype.setMovable(false);
+    prototype.setTextureName("Floor_64_64_1_a.png");
+    prototype.setSize({ 64, 64 });
+    d_prototypes.push_back(prototype);
+  }
+
+  {
+    Prototype prototype;
+    prototype.setName("Wall");
+    prototype.setTileBased(true);
+    prototype.setMovable(false);
+    prototype.setTextureName("Wall_64_64_1_a.png");
+    prototype.setSize({ 64, 64 });
+    d_prototypes.push_back(prototype);
+  }
+
+  {
+    Prototype prototype;
     prototype.setName("Man");
     prototype.setTileBased(false);
     prototype.setMovable(true);

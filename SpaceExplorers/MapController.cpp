@@ -23,21 +23,34 @@ bool MapController::createMap(int i_width, int i_height)
   if (!d_map)
     return false;
 
-  for (int y = 2; y <= 8; ++y)
+
+  for (int y = 2; y <= 10; ++y)
   {
-    for (int x = 2; x <= 6; ++x)
+    for (int x = 2; x <= 8; ++x)
     {
       d_map->getTileAt(x, y)->setTurf(GameObjectCreator::createLattice(*d_map));
     }
   }
 
-  for (int y = 4; y <= 6; ++y)
+  for (int y = 6; y <= 8; ++y)
   {
-    for (int x = 3; x <= 5; ++x)
+    for (int x = 3; x <= 6; ++x)
     {
       d_map->getTileAt(x, y)->resetTurf();
     }
   }
+
+  for (int y = 2; y <= 5; ++y)
+  {
+    for (int x = 5; x <= 8; ++x)
+    {
+      d_map->getTileAt(x, y)->setFloor(GameObjectCreator::createFloor(*d_map));
+    }
+  }
+
+  d_map->getTileAt(7, 3)->setFloor(GameObjectCreator::createWall(*d_map));
+  d_map->getTileAt(7, 4)->setFloor(GameObjectCreator::createWall(*d_map));
+
 
   auto* pMan = GameObjectCreator::createMan(*d_map);
   pMan->setPosition({ 160, 160 });

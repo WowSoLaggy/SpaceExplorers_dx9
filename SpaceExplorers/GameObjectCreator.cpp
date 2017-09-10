@@ -18,6 +18,26 @@ Model::GameObject* GameObjectCreator::createLattice(const Model::Map& i_map)
   return pGameObject;
 }
 
+Model::GameObject* GameObjectCreator::createFloor(const Model::Map& i_map)
+{
+  auto* pPrototype = Model::PrototypeCollection::find("Floor");
+  if (!pPrototype)
+    return nullptr;
+
+  auto* pGameObject = new Model::GameObject(i_map, *pPrototype);
+  return pGameObject;
+}
+
+Model::GameObject* GameObjectCreator::createWall(const Model::Map& i_map)
+{
+  auto* pPrototype = Model::PrototypeCollection::find("Wall");
+  if (!pPrototype)
+    return nullptr;
+
+  auto* pGameObject = new Model::GameObject(i_map, *pPrototype);
+  return pGameObject;
+}
+
 Model::GameObject* GameObjectCreator::createMan(const Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Man");
