@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GuiGroup.h"
+#include "Cursor.h"
 
 
 namespace Controller
@@ -22,6 +23,10 @@ public:
   virtual bool update(float i_dt) override;
 
 
+  bool showCursor();
+  void hideCursor();
+
+
   bool createLoadingGui();
   bool deleteLoadingGui();
   GuiGroup& getLoadingScreenGuiGroup() { return d_groupLoadingScreen; }
@@ -37,6 +42,9 @@ public:
 private:
 
   Game& d_game;
+
+  View::Cursor* d_cursor;
+  bool d_showCursor;
 
   GuiGroup d_groupLoadingScreen;
   GuiGroup d_groupMainMenu;

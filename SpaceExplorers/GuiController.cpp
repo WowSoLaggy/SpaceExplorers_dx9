@@ -10,12 +10,16 @@ namespace Controller
 
 GuiController::GuiController(Game& i_game)
   : d_game(i_game)
+  , d_cursor(nullptr)
+  , d_showCursor(false)
 {
 }
 
 
 bool GuiController::draw(Doh3d::Sprite& i_sprite) const
 {
+  LOG(__FUNCTION__);
+
   Doh3d::SpriteTransformGuard spriteTransformGuard(i_sprite);
   i_sprite.resetTransform();
 
@@ -37,11 +41,24 @@ bool GuiController::draw(Doh3d::Sprite& i_sprite) const
       return false;
   }
 
+  if (d_showCursor)
+  {
+    if (!d_cursor)
+    {
+      echo("ERROR: No cursor created.");
+      return false;
+    }
+
+    d_cursor->draw(i_sprite);
+  }
+
   return true;
 }
 
 bool GuiController::update(float i_dt)
 {
+  LOG(__FUNCTION__);
+
   for (auto* gui : d_groupLoadingScreen.getGuis())
   {
     if (!gui->update(i_dt))
@@ -58,6 +75,17 @@ bool GuiController::update(float i_dt)
   {
     if (!gui->update(i_dt))
       return false;
+  }
+
+  if (d_showCursor)
+  {
+    if (!d_cursor)
+    {
+      echo("ERROR: No cursor created.");
+      return false;
+    }
+
+    d_cursor->update(i_dt);
   }
 
   return true;
@@ -85,6 +113,8 @@ bool GuiController::createLoadingGui()
 
   d_groupLoadingScreen.addGui(pBackground);
 
+
+  hideCursor();
 
   return true;
 }
@@ -143,17 +173,7 @@ bool GuiController::createMainMenu()
   d_groupMainMenu.addGui(pExitButton);
 
 
-  // Cursor
-
-  auto* pCursor = GuiControlCreator::create_cursor();
-  if (!pCursor)
-  {
-    echo("ERROR: Can't create the cursor.");
-    return false;
-  }
-  pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
-  d_groupMainMenu.addGui(pCursor);
-
+  showCursor();
 
   return true;
 }
@@ -212,25 +232,31 @@ bool GuiController::createEscapeMenu()
   d_groupEscapeMenu.addGui(pExitButton);
 
 
-  // Cursor
 
-  auto* pCursor = GuiControlCreator::create_cursor();
-  if (!pCursor)
+bool GuiController::showCursor()
+{
+  LOG(__FUNCTION__);
+
+  if (!d_cursor)
+    d_cursor = GuiControlCreator::create_cursor();
+
+  if (!d_cursor)
   {
-    echo("ERROR: Can't create the cursor.");
+    echo("ERROR: Can't create cursor.");
     return false;
   }
-  pCursor->setPosition(Doh3d::Screen::getClientCenter() - pCursor->getSizeHalf());
-  d_groupEscapeMenu.addGui(pCursor);
 
+  d_showCursor = true;
 
   return true;
 }
 
 bool GuiController::deleteEscapeMenu()
+void GuiController::hideCursor()
 {
   d_groupEscapeMenu.deleteAll();
   return true;
+  d_showCursor = false;
 }
 
 } // ns Controller
