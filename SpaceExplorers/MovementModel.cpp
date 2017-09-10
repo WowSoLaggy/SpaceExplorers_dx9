@@ -2,16 +2,19 @@
 #include "MovementModel.h"
 
 #include "Tile.h"
+#include "GameObject.h"
+#include "Map.h"
 
 
 namespace Model
 {
 
-MovementModel::MovementModel()
+MovementModel::MovementModel(const GameObject& i_gameObject)
   : d_goUp(false)
   , d_goRight(false)
   , d_goDown(false)
   , d_goLeft(false)
+  , d_gameObject(i_gameObject)
 {
 }
 

@@ -27,11 +27,10 @@ bool MapController::createMap(int i_width, int i_height)
   {
     for (int x = 2; x <= 6; ++x)
     {
-      d_map->getTileAt(x, y)->setTurf(GameObjectCreator::createLattice());
+      d_map->getTileAt(x, y)->setTurf(GameObjectCreator::createLattice(*d_map));
     }
   }
 
-  auto* pMan = GameObjectCreator::createMan();
   for (int y = 4; y <= 6; ++y)
   {
     for (int x = 3; x <= 5; ++x)
@@ -40,6 +39,7 @@ bool MapController::createMap(int i_width, int i_height)
     }
   }
 
+  auto* pMan = GameObjectCreator::createMan(*d_map);
   pMan->setPosition({ 160, 160 });
   pMan->setName("Player");
   d_map->addGameObject(pMan);

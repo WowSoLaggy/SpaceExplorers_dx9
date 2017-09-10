@@ -1,12 +1,16 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
+#include "Map.h"
+
 
 namespace Model
 {
 
-GameObject::GameObject(const Prototype& i_prototype)
-  : d_prototype(i_prototype)
+GameObject::GameObject(const Map& i_map, const Prototype& i_prototype)
+  : d_map(i_map)
+  , d_prototype(i_prototype)
+  , d_movementModel(*this)
 {
 }
 

@@ -7,6 +7,9 @@
 namespace Model
 {
 
+class Map;
+
+
 class GameObject
   : public Doh3d::IUpdatable
   , public Doh3d::IDrawable
@@ -15,11 +18,13 @@ class GameObject
 {
 public:
 
-  GameObject(const Prototype& i_prototype);
+  GameObject(const Map& i_map, const Prototype& i_prototype);
   virtual ~GameObject() { }
 
   const Doh3d::Position2F& getPosition() const;
   void setPosition(const Doh3d::Position2F& i_position);
+
+  const Map& getMap() const { return d_map; }
 
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
@@ -43,6 +48,8 @@ private:
   const Prototype& d_prototype;
 
   MovementModel d_movementModel;
+
+  const Map& d_map;
 
 };
 

@@ -4,11 +4,14 @@
 namespace Model
 {
 
+class GameObject;
+
+
 class MovementModel : public Doh3d::IMovable2F
 {
 public:
 
-  MovementModel();
+  MovementModel(const GameObject& i_gameObject);
 
   void setGoUp(bool i_on) { d_goUp = i_on; }
   void setGoDown(bool i_on) { d_goDown = i_on; }
@@ -24,6 +27,8 @@ private:
   bool d_goDown;
   bool d_goRight;
   bool d_goLeft;
+
+  const GameObject& d_gameObject;
 
 };
 
