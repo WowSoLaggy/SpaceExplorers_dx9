@@ -10,10 +10,12 @@ std::vector<Prototype> PrototypeCollection::d_prototypes;
 
 bool PrototypeCollection::initAllPrototypes()
 {
+  Doh3d::Position2I tileTextureOffset{ 32, 32 };
+
   {
     Prototype prototype;
     prototype.setName("Lattice");
-    prototype.setTileBased(true);
+    prototype.setTextureOffset(tileTextureOffset);
     prototype.setMovable(false);
     prototype.setPassable(true);
     prototype.setTextureName("Lattice_64_64_1_a.png");
@@ -24,7 +26,7 @@ bool PrototypeCollection::initAllPrototypes()
   {
     Prototype prototype;
     prototype.setName("Floor");
-    prototype.setTileBased(true);
+    prototype.setTextureOffset(tileTextureOffset);
     prototype.setMovable(false);
     prototype.setPassable(true);
     prototype.setTextureName("Floor_64_64_1_a.png");
@@ -35,7 +37,7 @@ bool PrototypeCollection::initAllPrototypes()
   {
     Prototype prototype;
     prototype.setName("Wall");
-    prototype.setTileBased(true);
+    prototype.setTextureOffset(tileTextureOffset);
     prototype.setMovable(false);
     prototype.setPassable(false);
     prototype.setTextureName("Wall_64_64_1_a.png");
@@ -47,7 +49,7 @@ bool PrototypeCollection::initAllPrototypes()
   {
     Prototype prototype;
     prototype.setName("Man");
-    prototype.setTileBased(false);
+    prototype.setTextureOffset({ 0, -16 });
     prototype.setMovable(true);
     prototype.setPassable(true);
     prototype.setTextureName("Man_64_64_4_a.png");
@@ -58,7 +60,7 @@ bool PrototypeCollection::initAllPrototypes()
   {
     Prototype prototype;
     prototype.setName("Circle");
-    prototype.setTileBased(false);
+    prototype.setTextureOffset({});
     prototype.setMovable(false);
     prototype.setPassable(true);
     prototype.setTextureName("Circle_32_32_1_a.png");

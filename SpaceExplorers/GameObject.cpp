@@ -36,9 +36,10 @@ bool GameObject::update(float i_dt)
 
 bool GameObject::draw(Doh3d::Sprite& i_sprite) const
 {
-  Doh3d::Position2I position = d_prototype.getTileBased() ?
-    d_movementModel.getPosition() :
-    d_movementModel.getPosition() - d_prototype.getSize2();
+  Doh3d::Position2I position =
+    d_movementModel.getPosition()
+    + d_prototype.getTextureOffset()
+    - d_prototype.getSize2();
 
   if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
                     &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
@@ -49,5 +50,6 @@ bool GameObject::draw(Doh3d::Sprite& i_sprite) const
 
   return true;
 }
+
 
 } // ns Model
