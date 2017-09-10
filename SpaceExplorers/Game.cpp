@@ -33,11 +33,24 @@ bool Game::stop()
 
 bool Game::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (!d_mapController.draw(i_sprite))
-    return false;
+  switch (d_gameState)
+  {
 
-  if (!d_guiController.draw(i_sprite))
-    return false;
+  case GameState::Loading:
+  case GameState::LoadOk:
+  case GameState::LoadFailed:
+  case GameState::ReadyForMainMenu:
+  case GameState::MainMenu:
+  case GameState::InGame:
+  case GameState::EscapeMenu:
+
+    if (!d_mapController.draw(i_sprite))
+      return false;
+    if (!d_guiController.draw(i_sprite))
+      return false;
+
+    break;
+  }
 
   return true;
 }
