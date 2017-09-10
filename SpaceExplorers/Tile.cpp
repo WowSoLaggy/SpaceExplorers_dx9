@@ -110,7 +110,12 @@ void Tile::resetWall()
 bool Tile::isSpace() const
 {
   return !getTopLayer();
+}
 
+bool Tile::isPassable() const
+{
+  if (auto* pTopLayer = getTopLayer())
+    return pTopLayer->getPrototype().getPassable();
   return true;
 }
 

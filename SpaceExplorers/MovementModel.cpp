@@ -63,6 +63,17 @@ bool MovementModel::beforeUpdate(float i_dt)
     else speed.x = 0;
   }
 
+
+  Doh3d::Position2F newPosition = position + speed * i_dt + currentAccel * i_dt * i_dt;
+  pTile = d_gameObject.getMap().getTileUnderPosition(newPosition);
+  if (pTile && !pTile->isPassable())
+  {
+    setAccel({ 0, 0 });
+    setSpeed({ 0, 0 });
+    return true;
+  }
+
+
   setAccel(currentAccel);
   setSpeed(speed);
 

@@ -20,6 +20,7 @@ public:
   virtual ~Tile();
 
   bool isSpace() const;
+  bool isPassable() const;
 
 
   void setTurf(GameObject* i_turf);
