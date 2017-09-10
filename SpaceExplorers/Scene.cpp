@@ -2,6 +2,7 @@
 #include "Scene.h"
 
 #include "Game.h"
+#include "Camera.h"
 
 
 namespace Controller
@@ -37,6 +38,18 @@ bool Scene::onRenderDeviceRecreate()
 {
   if (!d_sprite.reload())
     return false;
+
+  return true;
+}
+
+
+bool Scene::updateCamera(float i_dt)
+{
+  if (d_camera)
+  {
+    if (!d_camera->update(i_dt))
+      return false;
+  }
 
   return true;
 }
