@@ -23,6 +23,9 @@ public:
   Tile* getTileAt(int pX, int pY);
   const Tile* getTileAt(int pX, int pY) const;
 
+  Tile* getTileUnderPosition(const Doh3d::Position2F& i_position);
+  const Tile* getTileUnderPosition(const Doh3d::Position2F& i_position) const;
+
   std::vector<GameObject*>& getObjects() { return d_objects; }
   const std::vector<GameObject*>& getObjects() const { return d_objects; }
 

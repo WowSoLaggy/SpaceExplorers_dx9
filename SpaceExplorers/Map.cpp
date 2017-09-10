@@ -26,12 +26,35 @@ Map::~Map()
 
 Tile* Map::getTileAt(int pX, int pY)
 {
+  if (pX < 0 || pY < 0 || pX >= d_width || pY >= d_height)
+    return nullptr;
+
   return &(d_tiles[pX + d_width * pY]);
 }
 
 const Tile* Map::getTileAt(int pX, int pY) const
 {
+  if (pX < 0 || pY < 0 || pX >= d_width || pY >= d_height)
+    return nullptr;
+
   return &(d_tiles[pX + d_width * pY]);
+}
+
+
+Tile* Map::getTileUnderPosition(const Doh3d::Position2F& i_position)
+{
+  int x = (int)i_position.x / Tile::DEFAULT_TILE_SIZE;
+  int y = (int)i_position.y / Tile::DEFAULT_TILE_SIZE;
+
+  return getTileAt(x, y);
+}
+
+const Tile* Map::getTileUnderPosition(const Doh3d::Position2F& i_position) const
+{
+  int x = (int)i_position.x / Tile::DEFAULT_TILE_SIZE;
+  int y = (int)i_position.y / Tile::DEFAULT_TILE_SIZE;
+
+  return getTileAt(x, y);
 }
 
 
