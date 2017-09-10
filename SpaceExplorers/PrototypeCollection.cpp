@@ -43,6 +43,7 @@ bool PrototypeCollection::initAllPrototypes()
     d_prototypes.push_back(prototype);
   }
 
+
   {
     Prototype prototype;
     prototype.setName("Man");
@@ -51,6 +52,17 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setPassable(true);
     prototype.setTextureName("Man_64_64_4_a.png");
     prototype.setSize({ 64, 64 });
+    d_prototypes.push_back(prototype);
+  }
+
+  {
+    Prototype prototype;
+    prototype.setName("Circle");
+    prototype.setTileBased(false);
+    prototype.setMovable(true);
+    prototype.setPassable(true);
+    prototype.setTextureName("Circle_32_32_1_a.png");
+    prototype.setSize({ 32, 32 });
     d_prototypes.push_back(prototype);
   }
 

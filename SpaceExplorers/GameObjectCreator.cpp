@@ -38,9 +38,20 @@ Model::GameObject* GameObjectCreator::createWall(const Model::Map& i_map)
   return pGameObject;
 }
 
+
 Model::GameObject* GameObjectCreator::createMan(const Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Man");
+  if (!pPrototype)
+    return nullptr;
+
+  auto* pGameObject = new Model::GameObject(i_map, *pPrototype);
+  return pGameObject;
+}
+
+Model::GameObject* GameObjectCreator::createCircle(const Model::Map& i_map)
+{
+  auto* pPrototype = Model::PrototypeCollection::find("Circle");
   if (!pPrototype)
     return nullptr;
 
