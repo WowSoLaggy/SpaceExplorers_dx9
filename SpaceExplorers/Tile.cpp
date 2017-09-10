@@ -22,28 +22,16 @@ Tile::~Tile()
 
 bool Tile::update(float i_dt)
 {
-  if (d_wall)
-    return d_wall->update(i_dt);
-
-  if (d_floor)
-    return d_floor->update(i_dt);
-
-  if (d_turf)
-    return d_turf->update(i_dt);
+  if (auto* pTopLayer = getTopLayer())
+    pTopLayer->update(i_dt);
 
   return true;
 }
 
 bool Tile::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (d_wall)
-    return d_wall->draw(i_sprite);
-
-  if (d_floor)
-    return d_floor->draw(i_sprite);
-
-  if (d_turf)
-    return d_turf->draw(i_sprite);
+  if (auto* pTopLayer = getTopLayer())
+    pTopLayer->draw(i_sprite);
 
   return true;
 }
@@ -121,10 +109,28 @@ void Tile::resetWall()
 
 bool Tile::isSpace() const
 {
-  if (d_turf)
-    return false;
+  return !getTopLayer();
 
   return true;
+}
+
+
+GameObject* Tile::getTopLayer()
+{
+  if (d_wall) return d_wall;
+  if (d_floor) return d_floor;
+  if (d_turf) return d_turf;
+
+  return nullptr;
+}
+
+const GameObject* Tile::getTopLayer() const
+{
+  if (d_wall) return d_wall;
+  if (d_floor) return d_floor;
+  if (d_turf) return d_turf;
+
+  return nullptr;
 }
 
 } // ns Model

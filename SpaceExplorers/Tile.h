@@ -50,6 +50,9 @@ private:
   GameObject* d_floor;
   GameObject* d_wall;
 
+  GameObject* getTopLayer();
+  const GameObject* getTopLayer() const;
+
 };
 
 } // ns Model
