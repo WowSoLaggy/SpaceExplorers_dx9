@@ -19,6 +19,8 @@ public:
   virtual bool loadAllTextures() override;
 
   bool setTexture(const std::string& pTextureName);
+  
+  void setFitScreen(bool i_fitScreen);
 
 
   virtual bool update(float i_dt) override;
@@ -27,7 +29,11 @@ public:
 private:
 
   Doh3d::TextureId d_ti;
+  
+  bool d_fitScreen;
+  Doh3d::Vector2F d_scale;
 
+  void updateScale();
 };
 
 } // ns View

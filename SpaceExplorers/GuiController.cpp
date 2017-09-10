@@ -152,6 +152,7 @@ bool GuiController::createMainMenu()
     return false;
   }
   pBackground->setPosition(Doh3d::Position2I::zero());
+  pBackground->setFitScreen(true);
   d_groupMainMenu.addGui(pBackground);
 
 
@@ -211,6 +212,7 @@ bool GuiController::createEscapeMenu()
     return false;
   }
   pBackground->setPosition(Doh3d::Position2I::zero());
+  pBackground->setFitScreen(true);
   d_groupEscapeMenu.addGui(pBackground);
 
 
