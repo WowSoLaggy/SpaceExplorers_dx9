@@ -48,7 +48,9 @@ public:
   bool stop();
 
   bool startNewGame();
-  bool showInGameMenu();
+  bool stopGame();
+  bool showEscapeMenu();
+  bool returnFromEscapeMenu();
 
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
   virtual bool update(float i_dt) override;
@@ -88,6 +90,7 @@ private:
   bool unloadGame();
 
   bool createBindCamera();
+  bool deleteCamera();
   bool createBindController();
 
 };

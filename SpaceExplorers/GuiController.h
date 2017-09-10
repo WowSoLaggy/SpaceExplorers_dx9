@@ -39,6 +39,10 @@ public:
   bool deleteEscapeMenu();
   GuiGroup& getEscapeMenuGuiGroup() { return d_groupEscapeMenu; }
 
+  bool createGameGui();
+  bool deleteGameGui();
+  GuiGroup& getGameGuiGroup() { return d_groupGameGui; }
+
 private:
 
   Game& d_game;
@@ -49,6 +53,7 @@ private:
   GuiGroup d_groupLoadingScreen;
   GuiGroup d_groupMainMenu;
   GuiGroup d_groupEscapeMenu;
+  GuiGroup d_groupGameGui;
 
 };
 

@@ -101,7 +101,7 @@ bool InputController::onKeyDown(Doh3d::Key pKey)
   {
     switch (pKey)
     {
-    case DIK_ESCAPE: d_game.showInGameMenu(); break;
+    case DIK_ESCAPE: d_game.showEscapeMenu(); break;
     default:
       for (auto* pController : d_controllers)
         pController->onKeyDown(pKey);

@@ -19,6 +19,7 @@ public:
   Doh3d::Controller* createNewController();
   Doh3d::Controller* getController(Doh3d::ControllerId i_controllerId);
   bool removeController(Doh3d::ControllerId i_controllerId);
+  bool removeAllControllers();
 
   void bindControllerActions(Doh3d::Controller& i_controller);
 

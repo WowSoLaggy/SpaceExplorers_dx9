@@ -109,17 +109,55 @@ bool Game::startNewGame()
   if (!createBindController())
     return false;
 
+  if (!d_guiController.createGameGui())
+    return false;
+
   d_gameState = GameState::InGame;
 
   return true;
 }
 
-bool Game::showInGameMenu()
+bool Game::stopGame()
+{
+  if (!d_guiController.deleteGameGui())
+    return false;
+
+  if (!d_guiController.deleteEscapeMenu())
+    return false;
+
+  if (!d_inputController.removeAllControllers())
+    return false;
+
+  if (!deleteCamera())
+    return false;
+
+  if (!d_mapController.deleteMap())
+    return false;
+  
+  if (!d_guiController.createMainMenu())
+    return false;
+
+  d_gameState = GameState::MainMenu;
+
+  return true;
+}
+
+bool Game::showEscapeMenu()
 {
   if (!d_guiController.createEscapeMenu())
     return false;
 
   d_gameState = GameState::EscapeMenu;
+
+  return true;
+}
+
+bool Game::returnFromEscapeMenu()
+{
+  if (!d_guiController.deleteEscapeMenu())
+    return false;
+
+  d_gameState = GameState::InGame;
 
   return true;
 }
@@ -144,6 +182,16 @@ bool Game::createBindCamera()
   }
 
   pCamera->bindToObject(*it);
+
+  return true;
+}
+
+bool Game::deleteCamera()
+{
+  auto* pCamera = d_scene.getCamera();
+  d_scene.resetCamera();
+
+  delete pCamera;
 
   return true;
 }

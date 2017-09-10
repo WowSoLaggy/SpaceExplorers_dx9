@@ -35,6 +35,12 @@ bool GuiController::draw(Doh3d::Sprite& i_sprite) const
       return false;
   }
 
+  for (auto* gui : d_groupGameGui.getGuis())
+  {
+    if (!gui->draw(i_sprite))
+      return false;
+  }
+
   for (auto* gui : d_groupEscapeMenu.getGuis())
   {
     if (!gui->draw(i_sprite))
@@ -72,6 +78,12 @@ bool GuiController::update(float i_dt)
   }
 
   for (auto* gui : d_groupEscapeMenu.getGuis())
+  {
+    if (!gui->update(i_dt))
+      return false;
+  }
+
+  for (auto* gui : d_groupGameGui.getGuis())
   {
     if (!gui->update(i_dt))
       return false;
@@ -202,18 +214,33 @@ bool GuiController::createEscapeMenu()
   d_groupEscapeMenu.addGui(pBackground);
 
 
+  // Return to game
+
+  auto* pReturnToGame = GuiControlCreator::create_menu_button();
+  if (!pReturnToGame)
+  {
+    echo("ERROR: Can't create the escape menu button.");
+    return false;
+  }
+  pReturnToGame->setText("Return to Game");
+  pReturnToGame->setPosition(Doh3d::Screen::getClientRightBottom() - pReturnToGame->getSize() +
+                                   Doh3d::Position2I(-64, -64 - 32 - 24 - 32 - 24));
+  pReturnToGame->setOnClickEvent([&]() { return d_game.returnFromEscapeMenu(); });
+  d_groupEscapeMenu.addGui(pReturnToGame);
+
+
   // To Main Menu
 
   auto* pToMainMenuButton = GuiControlCreator::create_menu_button();
   if (!pToMainMenuButton)
   {
-    echo("ERROR: Can't create the ingame menu button.");
+    echo("ERROR: Can't create the escape menu button.");
     return false;
   }
   pToMainMenuButton->setText("Exit to Main Menu");
   pToMainMenuButton->setPosition(Doh3d::Screen::getClientRightBottom() - pToMainMenuButton->getSize() +
-                                   Doh3d::Position2I(-64, -64 - 32 - 24));
-  pToMainMenuButton->setOnClickEvent([&]() { return d_game.startNewGame(); });
+                                 Doh3d::Position2I(-64, -64 - 32 - 24));
+  pToMainMenuButton->setOnClickEvent([&]() { return d_game.stopGame(); });
   d_groupEscapeMenu.addGui(pToMainMenuButton);
 
 
@@ -222,7 +249,7 @@ bool GuiController::createEscapeMenu()
   auto* pExitButton = GuiControlCreator::create_menu_button();
   if (!pExitButton)
   {
-    echo("ERROR: Can't create the ingame menu button.");
+    echo("ERROR: Can't create the escape menu button.");
     return false;
   }
   pExitButton->setText("Exit to Desktop");
@@ -231,6 +258,32 @@ bool GuiController::createEscapeMenu()
   pExitButton->setOnClickEvent([&]() { return d_game.stop(); });
   d_groupEscapeMenu.addGui(pExitButton);
 
+
+  return true;
+}
+
+bool GuiController::deleteEscapeMenu()
+{
+  d_groupEscapeMenu.deleteAll();
+  return true;
+}
+
+
+bool GuiController::createGameGui()
+{
+  LOG(__FUNCTION__);
+
+
+  showCursor();
+
+  return true;
+}
+
+bool GuiController::deleteGameGui()
+{
+  d_groupGameGui.deleteAll();
+  return true;
+}
 
 
 bool GuiController::showCursor()
@@ -251,11 +304,8 @@ bool GuiController::showCursor()
   return true;
 }
 
-bool GuiController::deleteEscapeMenu()
 void GuiController::hideCursor()
 {
-  d_groupEscapeMenu.deleteAll();
-  return true;
   d_showCursor = false;
 }
 
