@@ -33,10 +33,10 @@ bool Game::stop()
 
 bool Game::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (!d_guiController.draw(i_sprite))
+  if (!d_mapController.draw(i_sprite))
     return false;
 
-  if (!d_mapController.draw(i_sprite))
+  if (!d_guiController.draw(i_sprite))
     return false;
 
   return true;
