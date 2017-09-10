@@ -18,6 +18,7 @@ public:
   const Camera* getCamera() const { return d_camera; }
 
   void setCamera(Camera* i_camera) { d_camera = i_camera; }
+  void resetCamera() { d_camera = nullptr; }
 
   bool draw(const Game& i_game);
 
