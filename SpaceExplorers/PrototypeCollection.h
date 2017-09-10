@@ -11,6 +11,7 @@ class PrototypeCollection
 public:
 
   static bool initAllPrototypes();
+  static bool disposeAllPrototypes();
   static bool loadAllPrototypes();
 
   static const Prototype* find(const std::string& i_name);

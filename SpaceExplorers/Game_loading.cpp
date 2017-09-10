@@ -105,6 +105,9 @@ bool Game::createMainMenu()
 
 bool Game::unloadGame()
 {
+  if (!Model::PrototypeCollection::disposeAllPrototypes())
+    return false;
+
   d_gameState = GameState::Stopped;
   d_runMainLoop = false;
   return true;

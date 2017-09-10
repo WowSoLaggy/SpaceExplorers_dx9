@@ -76,6 +76,16 @@ bool PrototypeCollection::initAllPrototypes()
 }
 
 
+bool PrototypeCollection::disposeAllPrototypes()
+{
+  for (auto* pPrototype : d_prototypes)
+    delete pPrototype;
+  d_prototypes.clear();
+
+  return true;
+}
+
+
 bool PrototypeCollection::loadAllPrototypes()
 {
   LOG("Prototype::Load()");
