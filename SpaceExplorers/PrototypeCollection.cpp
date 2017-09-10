@@ -15,6 +15,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setName("Lattice");
     prototype.setTileBased(true);
     prototype.setMovable(false);
+    prototype.setPassable(true);
     prototype.setTextureName("Lattice_64_64_1_a.png");
     prototype.setSize({ 64, 64 });
     d_prototypes.push_back(prototype);
@@ -25,6 +26,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setName("Floor");
     prototype.setTileBased(true);
     prototype.setMovable(false);
+    prototype.setPassable(true);
     prototype.setTextureName("Floor_64_64_1_a.png");
     prototype.setSize({ 64, 64 });
     d_prototypes.push_back(prototype);
@@ -35,6 +37,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setName("Wall");
     prototype.setTileBased(true);
     prototype.setMovable(false);
+    prototype.setPassable(false);
     prototype.setTextureName("Wall_64_64_1_a.png");
     prototype.setSize({ 64, 64 });
     d_prototypes.push_back(prototype);
@@ -45,6 +48,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setName("Man");
     prototype.setTileBased(false);
     prototype.setMovable(true);
+    prototype.setPassable(true);
     prototype.setTextureName("Man_64_64_4_a.png");
     prototype.setSize({ 64, 64 });
     d_prototypes.push_back(prototype);
