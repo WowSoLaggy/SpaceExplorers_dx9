@@ -19,7 +19,7 @@ private:
 
   PrototypeCollection() { } //< Hide ctor
 
-  static std::vector<Prototype> d_prototypes;
+  static std::vector<Prototype*> d_prototypes;
 
 };
 
