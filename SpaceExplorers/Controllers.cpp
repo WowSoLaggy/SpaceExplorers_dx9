@@ -37,6 +37,15 @@ bool InputController::removeController(Doh3d::ControllerId i_controllerId)
   return true;
 }
 
+bool InputController::removeAllControllers()
+{
+  for (auto* pController : d_controllers)
+    delete pController;
+  d_controllers.clear();
+
+  return true;
+}
+
 
 void InputController::bindControllerActions(Doh3d::Controller& i_controller)
 {
