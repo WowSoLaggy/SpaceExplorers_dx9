@@ -93,6 +93,9 @@ bool MapController::draw(Doh3d::Sprite& i_sprite) const
 
   i_sprite.setTranslation(cameraTranslation);
 
+  for (auto* pObject : d_map->getObjects())
+    pObject->draw(i_sprite);
+
   return true;
 }
 
