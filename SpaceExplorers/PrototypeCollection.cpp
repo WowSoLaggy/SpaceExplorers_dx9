@@ -59,7 +59,7 @@ bool PrototypeCollection::initAllPrototypes()
     Prototype prototype;
     prototype.setName("Circle");
     prototype.setTileBased(false);
-    prototype.setMovable(true);
+    prototype.setMovable(false);
     prototype.setPassable(true);
     prototype.setTextureName("Circle_32_32_1_a.png");
     prototype.setSize({ 32, 32 });
