@@ -108,6 +108,13 @@ bool InputController::onKeyDown(Doh3d::Key pKey)
       break;
     }
   }
+  else if (d_game.getGameState() == GameState::EscapeMenu)
+  {
+    switch (pKey)
+    {
+    case DIK_ESCAPE: d_game.returnFromEscapeMenu(); break;
+    }
+  }
 
   return true;
 }
