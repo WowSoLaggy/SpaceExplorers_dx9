@@ -291,7 +291,10 @@ bool GuiController::showCursor()
   LOG(__FUNCTION__);
 
   if (!d_cursor)
+  {
     d_cursor = GuiControlCreator::create_cursor();
+    d_cursor->setPosition(Doh3d::Screen::getClientCenter() - d_cursor->getSizeHalf());
+  }
 
   if (!d_cursor)
   {
