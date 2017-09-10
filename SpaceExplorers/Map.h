@@ -37,6 +37,9 @@ private:
 
   std::vector<Tile> d_tiles;
   std::vector<GameObject*> d_objects;
+
+  void deleteAllObjects();
+  void deleteAllTiles();
 };
 
 } // ns Model

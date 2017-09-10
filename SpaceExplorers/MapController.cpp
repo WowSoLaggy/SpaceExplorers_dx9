@@ -39,6 +39,22 @@ bool MapController::createMap(int i_width, int i_height)
   return true;
 }
 
+bool MapController::deleteMap()
+{
+  LOG(__FUNCTION__);
+
+  if (!d_map)
+  {
+    echo("ERROR: Can't delete map - no map.");
+    return false;
+  }
+
+  delete d_map;
+  d_map = nullptr;
+
+  return true;
+}
+
 
 bool MapController::update(float i_dt)
 {

@@ -19,6 +19,8 @@ Map::Map(int i_width, int i_height)
 
 Map::~Map()
 {
+  deleteAllObjects();
+  deleteAllTiles();
 }
 
 
@@ -36,6 +38,19 @@ const Tile* Map::getTileAt(int pX, int pY) const
 void Map::addGameObject(GameObject* i_gameObject)
 {
   d_objects.push_back(i_gameObject);
+}
+
+
+void Map::deleteAllObjects()
+{
+  for (auto* pGameObject : d_objects)
+    delete pGameObject;
+  d_objects.clear();
+}
+
+void Map::deleteAllTiles()
+{
+  d_tiles.clear();
 }
 
 } // ns Model

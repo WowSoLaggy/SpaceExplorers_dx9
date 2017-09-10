@@ -24,6 +24,7 @@ public:
   const Model::Map* getMap() const { return d_map; }
 
   bool createMap(int i_width, int i_height);
+  bool deleteMap();
 
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
