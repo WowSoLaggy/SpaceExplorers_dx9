@@ -224,8 +224,14 @@ bool Game::createBindController()
 
 bool Game::updateControllers(float i_dt)
 {
-  if (!d_mapController.update(i_dt))
-    return false;
+  if (d_gameState == GameState::InGame)
+  {
+    if (!d_mapController.update(i_dt))
+      return false;
+    if (!d_scene.updateCamera(i_dt))
+      return false;
+  }
+
   if (!d_guiController.update(i_dt))
     return false;
 
