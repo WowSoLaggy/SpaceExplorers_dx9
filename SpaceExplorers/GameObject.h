@@ -15,6 +15,7 @@ class GameObject
   , public Doh3d::IDrawable
   , public Doh3d::IControlable
   , public Doh3d::INamed
+  , public Doh3d::ICollidable
 {
 public:
 
