@@ -62,4 +62,13 @@ void Tile::resetTurf()
   }
 }
 
+
+bool Tile::isSpace() const
+{
+  if (d_turf)
+    return false;
+
+  return true;
+}
+
 } // ns Model

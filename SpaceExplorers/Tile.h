@@ -22,6 +22,8 @@ public:
   void setTurf(GameObject* i_turf);
   void resetTurf();
 
+  bool isSpace() const;
+
   const GameObject* getTurf() const { return d_turf; }
   GameObject* getTurf() { return d_turf; }
 
