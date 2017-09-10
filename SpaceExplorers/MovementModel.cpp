@@ -21,6 +21,16 @@ MovementModel::MovementModel(const GameObject& i_gameObject)
 
 bool MovementModel::beforeUpdate(float i_dt)
 {
+  auto position = getPosition();
+  auto* pTile = d_gameObject.getMap().getTileUnderPosition(position);
+  if (!pTile || pTile->isSpace())
+  {
+    // Open space
+    setAccel({ 0, 0 });
+    return true;
+  }
+
+
   const float MAX_ACCEL = Tile::DEFAULT_TILE_SIZE * 20;
   const float MIN_SPEED = 20;
 
@@ -61,6 +71,16 @@ bool MovementModel::beforeUpdate(float i_dt)
 
 bool MovementModel::afterUpdate(float i_dt)
 {
+  auto position = getPosition();
+  auto* pTile = d_gameObject.getMap().getTileUnderPosition(position);
+  if (!pTile || pTile->isSpace())
+  {
+    // Open space
+    setAccel({ 0, 0 });
+    return true;
+  }
+
+
   const float MAX_SPEED = Tile::DEFAULT_TILE_SIZE * 3;
 
   // Clamp maximum speed
