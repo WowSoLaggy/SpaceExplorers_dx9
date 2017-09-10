@@ -58,6 +58,24 @@ bool MapController::deleteMap()
 
 bool MapController::update(float i_dt)
 {
+  if (!d_map)
+    return true;
+
+  if (!d_map->getMapBackgound().update(i_dt))
+    return false;
+
+  for (int y = 0; y < d_map->getHeight(); ++y)
+  {
+    for (int x = 0; x < d_map->getWidth(); ++x)
+    {
+      if (!d_map->getTileAt(x, y)->update(i_dt))
+        return false;
+    }
+  }
+
+  for (auto* pObject : d_map->getObjects())
+    pObject->update(i_dt);
+
   return true;
 }
 
