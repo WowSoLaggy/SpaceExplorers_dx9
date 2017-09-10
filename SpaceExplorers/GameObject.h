@@ -25,7 +25,6 @@ public:
   void setPosition(const Doh3d::Position2F& i_position);
 
   const Map& getMap() const { return d_map; }
-
   const Prototype& getPrototype() const { return d_prototype; }
 
   virtual bool update(float i_dt) override;
@@ -47,12 +46,10 @@ public:
 
 private:
 
+  const Map& d_map;
   const Prototype& d_prototype;
 
   MovementModel d_movementModel;
-
-  const Map& d_map;
-
 };
 
 } // ns Model
