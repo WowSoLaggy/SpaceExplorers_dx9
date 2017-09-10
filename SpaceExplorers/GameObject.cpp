@@ -52,4 +52,9 @@ bool GameObject::draw(Doh3d::Sprite& i_sprite) const
 }
 
 
+const Doh3d::IShape* GameObject::getCollisionShape() const
+{
+  return d_prototype.getCollisionShape();
+}
+
 } // ns Model

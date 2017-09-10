@@ -8,6 +8,9 @@ class Prototype final
 {
 public:
 
+  Prototype();
+  virtual ~Prototype();
+
   const std::string& getName() const { return d_name; }
   void setName(const std::string& i_name) { d_name = i_name; }
 
@@ -31,6 +34,10 @@ public:
   bool getPassable() const { return d_passable; }
   void setPassable(bool i_passable) { d_passable = i_passable; }
 
+  const Doh3d::IShape* getCollisionShape() const { return d_collisionShape; }
+  void setCollisionShape(const Doh3d::IShape* i_shape);
+  void resetCollisionShape();
+
 private:
 
   std::string d_name;
@@ -45,6 +52,8 @@ private:
 
   Doh3d::Size2I d_size;
   Doh3d::Size2I d_size2;
+
+  const Doh3d::IShape* d_collisionShape;
 
 };
 

@@ -28,6 +28,8 @@ public:
   const Map& getMap() const { return d_map; }
   const Prototype& getPrototype() const { return d_prototype; }
 
+  virtual const Doh3d::IShape* getCollisionShape() const;
+
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 

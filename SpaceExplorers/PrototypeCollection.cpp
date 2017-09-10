@@ -20,6 +20,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setPassable(true);
     prototype.setTextureName("Lattice_64_64_1_a.png");
     prototype.setSize({ 64, 64 });
+    prototype.setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     d_prototypes.push_back(prototype);
   }
 
@@ -31,6 +32,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setPassable(true);
     prototype.setTextureName("Floor_64_64_1_a.png");
     prototype.setSize({ 64, 64 });
+    prototype.setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     d_prototypes.push_back(prototype);
   }
 
@@ -42,6 +44,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setPassable(false);
     prototype.setTextureName("Wall_64_64_1_a.png");
     prototype.setSize({ 64, 64 });
+    prototype.setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     d_prototypes.push_back(prototype);
   }
 
@@ -54,6 +57,7 @@ bool PrototypeCollection::initAllPrototypes()
     prototype.setPassable(true);
     prototype.setTextureName("Man_64_64_4_a.png");
     prototype.setSize({ 64, 64 });
+    prototype.setCollisionShape(new Doh3d::Circle({ 0, 0 }, 16));
     d_prototypes.push_back(prototype);
   }
 
