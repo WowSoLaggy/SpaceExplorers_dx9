@@ -32,6 +32,14 @@ bool MapController::createMap(int i_width, int i_height)
   }
 
   auto* pMan = GameObjectCreator::createMan();
+  for (int y = 4; y <= 6; ++y)
+  {
+    for (int x = 3; x <= 5; ++x)
+    {
+      d_map->getTileAt(x, y)->resetTurf();
+    }
+  }
+
   pMan->setPosition({ 160, 160 });
   pMan->setName("Player");
   d_map->addGameObject(pMan);
