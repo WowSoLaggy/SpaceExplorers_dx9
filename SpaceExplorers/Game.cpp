@@ -208,6 +208,11 @@ bool Game::createBindController()
   }
 
   auto* pMap = d_mapController.getMap();
+  if (!pMap)
+  {
+    echo("ERROR: Can't find map.");
+    return false;
+  }
 
   auto it = std::find_if(pMap->getObjects().cbegin(), pMap->getObjects().cend(),
                          [](const Model::GameObject* i_gameObject) { return i_gameObject->getName() == "Player"; });
