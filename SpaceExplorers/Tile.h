@@ -33,6 +33,13 @@ public:
   void resetWall();
 
 
+  const Doh3d::Vector2I& getCoords() const { return d_coords; }
+  void setCoords(const Doh3d::Vector2I& i_coords) { d_coords = i_coords; }
+
+  Doh3d::Vector2F getCenter() const {
+    return{ d_coords.x * DEFAULT_TILE_SIZE, d_coords.y * DEFAULT_TILE_SIZE }; }
+
+
   const GameObject* getTurf() const { return d_turf; }
   GameObject* getTurf() { return d_turf; }
 
@@ -49,6 +56,8 @@ public:
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 
 private:
+
+  Doh3d::Vector2I d_coords;
 
   GameObject* d_turf;
   GameObject* d_floor;

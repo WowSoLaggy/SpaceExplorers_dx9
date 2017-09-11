@@ -15,6 +15,14 @@ Map::Map(int i_width, int i_height)
 {
   d_background.setTexture("Space_1920_1024_1_n.png");
   d_tiles.resize(d_width * d_height);
+
+  for (int y = 0; y < d_height; ++y)
+  {
+    for (int x = 0; x < d_width; ++x)
+    {
+      d_tiles[x + y * d_width].setCoords({ x, y });
+    }
+  }
 }
 
 Map::~Map()
