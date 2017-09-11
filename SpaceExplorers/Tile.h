@@ -42,6 +42,9 @@ public:
   const GameObject* getWall() const { return d_wall; }
   GameObject* getWall() { return d_wall; }
 
+  GameObject* getTopLayer();
+  const GameObject* getTopLayer() const;
+
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 
@@ -50,9 +53,6 @@ private:
   GameObject* d_turf;
   GameObject* d_floor;
   GameObject* d_wall;
-
-  GameObject* getTopLayer();
-  const GameObject* getTopLayer() const;
 
 };
 
