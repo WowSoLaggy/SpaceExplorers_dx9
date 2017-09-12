@@ -2,6 +2,7 @@
 
 #include "Prototype.h"
 #include "MovementModel.h"
+#include "States.h"
 
 
 namespace Model
@@ -33,8 +34,12 @@ public:
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 
+  StateSet& getStates() { return d_stateSet; }
+  const StateSet& getStates() const { return d_stateSet; }
+
 
   bool isDoor() const { return d_prototype.getBehaviour() == Model::Behaviour::Door; }
+  bool isOpen() const { return d_stateSet.Test(State::Open); }
 
 
 public:
@@ -51,12 +56,15 @@ public:
   virtual void goDownEnd() override { d_movementModel.setGoDown(false); }
   virtual void goLeftEnd() override { d_movementModel.setGoLeft(false); }
 
+
 private:
 
   const Map& d_map;
   const Prototype& d_prototype;
 
   MovementModel d_movementModel;
+
+  StateSet d_stateSet;
 };
 
 } // ns Model

@@ -257,6 +257,9 @@
     <ClInclude Include="Behaviour.h">
       <Filter>src\Model\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="States.h">
+      <Filter>src\Model\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceExplorers.rc">
