@@ -5,6 +5,8 @@ namespace Model
 {
 
 class GameObject;
+class Map;
+class Tile;
 
 
 class MovementModel : public Doh3d::IMovable2F
@@ -29,6 +31,12 @@ private:
   bool d_goLeft;
 
   const GameObject& d_gameObject;
+
+  void collideWithNeighborTiles(const Map& i_map, float i_dt,
+                                const Doh3d::Position2F& i_position,
+                                Doh3d::Position2F& io_speed,
+                                Doh3d::Position2F& io_accel) const;
+  bool collideWithTile(const Tile* i_tile, const Doh3d::Position2F& i_position) const;
 
 };
 

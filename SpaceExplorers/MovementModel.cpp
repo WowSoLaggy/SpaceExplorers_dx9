@@ -64,14 +64,7 @@ bool MovementModel::beforeUpdate(float i_dt)
   }
 
 
-  Doh3d::Position2F newPosition = position + speed * i_dt + currentAccel * i_dt * i_dt;
-  pTile = d_gameObject.getMap().getTileUnderPosition(newPosition);
-  if (pTile && !pTile->isPassable())
-  {
-    setAccel({ 0, 0 });
-    setSpeed({ 0, 0 });
-    return true;
-  }
+  collideWithNeighborTiles(d_gameObject.getMap(), i_dt, position, speed, currentAccel);
 
 
   setAccel(currentAccel);
@@ -83,6 +76,7 @@ bool MovementModel::beforeUpdate(float i_dt)
 bool MovementModel::afterUpdate(float i_dt)
 {
   auto position = getPosition();
+
   auto* pTile = d_gameObject.getMap().getTileUnderPosition(position);
   if (!pTile || pTile->isSpace())
   {
@@ -98,7 +92,7 @@ bool MovementModel::afterUpdate(float i_dt)
 
   auto speed = getSpeed();
   float speedLength = speed.length();
-  
+
   if (speedLength > MAX_SPEED)
   {
     speed /= speedLength / MAX_SPEED;
@@ -106,6 +100,103 @@ bool MovementModel::afterUpdate(float i_dt)
   }
 
   return true;
+}
+
+
+void MovementModel::collideWithNeighborTiles(const Map& i_map, float i_dt,
+                                             const Doh3d::Position2F& i_position,
+                                             Doh3d::Position2F& io_speed,
+                                             Doh3d::Position2F& io_accel) const
+{
+  auto* pTile = i_map.getTileUnderPosition(i_position);
+  if (!pTile)
+    return;
+
+  auto curCoords = pTile->getCoords();
+
+  auto collideUp = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x, curCoords.y - 1),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideDown = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x, curCoords.y + 1),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideLeft = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x - 1, curCoords.y),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideRight = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x + 1, curCoords.y),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideUpRight = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x + 1, curCoords.y - 1),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideDownRight = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x + 1, curCoords.y + 1),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideUpLeft = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x - 1, curCoords.y - 1),
+                           i_position + io_speed * i_dt);
+  };
+  auto collideDownLeft = [&]() -> bool
+  {
+    return collideWithTile(i_map.getTileAt(curCoords.x - 1, curCoords.y + 1),
+                           i_position + io_speed * i_dt);
+  };
+
+
+  if (collideUp() || collideDown())
+  {
+    io_speed.y = 0;
+    io_accel.y = 0;
+  }
+
+  if (collideLeft() || collideRight())
+  {
+    io_speed.x = 0;
+    io_accel.x = 0;
+  }
+
+  if (collideUpLeft() || collideUpRight() ||
+      collideDownLeft() || collideDownRight())
+  {
+    io_speed.x = 0;
+    io_accel.x = 0;
+    io_speed.y = 0;
+    io_accel.y = 0;
+  }
+}
+
+bool MovementModel::collideWithTile(const Tile* i_tile, const Doh3d::Position2F& i_position) const
+{
+  if (!i_tile || i_tile->isPassable())
+    return false;
+
+  auto* pGameObject = i_tile->getTopLayer();
+  if (!pGameObject)
+    return false;
+
+  auto* pShape1 = pGameObject->getCollisionShape();
+  if (!pShape1)
+    return false;
+
+  auto* pShape2 = d_gameObject.getCollisionShape();
+  if (!pShape2)
+    return false;
+
+  return Doh3d::Collider::collide(*pShape1, *pShape2,
+                                  i_tile->getCenter(), i_position);
 }
 
 } // ns Model
