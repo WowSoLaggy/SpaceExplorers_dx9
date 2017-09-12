@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Behaviour.h"
+
 
 namespace Model
 {
@@ -38,6 +40,9 @@ public:
   void setCollisionShape(const Doh3d::IShape* i_shape);
   void resetCollisionShape();
 
+  Behaviour getBehaviour() const { return d_behaviour; }
+  void setBehaviour(Behaviour i_behaviour) { d_behaviour = i_behaviour; }
+
 private:
 
   std::string d_name;
@@ -54,6 +59,8 @@ private:
   Doh3d::Size2I d_size2;
 
   const Doh3d::IShape* d_collisionShape;
+
+  Behaviour d_behaviour;
 
 };
 

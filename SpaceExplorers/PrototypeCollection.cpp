@@ -21,6 +21,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Lattice_64_64_1_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
+    pPrototype->setBehaviour(Behaviour::None);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -33,6 +34,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Floor_64_64_1_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
+    pPrototype->setBehaviour(Behaviour::None);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -45,6 +47,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Wall_64_64_1_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
+    pPrototype->setBehaviour(Behaviour::None);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -57,6 +60,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Door_64_64_6_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
+    pPrototype->setBehaviour(Behaviour::Door);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -70,6 +74,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Man_64_64_4_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::Circle({ 0, 0 }, 16));
+    pPrototype->setBehaviour(Behaviour::None);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -80,6 +85,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setMovable(false);
     pPrototype->setPassable(true);
     pPrototype->setTextureName("Circle_32_32_1_a.png");
+    pPrototype->setBehaviour(Behaviour::None);
     pPrototype->setSize({ 32, 32 });
     d_prototypes.push_back(pPrototype);
   }

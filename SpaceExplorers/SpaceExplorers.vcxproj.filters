@@ -254,6 +254,9 @@
     <ClInclude Include="GameObjectCreator.h">
       <Filter>src\Controllers\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Behaviour.h">
+      <Filter>src\Model\GameObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SpaceExplorers.rc">

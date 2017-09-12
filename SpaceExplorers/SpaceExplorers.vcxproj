@@ -206,6 +206,7 @@
   <ItemGroup>
     <ClInclude Include="..\libs\pugixml\pugiconfig.hpp" />
     <ClInclude Include="..\libs\pugixml\pugixml.hpp" />
+    <ClInclude Include="Behaviour.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonStates.h" />
     <ClInclude Include="Camera.h" />

@@ -33,6 +33,10 @@ public:
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
 
+
+  bool isDoor() const { return d_prototype.getBehaviour() == Model::Behaviour::Door; }
+
+
 public:
 
   // IControlable implementation
