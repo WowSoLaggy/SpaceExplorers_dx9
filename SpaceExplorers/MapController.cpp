@@ -42,11 +42,15 @@ bool MapController::createMap(int i_width, int i_height)
 
   for (int y = 2; y <= 5; ++y)
   {
-    for (int x = 5; x <= 8; ++x)
+    for (int x = 3; x <= 8; ++x)
     {
       d_map->getTileAt(x, y)->setFloor(GameObjectCreator::createFloor(*d_map));
     }
   }
+
+  d_map->getTileAt(4, 2)->setWall(GameObjectCreator::createWall(*d_map));
+  d_map->getTileAt(4, 3)->setWall(GameObjectCreator::createDoor(*d_map));
+  d_map->getTileAt(4, 4)->setWall(GameObjectCreator::createWall(*d_map));
 
   d_map->getTileAt(7, 3)->setWall(GameObjectCreator::createWall(*d_map));
   d_map->getTileAt(7, 4)->setWall(GameObjectCreator::createWall(*d_map));
