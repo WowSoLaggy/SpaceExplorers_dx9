@@ -21,16 +21,6 @@ MovementModel::MovementModel(const GameObject& i_gameObject)
 
 bool MovementModel::beforeUpdate(float i_dt)
 {
-  auto position = getPosition();
-  auto* pTile = d_gameObject.getMap().getTileUnderPosition(position);
-  if (!pTile || pTile->isSpace())
-  {
-    // Open space
-    setAccel({ 0, 0 });
-    return true;
-  }
-
-
   const float MAX_ACCEL = Tile::DEFAULT_TILE_SIZE * 20;
   const float MIN_SPEED = 20;
 
@@ -63,11 +53,19 @@ bool MovementModel::beforeUpdate(float i_dt)
     else speed.x = 0;
   }
 
+  auto position = getPosition();
 
   collideWithNeighborTiles(d_gameObject.getMap(), i_dt, position, speed, currentAccel);
 
+  auto* pTile = d_gameObject.getMap().getTileUnderPosition(position);
+  if (!pTile || pTile->isSpace())
+  {
+    // Open space - no control. We can only control accel if have any collision
+    setAccel({ 0, 0 });
+  }
+  else
+    setAccel(currentAccel);
 
-  setAccel(currentAccel);
   setSpeed(speed);
 
   return true;
@@ -154,7 +152,6 @@ void MovementModel::collideWithNeighborTiles(const Map& i_map, float i_dt,
     return collideWithTile(i_map.getTileAt(curCoords.x - 1, curCoords.y + 1),
                            i_position + io_speed * i_dt);
   };
-
 
   if (collideUp() || collideDown())
   {
