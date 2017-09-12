@@ -48,6 +48,18 @@ bool PrototypeCollection::initAllPrototypes()
     d_prototypes.push_back(pPrototype);
   }
 
+  {
+    auto* pPrototype = new Prototype();
+    pPrototype->setName("Door");
+    pPrototype->setTextureOffset(tileTextureOffset);
+    pPrototype->setMovable(false);
+    pPrototype->setPassable(false);
+    pPrototype->setTextureName("Door_64_64_6_a.png");
+    pPrototype->setSize({ 64, 64 });
+    pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
+    d_prototypes.push_back(pPrototype);
+  }
+
 
   {
     auto* pPrototype = new Prototype();

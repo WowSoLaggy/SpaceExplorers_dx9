@@ -38,6 +38,16 @@ Model::GameObject* GameObjectCreator::createWall(const Model::Map& i_map)
   return pGameObject;
 }
 
+Model::GameObject* GameObjectCreator::createDoor(const Model::Map& i_map)
+{
+  auto* pPrototype = Model::PrototypeCollection::find("Door");
+  if (!pPrototype)
+    return nullptr;
+
+  auto* pGameObject = new Model::GameObject(i_map, *pPrototype);
+  return pGameObject;
+}
+
 
 Model::GameObject* GameObjectCreator::createMan(const Model::Map& i_map)
 {
