@@ -43,6 +43,7 @@ public:
 
   InputController& getInputController() { return d_inputController; }
   GuiController& getGuiController() { return d_guiController; }
+  MapController& getMapController() { return d_mapController; }
 
 
   bool stop();
