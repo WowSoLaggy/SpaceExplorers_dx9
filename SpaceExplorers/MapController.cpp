@@ -146,4 +146,44 @@ bool MapController::draw(Doh3d::Sprite& i_sprite) const
   return true;
 }
 
+
+Model::GameObject* MapController::hitTest() const
+{
+  LOG(__FUNCTION__);
+
+  const auto* pCamera = d_game.getScene().getCamera();
+  if (!pCamera)
+  {
+    echo("ERROR: No camera found.");
+    return nullptr;
+  }
+
+  if (!d_map)
+  {
+    echo("ERROR: No map found.");
+    return nullptr;
+  }
+
+  auto point = Doh3d::InputMan::getCursor().getPosition() + pCamera->getPosition();
+
+  auto* pTile = d_map->getTileUnderPosition(point);
+  if (!pTile)
+  {
+    // Click is out of the map - it is OK
+    return nullptr;
+  }
+
+  auto* pGameObject = pTile->getTopLayer();
+  if (!pGameObject)
+  {
+    // Just an empty tile - it is OK
+    return nullptr;
+  }
+
+  /*auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
+  texture.hitTest(*/
+
+  return pGameObject;
+}
+
 } // ns Controller

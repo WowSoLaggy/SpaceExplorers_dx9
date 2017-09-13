@@ -4,6 +4,7 @@
 namespace Model
 {
 class Map;
+class GameObject;
 } // ns Model
 
 namespace Controller
@@ -25,6 +26,8 @@ public:
 
   bool createMap(int i_width, int i_height);
   bool deleteMap();
+
+  Model::GameObject* hitTest() const;
 
   virtual bool update(float i_dt) override;
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
