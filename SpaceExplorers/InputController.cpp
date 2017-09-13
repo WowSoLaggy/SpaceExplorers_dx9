@@ -61,7 +61,19 @@ bool InputController::onMouseDown(Doh3d::MouseButton i_button, bool& i_handled)
     }
   }
 
+  if (d_game.getGameState() == GameState::InGame)
   {
+    if (i_button == Doh3d::MouseButton::Left)
+    {
+      if (!d_controllers.empty())
+      {
+        if (auto* pController = d_controllers.front())
+        {
+          Interaction::interact(
+            dynamic_cast<Model::GameObject*>(pController->getBindedObject()),
+            d_game.getMapController().hitTest());
+        }
+      }
     }
   }
 
