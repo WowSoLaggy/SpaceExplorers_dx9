@@ -17,6 +17,7 @@ class GameObject
   , public Doh3d::IControlable
   , public Doh3d::INamed
   , public Doh3d::ICollidable
+  , public Doh3d::IAnimated
 {
 public:
 
@@ -36,6 +37,8 @@ public:
 
   StateSet& getStates() { return d_stateSet; }
   const StateSet& getStates() const { return d_stateSet; }
+
+  virtual const Doh3d::AnimationSet& getAnimationSet() const override { return d_prototype.getAnimationSet(); }
 
 
   bool isDoor() const { return d_prototype.getBehaviour() == Model::Behaviour::Door; }

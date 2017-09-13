@@ -31,6 +31,9 @@ bool GameObject::update(float i_dt)
   if (d_prototype.getMovable() && !d_movementModel.update(i_dt))
     return false;
 
+  if (!updateAnimation(i_dt))
+    return false;
+
   return true;
 }
 
@@ -41,8 +44,10 @@ bool GameObject::draw(Doh3d::Sprite& i_sprite) const
     + d_prototype.getTextureOffset()
     - d_prototype.getSize2();
 
+  int frame = getCurrentFrame();
+
   if (!i_sprite.draw(Doh3d::ResourceMan::getTexture(d_prototype.getTi()).get(),
-                    &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(0),
+                    &Doh3d::ResourceMan::getTexture(d_prototype.getTi()).getFrame(frame),
                     0, position, D3DCOLOR_ARGB(255, 255, 255, 255)))
   {
     return false;
