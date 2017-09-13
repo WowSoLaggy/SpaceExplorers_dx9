@@ -43,6 +43,9 @@ public:
   Behaviour getBehaviour() const { return d_behaviour; }
   void setBehaviour(Behaviour i_behaviour) { d_behaviour = i_behaviour; }
 
+  Doh3d::AnimationSet& getAnimationSet() { return d_animationSet; }
+  const Doh3d::AnimationSet& getAnimationSet() const { return d_animationSet; }
+
 private:
 
   std::string d_name;
@@ -61,6 +64,8 @@ private:
   const Doh3d::IShape* d_collisionShape;
 
   Behaviour d_behaviour;
+
+  Doh3d::AnimationSet d_animationSet;
 
 };
 
