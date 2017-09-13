@@ -36,8 +36,17 @@ public:
   const Doh3d::Vector2I& getCoords() const { return d_coords; }
   void setCoords(const Doh3d::Vector2I& i_coords) { d_coords = i_coords; }
 
+  Doh3d::Vector2F getTopLeft() const {
+    return{
+      d_coords.x * DEFAULT_TILE_SIZE,
+      d_coords.y * DEFAULT_TILE_SIZE };
+  }
+
   Doh3d::Vector2F getCenter() const {
-    return{ d_coords.x * DEFAULT_TILE_SIZE, d_coords.y * DEFAULT_TILE_SIZE }; }
+    return{
+      d_coords.x * DEFAULT_TILE_SIZE + DEFAULT_TILE_SIZE / 2,
+      d_coords.y * DEFAULT_TILE_SIZE + DEFAULT_TILE_SIZE / 2 };
+  }
 
 
   const GameObject* getTurf() const { return d_turf; }
