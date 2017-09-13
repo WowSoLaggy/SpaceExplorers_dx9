@@ -4,6 +4,8 @@
 #include "Game.h"
 #include "Scene.h"
 #include "GuiGroup.h"
+#include "GameObject.h"
+#include "Interaction.h"
 
 
 namespace Controller
@@ -29,7 +31,7 @@ GuiGroup* InputController::getGuiGroupToUpdate()
 }
 
 
-bool InputController::onMouseMove(bool& pHandled)
+bool InputController::onMouseMove(bool& i_handled)
 {
   auto* pGuiGroup = getGuiGroupToUpdate();
   if (!pGuiGroup)
@@ -37,17 +39,36 @@ bool InputController::onMouseMove(bool& pHandled)
 
   for (auto* pGui : pGuiGroup->getGuis())
   {
-    bool handled = false;
-    if (!pGui->onMouseMove(handled))
+    if (!pGui->onMouseMove(i_handled))
       return false;
-    if (handled)
+    if (i_handled)
       return true;
   }
 
   return true;
 }
 
-bool InputController::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
+bool InputController::onMouseDown(Doh3d::MouseButton i_button, bool& i_handled)
+{
+  if (auto* pGuiGroup = getGuiGroupToUpdate())
+  {
+    for (auto* pGui : pGuiGroup->getGuis())
+    {
+      if (!pGui->onMouseDown(i_button, i_handled))
+        return false;
+      if (i_handled)
+        return true;
+    }
+  }
+
+  {
+    }
+  }
+
+  return true;
+}
+
+bool InputController::onMouseUp(Doh3d::MouseButton i_button, bool& i_handled)
 {
   auto* pGuiGroup = getGuiGroupToUpdate();
   if (!pGuiGroup)
@@ -55,28 +76,9 @@ bool InputController::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
 
   for (auto* pGui : pGuiGroup->getGuis())
   {
-    bool handled = false;
-    if (!pGui->onMouseDown(pButton, handled))
+    if (!pGui->onMouseUp(i_button, i_handled))
       return false;
-    if (handled)
-      return true;
-  }
-
-  return true;
-}
-
-bool InputController::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
-{
-  auto* pGuiGroup = getGuiGroupToUpdate();
-  if (!pGuiGroup)
-    return true;
-
-  for (auto* pGui : pGuiGroup->getGuis())
-  {
-    bool handled = false;
-    if (!pGui->onMouseUp(pButton, handled))
-      return false;
-    if (handled)
+    if (i_handled)
       return true;
   }
 
@@ -84,33 +86,33 @@ bool InputController::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 }
 
 
-bool InputController::onKeyPressed(Doh3d::Key pKey)
+bool InputController::onKeyPressed(Doh3d::Key i_key)
 {
   if (d_game.getGameState() == GameState::InGame)
   {
     for (auto* pController : d_controllers)
-      pController->onKeyPressed(pKey);
+      pController->onKeyPressed(i_key);
   }
 
   return true;
 }
 
-bool InputController::onKeyDown(Doh3d::Key pKey)
+bool InputController::onKeyDown(Doh3d::Key i_key)
 {
   if (d_game.getGameState() == GameState::InGame)
   {
-    switch (pKey)
+    switch (i_key)
     {
     case DIK_ESCAPE: d_game.showEscapeMenu(); break;
     default:
       for (auto* pController : d_controllers)
-        pController->onKeyDown(pKey);
+        pController->onKeyDown(i_key);
       break;
     }
   }
   else if (d_game.getGameState() == GameState::EscapeMenu)
   {
-    switch (pKey)
+    switch (i_key)
     {
     case DIK_ESCAPE: d_game.returnFromEscapeMenu(); break;
     }
@@ -119,12 +121,12 @@ bool InputController::onKeyDown(Doh3d::Key pKey)
   return true;
 }
 
-bool InputController::onKeyUp(Doh3d::Key pKey)
+bool InputController::onKeyUp(Doh3d::Key i_key)
 {
   if (d_game.getGameState() == GameState::InGame)
   {
     for (auto* pController : d_controllers)
-      pController->onKeyUp(pKey);
+      pController->onKeyUp(i_key);
   }
 
   return true;

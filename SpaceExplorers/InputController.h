@@ -26,13 +26,13 @@ public:
 
   // Input handlers
 
-  virtual bool onMouseMove(bool& pHandled) override;
-  virtual bool onMouseDown(Doh3d::MouseButton pButton, bool& pHandled) override;
-  virtual bool onMouseUp(Doh3d::MouseButton pButton, bool& pHandled) override;
+  virtual bool onMouseMove(bool& i_handled) override;
+  virtual bool onMouseDown(Doh3d::MouseButton i_button, bool& i_handled) override;
+  virtual bool onMouseUp(Doh3d::MouseButton i_button, bool& i_handled) override;
 
-  virtual bool onKeyPressed(Doh3d::Key pKey) override;
-  virtual bool onKeyDown(Doh3d::Key pKey) override;
-  virtual bool onKeyUp(Doh3d::Key pKey) override;
+  virtual bool onKeyPressed(Doh3d::Key i_key) override;
+  virtual bool onKeyDown(Doh3d::Key i_key) override;
+  virtual bool onKeyUp(Doh3d::Key i_key) override;
 
 private:
 
