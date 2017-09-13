@@ -49,6 +49,7 @@ void Tile::setTurf(GameObject* i_turf)
     return;
 
   d_turf = i_turf;
+  d_turf->setPosition(getCenter());
 }
 
 void Tile::resetTurf()
@@ -72,6 +73,7 @@ void Tile::setFloor(GameObject* i_floor)
     return;
 
   d_floor = i_floor;
+  d_floor->setPosition(getCenter());
 }
 
 void Tile::resetFloor()
@@ -95,6 +97,7 @@ void Tile::setWall(GameObject* i_wall)
     return;
 
   d_wall = i_wall;
+  d_wall->setPosition(getCenter());
 }
 
 void Tile::resetWall()
