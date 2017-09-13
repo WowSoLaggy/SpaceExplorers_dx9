@@ -32,9 +32,7 @@ bool Button::onMouseDown(Doh3d::MouseButton pButton, bool& pHandled)
   if (d_state == ButtonState::Disabled)
     return true;
 
-  // TODO: add MBUTTON_LEFT to the Doh3d::MouseButton class or something like this
-  // to avoid using of DirectX defines
-  if (pButton != MBUTTON_LEFT)
+  if (pButton != Doh3d::MouseButton::Left)
     return true;
 
   if (containsPoint(Doh3d::InputMan::getCursor().getPosition()))
@@ -54,7 +52,7 @@ bool Button::onMouseUp(Doh3d::MouseButton pButton, bool& pHandled)
 
   pHandled = false;
 
-  if (pButton != MBUTTON_LEFT)
+  if (pButton != Doh3d::MouseButton::Left)
     return true;
 
   if (containsPoint(Doh3d::InputMan::getCursor().getPosition()))
