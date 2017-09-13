@@ -24,6 +24,9 @@ bool MapController::createMap(int i_width, int i_height)
     return false;
 
 
+  d_map->getTileAt(0, 0)->setTurf(GameObjectCreator::createLattice(*d_map));
+  d_map->getTileAt(1, 1)->setTurf(GameObjectCreator::createLattice(*d_map));
+
   for (int y = 2; y <= 10; ++y)
   {
     for (int x = 2; x <= 8; ++x)
