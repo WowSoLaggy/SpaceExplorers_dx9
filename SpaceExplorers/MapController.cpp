@@ -129,22 +129,16 @@ bool MapController::draw(Doh3d::Sprite& i_sprite) const
   Doh3d::SpriteTransformGuard spriteTransformGuard(i_sprite);
 
   const Doh3d::Position2I cameraTranslation = -pCamera->getPosition();
-  Doh3d::Position2I currentTranslation;
+  i_sprite.setTranslation(cameraTranslation);
 
   for (int y = 0; y < d_map->getHeight(); ++y)
   {
     for (int x = 0; x < d_map->getWidth(); ++x)
     {
-      currentTranslation = cameraTranslation +
-        Doh3d::Position2I(x * Model::Tile::DEFAULT_TILE_SIZE, y * Model::Tile::DEFAULT_TILE_SIZE);
-      i_sprite.setTranslation(currentTranslation);
-
       if (!d_map->getTileAt(x, y)->draw(i_sprite))
         return false;
     }
   }
-
-  i_sprite.setTranslation(cameraTranslation);
 
   for (auto* pObject : d_map->getObjects())
     pObject->draw(i_sprite);
