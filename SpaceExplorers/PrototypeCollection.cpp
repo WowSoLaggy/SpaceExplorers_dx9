@@ -10,7 +10,7 @@ std::vector<Prototype*> PrototypeCollection::d_prototypes;
 
 bool PrototypeCollection::initAllPrototypes()
 {
-  Doh3d::Position2I tileTextureOffset{ 32, 32 };
+  Doh3d::Position2I tileTextureOffset{ 0, 0 };
 
   {
     auto* pPrototype = new Prototype();
@@ -61,6 +61,10 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     pPrototype->setBehaviour(Behaviour::Door);
+    pPrototype->getAnimationSet().animations.push_back(
+      { "Open", 1, 6, 0.15f });
+    pPrototype->getAnimationSet().animations.push_back(
+      { "Close", 6, 1, 0.15f });
     d_prototypes.push_back(pPrototype);
   }
 
