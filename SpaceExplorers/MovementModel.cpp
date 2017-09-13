@@ -193,7 +193,7 @@ bool MovementModel::collideWithTile(const Tile* i_tile, const Doh3d::Position2F&
     return false;
 
   return Doh3d::Collider::collide(*pShape1, *pShape2,
-                                  i_tile->getCenter(), i_position);
+                                  i_tile->getTopLeft(), i_position);
 }
 
 } // ns Model
