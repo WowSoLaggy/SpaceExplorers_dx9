@@ -64,6 +64,9 @@
     <Filter Include="src\Controllers\Map">
       <UniqueIdentifier>{d6c80201-471b-4d02-b6e2-7f1520b3848b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Controllers\Interactions">
+      <UniqueIdentifier>{feb2c650-e951-4c3a-81c4-76f09c942e04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -162,6 +165,9 @@
     <ClCompile Include="GameObjectCreator.cpp">
       <Filter>src\Controllers\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Interaction.cpp">
+      <Filter>src\Controllers\Interactions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -253,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="GameObjectCreator.h">
       <Filter>src\Controllers\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Interaction.h">
+      <Filter>src\Controllers\Interactions</Filter>
     </ClInclude>
     <ClInclude Include="Behaviour.h">
       <Filter>src\Model\GameObjects</Filter>

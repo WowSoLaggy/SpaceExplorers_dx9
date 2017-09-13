@@ -179,6 +179,7 @@
     <ClCompile Include="Game_loading.cpp" />
     <ClCompile Include="GuiControlCreator.cpp" />
     <ClCompile Include="GuiController.cpp" />
+    <ClCompile Include="Interaction.cpp" />
     <ClCompile Include="MapController.cpp" />
     <ClCompile Include="MovementModel.cpp" />
     <ClCompile Include="IGui.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="GuiGroup.h" />
     <ClInclude Include="GuiController.h" />
     <ClInclude Include="InputController.h" />
+    <ClInclude Include="Interaction.h" />
     <ClInclude Include="MapController.h" />
     <ClInclude Include="MovementModel.h" />
     <ClInclude Include="IGui.h" />
