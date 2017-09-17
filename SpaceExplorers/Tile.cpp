@@ -120,7 +120,7 @@ bool Tile::isSpace() const
 bool Tile::isPassable() const
 {
   if (auto* pTopLayer = getTopLayer())
-    return pTopLayer->getPrototype().getPassable();
+    return pTopLayer->isPassable();
   return true;
 }
 
