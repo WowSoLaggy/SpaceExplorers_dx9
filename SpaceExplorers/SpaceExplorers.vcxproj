@@ -172,6 +172,7 @@
     <ClCompile Include="Cursor.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="GuiGroup.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectCreator.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="GuiControlCreator.h" />
     <ClInclude Include="GuiGroup.h" />
     <ClInclude Include="GuiController.h" />

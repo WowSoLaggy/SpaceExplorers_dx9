@@ -23,6 +23,8 @@ public:
   static View::Panel* create_mainMenu_backGround();
   static View::Panel* create_escapeMenu_backGround();
 
+  static View::Grid* create_grid_hands();
+
 };
 
 } // ns Controller

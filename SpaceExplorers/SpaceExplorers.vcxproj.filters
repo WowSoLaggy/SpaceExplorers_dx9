@@ -168,6 +168,9 @@
     <ClCompile Include="Interaction.cpp">
       <Filter>src\Controllers\Interactions</Filter>
     </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>src\View\GuiObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="States.h">
       <Filter>src\Model\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>src\View\GuiObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

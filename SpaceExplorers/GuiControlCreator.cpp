@@ -135,4 +135,30 @@ View::Panel* GuiControlCreator::create_escapeMenu_backGround()
   return pPanel;
 }
 
+
+View::Grid* GuiControlCreator::create_grid_hands()
+{
+  auto* pGrid = new View::Grid();
+
+  if (!pGrid->setTexture(
+    "GridUL_13_13_1_n.png",
+    "GridUR_13_13_1_n.png",
+    "GridBL_13_13_1_n.png",
+    "GridBR_13_13_1_n.png",
+    "GridU_72_13_1_n.png",
+    "GridR_13_72_1_n.png",
+    "GridB_72_13_1_n.png",
+    "GridL_13_72_1_n.png",
+    "GridItem_72_72_1_n.png",
+    "GridFrame_68_68_1_n.png"))
+  {
+    delete pGrid;
+    return nullptr;
+  }
+
+  pGrid->setGridSize({ 2, 1 });
+
+  return pGrid;
+}
+
 } // ns Controller
