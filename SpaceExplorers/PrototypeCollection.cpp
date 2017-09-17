@@ -82,7 +82,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Man_64_64_4_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::Circle({ 0, 0 }, 16));
-    pPrototype->setBehaviour(Behaviour::Character);
+    pPrototype->setBehaviour(Behaviour::None);
     pPrototype->setPickable(false);
     d_prototypes.push_back(pPrototype);
   }

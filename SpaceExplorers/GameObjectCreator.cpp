@@ -49,14 +49,14 @@ Model::GameObject* GameObjectCreator::createDoor(const Model::Map& i_map)
 }
 
 
-Model::GameObject* GameObjectCreator::createMan(const Model::Map& i_map)
+Model::Character* GameObjectCreator::createMan(const Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Man");
   if (!pPrototype)
     return nullptr;
 
-  auto* pGameObject = new Model::GameObject(i_map, *pPrototype);
-  return pGameObject;
+  auto* pCharacter = new Model::Character(i_map, *pPrototype);
+  return pCharacter;
 }
 
 

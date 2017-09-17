@@ -171,6 +171,9 @@
     <ClCompile Include="Grid.cpp">
       <Filter>src\View\GuiObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>src\Model\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>src\View\GuiObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>src\Model\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

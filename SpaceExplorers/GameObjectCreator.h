@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
+#include "Character.h"
 
 
 namespace Model
@@ -21,7 +22,7 @@ public:
   static Model::GameObject* createWall(const Model::Map& i_map);
   static Model::GameObject* createDoor(const Model::Map& i_map);
   
-  static Model::GameObject* createMan(const Model::Map& i_map);
+  static Model::Character* createMan(const Model::Map& i_map);
 
   static Model::GameObject* createRods(const Model::Map& i_map);
 

@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "Character.h"
 
 
 namespace Controller
@@ -187,7 +188,13 @@ bool Game::createBindCamera()
   auto* pMap = d_mapController.getMap();
 
   auto it = std::find_if(pMap->getObjects().cbegin(), pMap->getObjects().cend(),
-                         [](const Model::GameObject* i_gameObject) { return i_gameObject->getName() == "Player"; });
+                         [](const Model::GameObject* i_gameObject)
+  {
+    if (const auto* pCharacter = dynamic_cast<const Model::Character*>(i_gameObject))
+      return pCharacter->getName() == "Player";
+    return false;
+  });
+
   if (it == pMap->getObjects().cend())
   {
     echo("ERROR: Can't find Player.");
@@ -228,14 +235,20 @@ bool Game::createBindController()
   }
 
   auto it = std::find_if(pMap->getObjects().cbegin(), pMap->getObjects().cend(),
-                         [](const Model::GameObject* i_gameObject) { return i_gameObject->getName() == "Player"; });
+                         [](const Model::GameObject* i_gameObject)
+  {
+    if (const auto* pCharacter = dynamic_cast<const Model::Character*>(i_gameObject))
+      return pCharacter->getName() == "Player";
+    return false;
+  });
+
   if (it == pMap->getObjects().cend())
   {
     echo("ERROR: Can't find Player.");
     return false;
   }
 
-  pController->bindObject(*it);
+  pController->bindObject(dynamic_cast<Model::Character*>(*it));
 
   return true;
 }

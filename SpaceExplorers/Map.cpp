@@ -71,7 +71,7 @@ void Map::addGameObject(GameObject* i_gameObject)
   if (!i_gameObject)
     return;
 
-  if (i_gameObject->getPrototype().getBehaviour() == Model::Behaviour::Character)
+  if (i_gameObject->isCharacter())
     d_objects.push_back(i_gameObject);
   else
     d_objects.insert(d_objects.begin(), i_gameObject);
