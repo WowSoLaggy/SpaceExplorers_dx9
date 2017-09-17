@@ -180,6 +180,14 @@ Model::GameObject* MapController::hitTest() const
   }
 
 
+  for (auto* pGameObject : d_map->getObjects())
+  {
+    auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
+    if (texture.hitTest(Doh3d::toD3DXVECTOR3(point - pTile->getTopLeft()), pGameObject->getCurrentFrame()))
+      return pGameObject;
+  }
+
+
   if (auto* pGameObject = pTile->getWall())
   {
     auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
