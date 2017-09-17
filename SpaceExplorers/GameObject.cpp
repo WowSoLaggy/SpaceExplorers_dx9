@@ -62,4 +62,12 @@ const Doh3d::IShape* GameObject::getCollisionShape() const
   return d_prototype.getCollisionShape();
 }
 
+bool GameObject::isPassable() const
+{
+  if (isDoor())
+    return isOpen();
+
+  return d_prototype.getPassable();
+}
+
 } // ns Model
