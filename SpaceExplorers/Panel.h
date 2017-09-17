@@ -18,7 +18,7 @@ public:
   // in every Gui class (or not?)
   virtual bool loadAllTextures() override;
 
-  bool setTexture(const std::string& pTextureName);
+  bool setTexture(const std::string& i_textureName);
   
   void setFitScreen(bool i_fitScreen);
 

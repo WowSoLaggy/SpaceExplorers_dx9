@@ -46,9 +46,9 @@ bool Panel::loadAllTextures()
 }
 
 
-bool Panel::setTexture(const std::string& pTextureName)
+bool Panel::setTexture(const std::string& i_textureName)
 {
-  if (!Doh3d::ResourceMan::getTi(pTextureName, d_ti))
+  if (!Doh3d::ResourceMan::getTi(i_textureName, d_ti))
     return false;
   
   return true;
