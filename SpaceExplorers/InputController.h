@@ -20,6 +20,9 @@ public:
   Doh3d::Controller* getController(Doh3d::ControllerId i_controllerId);
   bool removeController(Doh3d::ControllerId i_controllerId);
   bool removeAllControllers();
+  std::vector<Doh3d::Controller*>& getControllers() { return d_controllers; }
+  const std::vector<Doh3d::Controller*>& getControllers() const { return d_controllers; }
+
 
   void bindControllerActions(Doh3d::Controller& i_controller);
 

@@ -47,6 +47,7 @@ private:
 
   Doh3d::Size2I d_gridSize;
 
+
   bool drawPart(Doh3d::Sprite& i_sprite, int d_ti, const Doh3d::Position2I& i_position) const;
 
 };

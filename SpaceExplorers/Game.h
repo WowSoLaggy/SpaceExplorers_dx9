@@ -3,6 +3,7 @@
 #include "InputController.h"
 #include "GuiController.h"
 #include "MapController.h"
+#include "Character.h"
 
 
 namespace Controller
@@ -52,6 +53,8 @@ public:
   bool stopGame();
   bool showEscapeMenu();
   bool returnFromEscapeMenu();
+
+  void switchActiveHand(Model::Hand i_hand);
 
   virtual bool draw(Doh3d::Sprite& i_sprite) const override;
   virtual bool update(float i_dt) override;

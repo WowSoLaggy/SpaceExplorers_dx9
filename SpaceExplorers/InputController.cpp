@@ -116,7 +116,10 @@ bool InputController::onKeyDown(Doh3d::Key i_key)
     switch (i_key)
     {
     case DIK_ESCAPE: d_game.showEscapeMenu(); break;
+    case DIK_1: d_game.switchActiveHand(Model::Hand::Right); break;
+    case DIK_2: d_game.switchActiveHand(Model::Hand::Left); break;
     default:
+      // TODO: controllers should be totally reworked
       for (auto* pController : d_controllers)
         pController->onKeyDown(i_key);
       break;

@@ -269,4 +269,15 @@ bool Game::updateControllers(float i_dt)
   return true;
 }
 
+
+void Game::switchActiveHand(Model::Hand i_hand)
+{
+  auto* pControlledObject = dynamic_cast<Model::Character*>(
+    d_inputController.getControllers().front()->getBindedObject());
+  if (!pControlledObject)
+    return;
+
+  pControlledObject->switchActiveHand(i_hand);
+}
+
 } // ns Controller
