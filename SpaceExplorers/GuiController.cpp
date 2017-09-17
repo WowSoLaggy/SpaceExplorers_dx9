@@ -276,6 +276,21 @@ bool GuiController::createGameGui()
   LOG(__FUNCTION__);
 
 
+  // Hands inventory
+
+  auto* pGridHands = GuiControlCreator::create_grid_hands();
+  if (!pGridHands)
+  {
+    echo("ERROR: Can't create the escape menu button.");
+    return false;
+  }
+  pGridHands->setPosition({ Doh3d::Screen::getClientCenterX() - pGridHands->getSize().x / 2,
+                          Doh3d::Screen::getClientHeight() - pGridHands->getSize().y });
+  d_groupGameGui.addGui(pGridHands);
+
+
+  // Cursor
+
   showCursor();
 
   return true;
