@@ -14,15 +14,21 @@ bool Interaction::interact(Model::GameObject* i_object,
   if (!i_object || !i_subject)
     return true;
 
-  if (i_object->isCharacter() && i_subject->isDoor() && !i_tool)
-    return openDoor(*i_object, *i_subject);
+  if (auto* pCharacter = dynamic_cast<Model::Character*>(i_object))
+  {
+    if (i_subject->isDoor() && !i_tool)
+      return openDoor(*pCharacter, *i_subject);
+
+    if (i_subject->isPickable() && !i_tool)
+      return pickUpObject(*pCharacter, *i_subject);
+  }
 
   // Such an objects can't interact
   return true;
 }
 
 
-bool Interaction::openDoor(Model::GameObject& i_object,
+bool Interaction::openDoor(Model::Character& i_object,
                            Model::GameObject& i_subject)
 {
   if ((i_object.getPosition() - i_subject.getPosition()).lengthSq() > INTERACTMAXDISTSQ)
@@ -53,6 +59,25 @@ bool Interaction::openDoor(Model::GameObject& i_object,
     if (!i_subject.playAnimation("Open", 1))
       return false;
   }
+
+  return true;
+}
+
+bool Interaction::pickUpObject(Model::Character& i_object,
+                               Model::GameObject& i_subject)
+{
+  auto activeHand = i_object.getActiveHand();
+  if (activeHand == Model::Hand::None)
+    return true;
+
+  if (i_object.getObjectInHand(activeHand))
+  {
+    // Hand is busy
+    return true;
+  }
+
+  i_object.getMap().removeGameObject(&i_subject);
+  i_object.setObjectInHand(activeHand, &i_subject);
 
   return true;
 }

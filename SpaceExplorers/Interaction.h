@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Tile.h"
+#include "Character.h"
 
 
 namespace Controller
@@ -20,8 +21,11 @@ private:
   static const int INTERACTMAXDISTSQ = INTERACTMAXDIST * INTERACTMAXDIST;
 
 
-  static bool openDoor(Model::GameObject& i_object,
+  static bool openDoor(Model::Character& i_object,
                        Model::GameObject& i_subject);
+
+  static bool pickUpObject(Model::Character& i_object,
+                           Model::GameObject& i_subject);
 };
 
 } // ns Controller
