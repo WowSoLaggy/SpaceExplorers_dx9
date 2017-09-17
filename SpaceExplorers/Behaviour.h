@@ -8,6 +8,7 @@ enum class Behaviour
 {
   None,
   Door,
+  Character,
 };
 
 } // ns Model

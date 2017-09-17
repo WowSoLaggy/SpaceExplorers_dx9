@@ -68,7 +68,13 @@ const Tile* Map::getTileUnderPosition(const Doh3d::Position2F& i_position) const
 
 void Map::addGameObject(GameObject* i_gameObject)
 {
-  d_objects.push_back(i_gameObject);
+  if (!i_gameObject)
+    return;
+
+  if (i_gameObject->getPrototype().getBehaviour() == Model::Behaviour::Character)
+    d_objects.push_back(i_gameObject);
+  else
+    d_objects.insert(d_objects.begin(), i_gameObject);
 }
 
 
