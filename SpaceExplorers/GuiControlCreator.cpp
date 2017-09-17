@@ -1,6 +1,12 @@
 #include "stdafx.h"
 #include "GuiControlCreator.h"
 
+#include "Cursor.h"
+#include "Panel.h"
+#include "Button.h"
+#include "Text.h"
+#include "Grid.h"
+
 
 namespace Controller
 {

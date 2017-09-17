@@ -1,9 +1,14 @@
 #pragma once
 
-#include "Cursor.h"
-#include "Panel.h"
-#include "Button.h"
-#include "Text.h"
+
+namespace View
+{
+class Cursor;
+class Panel;
+class Button;
+class Text;
+class Grid;
+}
 
 
 namespace Controller

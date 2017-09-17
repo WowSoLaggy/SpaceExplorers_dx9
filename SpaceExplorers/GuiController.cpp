@@ -3,6 +3,9 @@
 
 #include "GuiControlCreator.h"
 #include "Game.h"
+#include "Panel.h"
+#include "Button.h"
+#include "Grid.h"
 
 
 namespace Controller
