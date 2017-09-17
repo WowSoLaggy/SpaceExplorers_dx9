@@ -27,7 +27,7 @@ bool MapController::createMap(int i_width, int i_height)
   d_map->getTileAt(0, 0)->setTurf(GameObjectCreator::createLattice(*d_map));
   d_map->getTileAt(1, 1)->setTurf(GameObjectCreator::createLattice(*d_map));
 
-  for (int y = 2; y <= 10; ++y)
+  for (int y = 2; y <= 11; ++y)
   {
     for (int x = 2; x <= 8; ++x)
     {
@@ -35,7 +35,7 @@ bool MapController::createMap(int i_width, int i_height)
     }
   }
 
-  for (int y = 6; y <= 8; ++y)
+  for (int y = 7; y <= 9; ++y)
   {
     for (int x = 3; x <= 6; ++x)
     {
@@ -43,7 +43,7 @@ bool MapController::createMap(int i_width, int i_height)
     }
   }
 
-  for (int y = 2; y <= 5; ++y)
+  for (int y = 2; y <= 6; ++y)
   {
     for (int x = 3; x <= 8; ++x)
     {
@@ -52,13 +52,15 @@ bool MapController::createMap(int i_width, int i_height)
   }
 
   d_map->getTileAt(4, 2)->setWall(GameObjectCreator::createWall(*d_map));
-  d_map->getTileAt(4, 3)->setWall(GameObjectCreator::createDoor(*d_map));
+  //d_map->getTileAt(4, 3)->setWall(GameObjectCreator::createDoor(*d_map));
   d_map->getTileAt(4, 4)->setWall(GameObjectCreator::createWall(*d_map));
+  d_map->getTileAt(4, 5)->setWall(GameObjectCreator::createDoor(*d_map));
+  d_map->getTileAt(4, 6)->setWall(GameObjectCreator::createWall(*d_map));
 
   d_map->getTileAt(7, 3)->setWall(GameObjectCreator::createWall(*d_map));
   d_map->getTileAt(7, 4)->setWall(GameObjectCreator::createWall(*d_map));
 
-  for (int y = 6; y < 9; ++y)
+  for (int y = 7; y < 10; ++y)
   {
     d_map->getTileAt(7, y)->setTurf(GameObjectCreator::createLattice(*d_map));
     d_map->getTileAt(7, y)->setFloor(GameObjectCreator::createFloor(*d_map));
@@ -70,6 +72,10 @@ bool MapController::createMap(int i_width, int i_height)
   pMan->setPosition({ 160, 160 });
   pMan->setName("Player");
   d_map->addGameObject(pMan);
+
+  auto* pRods = GameObjectCreator::createRods(*d_map);
+  pRods->setPosition({ 416, 224 });
+  d_map->addGameObject(pRods);
 
   return true;
 }
