@@ -22,16 +22,28 @@ Tile::~Tile()
 
 bool Tile::update(float i_dt)
 {
-  if (auto* pTopLayer = getTopLayer())
-    pTopLayer->update(i_dt);
+  if (auto* pTurf = getTurf())
+    pTurf->update(i_dt);
+
+  if (auto* pFloor = getFloor())
+    pFloor->update(i_dt);
+
+  if (auto* pWall = getWall())
+    pWall->update(i_dt);
 
   return true;
 }
 
 bool Tile::draw(Doh3d::Sprite& i_sprite) const
 {
-  if (auto* pTopLayer = getTopLayer())
-    pTopLayer->draw(i_sprite);
+  if (auto* pTurf = getTurf())
+    pTurf->draw(i_sprite);
+
+  if (auto* pFloor = getFloor())
+    pFloor->draw(i_sprite);
+
+  if (auto* pWall = getWall())
+    pWall->draw(i_sprite);
 
   return true;
 }
