@@ -49,14 +49,14 @@ public:
   }
 
 
-  const GameObject* getTurf() const { return d_turf; }
   GameObject* getTurf() { return d_turf; }
+  const GameObject* getTurf() const { return d_turf; }
 
-  const GameObject* getFloor() const { return d_floor; }
   GameObject* getFloor() { return d_floor; }
+  const GameObject* getFloor() const { return d_floor; }
 
-  const GameObject* getWall() const { return d_wall; }
   GameObject* getWall() { return d_wall; }
+  const GameObject* getWall() const { return d_wall; }
 
   GameObject* getTopLayer();
   const GameObject* getTopLayer() const;
