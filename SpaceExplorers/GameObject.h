@@ -43,6 +43,7 @@ public:
 
   bool isDoor() const { return d_prototype.getBehaviour() == Model::Behaviour::Door; }
   bool isCharacter() const { return d_prototype.getBehaviour() == Model::Behaviour::Character; }
+  bool isPickable() const { return d_prototype.getPickable(); }
 
   bool isOpen() const { return d_stateSet.Test(State::Open); }
   bool isPassable() const;

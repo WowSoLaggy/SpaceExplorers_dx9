@@ -22,6 +22,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     pPrototype->setBehaviour(Behaviour::None);
+    pPrototype->setPickable(false);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -35,6 +36,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     pPrototype->setBehaviour(Behaviour::None);
+    pPrototype->setPickable(false);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -48,6 +50,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     pPrototype->setBehaviour(Behaviour::None);
+    pPrototype->setPickable(false);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -61,6 +64,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::RectF({ 0, 0 }, { 64, 64 }));
     pPrototype->setBehaviour(Behaviour::Door);
+    pPrototype->setPickable(false);
     pPrototype->getAnimationSet().animations.push_back(
       { "Open", 1, 6, 0.15f });
     pPrototype->getAnimationSet().animations.push_back(
@@ -79,6 +83,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setSize({ 64, 64 });
     pPrototype->setCollisionShape(new Doh3d::Circle({ 0, 0 }, 16));
     pPrototype->setBehaviour(Behaviour::Character);
+    pPrototype->setPickable(false);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -92,6 +97,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setTextureName("Rods_64_64_1_a.png");
     pPrototype->setSize({ 64, 64 });
     pPrototype->setBehaviour(Behaviour::None);
+    pPrototype->setPickable(true);
     d_prototypes.push_back(pPrototype);
   }
 
@@ -104,6 +110,7 @@ bool PrototypeCollection::initAllPrototypes()
     pPrototype->setPassable(true);
     pPrototype->setTextureName("Circle_32_32_1_a.png");
     pPrototype->setBehaviour(Behaviour::None);
+    pPrototype->setPickable(false);
     pPrototype->setSize({ 32, 32 });
     d_prototypes.push_back(pPrototype);
   }

@@ -36,6 +36,9 @@ public:
   bool getPassable() const { return d_passable; }
   void setPassable(bool i_passable) { d_passable = i_passable; }
 
+  bool getPickable() const { return d_pickable; }
+  void setPickable(bool i_pickable) { d_pickable = i_pickable; }
+
   const Doh3d::IShape* getCollisionShape() const { return d_collisionShape; }
   void setCollisionShape(const Doh3d::IShape* i_shape);
   void resetCollisionShape();
@@ -52,6 +55,7 @@ private:
 
   bool d_movable;
   bool d_passable;
+  bool d_pickable;
 
   std::string d_textureName;
   int d_ti;
