@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <thread>
 #include <cassert>
+#include <map>
 
 #include <Doh3d.h>
 

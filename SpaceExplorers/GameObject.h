@@ -19,12 +19,13 @@ class GameObject
 {
 public:
 
-  GameObject(const Map& i_map, const Prototype& i_prototype);
+  GameObject(Map& i_map, const Prototype& i_prototype);
   virtual ~GameObject() { }
 
   const Doh3d::Position2F& getPosition() const;
   void setPosition(const Doh3d::Position2F& i_position);
 
+  Map& getMap() { return d_map; }
   const Map& getMap() const { return d_map; }
   const Prototype& getPrototype() const { return d_prototype; }
 
@@ -49,7 +50,7 @@ public:
 
 protected:
 
-  const Map& d_map;
+  Map& d_map;
   const Prototype& d_prototype;
 
   MovementModel d_movementModel;

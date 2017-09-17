@@ -7,7 +7,7 @@
 namespace Model
 {
 
-GameObject::GameObject(const Map& i_map, const Prototype& i_prototype)
+GameObject::GameObject(Map& i_map, const Prototype& i_prototype)
   : d_map(i_map)
   , d_prototype(i_prototype)
   , d_movementModel(*this)

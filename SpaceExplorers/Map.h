@@ -30,6 +30,7 @@ public:
   const std::vector<GameObject*>& getObjects() const { return d_objects; }
 
   void addGameObject(GameObject* i_gameObject);
+  void removeGameObject(GameObject* i_gameObject);
 
 private:
 

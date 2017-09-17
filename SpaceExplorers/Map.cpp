@@ -77,6 +77,13 @@ void Map::addGameObject(GameObject* i_gameObject)
     d_objects.insert(d_objects.begin(), i_gameObject);
 }
 
+void Map::removeGameObject(GameObject* i_gameObject)
+{
+  if (!i_gameObject)
+    return;
+  d_objects.erase(std::remove(d_objects.begin(), d_objects.end(), i_gameObject));
+}
+
 
 void Map::deleteAllObjects()
 {

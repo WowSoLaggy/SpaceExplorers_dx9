@@ -8,7 +8,7 @@
 namespace Controller
 {
 
-Model::GameObject* GameObjectCreator::createLattice(const Model::Map& i_map)
+Model::GameObject* GameObjectCreator::createLattice(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Lattice");
   if (!pPrototype)
@@ -18,7 +18,7 @@ Model::GameObject* GameObjectCreator::createLattice(const Model::Map& i_map)
   return pGameObject;
 }
 
-Model::GameObject* GameObjectCreator::createFloor(const Model::Map& i_map)
+Model::GameObject* GameObjectCreator::createFloor(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Floor");
   if (!pPrototype)
@@ -28,7 +28,7 @@ Model::GameObject* GameObjectCreator::createFloor(const Model::Map& i_map)
   return pGameObject;
 }
 
-Model::GameObject* GameObjectCreator::createWall(const Model::Map& i_map)
+Model::GameObject* GameObjectCreator::createWall(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Wall");
   if (!pPrototype)
@@ -38,7 +38,7 @@ Model::GameObject* GameObjectCreator::createWall(const Model::Map& i_map)
   return pGameObject;
 }
 
-Model::GameObject* GameObjectCreator::createDoor(const Model::Map& i_map)
+Model::GameObject* GameObjectCreator::createDoor(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Door");
   if (!pPrototype)
@@ -49,7 +49,7 @@ Model::GameObject* GameObjectCreator::createDoor(const Model::Map& i_map)
 }
 
 
-Model::Character* GameObjectCreator::createMan(const Model::Map& i_map)
+Model::Character* GameObjectCreator::createMan(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Man");
   if (!pPrototype)
@@ -60,7 +60,7 @@ Model::Character* GameObjectCreator::createMan(const Model::Map& i_map)
 }
 
 
-Model::GameObject* GameObjectCreator::createRods(const Model::Map& i_map)
+Model::GameObject* GameObjectCreator::createRods(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Rods");
   if (!pPrototype)
@@ -71,7 +71,7 @@ Model::GameObject* GameObjectCreator::createRods(const Model::Map& i_map)
 }
 
 
-Model::GameObject* GameObjectCreator::createCircle(const Model::Map& i_map)
+Model::GameObject* GameObjectCreator::createCircle(Model::Map& i_map)
 {
   auto* pPrototype = Model::PrototypeCollection::find("Circle");
   if (!pPrototype)
