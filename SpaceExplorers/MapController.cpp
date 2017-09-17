@@ -173,17 +173,30 @@ Model::GameObject* MapController::hitTest() const
     return nullptr;
   }
 
-  auto* pGameObject = pTile->getTopLayer();
-  if (!pGameObject)
+
+  if (auto* pGameObject = pTile->getWall())
   {
-    // Just an empty tile - it is OK
-    return nullptr;
+    auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
+    if (texture.hitTest(Doh3d::toD3DXVECTOR3(point - pTile->getTopLeft()), pGameObject->getCurrentFrame()))
+      return pGameObject;
   }
 
-  /*auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
-  texture.hitTest(*/
+  if (auto* pGameObject = pTile->getFloor())
+  {
+    auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
+    if (texture.hitTest(Doh3d::toD3DXVECTOR3(point - pTile->getTopLeft()), pGameObject->getCurrentFrame()))
+      return pGameObject;
+  }
 
-  return pGameObject;
+  if (auto* pGameObject = pTile->getTurf())
+  {
+    auto texture = Doh3d::ResourceMan::getTexture(pGameObject->getPrototype().getTi());
+    if (texture.hitTest(Doh3d::toD3DXVECTOR3(point - pTile->getTopLeft()), pGameObject->getCurrentFrame()))
+      return pGameObject;
+  }
+  
+
+  return nullptr;
 }
 
 } // ns Controller
