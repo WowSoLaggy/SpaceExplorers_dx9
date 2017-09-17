@@ -6,7 +6,7 @@
 namespace Model
 {
 
-enum class ActiveHand
+enum class Hand
 {
   None,
   Right,
@@ -21,13 +21,17 @@ class Character
 {
 public:
 
-  Character(const Map& i_map, const Prototype& i_prototype);
+  Character(Map& i_map, const Prototype& i_prototype);
   virtual ~Character() { }
 
   virtual bool isCharacter() const override { return true; }
 
-  ActiveHand getActiveHand() const { return d_activeHand; }
-  void setActiveHand(ActiveHand i_activeHand) { d_activeHand = i_activeHand; }
+  Hand getActiveHand() const { return d_activeHand; }
+  void setActiveHand(Hand i_activeHand) { d_activeHand = i_activeHand; }
+
+  GameObject* getObjectInHand(Hand i_hand) { return d_itemsInHands[i_hand]; }
+  void setObjectInHand(Hand i_hand, GameObject* i_object) { d_itemsInHands[i_hand] = i_object; }
+  GameObject* removeObjectFromHand(Hand i_hand);
 
 public:
 
@@ -45,7 +49,8 @@ public:
 
 private:
 
-  ActiveHand d_activeHand;
+  Hand d_activeHand;
+  std::map<Hand, GameObject*> d_itemsInHands;
 
 };
 
