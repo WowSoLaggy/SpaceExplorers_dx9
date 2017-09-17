@@ -32,6 +32,7 @@ public:
   GameObject* getObjectInHand(Hand i_hand) { return d_itemsInHands[i_hand]; }
   void setObjectInHand(Hand i_hand, GameObject* i_object) { d_itemsInHands[i_hand] = i_object; }
   GameObject* removeObjectFromHand(Hand i_hand);
+  void switchActiveHand(Hand i_hand);
 
 public:
 

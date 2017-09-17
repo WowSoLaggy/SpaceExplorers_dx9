@@ -22,4 +22,13 @@ GameObject* Character::removeObjectFromHand(Hand i_hand)
   return object;
 }
 
+
+void Character::switchActiveHand(Hand i_hand)
+{
+  if (i_hand == getActiveHand())
+    setActiveHand(Hand::None);
+  else
+    setActiveHand(i_hand);
+}
+
 } // ns Model
