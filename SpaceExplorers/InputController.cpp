@@ -71,7 +71,7 @@ bool InputController::onMouseDown(Doh3d::MouseButton i_button, bool& i_handled)
         {
           Interaction::interact(
             dynamic_cast<Model::GameObject*>(pController->getBindedObject()),
-            d_game.getMapController().hitTest());
+            d_game.getMapController().hitTest(), nullptr);
         }
       }
     }
