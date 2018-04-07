@@ -300,3 +300,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/bin/Data/ObjectEditor.exe
+/bin/Data/ObjectEditor.exe.config
